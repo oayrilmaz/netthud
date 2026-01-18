@@ -80,6 +80,7 @@
     .navwrap{
       display:flex; align-items:center; justify-content:space-between;
       height:76px;
+      gap:10px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
@@ -143,6 +144,7 @@
       font-weight:700;
       font-size:12px;
       transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
+      user-select:none;
     }
     .pill:hover{
       transform: translateY(-1px);
@@ -155,6 +157,37 @@
       background: var(--accent);
       box-shadow: 0 0 16px rgba(120,255,106,.65);
     }
+
+    /* ✅ ADDED: Sound toggle */
+    .soundToggle{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-weight:900;
+      font-size:12px;
+      transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease), color .15s var(--ease);
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .soundToggle:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.045);
+      color: var(--text);
+    }
+    .soundToggle .sDot{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(120,255,106,.55);
+    }
+    .soundToggle.off{opacity:.75}
+    .soundToggle.off .sDot{background: rgba(255,255,255,.28); box-shadow:none}
 
     /* Hero */
     .hero{
@@ -524,6 +557,12 @@
         </nav>
 
         <div class="actions">
+          <!-- ✅ ADDED: sound toggle (stays premium, small, consistent) -->
+          <button id="soundToggle" class="soundToggle" type="button" aria-pressed="true" title="Toggle sound">
+            <span class="sDot" aria-hidden="true"></span>
+            <span id="soundLabel">Sound: ON</span>
+          </button>
+
           <a class="pill" href="#signals" title="Live signals (placeholder)">
             <span class="dot"></span> Live signals
           </a>
@@ -598,9 +637,7 @@
                     <span class="badge">LIVE (placeholder)</span>
                   </div>
                   <div class="panelBody">
-                    <div class="signals" id="signalsList">
-                      <!-- JS fills this with curated placeholders -->
-                    </div>
+                    <div class="signals" id="signalsList"></div>
                   </div>
                 </div>
 
@@ -671,9 +708,7 @@
               <span class="badge">NOW</span>
             </div>
 
-            <div class="mini" id="miniBoard">
-              <!-- JS fills this -->
-            </div>
+            <div class="mini" id="miniBoard"></div>
 
             <div style="height:12px"></div>
 
@@ -696,10 +731,7 @@
           <p style="margin:0 0 14px; color:var(--muted); font-weight:650; line-height:1.6;">
             League-first coverage. Clubs are interpreted through form, pressure, and table context — not isolated stats.
           </p>
-
-          <div class="chips" id="leagueChips">
-            <!-- JS fills these -->
-          </div>
+          <div class="chips" id="leagueChips"></div>
         </div>
       </div>
     </section>
@@ -752,9 +784,7 @@
             <span class="badge">live feed soon</span>
           </div>
           <div class="panelBody">
-            <div class="signals" id="signalsList2">
-              <!-- JS fills this -->
-            </div>
+            <div class="signals" id="signalsList2"></div>
           </div>
         </div>
       </div>
@@ -839,6 +869,10 @@
       </div>
     </footer>
   </main>
+
+  <!-- ✅ ADDED: audio elements -->
+  <audio id="sfxThud" preload="auto" src="assets/audio/netthud.mp3"></audio>
+  <audio id="sfxCrowd" preload="auto" src="assets/audio/crowd.mp3"></audio>
 
   <script>
     // ====== Minimal JS for a premium feel: nav state, smooth scrolling, placeholder feed ======
@@ -974,6 +1008,79 @@
 
     // Initial active state
     setActive(location.hash && document.querySelector(location.hash) ? location.hash : "#home");
+
+    // ============================================================
+    // ✅ SOUND: play thud + short crowd cheer on FIRST interaction
+    // ============================================================
+    const thud = document.getElementById("sfxThud");
+    const crowd = document.getElementById("sfxCrowd");
+    const soundToggle = document.getElementById("soundToggle");
+    const soundLabel = document.getElementById("soundLabel");
+
+    let soundEnabled = true;
+    let playedOnce = false;
+
+    function stopAudio(){
+      if (thud){ thud.pause(); thud.currentTime = 0; }
+      if (crowd){ crowd.pause(); crowd.currentTime = 0; }
+    }
+
+    function setSoundUI(){
+      if (!soundToggle) return;
+      soundToggle.classList.toggle("off", !soundEnabled);
+      soundToggle.setAttribute("aria-pressed", soundEnabled ? "true" : "false");
+      if (soundLabel) soundLabel.textContent = soundEnabled ? "Sound: ON" : "Sound: OFF";
+    }
+    setSoundUI();
+
+    async function playVibe(){
+      if (!soundEnabled || playedOnce) return;
+      if (!thud || !crowd) return;
+
+      try{
+        thud.volume = 0.82;
+        crowd.volume = 0.55;
+
+        thud.currentTime = 0;
+        crowd.currentTime = 0;
+
+        await thud.play();
+
+        setTimeout(() => {
+          crowd.play().catch(()=>{});
+          setTimeout(() => {
+            if (crowd){ crowd.pause(); crowd.currentTime = 0; }
+          }, 2300);
+        }, 180);
+
+        playedOnce = true;
+      }catch(e){
+        playedOnce = false;
+      }
+    }
+
+    // Arm first natural interaction (no click gate)
+    ["pointerdown","touchstart","wheel","keydown"].forEach(evt => {
+      window.addEventListener(evt, playVibe, { once:true, passive:true });
+    });
+
+    // Toggle button
+    if (soundToggle){
+      soundToggle.addEventListener("click", async () => {
+        soundEnabled = !soundEnabled;
+        setSoundUI();
+        if (!soundEnabled){
+          stopAudio();
+        } else {
+          await playVibe();
+        }
+      });
+    }
+
+    // Stop if tab is hidden (polite)
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopAudio();
+    });
   </script>
 </body>
 </html>
