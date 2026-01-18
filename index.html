@@ -23,21 +23,15 @@
     :root{
       --bg0:#07090b;
       --bg1:#0a0f12;
-      --card:#0e1417cc;
-      --card2:#0f171bcc;
       --stroke:#24303a;
-      --stroke2:#2f3a45;
       --text:#e9eef2;
       --muted:#aab6c3;
       --muted2:#7f8c99;
       --accent:#78ff6a;
       --accent2:#39d9ff;
       --warn:#ffd35a;
-      --bad:#ff6a6a;
       --shadow: 0 24px 80px rgba(0,0,0,.55);
       --shadow2: 0 10px 40px rgba(0,0,0,.45);
-      --r12: 12px;
-      --r16: 16px;
       --r20: 20px;
       --container: 1180px;
       --ease: cubic-bezier(.2,.9,.2,1);
@@ -48,10 +42,11 @@
     body{
       margin:0;
       color:var(--text);
-      background: radial-gradient(1200px 800px at 12% 18%, rgba(120,255,106,.12), transparent 55%),
-                  radial-gradient(900px 600px at 78% 22%, rgba(57,217,255,.10), transparent 52%),
-                  radial-gradient(1000px 700px at 60% 82%, rgba(120,255,106,.08), transparent 52%),
-                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      background:
+        radial-gradient(1200px 800px at 12% 18%, rgba(120,255,106,.12), transparent 55%),
+        radial-gradient(900px 600px at 78% 22%, rgba(57,217,255,.10), transparent 52%),
+        radial-gradient(1000px 700px at 60% 82%, rgba(120,255,106,.08), transparent 52%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       letter-spacing: -0.01em;
       overflow-x:hidden;
@@ -61,7 +56,6 @@
     a:hover{opacity:.95}
     .container{max-width:var(--container); margin:0 auto; padding:0 20px}
 
-    /* Top glow line */
     .topline{
       position:fixed; inset:0 0 auto 0; height:2px; z-index:80;
       background: linear-gradient(90deg, transparent, rgba(120,255,106,.75), rgba(57,217,255,.65), transparent);
@@ -70,7 +64,6 @@
       filter: blur(.2px);
     }
 
-    /* Header */
     header{
       position:sticky; top:0; z-index:70;
       backdrop-filter: blur(14px);
@@ -79,8 +72,7 @@
     }
     .navwrap{
       display:flex; align-items:center; justify-content:space-between;
-      height:76px;
-      gap:10px;
+      height:76px; gap:10px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
@@ -106,9 +98,7 @@
       text-transform:none;
     }
 
-    nav{
-      display:flex; align-items:center; gap:10px;
-    }
+    nav{display:flex; align-items:center; gap:10px;}
     .navlink{
       padding:10px 12px;
       border-radius:12px;
@@ -145,6 +135,7 @@
       font-size:12px;
       transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
       user-select:none;
+      white-space:nowrap;
     }
     .pill:hover{
       transform: translateY(-1px);
@@ -158,11 +149,8 @@
       box-shadow: 0 0 16px rgba(120,255,106,.65);
     }
 
-    /* ✅ ADDED: Sound toggle */
     .soundToggle{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+      display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.08);
@@ -189,11 +177,7 @@
     .soundToggle.off{opacity:.75}
     .soundToggle.off .sDot{background: rgba(255,255,255,.28); box-shadow:none}
 
-    /* Hero */
-    .hero{
-      padding:40px 0 18px;
-      position:relative;
-    }
+    .hero{ padding:40px 0 18px; position:relative; }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.3fr .9fr;
@@ -216,26 +200,15 @@
         radial-gradient(560px 260px at 88% 18%, rgba(57,217,255,.16), transparent 62%);
       pointer-events:none;
     }
-    .heroInner{
-      position:relative;
-      padding:28px 28px 26px;
-    }
+    .heroInner{ position:relative; padding:28px 28px 26px; }
     .kicker{
       display:inline-flex; align-items:center; gap:10px;
       font-size:12px; font-weight:900; letter-spacing:.16em;
       text-transform:uppercase;
       color: rgba(120,255,106,.85);
     }
-    .kicker .line{
-      width:30px; height:1px; background: rgba(120,255,106,.55);
-      box-shadow:0 0 14px rgba(120,255,106,.35);
-    }
-    .headline{
-      margin:14px 0 10px;
-      font-size:44px;
-      line-height:1.06;
-      letter-spacing:-0.03em;
-    }
+    .kicker .line{ width:30px; height:1px; background: rgba(120,255,106,.55); box-shadow:0 0 14px rgba(120,255,106,.35); }
+    .headline{ margin:14px 0 10px; font-size:44px; line-height:1.06; letter-spacing:-0.03em; }
     .subhead{
       margin:0;
       color: var(--muted);
@@ -244,10 +217,7 @@
       font-size:15px;
       line-height:1.6;
     }
-    .ctaRow{
-      display:flex; flex-wrap:wrap; gap:12px;
-      margin-top:18px;
-    }
+    .ctaRow{ display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
     .btn{
       display:inline-flex; align-items:center; gap:10px;
       padding:12px 14px;
@@ -258,37 +228,46 @@
       font-size:13px;
       transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.16);
-      background: rgba(255,255,255,.055);
-    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.055); }
     .btnPrimary{
       border-color: rgba(120,255,106,.30);
       background: rgba(120,255,106,.14);
       box-shadow: 0 0 0 6px rgba(120,255,106,.06);
     }
-    .btnPrimary:hover{
-      border-color: rgba(120,255,106,.45);
-      background: rgba(120,255,106,.18);
-    }
+    .btnPrimary:hover{ border-color: rgba(120,255,106,.45); background: rgba(120,255,106,.18); }
     .btn svg{opacity:.95}
 
-    /* Right panel (signals summary) */
-    .sideCard{
+    main{ padding: 0 0 60px; }
+    section{ padding: 22px 0 0; scroll-margin-top: 96px; }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:start;
+      margin-top: 16px;
+    }
+    .panel{
       border-radius: var(--r20);
       border:1px solid rgba(255,255,255,.08);
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      background: rgba(10,15,18,.55);
       box-shadow: var(--shadow2);
       overflow:hidden;
     }
-    .sideInner{ padding:18px 18px 16px; }
-    .sideTitle{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      margin-bottom:12px;
+    .panelHeader{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
     }
-    .sideTitle h3{ margin:0; font-size:14px; letter-spacing:.06em; text-transform:uppercase; color: var(--muted); }
+    .panelHeader h2{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: var(--muted);
+    }
+    .panelBody{ padding: 16px 18px 18px; }
+
     .badge{
       display:inline-flex; align-items:center; gap:8px;
       padding:6px 10px;
@@ -302,19 +281,41 @@
       text-transform:uppercase;
       white-space:nowrap;
     }
-    .mini{
+
+    .statGrid{
       display:grid;
-      gap:10px;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:12px;
     }
-    .miniItem{
-      border-radius:14px;
+    .stat{
+      border-radius:16px;
       border:1px solid rgba(255,255,255,.08);
-      background: rgba(10,15,18,.55);
-      padding:12px 12px;
-      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+      background: rgba(255,255,255,.02);
+      padding:14px 14px;
+      min-height:92px;
     }
-    .miniItem strong{display:block; font-size:13px;}
-    .miniItem span{display:block; margin-top:3px; color:var(--muted2); font-weight:650; font-size:12px; line-height:1.35;}
+    .stat .num{ font-size:24px; font-weight:1000; letter-spacing:-0.02em; }
+    .stat .lbl{ margin-top:6px; color: var(--muted); font-weight:750; font-size:12px; line-height:1.35; }
+    .stat .hint{ margin-top:6px; color: rgba(57,217,255,.85); font-weight:800; font-size:12px; }
+
+    .signals{ display:grid; gap:10px; }
+    .signal{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      padding:14px 14px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .signal strong{display:block; font-size:14px;}
+    .signal p{
+      margin:4px 0 0;
+      color: var(--muted2);
+      font-weight:650;
+      font-size:12.5px;
+      line-height:1.45;
+      max-width: 70ch;
+    }
+
     .tag{
       display:inline-flex; align-items:center; justify-content:center;
       min-width:58px;
@@ -345,100 +346,7 @@
       background: rgba(255,211,90,.06);
     }
 
-    /* Section layout */
-    main{ padding: 0 0 60px; }
-    section{
-      padding: 22px 0 0;
-      scroll-margin-top: 96px;
-    }
-
-    .grid2{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:start;
-      margin-top: 16px;
-    }
-
-    .panel{
-      border-radius: var(--r20);
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(10,15,18,.55);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-    .panelHeader{
-      padding:16px 18px;
-      border-bottom:1px solid rgba(255,255,255,.06);
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-    }
-    .panelHeader h2{
-      margin:0;
-      font-size:13px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--muted);
-    }
-    .panelBody{ padding: 16px 18px 18px; }
-
-    .statGrid{
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap:12px;
-    }
-    .stat{
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02);
-      padding:14px 14px;
-      min-height:92px;
-    }
-    .stat .num{
-      font-size:24px;
-      font-weight:1000;
-      letter-spacing:-0.02em;
-    }
-    .stat .lbl{
-      margin-top:6px;
-      color: var(--muted);
-      font-weight:750;
-      font-size:12px;
-      line-height:1.35;
-    }
-    .stat .hint{
-      margin-top:6px;
-      color: rgba(57,217,255,.85);
-      font-weight:800;
-      font-size:12px;
-    }
-
-    .signals{
-      display:grid;
-      gap:10px;
-    }
-    .signal{
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02);
-      padding:14px 14px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .signal strong{display:block; font-size:14px;}
-    .signal p{
-      margin:4px 0 0;
-      color: var(--muted2);
-      font-weight:650;
-      font-size:12.5px;
-      line-height:1.45;
-      max-width: 70ch;
-    }
-
-    .chips{
-      display:flex; flex-wrap:wrap; gap:10px;
-    }
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; }
     .chip{
       display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px;
@@ -462,11 +370,7 @@
       box-shadow: 0 0 12px rgba(120,255,106,.45);
     }
 
-    .twoCols{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
+    .twoCols{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
     .card{
       border-radius:16px;
       border:1px solid rgba(255,255,255,.08);
@@ -488,10 +392,32 @@
       text-transform:uppercase;
     }
 
-    footer{
-      padding:28px 0 34px;
-      color: var(--muted2);
+    .sideCard{
+      border-radius: var(--r20);
+      border:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      box-shadow: var(--shadow2);
+      overflow:hidden;
     }
+    .sideInner{ padding:18px 18px 16px; }
+    .sideTitle{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; margin-bottom:12px;
+    }
+    .sideTitle h3{ margin:0; font-size:14px; letter-spacing:.06em; text-transform:uppercase; color: var(--muted); }
+
+    .mini{ display:grid; gap:10px; }
+    .miniItem{
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(10,15,18,.55);
+      padding:12px 12px;
+      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+    }
+    .miniItem strong{display:block; font-size:13px;}
+    .miniItem span{display:block; margin-top:3px; color:var(--muted2); font-weight:650; font-size:12px; line-height:1.35;}
+
+    footer{ padding:28px 0 34px; color: var(--muted2); }
     .foot{
       border-top:1px solid rgba(255,255,255,.06);
       padding-top:18px;
@@ -503,7 +429,6 @@
     .sep{opacity:.45; padding:0 8px}
     .rightNote{font-weight:800; font-size:12px; letter-spacing:.04em}
 
-    /* Mobile */
     .burger{display:none}
     @media (max-width: 980px){
       .heroGrid{grid-template-columns: 1fr}
@@ -527,9 +452,7 @@
         padding:10px 0 14px;
       }
       .mobileNav.show{display:block}
-      .mobileNav .row{
-        display:flex; flex-wrap:wrap; gap:10px;
-      }
+      .mobileNav .row{display:flex; flex-wrap:wrap; gap:10px;}
       .mobileNav .navlink{background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.07)}
     }
   </style>
@@ -557,7 +480,6 @@
         </nav>
 
         <div class="actions">
-          <!-- ✅ ADDED: sound toggle (stays premium, small, consistent) -->
           <button id="soundToggle" class="soundToggle" type="button" aria-pressed="true" title="Toggle sound">
             <span class="sDot" aria-hidden="true"></span>
             <span id="soundLabel">Sound: ON</span>
@@ -591,7 +513,6 @@
   </header>
 
   <main class="container" id="home">
-    <!-- HERO -->
     <div class="hero">
       <div class="heroGrid">
         <div class="heroCard">
@@ -720,7 +641,6 @@
       </div>
     </div>
 
-    <!-- LEAGUES -->
     <section id="leagues" aria-label="Top leagues">
       <div class="panel">
         <div class="panelHeader">
@@ -736,7 +656,6 @@
       </div>
     </section>
 
-    <!-- SIGNALS -->
     <section id="signals" aria-label="Goal Intelligence">
       <div class="grid2">
         <div class="panel">
@@ -790,7 +709,6 @@
       </div>
     </section>
 
-    <!-- INDEXES -->
     <section id="indexes" aria-label="Indexes">
       <div class="panel">
         <div class="panelHeader">
@@ -822,7 +740,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" aria-label="About Net Thud">
       <div class="panel">
         <div class="panelHeader">
@@ -870,12 +787,11 @@
     </footer>
   </main>
 
-  <!-- ✅ ADDED: audio elements -->
+  <!-- Audio (must exist as real mp3 files) -->
   <audio id="sfxThud" preload="auto" src="assets/audio/netthud.mp3"></audio>
   <audio id="sfxCrowd" preload="auto" src="assets/audio/crowd.mp3"></audio>
 
   <script>
-    // ====== Minimal JS for a premium feel: nav state, smooth scrolling, placeholder feed ======
     const $ = (s, el=document) => el.querySelector(s);
     const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
 
@@ -933,7 +849,7 @@
 
     sections.forEach(s => io.observe(s));
 
-    // Data (placeholders you can replace later with real feeds)
+    // Placeholder data
     const leagues = [
       "Premier League","La Liga","Serie A","Bundesliga","Ligue 1",
       "Eredivisie","Primeira Liga","Süper Lig","MLS","Brasileirão",
@@ -1010,7 +926,7 @@
     setActive(location.hash && document.querySelector(location.hash) ? location.hash : "#home");
 
     // ============================================================
-    // ✅ SOUND: play thud + short crowd cheer on FIRST interaction
+    // SOUND: will play on FIRST interaction (no click required)
     // ============================================================
     const thud = document.getElementById("sfxThud");
     const crowd = document.getElementById("sfxCrowd");
@@ -1059,12 +975,10 @@
       }
     }
 
-    // Arm first natural interaction (no click gate)
     ["pointerdown","touchstart","wheel","keydown"].forEach(evt => {
       window.addEventListener(evt, playVibe, { once:true, passive:true });
     });
 
-    // Toggle button
     if (soundToggle){
       soundToggle.addEventListener("click", async () => {
         soundEnabled = !soundEnabled;
@@ -1077,7 +991,6 @@
       });
     }
 
-    // Stop if tab is hidden (polite)
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) stopAudio();
     });
