@@ -1,189 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <title>Net Thud — Football Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Net Thud — Football intelligence at the moment it matters</title>
-  <meta name="description" content="Net Thud highlights the decisive seconds — when goals flip matches, tables, and seasons. League-first. Signal-driven. No noise." />
+  <style>
+    :root {
+      --bg: #0e1111;
+      --panel: #161a1b;
+      --panel-soft: #1b2021;
+      --text: #e6e8e8;
+      --muted: #a1a7a8;
+      --accent: #9be15d;
+      --accent-soft: rgba(155,225,93,0.15);
+      --border: rgba(255,255,255,0.08);
+    }
 
-  <link rel="stylesheet" href="assets/styles.css" />
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Inter, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, #1b2a1f 0%, var(--bg) 50%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---------- NAV ---------- */
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .brand-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #7fdc6f, #3fa34d);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      max-width: 1200px;
+      margin: 72px auto 0;
+      padding: 0 48px;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 1.6px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      line-height: 1.1;
+      max-width: 720px;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #0c120d;
+      border: none;
+    }
+
+    /* ---------- SECTIONS ---------- */
+
+    section {
+      max-width: 1200px;
+      margin: 72px auto 0;
+      padding: 0 48px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+
+    /* ---------- GRID ---------- */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel), var(--panel-soft));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .tag {
+      float: right;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ---------- STATS ---------- */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .stat strong {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      margin-top: 96px;
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 700px) {
+      header, .hero, section, footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- ================= HEADER ================= -->
-  <header class="topbar">
-    <div class="inner">
-      <div class="brand">
-        <div class="logo"></div>
-        <div>
-          <h1>Net Thud</h1>
-          <div class="tag">Goal Intelligence</div>
-        </div>
-      </div>
+<header>
+  <div class="brand">
+    <div class="brand-badge"></div>
+    NET THUD
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Leagues</a>
+    <a href="#">Goal Intelligence</a>
+    <a href="#">Indexes</a>
+    <a href="#">About</a>
+  </nav>
+</header>
 
-      <nav class="nav">
-        <a class="active" href="#">Home</a>
-        <a href="#leagues">Leagues</a>
-        <a href="#intelligence">Goal Intelligence</a>
-        <a href="#indexes">Indexes</a>
-        <a href="#about">About</a>
-      </nav>
+<div class="hero">
+  <div class="kicker">FOOTBALL INTELLIGENCE</div>
+  <h1>At the moment it matters.</h1>
+  <p>
+    Net Thud highlights decisive seconds — when goals flip matches, tables,
+    and seasons. League-first. Signal-driven. No noise.
+  </p>
+
+  <div class="cta-row">
+    <button class="btn primary">Explore Top Leagues</button>
+    <button class="btn">See Goal Signals</button>
+  </div>
+</div>
+
+<section>
+  <div class="section-title">Today’s Net Thud Signals</div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">LIVE</span>
+      <h3>Late Goal Heat</h3>
+      <p>Leagues with the highest 75+ minute volatility today.</p>
     </div>
-  </header>
 
-  <!-- ================= MAIN ================= -->
-  <main class="wrap">
+    <div class="card">
+      <span class="tag">MODEL</span>
+      <h3>First Goal Impact</h3>
+      <p>Where the opening goal most often decides the match.</p>
+    </div>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="kicker">Football intelligence</div>
+    <div class="card">
+      <span class="tag">TRACK</span>
+      <h3>Momentum Swings</h3>
+      <p>Teams that respond fastest after conceding.</p>
+    </div>
+  </div>
+</section>
 
-      <h2>Football intelligence at the moment it matters.</h2>
+<section>
+  <div class="section-title">Launch Scope</div>
+  <div class="stats">
+    <div class="stat">
+      <strong>20</strong>
+      <span>Top leagues tracked</span>
+    </div>
+    <div class="stat">
+      <strong>3</strong>
+      <span>Indexes (launch set)</span>
+    </div>
+    <div class="stat">
+      <strong>AI</strong>
+      <span>Daily signal updates</span>
+    </div>
+    <div class="stat">
+      <strong>Live</strong>
+      <span>Goal moments & match impact</span>
+    </div>
+  </div>
+</section>
 
-      <p>
-        Net Thud highlights the decisive seconds — when goals flip matches,
-        tables, and seasons. League-first. Signal-driven. No noise.
-      </p>
-
-      <div class="ctaRow">
-        <a class="btn primary" href="#leagues">
-          Explore Top Leagues
-        </a>
-        <a class="btn" href="#signals">
-          See Goal Signals
-        </a>
-      </div>
-
-      <!-- KPI STRIP -->
-      <div class="kpis">
-        <div class="kpi">
-          <div class="n">20</div>
-          <div class="l">Top leagues tracked</div>
-          <div class="b">League-first coverage</div>
-        </div>
-
-        <div class="kpi">
-          <div class="n">3</div>
-          <div class="l">Indexes (launch set)</div>
-          <div class="b">Impact-driven</div>
-        </div>
-
-        <div class="kpi">
-          <div class="n">AI</div>
-          <div class="l">Daily signal updates</div>
-          <div class="b">Automated analysis</div>
-        </div>
-
-        <div class="kpi">
-          <div class="n">Live</div>
-          <div class="l">Match-aware signals</div>
-          <div class="b">Moment-sensitive</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= GRID ================= -->
-    <section class="grid">
-
-      <!-- LEFT COLUMN -->
-      <div>
-
-        <div class="sectionTitle" id="signals">
-          Today’s Net Thud Signals
-        </div>
-
-        <div class="list">
-
-          <div class="item">
-            <div class="left">
-              <div class="t">Late Goal Heat</div>
-              <div class="d">
-                Leagues with the highest 75+ minute volatility today.
-              </div>
-            </div>
-            <div class="badge">LIVE</div>
-          </div>
-
-          <div class="item">
-            <div class="left">
-              <div class="t">First Goal Impact</div>
-              <div class="d">
-                Where the opening goal most often decides the match.
-              </div>
-            </div>
-            <div class="badge">MODEL</div>
-          </div>
-
-          <div class="item">
-            <div class="left">
-              <div class="t">Momentum Shifts</div>
-              <div class="d">
-                Goal timing and response — who collapses, who resets,
-                who strikes again.
-              </div>
-            </div>
-            <div class="badge">TRACKING</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- RIGHT COLUMN -->
-      <aside>
-
-        <div class="card" id="leagues">
-          <h3>Top Leagues</h3>
-          <p>
-            League-first coverage. Clubs are interpreted through
-            form, pressure, and table context — not isolated stats.
-          </p>
-
-          <div class="pills">
-            <span class="pill"><strong>Premier League</strong></span>
-            <span class="pill">La Liga</span>
-            <span class="pill">Serie A</span>
-            <span class="pill">Bundesliga</span>
-            <span class="pill">Ligue 1</span>
-            <span class="pill">+15 more</span>
-          </div>
-        </div>
-
-        <div class="card" id="indexes">
-          <h3>Goal Intelligence Indexes</h3>
-          <p>
-            Composite signals designed to measure impact — not volume.
-            Built around decisive moments.
-          </p>
-
-          <div class="pills">
-            <span class="pill">First Goal Index</span>
-            <span class="pill">Late Goal Pressure</span>
-            <span class="pill">Momentum Recovery</span>
-          </div>
-        </div>
-
-      </aside>
-    </section>
-
-    <!-- ================= ABOUT ================= -->
-    <section class="card" id="about" style="margin-top:22px">
-      <h3>Why Net Thud</h3>
-      <p>
-        Football is decided in moments — not averages.
-        Net Thud exists to surface the signals that actually move outcomes,
-        using league-aware context and goal-centric intelligence.
-      </p>
-    </section>
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-      <div>© 2026 Net Thud</div>
-      <div class="mono">League-first · Signal-driven · No noise</div>
-    </footer>
-
-  </main>
+<footer>
+  <div>© Net Thud — football intelligence</div>
+  <div>Signal-driven · League-first · No noise</div>
+</footer>
 
 </body>
 </html>
