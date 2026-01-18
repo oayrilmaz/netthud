@@ -1,155 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Net Thud — Football intelligence at the moment it matters</title>
-  <meta name="description" content="Net Thud tracks the moments that decide matches—goal impact, momentum shifts, and league-level signals across the world’s top competitions." />
 
-  <!-- Social preview -->
-  <meta property="og:title" content="Net Thud" />
-  <meta property="og:description" content="Football intelligence at the moment it matters." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://netthud.com" />
+  <meta name="description" content="Net Thud tracks decisive goal moments across top football leagues. Signal-driven, league-first football intelligence." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Styles -->
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 
 <body>
+
+  <!-- Top Navigation -->
   <header class="topbar">
-    <div class="wrap topbar__inner">
-      <a class="brand" href="/">Net Thud</a>
-      <nav class="nav">
-        <a href="#leagues">Leagues</a>
-        <a href="#goalintel">Goal Intelligence</a>
-        <a href="#index">Index</a>
-        <a href="#about">About</a>
-      </nav>
+    <div class="wrap brand">
+      <div class="logo"></div>
+      <div>
+        <h1>Net Thud</h1>
+        <div class="tag">Goal Intelligence</div>
+      </div>
     </div>
+
+    <nav class="nav wrap">
+      <a class="active" href="#">Home</a>
+      <a href="#">Leagues</a>
+      <a href="#">Goal Intelligence</a>
+      <a href="#">Indexes</a>
+      <a href="#">About</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="wrap hero__inner">
-        <div class="hero__copy">
-          <h1>Football intelligence at the moment it matters.</h1>
-          <p class="sub">
-            Net Thud highlights the decisive seconds—when goals flip matches, tables, and seasons.
-            League-first. Signal-driven. No noise.
-          </p>
+  <!-- Hero -->
+  <section class="hero wrap">
+    <div class="kicker">Football intelligence</div>
+    <h2>At the moment it matters.</h2>
+    <p>
+      Net Thud highlights the decisive seconds — when goals flip matches,
+      tables, and seasons. League-first. Signal-driven. No noise.
+    </p>
 
-          <div class="cta">
-            <a class="btn" href="#leagues">Explore Top Leagues</a>
-            <a class="btn btn--ghost" href="#goalintel">See Goal Signals</a>
+    <div class="ctaRow">
+      <a class="btn primary" href="#">
+        Explore Top Leagues
+      </a>
+      <a class="btn" href="#">
+        See Goal Signals <small>live</small>
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Grid -->
+  <main class="wrap grid">
+
+    <!-- Left Column -->
+    <section class="card">
+      <h3>Today’s Net Thud Signals</h3>
+      <p>Auto-generated intelligence based on goal timing, pressure, and response.</p>
+
+      <div id="signals" class="list">
+        <!-- JS injects signal cards here -->
+      </div>
+
+      <div class="sectionTitle">Launch Scope</div>
+      <div class="kpis">
+        <div class="kpi">
+          <div class="n">20</div>
+          <div class="l">Top leagues tracked</div>
+          <div class="b">EU + Global</div>
+        </div>
+        <div class="kpi">
+          <div class="n">3</div>
+          <div class="l">Indexes</div>
+          <div class="b">Launch set</div>
+        </div>
+        <div class="kpi">
+          <div class="n">AI</div>
+          <div class="l">Signal updates</div>
+          <div class="b">Daily</div>
+        </div>
+        <div class="kpi">
+          <div class="n">Live</div>
+          <div class="l">Goal moments</div>
+          <div class="b">Match impact</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column -->
+    <aside class="card">
+      <h3>Top Leagues</h3>
+      <p>League-first coverage. Clubs emerge from the league context — form, pressure, and table impact.</p>
+
+      <div class="pills">
+        <div class="pill"><strong>Premier League</strong></div>
+        <div class="pill">La Liga</div>
+        <div class="pill">Bundesliga</div>
+        <div class="pill">Serie A</div>
+        <div class="pill">Ligue 1</div>
+        <div class="pill">Eredivisie</div>
+        <div class="pill">Primeira Liga</div>
+        <div class="pill">Süper Lig</div>
+        <div class="pill">MLS</div>
+        <div class="pill">Brasileirão</div>
+      </div>
+
+      <div class="sectionTitle">Goal Intelligence</div>
+
+      <div class="list">
+        <div class="item">
+          <div class="left">
+            <div class="t">First Goal Impact</div>
+            <div class="d">How often the opening goal decides the match.</div>
           </div>
+          <div class="badge">MODEL</div>
+        </div>
 
-          <div class="kpis">
-            <div class="kpi">
-              <div class="kpi__num">20</div>
-              <div class="kpi__label">Top leagues tracked</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi__num">3</div>
-              <div class="kpi__label">Indexes (launch set)</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi__num">AI</div>
-              <div class="kpi__label">Daily signal updates</div>
-            </div>
+        <div class="item">
+          <div class="left">
+            <div class="t">Late Goals (75+)</div>
+            <div class="d">Fitness, pressure, and game-state resilience.</div>
           </div>
+          <div class="badge">TRACK</div>
         </div>
 
-        <div class="hero__panel">
-          <div class="panel">
-            <div class="panel__title">Today’s Net Thud Signals</div>
-            <ul class="panel__list" id="signals">
-              <li>Loading signals…</li>
-            </ul>
-            <div class="panel__foot">Auto-generated placeholders for now.</div>
+        <div class="item">
+          <div class="left">
+            <div class="t">Momentum Shifts</div>
+            <div class="d">Who collapses, who resets, who strikes again.</div>
           </div>
+          <div class="badge">LIVE</div>
         </div>
       </div>
-    </section>
+    </aside>
 
-    <section class="section" id="leagues">
-      <div class="wrap">
-        <div class="section__head">
-          <h2>Top Leagues</h2>
-          <p>League-first coverage. Clubs emerge from the league context—form, pressure, and table impact.</p>
-        </div>
-
-        <div class="grid" id="leagueGrid">
-          <!-- Filled by JS -->
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="goalintel">
-      <div class="wrap">
-        <div class="section__head">
-          <h2>Goal Intelligence</h2>
-          <p>Because football is decided in one moment. We track what happens before and after the net thud.</p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <h3>First Goal Impact</h3>
-            <p>How often the opening goal decides the match, by league and team style.</p>
-          </article>
-          <article class="card">
-            <h3>Late Goals (75’+)</h3>
-            <p>Frequency of late winners and equalizers—pressure, fitness, and game state.</p>
-          </article>
-          <article class="card">
-            <h3>Momentum Shifts</h3>
-            <p>Goal timing and response—who collapses, who resets, who strikes again.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="index">
-      <div class="wrap">
-        <div class="section__head">
-          <h2>Indexes (Launch Set)</h2>
-          <p>Simple, explainable metrics designed for league-wide comparison—built for clarity, not hype.</p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <h3>Decisiveness Index</h3>
-            <p>Share of matches decided by one goal + timing sensitivity.</p>
-          </article>
-          <article class="card">
-            <h3>Clinical Finish Index</h3>
-            <p>Conversion efficiency—finishing quality vs volume.</p>
-          </article>
-          <article class="card">
-            <h3>Momentum Shift Index</h3>
-            <p>How often goals trigger rapid swings within the next 10 minutes.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="about">
-      <div class="wrap">
-        <div class="section__head">
-          <h2>About Net Thud</h2>
-          <p class="about">
-            Net Thud is a league-first football intelligence site focused on decisive moments.
-            We don’t chase noise. We track signals—goal impact, timing, pressure, and season-level consequences.
-          </p>
-        </div>
-
-        <div class="footerline">
-          <span>© <span id="year"></span> Net Thud</span>
-          <span class="muted">Built on GitHub Pages</span>
-        </div>
-      </div>
-    </section>
   </main>
 
+  <!-- Footer -->
+  <footer class="footer wrap">
+    <div>© <span class="mono">Net Thud</span> — football intelligence</div>
+    <div class="mono">Signal-driven • League-first • No noise</div>
+  </footer>
+
+  <!-- App -->
   <script src="assets/app.js"></script>
 </body>
 </html>
