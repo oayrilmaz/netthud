@@ -1,308 +1,979 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Net Thud — Football Intelligence</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Net Thud — Goal Intelligence</title>
+  <meta name="description" content="Football intelligence at the moment it matters. League-first. Signal-driven. No noise." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Net Thud — Goal Intelligence" />
+  <meta property="og:description" content="Football intelligence at the moment it matters. League-first. Signal-driven. No noise." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://netthud.com/" />
+  <meta property="og:image" content="https://netthud.com/og.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Net Thud — Goal Intelligence" />
+  <meta name="twitter:description" content="Football intelligence at the moment it matters." />
 
   <style>
-    :root {
-      --bg: #0e1111;
-      --panel: #161a1b;
-      --panel-soft: #1b2021;
-      --text: #e6e8e8;
-      --muted: #a1a7a8;
-      --accent: #9be15d;
-      --accent-soft: rgba(155,225,93,0.15);
-      --border: rgba(255,255,255,0.08);
+    :root{
+      --bg0:#07090b;
+      --bg1:#0a0f12;
+      --card:#0e1417cc;
+      --card2:#0f171bcc;
+      --stroke:#24303a;
+      --stroke2:#2f3a45;
+      --text:#e9eef2;
+      --muted:#aab6c3;
+      --muted2:#7f8c99;
+      --accent:#78ff6a;
+      --accent2:#39d9ff;
+      --warn:#ffd35a;
+      --bad:#ff6a6a;
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --shadow2: 0 10px 40px rgba(0,0,0,.45);
+      --r12: 12px;
+      --r16: 16px;
+      --r20: 20px;
+      --container: 1180px;
+      --ease: cubic-bezier(.2,.9,.2,1);
     }
 
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 12% 18%, rgba(120,255,106,.12), transparent 55%),
+                  radial-gradient(900px 600px at 78% 22%, rgba(57,217,255,.10), transparent 52%),
+                  radial-gradient(1000px 700px at 60% 82%, rgba(120,255,106,.08), transparent 52%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      letter-spacing: -0.01em;
+      overflow-x:hidden;
+    }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Inter, Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, #1b2a1f 0%, var(--bg) 50%);
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.95}
+    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+
+    /* Top glow line */
+    .topline{
+      position:fixed; inset:0 0 auto 0; height:2px; z-index:80;
+      background: linear-gradient(90deg, transparent, rgba(120,255,106,.75), rgba(57,217,255,.65), transparent);
+      opacity:.55;
+      pointer-events:none;
+      filter: blur(.2px);
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:70;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7,9,11,.72), rgba(7,9,11,.38));
+      border-bottom:1px solid rgba(36,48,58,.55);
+    }
+    .navwrap{
+      display:flex; align-items:center; justify-content:space-between;
+      height:76px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 220px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:
+        radial-gradient(12px 12px at 25% 25%, rgba(120,255,106,.95), transparent 60%),
+        radial-gradient(18px 18px at 70% 35%, rgba(57,217,255,.85), transparent 62%),
+        radial-gradient(22px 22px at 55% 75%, rgba(120,255,106,.55), transparent 65%),
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    .brand h1{
+      font-size:14px; margin:0; line-height:1.05; letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .brand small{
+      display:block; margin-top:4px;
+      color:var(--muted2); font-weight:600; letter-spacing:0;
+      text-transform:none;
+    }
+
+    nav{
+      display:flex; align-items:center; gap:10px;
+    }
+    .navlink{
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--muted);
+      border:1px solid transparent;
+      transition: transform .15s var(--ease), background .15s var(--ease), border-color .15s var(--ease), color .15s var(--ease);
+      font-weight:700;
+      font-size:13px;
+    }
+    .navlink:hover{
+      background: rgba(255,255,255,.04);
+      border-color: rgba(255,255,255,.06);
       color: var(--text);
+      transform: translateY(-1px);
+    }
+    .navlink.active{
+      color: var(--text);
+      background: rgba(120,255,106,.08);
+      border-color: rgba(120,255,106,.22);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .actions{
+      display:flex; align-items:center; gap:10px;
+      min-width: 220px; justify-content:flex-end;
     }
-
-    /* ---------- NAV ---------- */
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 48px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-    }
-
-    .brand-badge {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, #7fdc6f, #3fa34d);
-    }
-
-    nav {
-      display: flex;
-      gap: 28px;
-      font-size: 14px;
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
       color: var(--muted);
+      font-weight:700;
+      font-size:12px;
+      transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
     }
-
-    nav a:hover {
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.045);
       color: var(--text);
     }
-
-    /* ---------- HERO ---------- */
-
-    .hero {
-      max-width: 1200px;
-      margin: 72px auto 0;
-      padding: 0 48px;
-    }
-
-    .kicker {
-      color: var(--accent);
-      font-size: 12px;
-      letter-spacing: 1.6px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 44px;
-      line-height: 1.1;
-      max-width: 720px;
-      margin: 0 0 18px;
-    }
-
-    .hero p {
-      max-width: 640px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .btn {
-      padding: 14px 22px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 14px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--text);
-      cursor: pointer;
-    }
-
-    .btn.primary {
+    .dot{
+      width:8px; height:8px; border-radius:999px;
       background: var(--accent);
-      color: #0c120d;
-      border: none;
+      box-shadow: 0 0 16px rgba(120,255,106,.65);
     }
 
-    /* ---------- SECTIONS ---------- */
-
-    section {
-      max-width: 1200px;
-      margin: 72px auto 0;
-      padding: 0 48px;
+    /* Hero */
+    .hero{
+      padding:40px 0 18px;
+      position:relative;
     }
-
-    .section-title {
-      font-size: 20px;
-      margin-bottom: 24px;
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap:18px;
+      align-items:stretch;
     }
-
-    /* ---------- GRID ---------- */
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+    .heroCard{
+      border-radius: var(--r20);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
     }
-
-    .card {
-      background: linear-gradient(180deg, var(--panel), var(--panel-soft));
-      border: 1px solid var(--border);
+    .heroCard::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(800px 260px at 20% 0%, rgba(120,255,106,.18), transparent 60%),
+        radial-gradient(560px 260px at 88% 18%, rgba(57,217,255,.16), transparent 62%);
+      pointer-events:none;
+    }
+    .heroInner{
+      position:relative;
+      padding:28px 28px 26px;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px; font-weight:900; letter-spacing:.16em;
+      text-transform:uppercase;
+      color: rgba(120,255,106,.85);
+    }
+    .kicker .line{
+      width:30px; height:1px; background: rgba(120,255,106,.55);
+      box-shadow:0 0 14px rgba(120,255,106,.35);
+    }
+    .headline{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.06;
+      letter-spacing:-0.03em;
+    }
+    .subhead{
+      margin:0;
+      color: var(--muted);
+      font-weight:600;
+      max-width: 60ch;
+      font-size:15px;
+      line-height:1.6;
+    }
+    .ctaRow{
+      display:flex; flex-wrap:wrap; gap:12px;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 14px;
       border-radius: 14px;
-      padding: 22px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      font-weight:900;
+      font-size:13px;
+      transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
     }
-
-    .card h3 {
-      margin: 0 0 6px;
-      font-size: 16px;
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.055);
     }
+    .btnPrimary{
+      border-color: rgba(120,255,106,.30);
+      background: rgba(120,255,106,.14);
+      box-shadow: 0 0 0 6px rgba(120,255,106,.06);
+    }
+    .btnPrimary:hover{
+      border-color: rgba(120,255,106,.45);
+      background: rgba(120,255,106,.18);
+    }
+    .btn svg{opacity:.95}
 
-    .card p {
-      margin: 0;
-      font-size: 13px;
+    /* Right panel (signals summary) */
+    .sideCard{
+      border-radius: var(--r20);
+      border:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .sideInner{ padding:18px 18px 16px; }
+    .sideTitle{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      margin-bottom:12px;
+    }
+    .sideTitle h3{ margin:0; font-size:14px; letter-spacing:.06em; text-transform:uppercase; color: var(--muted); }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(120,255,106,.24);
+      color: rgba(120,255,106,.95);
+      background: rgba(120,255,106,.08);
+      font-weight:900;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .mini{
+      display:grid;
+      gap:10px;
+    }
+    .miniItem{
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(10,15,18,.55);
+      padding:12px 12px;
+      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+    }
+    .miniItem strong{display:block; font-size:13px;}
+    .miniItem span{display:block; margin-top:3px; color:var(--muted2); font-weight:650; font-size:12px; line-height:1.35;}
+    .tag{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:58px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
       color: var(--muted);
-      line-height: 1.5;
+      font-weight:900;
+      font-size:11px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .tag.live{
+      border-color: rgba(120,255,106,.30);
+      color: rgba(120,255,106,.95);
+      background: rgba(120,255,106,.08);
+      box-shadow: 0 0 0 6px rgba(120,255,106,.05);
+    }
+    .tag.model{
+      border-color: rgba(57,217,255,.25);
+      color: rgba(57,217,255,.92);
+      background: rgba(57,217,255,.07);
+    }
+    .tag.track{
+      border-color: rgba(255,211,90,.20);
+      color: rgba(255,211,90,.92);
+      background: rgba(255,211,90,.06);
     }
 
-    .tag {
-      float: right;
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-weight: 600;
+    /* Section layout */
+    main{ padding: 0 0 60px; }
+    section{
+      padding: 22px 0 0;
+      scroll-margin-top: 96px;
     }
 
-    /* ---------- STATS ---------- */
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
+    .grid2{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:start;
+      margin-top: 16px;
     }
 
-    .stat {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
+    .panel{
+      border-radius: var(--r20);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(10,15,18,.55);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
     }
-
-    .stat strong {
-      font-size: 28px;
-      display: block;
-      margin-bottom: 6px;
+    .panelHeader{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
     }
-
-    .stat span {
+    .panelHeader h2{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
       color: var(--muted);
-      font-size: 13px;
     }
+    .panelBody{ padding: 16px 18px 18px; }
 
-    /* ---------- FOOTER ---------- */
-
-    footer {
-      margin-top: 96px;
-      padding: 32px 48px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
+    .statGrid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:12px;
+    }
+    .stat{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      padding:14px 14px;
+      min-height:92px;
+    }
+    .stat .num{
+      font-size:24px;
+      font-weight:1000;
+      letter-spacing:-0.02em;
+    }
+    .stat .lbl{
+      margin-top:6px;
       color: var(--muted);
+      font-weight:750;
+      font-size:12px;
+      line-height:1.35;
+    }
+    .stat .hint{
+      margin-top:6px;
+      color: rgba(57,217,255,.85);
+      font-weight:800;
+      font-size:12px;
     }
 
-    /* ---------- RESPONSIVE ---------- */
+    .signals{
+      display:grid;
+      gap:10px;
+    }
+    .signal{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      padding:14px 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .signal strong{display:block; font-size:14px;}
+    .signal p{
+      margin:4px 0 0;
+      color: var(--muted2);
+      font-weight:650;
+      font-size:12.5px;
+      line-height:1.45;
+      max-width: 70ch;
+    }
 
-    @media (max-width: 700px) {
-      header, .hero, section, footer {
-        padding-left: 20px;
-        padding-right: 20px;
+    .chips{
+      display:flex; flex-wrap:wrap; gap:10px;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-weight:900;
+      font-size:12px;
+      transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
+      user-select:none;
+    }
+    .chip:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.045);
+    }
+    .chip .miniDot{
+      width:8px; height:8px; border-radius:999px;
+      background: rgba(120,255,106,.9);
+      box-shadow: 0 0 12px rgba(120,255,106,.45);
+    }
+
+    .twoCols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .card{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      padding:14px;
+    }
+    .card h3{margin:0; font-size:14px;}
+    .card p{margin:6px 0 0; color:var(--muted2); font-weight:650; font-size:12.5px; line-height:1.45;}
+    .card .meta{margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;}
+    .pill2{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    footer{
+      padding:28px 0 34px;
+      color: var(--muted2);
+    }
+    .foot{
+      border-top:1px solid rgba(255,255,255,.06);
+      padding-top:18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
+    }
+    .fine{font-weight:650; font-size:12px;}
+    .fine strong{color:var(--text)}
+    .sep{opacity:.45; padding:0 8px}
+    .rightNote{font-weight:800; font-size:12px; letter-spacing:.04em}
+
+    /* Mobile */
+    .burger{display:none}
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr}
+      .actions{display:none}
+      .statGrid{grid-template-columns: repeat(2, minmax(0,1fr))}
+      .grid2{grid-template-columns:1fr}
+      .twoCols{grid-template-columns:1fr}
+      .headline{font-size:38px}
+      nav{display:none}
+      .burger{
+        display:inline-flex;
+        align-items:center; justify-content:center;
+        width:44px; height:44px;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.03);
       }
-
-      h1 {
-        font-size: 34px;
+      .mobileNav{
+        display:none;
+        border-top:1px solid rgba(255,255,255,.06);
+        padding:10px 0 14px;
       }
+      .mobileNav.show{display:block}
+      .mobileNav .row{
+        display:flex; flex-wrap:wrap; gap:10px;
+      }
+      .mobileNav .navlink{background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.07)}
     }
   </style>
 </head>
 
 <body>
+  <div class="topline"></div>
 
-<header>
-  <div class="brand">
-    <div class="brand-badge"></div>
-    NET THUD
-  </div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Leagues</a>
-    <a href="#">Goal Intelligence</a>
-    <a href="#">Indexes</a>
-    <a href="#">About</a>
-  </nav>
-</header>
+  <header>
+    <div class="container">
+      <div class="navwrap">
+        <a class="brand" href="#home" aria-label="Net Thud Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>NET THUD <small>Goal Intelligence</small></h1>
+          </div>
+        </a>
 
-<div class="hero">
-  <div class="kicker">FOOTBALL INTELLIGENCE</div>
-  <h1>At the moment it matters.</h1>
-  <p>
-    Net Thud highlights decisive seconds — when goals flip matches, tables,
-    and seasons. League-first. Signal-driven. No noise.
-  </p>
+        <nav aria-label="Primary navigation">
+          <a class="navlink active" href="#home">Home</a>
+          <a class="navlink" href="#leagues">Leagues</a>
+          <a class="navlink" href="#signals">Goal Intelligence</a>
+          <a class="navlink" href="#indexes">Indexes</a>
+          <a class="navlink" href="#about">About</a>
+        </nav>
 
-  <div class="cta-row">
-    <button class="btn primary">Explore Top Leagues</button>
-    <button class="btn">See Goal Signals</button>
-  </div>
-</div>
+        <div class="actions">
+          <a class="pill" href="#signals" title="Live signals (placeholder)">
+            <span class="dot"></span> Live signals
+          </a>
+          <a class="pill" href="#leagues" title="Top leagues">
+            Explore leagues →
+          </a>
+        </div>
 
-<section>
-  <div class="section-title">Today’s Net Thud Signals</div>
-  <div class="grid">
-    <div class="card">
-      <span class="tag">LIVE</span>
-      <h3>Late Goal Heat</h3>
-      <p>Leagues with the highest 75+ minute volatility today.</p>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="mobileNav" id="mobileNav">
+        <div class="row" aria-label="Mobile navigation">
+          <a class="navlink active" href="#home">Home</a>
+          <a class="navlink" href="#leagues">Leagues</a>
+          <a class="navlink" href="#signals">Goal Intelligence</a>
+          <a class="navlink" href="#indexes">Indexes</a>
+          <a class="navlink" href="#about">About</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="heroInner">
+            <div class="kicker"><span class="line"></span> FOOTBALL INTELLIGENCE</div>
+            <h2 class="headline">At the moment it matters.</h2>
+            <p class="subhead">
+              Net Thud highlights the decisive seconds — when goals flip matches, tables, and seasons.
+              <strong>League-first.</strong> <strong>Signal-driven.</strong> No noise.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn btnPrimary" href="#leagues">
+                Explore Top Leagues
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a class="btn" href="#signals">
+                See Goal Signals
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a class="btn" href="#indexes">
+                View Indexes
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M8 19v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 19V9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M16 19v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M20 19V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <section aria-label="Launch scope">
+              <div class="grid2">
+                <div class="panel">
+                  <div class="panelHeader">
+                    <h2>Today’s Net Thud Signals</h2>
+                    <span class="badge">LIVE (placeholder)</span>
+                  </div>
+                  <div class="panelBody">
+                    <div class="signals" id="signalsList">
+                      <!-- JS fills this with curated placeholders -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <div class="panelHeader">
+                    <h2>Launch Scope</h2>
+                    <span class="badge" style="border-color: rgba(57,217,255,.24); color: rgba(57,217,255,.92); background: rgba(57,217,255,.08);">v0.1</span>
+                  </div>
+                  <div class="panelBody">
+                    <div class="statGrid">
+                      <div class="stat">
+                        <div class="num">20</div>
+                        <div class="lbl">Top leagues tracked</div>
+                        <div class="hint">EU + Global</div>
+                      </div>
+                      <div class="stat">
+                        <div class="num">3</div>
+                        <div class="lbl">Indexes (launch set)</div>
+                        <div class="hint">Impact-driven</div>
+                      </div>
+                      <div class="stat">
+                        <div class="num">AI</div>
+                        <div class="lbl">Daily signal updates</div>
+                        <div class="hint">Automated analysis</div>
+                      </div>
+                      <div class="stat">
+                        <div class="num">Live</div>
+                        <div class="lbl">Goal moments</div>
+                        <div class="hint">Match impact</div>
+                      </div>
+                    </div>
+
+                    <div style="height:14px"></div>
+
+                    <div class="twoCols">
+                      <div class="card">
+                        <h3>Why league-first?</h3>
+                        <p>Clubs emerge from context — tempo, refereeing, travel load, and table pressure. Signals mean more inside their league environment.</p>
+                        <div class="meta">
+                          <span class="pill2">context</span>
+                          <span class="pill2">pressure</span>
+                          <span class="pill2">tempo</span>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <h3>What “goal intelligence” means</h3>
+                        <p>We track what happens before and after the net thud — timing, response, and match-state shifts — not generic highlight spam.</p>
+                        <div class="meta">
+                          <span class="pill2">timing</span>
+                          <span class="pill2">response</span>
+                          <span class="pill2">impact</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <aside class="sideCard" aria-label="Fast signals">
+          <div class="sideInner">
+            <div class="sideTitle">
+              <h3>Signal Board</h3>
+              <span class="badge">NOW</span>
+            </div>
+
+            <div class="mini" id="miniBoard">
+              <!-- JS fills this -->
+            </div>
+
+            <div style="height:12px"></div>
+
+            <a class="pill" href="#signals" style="width:100%; justify-content:center;">
+              Open full signals →
+            </a>
+          </div>
+        </aside>
+      </div>
     </div>
 
-    <div class="card">
-      <span class="tag">MODEL</span>
-      <h3>First Goal Impact</h3>
-      <p>Where the opening goal most often decides the match.</p>
-    </div>
+    <!-- LEAGUES -->
+    <section id="leagues" aria-label="Top leagues">
+      <div class="panel">
+        <div class="panelHeader">
+          <h2>Top Leagues</h2>
+          <span class="badge">20 tracked</span>
+        </div>
+        <div class="panelBody">
+          <p style="margin:0 0 14px; color:var(--muted); font-weight:650; line-height:1.6;">
+            League-first coverage. Clubs are interpreted through form, pressure, and table context — not isolated stats.
+          </p>
 
-    <div class="card">
-      <span class="tag">TRACK</span>
-      <h3>Momentum Swings</h3>
-      <p>Teams that respond fastest after conceding.</p>
-    </div>
-  </div>
-</section>
+          <div class="chips" id="leagueChips">
+            <!-- JS fills these -->
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section>
-  <div class="section-title">Launch Scope</div>
-  <div class="stats">
-    <div class="stat">
-      <strong>20</strong>
-      <span>Top leagues tracked</span>
-    </div>
-    <div class="stat">
-      <strong>3</strong>
-      <span>Indexes (launch set)</span>
-    </div>
-    <div class="stat">
-      <strong>AI</strong>
-      <span>Daily signal updates</span>
-    </div>
-    <div class="stat">
-      <strong>Live</strong>
-      <span>Goal moments & match impact</span>
-    </div>
-  </div>
-</section>
+    <!-- SIGNALS -->
+    <section id="signals" aria-label="Goal Intelligence">
+      <div class="grid2">
+        <div class="panel">
+          <div class="panelHeader">
+            <h2>Goal Intelligence</h2>
+            <span class="badge" style="border-color: rgba(255,211,90,.22); color: rgba(255,211,90,.92); background: rgba(255,211,90,.07);">tracking</span>
+          </div>
+          <div class="panelBody">
+            <div class="twoCols">
+              <div class="card">
+                <h3>First Goal Impact</h3>
+                <p>Where the opening goal most often decides the match — and which leagues punish early mistakes.</p>
+                <div class="meta">
+                  <span class="pill2">model</span>
+                  <span class="pill2">match state</span>
+                </div>
+              </div>
+              <div class="card">
+                <h3>Late Goals (75+)</h3>
+                <p>Fitness, pressure, and game-state resilience. Who collapses, who resets, who strikes again.</p>
+                <div class="meta">
+                  <span class="pill2">tracking</span>
+                  <span class="pill2">pressure</span>
+                </div>
+              </div>
+            </div>
 
-<footer>
-  <div>© Net Thud — football intelligence</div>
-  <div>Signal-driven · League-first · No noise</div>
-</footer>
+            <div style="height:12px"></div>
 
+            <div class="card">
+              <h3>Momentum Shifts</h3>
+              <p>Goal timing and response — the most valuable signal in football. We score how teams react immediately after scoring or conceding.</p>
+              <div class="meta">
+                <span class="pill2">response</span>
+                <span class="pill2">tempo</span>
+                <span class="pill2">impact</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panelHeader">
+            <h2>Today’s Signals</h2>
+            <span class="badge">live feed soon</span>
+          </div>
+          <div class="panelBody">
+            <div class="signals" id="signalsList2">
+              <!-- JS fills this -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDEXES -->
+    <section id="indexes" aria-label="Indexes">
+      <div class="panel">
+        <div class="panelHeader">
+          <h2>Goal Intelligence Indexes</h2>
+          <span class="badge" style="border-color: rgba(57,217,255,.25); color: rgba(57,217,255,.92); background: rgba(57,217,255,.08);">launch set</span>
+        </div>
+        <div class="panelBody">
+          <div class="twoCols">
+            <div class="card">
+              <h3>First Goal Index</h3>
+              <p>How strongly the first goal predicts the final result, by league. Built to explain “why the match flipped.”</p>
+              <div class="meta"><span class="pill2">impact</span><span class="pill2">league-aware</span></div>
+            </div>
+            <div class="card">
+              <h3>Late Goal Pressure</h3>
+              <p>Measures volatility after 75' — late winners, equalizers, and collapses. Where pressure actually converts.</p>
+              <div class="meta"><span class="pill2">pressure</span><span class="pill2">volatility</span></div>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="card">
+            <h3>Momentum Recovery</h3>
+            <p>Who responds fastest after conceding (and who spirals). This index captures resilience under match-state stress.</p>
+            <div class="meta"><span class="pill2">response</span><span class="pill2">resilience</span><span class="pill2">tracking</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-label="About Net Thud">
+      <div class="panel">
+        <div class="panelHeader">
+          <h2>About</h2>
+          <span class="badge">signal-driven</span>
+        </div>
+        <div class="panelBody">
+          <div class="twoCols">
+            <div class="card">
+              <h3>What Net Thud is</h3>
+              <p>
+                A football intelligence layer focused on decisive moments — not endless noise. We aim to publish league-aware
+                signals that help explain match outcomes, not just recap them.
+              </p>
+              <div class="meta"><span class="pill2">moments</span><span class="pill2">context</span><span class="pill2">clarity</span></div>
+            </div>
+            <div class="card">
+              <h3>What’s next</h3>
+              <p>
+                Daily signal generation, league dashboards, and match-moment feeds. This homepage is intentionally minimal:
+                fast, clean, and built for scale.
+              </p>
+              <div class="meta"><span class="pill2">daily</span><span class="pill2">dashboards</span><span class="pill2">feeds</span></div>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="card">
+            <h3>Contact</h3>
+            <p>
+              Want to collaborate, sponsor a league dashboard, or contribute data sources?
+              Email: <strong>hello@netthud.com</strong> (placeholder)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot">
+        <div class="fine">© <span id="year"></span> <strong>Net Thud</strong><span class="sep">•</span>Goal Intelligence</div>
+        <div class="rightNote">league-first <span class="sep">•</span> signal-driven <span class="sep">•</span> no noise</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // ====== Minimal JS for a premium feel: nav state, smooth scrolling, placeholder feed ======
+    const $ = (s, el=document) => el.querySelector(s);
+    const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+
+    // Mobile nav
+    const burger = $("#burger");
+    const mobileNav = $("#mobileNav");
+    if (burger && mobileNav) {
+      burger.addEventListener("click", () => {
+        const open = mobileNav.classList.toggle("show");
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      $$("#mobileNav a").forEach(a => a.addEventListener("click", () => {
+        mobileNav.classList.remove("show");
+        burger.setAttribute("aria-expanded", "false");
+      }));
+    }
+
+    // Smooth scroll
+    $$('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({behavior:"smooth", block:"start"});
+        history.pushState(null, "", id);
+      });
+    });
+
+    // Active nav on scroll
+    const sections = ["#home","#leagues","#signals","#indexes","#about"]
+      .map(id => document.querySelector(id))
+      .filter(Boolean);
+
+    const navLinks = $$("nav .navlink");
+    const navLinksMobile = $$("#mobileNav .navlink");
+
+    function setActive(hash){
+      const all = [...navLinks, ...navLinksMobile];
+      all.forEach(l => l.classList.remove("active"));
+      all.forEach(l => {
+        if (l.getAttribute("href") === hash) l.classList.add("active");
+      });
+    }
+
+    const io = new IntersectionObserver((entries)=>{
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible && visible.target && visible.target.id) {
+        setActive("#" + visible.target.id);
+      }
+    }, {rootMargin:"-30% 0px -60% 0px", threshold:[0.1,0.2,0.35]});
+
+    sections.forEach(s => io.observe(s));
+
+    // Data (placeholders you can replace later with real feeds)
+    const leagues = [
+      "Premier League","La Liga","Serie A","Bundesliga","Ligue 1",
+      "Eredivisie","Primeira Liga","Süper Lig","MLS","Brasileirão",
+      "Argentine Primera","J1 League","Saudi Pro League","Belgian Pro League","Scottish Premiership",
+      "Austrian Bundesliga","Swiss Super League","Danish Superliga","Norwegian Eliteserien","Swedish Allsvenskan"
+    ];
+
+    const signals = [
+      {title:"Late Goal Heat", desc:"Leagues with the highest 75+ minute volatility today.", tag:"LIVE", kind:"live"},
+      {title:"First Goal Impact", desc:"Where the opening goal most often decides the match.", tag:"MODEL", kind:"model"},
+      {title:"Momentum Shifts", desc:"Goal timing and response — who collapses, who resets, who strikes again.", tag:"TRACK", kind:"track"},
+      {title:"Pressure Conversions", desc:"Where late pressure turns into goals — not shots.", tag:"MODEL", kind:"model"},
+      {title:"Equalizer Likelihood", desc:"Leagues most likely to produce a rapid response after conceding.", tag:"TRACK", kind:"track"}
+    ];
+
+    function renderSignals(containerId){
+      const el = document.getElementById(containerId);
+      if (!el) return;
+      el.innerHTML = "";
+      signals.slice(0,3).forEach(s => {
+        const row = document.createElement("div");
+        row.className = "signal";
+        row.innerHTML = `
+          <div>
+            <strong>${s.title}</strong>
+            <p>${s.desc}</p>
+          </div>
+          <span class="tag ${s.kind}">${s.tag}</span>
+        `;
+        el.appendChild(row);
+      });
+    }
+
+    function renderMiniBoard(){
+      const el = document.getElementById("miniBoard");
+      if (!el) return;
+      el.innerHTML = "";
+      signals.slice(0,3).forEach(s => {
+        const row = document.createElement("div");
+        row.className = "miniItem";
+        row.innerHTML = `
+          <div>
+            <strong>${s.title}</strong>
+            <span>${s.desc}</span>
+          </div>
+          <span class="tag ${s.kind}">${s.tag}</span>
+        `;
+        el.appendChild(row);
+      });
+    }
+
+    function renderLeagues(){
+      const el = document.getElementById("leagueChips");
+      if (!el) return;
+      el.innerHTML = "";
+      leagues.forEach(name => {
+        const chip = document.createElement("div");
+        chip.className = "chip";
+        chip.innerHTML = `<span class="miniDot"></span>${name}`;
+        el.appendChild(chip);
+      });
+    }
+
+    renderSignals("signalsList");
+    renderSignals("signalsList2");
+    renderMiniBoard();
+    renderLeagues();
+
+    // Footer year
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
+
+    // Initial active state
+    setActive(location.hash && document.querySelector(location.hash) ? location.hash : "#home");
+  </script>
 </body>
 </html>
