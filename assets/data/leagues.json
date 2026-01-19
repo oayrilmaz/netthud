@@ -1,28 +1,22 @@
 [
-  { "id": "epl", "name": "Premier League", "country": "England", "tier": 1 },
-  { "id": "laliga", "name": "La Liga", "country": "Spain", "tier": 1 },
-  { "id": "seriea", "name": "Serie A", "country": "Italy", "tier": 1 },
-  { "id": "bundesliga", "name": "Bundesliga", "country": "Germany", "tier": 1 },
-  { "id": "ligue1", "name": "Ligue 1", "country": "France", "tier": 1 },
-
-  { "id": "eredivisie", "name": "Eredivisie", "country": "Netherlands", "tier": 1 },
-  { "id": "primeiraliga", "name": "Primeira Liga", "country": "Portugal", "tier": 1 },
-  { "id": "superlig", "name": "Süper Lig", "country": "Turkey", "tier": 1 },
-  { "id": "mls", "name": "MLS", "country": "USA", "tier": 1 },
-
-  { "id": "brasileirao", "name": "Brasileirão", "country": "Brazil", "tier": 1 },
-  { "id": "argentina", "name": "Argentine Primera", "country": "Argentina", "tier": 1 },
-
-  { "id": "j1", "name": "J1 League", "country": "Japan", "tier": 1 },
-  { "id": "saudi", "name": "Saudi Pro League", "country": "Saudi Arabia", "tier": 1 },
-
-  { "id": "belgium", "name": "Belgian Pro League", "country": "Belgium", "tier": 1 },
-  { "id": "scotland", "name": "Scottish Premiership", "country": "Scotland", "tier": 1 },
-
-  { "id": "austria", "name": "Austrian Bundesliga", "country": "Austria", "tier": 1 },
-  { "id": "switzerland", "name": "Swiss Super League", "country": "Switzerland", "tier": 1 },
-
-  { "id": "denmark", "name": "Danish Superliga", "country": "Denmark", "tier": 1 },
-  { "id": "norway", "name": "Norwegian Eliteserien", "country": "Norway", "tier": 1 },
-  { "id": "sweden", "name": "Swedish Allsvenskan", "country": "Sweden", "tier": 1 }
+  { "name": "Premier League", "country": "England", "tier": 1, "code": "EPL", "slug": "premier-league" },
+  { "name": "La Liga", "country": "Spain", "tier": 1, "code": "LL", "slug": "la-liga" },
+  { "name": "Serie A", "country": "Italy", "tier": 1, "code": "SA", "slug": "serie-a" },
+  { "name": "Bundesliga", "country": "Germany", "tier": 1, "code": "BL", "slug": "bundesliga" },
+  { "name": "Ligue 1", "country": "France", "tier": 1, "code": "L1", "slug": "ligue-1" },
+  { "name": "Eredivisie", "country": "Netherlands", "tier": 1, "code": "ERD", "slug": "eredivisie" },
+  { "name": "Primeira Liga", "country": "Portugal", "tier": 1, "code": "PRL", "slug": "primeira-liga" },
+  { "name": "Süper Lig", "country": "Turkey", "tier": 1, "code": "TSL", "slug": "super-lig" },
+  { "name": "MLS", "country": "USA", "tier": 1, "code": "MLS", "slug": "mls" },
+  { "name": "Brasileirão", "country": "Brazil", "tier": 1, "code": "BR1", "slug": "brasileirao" },
+  { "name": "Argentine Primera", "country": "Argentina", "tier": 1, "code": "AR1", "slug": "argentine-primera" },
+  { "name": "J1 League", "country": "Japan", "tier": 1, "code": "J1", "slug": "j1-league" },
+  { "name": "Saudi Pro League", "country": "Saudi Arabia", "tier": 1, "code": "SPL", "slug": "saudi-pro-league" },
+  { "name": "Belgian Pro League", "country": "Belgium", "tier": 1, "code": "BPL", "slug": "belgian-pro-league" },
+  { "name": "Scottish Premiership", "country": "Scotland", "tier": 1, "code": "SCO", "slug": "scottish-premiership" },
+  { "name": "Austrian Bundesliga", "country": "Austria", "tier": 1, "code": "AUT", "slug": "austrian-bundesliga" },
+  { "name": "Swiss Super League", "country": "Switzerland", "tier": 1, "code": "SUI", "slug": "swiss-super-league" },
+  { "name": "Danish Superliga", "country": "Denmark", "tier": 1, "code": "DEN", "slug": "danish-superliga" },
+  { "name": "Norwegian Eliteserien", "country": "Norway", "tier": 1, "code": "NOR", "slug": "norwegian-eliteserien" },
+  { "name": "Swedish Allsvenskan", "country": "Sweden", "tier": 1, "code": "SWE", "slug": "swedish-allsvenskan" }
 ]
