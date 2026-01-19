@@ -14,135 +14,165 @@
   <meta property="og:image" content="https://netthud.com/og.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Net Thud — Goal Intelligence" />
+  <meta name="twitter:description" content="Football intelligence at the moment it matters." />
 
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 
 <body>
-  <header class="siteHeader">
-    <div class="wrap headerRow">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
       <a class="brand" href="#home" aria-label="Net Thud Home">
         <div class="logo" aria-hidden="true"></div>
-        <div class="brandText">
-          <div class="brandName">NET THUD</div>
-          <div class="brandSub">Goal Intelligence</div>
+        <div class="brandtext">
+          <div class="brandname">NET THUD</div>
+          <div class="brandsub">Goal Intelligence</div>
         </div>
       </a>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="navlink" href="#news">AI News</a>
-        <a class="navlink" href="#leagues">Leagues</a>
-        <a class="navlink" href="#signals">Signals</a>
-        <a class="navlink" href="#about">About</a>
+      <nav class="nav">
+        <a href="#scores">Scores</a>
+        <a href="#upcoming">Upcoming</a>
+        <a href="#transfers">Transfers</a>
+        <a href="#news">AI News</a>
+        <a href="#leagues">Leagues</a>
+        <a href="#about">About</a>
       </nav>
 
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+      <div class="top-actions">
+        <button id="soundToggle" class="btn small" type="button" aria-pressed="true">
+          Sound: ON
+        </button>
+        <a class="btn small ghost" href="https://x.com/netthudpro" target="_blank" rel="noopener noreferrer">@netthudpro</a>
+        <button class="menu" id="menuBtn" aria-label="Menu" aria-expanded="false">☰</button>
+      </div>
     </div>
 
-    <div class="wrap mobileNav" id="mobileNav" aria-label="Mobile navigation">
-      <a class="navlink" href="#news">AI News</a>
-      <a class="navlink" href="#leagues">Leagues</a>
-      <a class="navlink" href="#signals">Signals</a>
-      <a class="navlink" href="#about">About</a>
+    <div class="wrap mobile-nav" id="mobileNav">
+      <a href="#scores">Scores</a>
+      <a href="#upcoming">Upcoming</a>
+      <a href="#transfers">Transfers</a>
+      <a href="#news">AI News</a>
+      <a href="#leagues">Leagues</a>
+      <a href="#about">About</a>
     </div>
   </header>
 
   <main class="wrap" id="home">
     <section class="hero">
-      <div class="card heroCard">
+      <div class="hero-card">
         <div class="kicker">FOOTBALL INTELLIGENCE</div>
         <h1>At the moment it matters.</h1>
         <p class="lead">
           Net Thud highlights the decisive seconds — when goals flip matches, tables, and seasons.
-          <b>League-first.</b> <b>Signal-driven.</b> No noise.
+          <strong>League-first.</strong> <strong>Signal-driven.</strong> No noise.
         </p>
 
-        <div class="ctaRow">
-          <a class="btn primary" href="#news">Open AI news</a>
-          <a class="btn" href="#leagues">Browse leagues</a>
-          <a class="btn" href="#signals">See signals</a>
+        <div class="hero-cta">
+          <a class="btn" href="#scores">Live scores</a>
+          <a class="btn ghost" href="#upcoming">Upcoming + TV</a>
+          <a class="btn ghost" href="#transfers">Transfer radar</a>
         </div>
-      </div>
 
-      <div class="card sideCard">
-        <div class="sectionHead">
-          <div class="sectionTitle">Signal Board</div>
-          <div class="sectionMeta">v0.1</div>
+        <div class="status-row">
+          <div class="status" id="statusLeagues">Leagues: loading…</div>
+          <div class="status" id="statusNews">AI News: loading…</div>
+          <div class="status" id="statusScores">Scores: waiting for data…</div>
         </div>
-        <div id="signalBoard" class="list"></div>
-        <a class="btn ghost full" href="#signals">Open signals →</a>
       </div>
     </section>
 
+    <!-- LIVE SCORES -->
+    <section id="scores">
+      <div class="section-head">
+        <h2>Live Scores</h2>
+        <div class="meta" id="scoresMeta">loading…</div>
+      </div>
+      <div class="card">
+        <div class="list" id="scoresList">
+          <div class="empty">No data yet. Add <code>assets/data/scores.json</code>.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING + TV -->
+    <section id="upcoming">
+      <div class="section-head">
+        <h2>Upcoming Games + TV</h2>
+        <div class="meta" id="upcomingMeta">loading…</div>
+      </div>
+      <div class="card">
+        <div class="list" id="upcomingList">
+          <div class="empty">No data yet. Add <code>assets/data/upcoming.json</code>.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANSFERS -->
+    <section id="transfers">
+      <div class="section-head">
+        <h2>Transfer News</h2>
+        <div class="meta" id="transfersMeta">loading…</div>
+      </div>
+      <div class="card">
+        <div class="list" id="transfersList">
+          <div class="empty">No data yet. Add <code>assets/data/transfers.json</code>.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI NEWS -->
     <section id="news">
-      <div class="sectionHead">
-        <div class="sectionTitle">AI News</div>
-        <div class="sectionMeta" id="newsMeta">loading…</div>
+      <div class="section-head">
+        <h2>AI News</h2>
+        <div class="meta" id="newsMeta">loading…</div>
       </div>
       <div class="card">
-        <div id="newsList" class="list">
-          <div class="row">
-            <div class="rowMain">
-              <div class="rowTitle">Loading AI news…</div>
-              <div class="rowSub">Fetching <code>/assets/data/ai-news.json</code></div>
-            </div>
-            <div class="tag">…</div>
-          </div>
+        <div class="list" id="newsList">
+          <div class="empty">Loading AI news…</div>
         </div>
       </div>
     </section>
 
+    <!-- LEAGUES -->
     <section id="leagues">
-      <div class="sectionHead">
-        <div class="sectionTitle">Leagues</div>
-        <div class="sectionMeta" id="leaguesMeta">loading…</div>
+      <div class="section-head">
+        <h2>Leagues</h2>
+        <div class="meta" id="leaguesMeta">loading…</div>
       </div>
       <div class="card">
-        <div id="leagueChips" class="chips"></div>
+        <div class="chips" id="leagueChips"></div>
       </div>
     </section>
 
-    <section id="signals">
-      <div class="sectionHead">
-        <div class="sectionTitle">Today’s Signals</div>
-        <div class="sectionMeta">starter set</div>
-      </div>
-      <div class="card">
-        <div id="signalsList" class="list"></div>
-      </div>
-    </section>
-
+    <!-- ABOUT -->
     <section id="about">
-      <div class="sectionHead">
-        <div class="sectionTitle">About</div>
-        <div class="sectionMeta">signal-driven</div>
+      <div class="section-head">
+        <h2>About</h2>
+        <div class="meta">signal-driven</div>
       </div>
-
       <div class="card pad">
         <p class="lead">
           Net Thud is a football intelligence layer focused on decisive moments — not endless noise.
           We publish league-aware signals that explain match outcomes instead of recycling generic highlights.
         </p>
-
-        <div class="contactBox">
-          <div>
-            <div class="rowTitle">Contact</div>
-            <div class="rowSub">
-              DM on X:
-              <a class="link" href="https://x.com/netthudpro" target="_blank" rel="noopener noreferrer">@netthudpro</a>
-            </div>
-          </div>
-          <div class="tag blue">X</div>
+        <div class="contact">
+          DM on X: <a href="https://x.com/netthudpro" target="_blank" rel="noopener noreferrer">@netthudpro</a>
         </div>
       </div>
     </section>
 
     <footer class="footer">
       <div>© <span id="year"></span> Net Thud • Goal Intelligence</div>
-      <div>league-first • signal-driven • no noise</div>
+      <div class="muted">league-first • signal-driven • no noise</div>
     </footer>
   </main>
 
-  <script src="/assets/app.js" defer></script>
+  <!-- IMPORTANT: filenames must match EXACTLY -->
+  <audio id="sfxThud" preload="auto" src="assets/audio/netthud.mp3"></audio>
+  <audio id="sfxCrowd" preload="auto" src="assets/audio/crowd.mp3"></audio>
+
+  <script src="assets/app.js"></script>
 </body>
 </html>
