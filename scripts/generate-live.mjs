@@ -1,0 +1,37 @@
+import fs from "fs/promises";
+
+function demoLive() {
+  // This is a working “live” feed that updates every run (every 5 minutes via Actions)
+  // Later, you can replace this with a real API call.
+  const now = new Date();
+  const minute = (now.getUTCMinutes() % 90) + 1;
+
+  return [
+    { league: "Premier League", home: "Arsenal", away: "Liverpool", status: "LIVE", minute, score: "1-0", url: "https://netthud.com/" },
+    { league: "La Liga", home: "Real Madrid", away: "Barcelona", status: "LIVE", minute: Math.max(1, minute - 7), score: "0-0", url: "https://netthud.com/" },
+    { league: "Serie A", home: "Inter", away: "Juventus", status: "LIVE", minute: Math.max(1, minute - 18), score: "2-1", url: "https://netthud.com/" },
+    { league: "Bundesliga", home: "Bayern", away: "Dortmund", status: "LIVE", minute: Math.max(1, minute - 33), score: "1-1", url: "https://netthud.com/" },
+    { league: "Ligue 1", home: "PSG", away: "Marseille", status: "FT", minute: 90, score: "3-2", url: "https://netthud.com/" },
+  ];
+}
+
+// OPTIONAL: Plug a real provider later
+// Put your key in GitHub repo Settings → Secrets and variables → Actions → New repository secret
+// name: LIVESCORE_API_KEY
+async function main() {
+  const items = demoLive();
+
+  const out = {
+    generatedAt: new Date().toISOString(),
+    mode: "demo",
+    items,
+  };
+
+  await fs.writeFile("live.json", JSON.stringify(out, null, 2) + "\n", "utf8");
+  console.log(`Wrote live.json with ${items.length} items`);
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
