@@ -24,7 +24,9 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate scores.json (demo)
+      - name: Generate scores.json
+        env:
+          LIVESCORE_API_KEY: ${{ secrets.LIVESCORE_API_KEY }}
         run: node scripts/generate-live.mjs
 
       - name: Commit & push if changed
