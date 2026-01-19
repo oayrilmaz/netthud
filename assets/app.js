@@ -1,281 +1,228 @@
-/* Net Thud — app.js (single-source rendering, GitHub Pages safe) */
-
-const $ = (s, el = document) => el.querySelector(s);
-const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+/* Net Thud - app.js (clean, single-render, GitHub Pages friendly) */
 
 const PATHS = {
   leagues: "assets/data/leagues.json",
-  aiNews: "assets/data/ai-news.json"
+  news: "assets/data/ai-news.json",
 };
 
-// -------- Mobile nav
-function initMobileNav() {
-  const burger = $("#burger");
-  const mobileNav = $("#mobileNav");
-  if (!burger || !mobileNav) return;
-
-  burger.addEventListener("click", () => {
-    const open = mobileNav.classList.toggle("show");
-    burger.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-
-  $$("#mobileNav a").forEach(a =>
-    a.addEventListener("click", () => {
-      mobileNav.classList.remove("show");
-      burger.setAttribute("aria-expanded", "false");
-    })
-  );
+/* -----------------------------
+   Helpers
+------------------------------ */
+function $(id) {
+  return document.getElementById(id);
 }
 
-// -------- Active nav (prevents "stuck highlight")
-function initActiveNav() {
-  const navLinks = $$("nav .navlink");
-  const navLinksMobile = $$("#mobileNav .navlink");
-  const all = [...navLinks, ...navLinksMobile];
-
-  function setActive(hash) {
-    all.forEach(l => l.classList.remove("active"));
-    all.forEach(l => {
-      if (l.getAttribute("href") === hash) l.classList.add("active");
-    });
-  }
-
-  $$('a[href^="#"]').forEach(a => {
-    a.addEventListener("click", e => {
-      const id = a.getAttribute("href");
-      if (!id || id === "#") return;
-      const target = document.querySelector(id);
-      if (!target) return;
-
-      e.preventDefault();
-      setActive(id);
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-      history.pushState(null, "", id);
-    });
-  });
-
-  const sectionIds = ["home", "signals", "ai-news", "leagues", "indexes", "about"];
-  const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-
-  function getActiveSectionHash() {
-    const offset = 110;
-    let best = null;
-    let bestDist = Infinity;
-
-    for (const el of sectionEls) {
-      const r = el.getBoundingClientRect();
-      const dist = Math.abs(r.top - offset);
-      const penalty = r.bottom < offset ? 99999 : 0;
-      const score = dist + penalty;
-      if (score < bestDist) {
-        bestDist = score;
-        best = el;
-      }
-    }
-    return best ? `#${best.id}` : "#home";
-  }
-
-  let ticking = false;
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      setActive(getActiveSectionHash());
-      ticking = false;
-    });
-  }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-
-  // initial
-  const start = location.hash && document.querySelector(location.hash) ? location.hash : "#home";
-  setActive(start);
-  onScroll();
+function safeText(v) {
+  return (v ?? "").toString();
 }
 
-// -------- Footer year
-function setYear() {
-  const y = $("#year");
-  if (y) y.textContent = new Date().getFullYear();
+async function fetchJson(url) {
+  // Force fresh on GitHub Pages / CDN
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
+  return res.json();
 }
 
-// -------- Signals (render ONLY ONCE to avoid triples)
-function renderSignalsOnce() {
-  // IMPORTANT: Use only ONE container id in your HTML: id="signalsList"
-  const container = $("#signalsList");
-  if (!container) return;
-
-  const signals = [
-    { title: "Late Goal Heat", desc: "Leagues with the highest 75+ minute volatility today.", tag: "LIVE", kind: "live" },
-    { title: "First Goal Impact", desc: "Where the opening goal most often decides the match.", tag: "MODEL", kind: "model" },
-    { title: "Momentum Shifts", desc: "Goal timing and response — who collapses, who resets, who strikes again.", tag: "track", kind: "track" }
-  ];
-
-  container.innerHTML = "";
-  signals.forEach(s => {
-    const row = document.createElement("div");
-    row.className = "rowCard";
-    row.innerHTML = `
-      <div class="rowText">
-        <strong>${s.title}</strong>
-        <span>${s.desc}</span>
-      </div>
-      <span class="chip ${s.kind}">${String(s.tag).toUpperCase()}</span>
-    `;
-    container.appendChild(row);
-  });
-}
-
-// -------- AI News (loads from assets/data/ai-news.json)
-async function loadAiNews() {
-  const list = $("#aiNewsList");
-  const meta = $("#aiNewsMeta");
-  if (!list) return;
-
-  try {
-    const res = await fetch(PATHS.aiNews, { cache: "no-store" });
-    if (!res.ok) throw new Error(`AI news not found: ${PATHS.aiNews}`);
-
-    const data = await res.json();
-    const items = Array.isArray(data) ? data : (data.items || []);
-    list.innerHTML = "";
-
-    items.slice(0, 6).forEach(item => {
-      const title = item.title || "Update";
-      const source = item.source || "Net Thud AI feed";
-      const url = item.url || "";
-      const badge = item.badge || "NEW";
-
-      const card = document.createElement(url ? "a" : "div");
-      card.className = "rowCard";
-      if (url) {
-        card.href = url;
-        card.target = "_blank";
-        card.rel = "noopener noreferrer";
-      }
-
-      card.innerHTML = `
-        <div class="rowText">
-          <strong>${title}</strong>
-          <span>${source}</span>
-        </div>
-        <span class="chip live">${badge}</span>
-      `;
-      list.appendChild(card);
-    });
-
-    if (meta) meta.textContent = `${items.length} items`;
-  } catch (err) {
-    console.error(err);
-    list.innerHTML = `
-      <div class="errorBox">
-        <strong>AI news not loading</strong>
-        <div class="muted">Expected: ${PATHS.aiNews}</div>
-      </div>
-    `;
-    if (meta) meta.textContent = "error";
-  }
-}
-
-// -------- Leagues (loads from assets/data/leagues.json)
+/* -----------------------------
+   Leagues
+------------------------------ */
 async function loadLeagues() {
-  const container = $("#leagueChips");
+  const container = $("leagueChips");
   if (!container) return;
 
   try {
-    const res = await fetch(PATHS.leagues, { cache: "no-store" });
-    if (!res.ok) throw new Error(`Leagues JSON not found: ${PATHS.leagues}`);
+    const leagues = await fetchJson(PATHS.leagues);
 
-    const leagues = await res.json();
     container.innerHTML = "";
 
-    leagues.forEach(l => {
+    // Accept either: [{name:"..."}, ...] OR ["Premier League", ...]
+    const normalized = Array.isArray(leagues)
+      ? leagues.map((l) => (typeof l === "string" ? { name: l } : l))
+      : [];
+
+    normalized.forEach((l) => {
       const el = document.createElement("div");
-      el.className = "league-pill";
-      el.innerHTML = `<span class="dot"></span>${l.name}`;
+      el.className = "chip";
+      el.innerHTML = `<span class="miniDot"></span>${safeText(l.name)}`;
       container.appendChild(el);
     });
   } catch (err) {
+    container.innerHTML = `
+      <div class="item">
+        <div>
+          <strong>Leagues not loading</strong>
+          <p>Expected <code>${PATHS.leagues}</code> (Error: ${safeText(
+      err.message
+    )})</p>
+        </div>
+        <span class="tag error">ERROR</span>
+      </div>
+    `;
     console.error(err);
-    container.innerHTML = `<div class="errorBox"><strong>Leagues not loading</strong><div class="muted">Expected: ${PATHS.leagues}</div></div>`;
   }
 }
 
-// -------- Sound (optional)
-function initSound() {
-  const thud = $("#sfxThud");
-  const crowd = $("#sfxCrowd");
-  const toggle = $("#soundToggle");
-  const label = $("#soundLabel");
+/* -----------------------------
+   AI News
+------------------------------ */
+function renderNews(items, meta) {
+  const newsList = $("newsList");
+  const newsMeta = $("newsMeta");
+  if (!newsList) return;
 
-  if (!thud || !crowd || !toggle) return;
+  newsList.innerHTML = "";
 
-  let soundEnabled = true;
-  let playedOnce = false;
+  const arr = Array.isArray(items) ? items : [];
 
-  function stopAudio() {
-    [thud, crowd].forEach(a => {
-      a.pause();
-      a.currentTime = 0;
-    });
+  if (arr.length === 0) {
+    newsList.innerHTML = `
+      <div class="item">
+        <div>
+          <strong>No AI news yet</strong>
+          <p>Add items into <code>${PATHS.news}</code>.</p>
+        </div>
+        <span class="tag track">EMPTY</span>
+      </div>
+    `;
+    if (newsMeta) newsMeta.textContent = "0 items";
+    return;
   }
 
-  function setUI() {
-    toggle.classList.toggle("off", !soundEnabled);
-    toggle.setAttribute("aria-pressed", soundEnabled ? "true" : "false");
-    if (label) label.textContent = soundEnabled ? "Sound: ON" : "Sound: OFF";
+  arr.slice(0, 12).forEach((n) => {
+    const title = safeText(n.title || n.headline || "Update");
+    const desc = safeText(n.summary || n.desc || n.description || "");
+    const url = safeText(n.url || n.link || "");
+    const src = safeText(n.source || "Net Thud AI feed");
+    const time = safeText(n.time || n.published || n.date || "");
+
+    const subtitleParts = [src, time].filter(Boolean).join(" • ");
+    const subtitle = subtitleParts || "Net Thud AI feed";
+
+    const row = document.createElement("div");
+    row.className = "item";
+    row.innerHTML = `
+      <div>
+        <strong>${title}</strong>
+        <p>${desc ? desc : subtitle}</p>
+        ${
+          url
+            ? `<p style="margin-top:10px"><a class="pill" href="${url}" target="_blank" rel="noopener noreferrer">Open source →</a></p>`
+            : ``
+        }
+      </div>
+      <span class="tag live">NEW</span>
+    `;
+    newsList.appendChild(row);
+  });
+
+  const count = arr.length;
+  const updated =
+    safeText(meta?.updated) ||
+    safeText(meta?.lastUpdated) ||
+    safeText(meta?.generatedAt);
+
+  if (newsMeta) {
+    newsMeta.textContent = updated ? `${count} items • updated ${updated}` : `${count} items`;
   }
-  setUI();
+}
 
-  async function playVibe() {
-    if (!soundEnabled || playedOnce) return;
-    try {
-      thud.volume = 0.82;
-      crowd.volume = 0.55;
-      thud.currentTime = 0;
-      crowd.currentTime = 0;
+async function loadNews() {
+  const newsList = $("newsList");
+  const newsMeta = $("newsMeta");
 
-      await thud.play();
-      setTimeout(() => {
-        crowd.play().catch(() => {});
-        setTimeout(() => {
-          crowd.pause();
-          crowd.currentTime = 0;
-        }, 2300);
-      }, 180);
+  try {
+    const data = await fetchJson(PATHS.news);
 
-      playedOnce = true;
-    } catch {
-      playedOnce = false;
+    // Accept either:
+    // 1) { meta:{...}, items:[...] }
+    // 2) [ ... ]
+    const items = Array.isArray(data)
+      ? data
+      : data.items || data.news || data.articles || [];
+
+    const meta = Array.isArray(data) ? null : data.meta || null;
+
+    renderNews(items, meta);
+  } catch (err) {
+    if (newsList) {
+      newsList.innerHTML = `
+        <div class="item">
+          <div>
+            <strong>AI news not loading</strong>
+            <p>Expected <code>${PATHS.news}</code> (Error: ${safeText(
+        err.message
+      )})</p>
+          </div>
+          <span class="tag error">ERROR</span>
+        </div>
+      `;
     }
+    if (newsMeta) newsMeta.textContent = "error";
+    console.error(err);
   }
+}
 
-  ["pointerdown", "touchstart", "wheel", "keydown"].forEach(evt => {
-    window.addEventListener(evt, playVibe, { once: true, passive: true });
-  });
+/* -----------------------------
+   Signals (render ONCE)
+------------------------------ */
+function loadSignalsOnce() {
+  const signalsList = $("signalsList");
+  const signalsList2 = $("signalsList2"); // If your HTML still has it, we clear it
+  if (signalsList2) signalsList2.innerHTML = "";
 
-  toggle.addEventListener("click", async () => {
-    soundEnabled = !soundEnabled;
-    setUI();
-    if (!soundEnabled) stopAudio();
-    else await playVibe();
-  });
+  if (!signalsList) return;
 
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) stopAudio();
+  const signals = [
+    {
+      title: "Late Goal Heat",
+      desc: "Leagues with the highest 75+ minute volatility today.",
+      tag: "LIVE",
+      kind: "live",
+    },
+    {
+      title: "First Goal Impact",
+      desc: "Where the opening goal most often decides the match.",
+      tag: "MODEL",
+      kind: "model",
+    },
+    {
+      title: "Momentum Shifts",
+      desc: "Goal timing and response — who collapses, who resets, who strikes again.",
+      tag: "TRACK",
+      kind: "track",
+    },
+  ];
+
+  signalsList.innerHTML = "";
+  signals.forEach((s) => {
+    const row = document.createElement("div");
+    row.className = "item";
+    row.innerHTML = `
+      <div>
+        <strong>${s.title}</strong>
+        <p>${s.desc}</p>
+      </div>
+      <span class="tag ${s.kind}">${s.tag}</span>
+    `;
+    signalsList.appendChild(row);
   });
 }
 
-// -------- Boot
+/* -----------------------------
+   Boot
+------------------------------ */
 document.addEventListener("DOMContentLoaded", () => {
-  initMobileNav();
-  initActiveNav();
-  setYear();
+  // Year
+  const year = $("year");
+  if (year) year.textContent = new Date().getFullYear();
 
-  renderSignalsOnce();   // <- only one render
-  loadAiNews();
+  // Load dynamic JSON-backed sections
   loadLeagues();
+  loadNews();
 
-  initSound();
+  // Render signals once (no triple)
+  loadSignalsOnce();
+
+  // Refresh AI news every 60s (still GitHub-backed, not true live)
+  setInterval(loadNews, 60000);
 });
