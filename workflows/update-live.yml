@@ -24,15 +24,12 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate scores + upcoming + transfers
-        run: |
-          node scripts/generate-live.mjs
-          node scripts/generate-upcoming.mjs
-          node scripts/generate-transfers.mjs
+      - name: Generate scores.json (demo)
+        run: node scripts/generate-live.mjs
 
       - name: Commit & push if changed
         run: |
           git config user.name "netthud-bot"
           git config user.email "netthud-bot@users.noreply.github.com"
-          git add assets/data/scores.json assets/data/upcoming.json assets/data/transfers.json
-          git diff --cached --quiet || (git commit -m "Update live feeds" && git push)
+          git add assets/data/scores.json
+          git diff --cached --quiet || (git commit -m "Update scores.json" && git push)
