@@ -3,7 +3,7 @@ name: NetThud - Update AI News
 on:
   workflow_dispatch:
   schedule:
-    - cron: "12 * * * *"
+    - cron: "12 * * * *" # every hour at :12 UTC
 
 permissions:
   contents: write
