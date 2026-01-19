@@ -3,7 +3,7 @@ name: NetThud - Update Live Feed
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *" # every 5 minutes (GitHub minimum)
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
@@ -15,27 +15,24 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Generate scores feed
-        env:
-          LIVESCORE_API_KEY: ${{ secrets.LIVESCORE_API_KEY }}
-        run: node scripts/generate-live.mjs
+      - name: Generate scores + upcoming + transfers
+        run: |
+          node scripts/generate-live.mjs
+          node scripts/generate-upcoming.mjs
+          node scripts/generate-transfers.mjs
 
       - name: Commit & push if changed
         run: |
           git config user.name "netthud-bot"
           git config user.email "netthud-bot@users.noreply.github.com"
-          git add assets/data/scores.json
-          git diff --cached --quiet || (git commit -m "Update scores feed" && git push)
+          git add assets/data/scores.json assets/data/upcoming.json assets/data/transfers.json
+          git diff --cached --quiet || (git commit -m "Update live feeds" && git push)
