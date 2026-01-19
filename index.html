@@ -105,7 +105,7 @@
       color:var(--muted);
       border:1px solid transparent;
       transition: transform .15s var(--ease), background .15s var(--ease), border-color .15s var(--ease), color .15s var(--ease);
-      font-weight:700;
+      font-weight:800;
       font-size:13px;
     }
     .navlink:hover{
@@ -116,8 +116,9 @@
     }
     .navlink.active{
       color: var(--text);
-      background: rgba(120,255,106,.08);
-      border-color: rgba(120,255,106,.22);
+      background: rgba(120,255,106,.10);
+      border-color: rgba(120,255,106,.24);
+      box-shadow: 0 0 0 6px rgba(120,255,106,.05);
     }
 
     .actions{
@@ -131,7 +132,7 @@
       border:1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.03);
       color: var(--muted);
-      font-weight:700;
+      font-weight:800;
       font-size:12px;
       transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
       user-select:none;
@@ -156,7 +157,7 @@
       border:1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.03);
       color: var(--muted);
-      font-weight:900;
+      font-weight:1000;
       font-size:12px;
       transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease), color .15s var(--ease);
       cursor:pointer;
@@ -203,7 +204,7 @@
     .heroInner{ position:relative; padding:28px 28px 26px; }
     .kicker{
       display:inline-flex; align-items:center; gap:10px;
-      font-size:12px; font-weight:900; letter-spacing:.16em;
+      font-size:12px; font-weight:1000; letter-spacing:.16em;
       text-transform:uppercase;
       color: rgba(120,255,106,.85);
     }
@@ -212,7 +213,7 @@
     .subhead{
       margin:0;
       color: var(--muted);
-      font-weight:600;
+      font-weight:650;
       max-width: 60ch;
       font-size:15px;
       line-height:1.6;
@@ -224,7 +225,7 @@
       border-radius: 14px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
-      font-weight:900;
+      font-weight:1000;
       font-size:13px;
       transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
     }
@@ -275,28 +276,109 @@
       border:1px solid rgba(120,255,106,.24);
       color: rgba(120,255,106,.95);
       background: rgba(120,255,106,.08);
-      font-weight:900;
+      font-weight:1000;
       font-size:11px;
       letter-spacing:.08em;
       text-transform:uppercase;
       white-space:nowrap;
     }
 
-    .statGrid{
+    /* ===== Launch Scope refresh (looks cleaner) ===== */
+    .scopeGrid{
       display:grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap:12px;
+      margin-bottom:14px;
     }
-    .stat{
+    .scopeTile{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(420px 180px at 20% 0%, rgba(57,217,255,.10), transparent 58%),
+        radial-gradient(420px 180px at 90% 30%, rgba(120,255,106,.09), transparent 60%),
+        rgba(255,255,255,.02);
+      padding:14px 14px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      min-height:96px;
+    }
+    .scopeIcon{
+      width:36px; height:36px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .scopeIcon svg{opacity:.9}
+    .scopeTop{
+      display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+    }
+    .scopeTop .num{
+      font-size:24px;
+      font-weight:1100;
+      letter-spacing:-0.02em;
+      line-height:1;
+    }
+    .scopeTop .unit{
+      color: var(--muted2);
+      font-weight:850;
+      font-size:12px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .scopeLbl{
+      margin-top:6px;
+      color: var(--muted);
+      font-weight:800;
+      font-size:12px;
+      line-height:1.35;
+    }
+    .scopeHint{
+      margin-top:6px;
+      color: rgba(57,217,255,.88);
+      font-weight:900;
+      font-size:12px;
+    }
+
+    .scopeNotes{
       border-radius:16px;
       border:1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.02);
-      padding:14px 14px;
-      min-height:92px;
+      padding:14px;
     }
-    .stat .num{ font-size:24px; font-weight:1000; letter-spacing:-0.02em; }
-    .stat .lbl{ margin-top:6px; color: var(--muted); font-weight:750; font-size:12px; line-height:1.35; }
-    .stat .hint{ margin-top:6px; color: rgba(57,217,255,.85); font-weight:800; font-size:12px; }
+    .scopeNotes h3{
+      margin:0;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: var(--muted);
+    }
+    .scopeNotes ul{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .scopeNotes li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color: var(--muted2);
+      font-weight:700;
+      font-size:12.5px;
+      line-height:1.45;
+    }
+    .tick{
+      width:10px; height:10px; margin-top:4px;
+      border-radius:999px;
+      background: rgba(120,255,106,.9);
+      box-shadow: 0 0 12px rgba(120,255,106,.45);
+      flex:0 0 auto;
+    }
 
     .signals{ display:grid; gap:10px; }
     .signal{
@@ -310,7 +392,7 @@
     .signal p{
       margin:4px 0 0;
       color: var(--muted2);
-      font-weight:650;
+      font-weight:700;
       font-size:12.5px;
       line-height:1.45;
       max-width: 70ch;
@@ -324,7 +406,7 @@
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       color: var(--muted);
-      font-weight:900;
+      font-weight:1000;
       font-size:11px;
       letter-spacing:.06em;
       text-transform:uppercase;
@@ -354,7 +436,7 @@
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       color: var(--text);
-      font-weight:900;
+      font-weight:1000;
       font-size:12px;
       transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
       user-select:none;
@@ -378,7 +460,7 @@
       padding:14px;
     }
     .card h3{margin:0; font-size:14px;}
-    .card p{margin:6px 0 0; color:var(--muted2); font-weight:650; font-size:12.5px; line-height:1.45;}
+    .card p{margin:6px 0 0; color:var(--muted2); font-weight:700; font-size:12.5px; line-height:1.45;}
     .card .meta{margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;}
     .pill2{
       padding:6px 10px;
@@ -387,7 +469,7 @@
       background: rgba(255,255,255,.03);
       color: var(--muted);
       font-size:11px;
-      font-weight:900;
+      font-weight:1000;
       letter-spacing:.06em;
       text-transform:uppercase;
     }
@@ -415,7 +497,7 @@
       display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
     }
     .miniItem strong{display:block; font-size:13px;}
-    .miniItem span{display:block; margin-top:3px; color:var(--muted2); font-weight:650; font-size:12px; line-height:1.35;}
+    .miniItem span{display:block; margin-top:3px; color:var(--muted2); font-weight:700; font-size:12px; line-height:1.35;}
 
     footer{ padding:28px 0 34px; color: var(--muted2); }
     .foot{
@@ -424,16 +506,15 @@
       display:flex; align-items:center; justify-content:space-between; gap:12px;
       flex-wrap:wrap;
     }
-    .fine{font-weight:650; font-size:12px;}
+    .fine{font-weight:700; font-size:12px;}
     .fine strong{color:var(--text)}
     .sep{opacity:.45; padding:0 8px}
-    .rightNote{font-weight:800; font-size:12px; letter-spacing:.04em}
+    .rightNote{font-weight:900; font-size:12px; letter-spacing:.04em}
 
     .burger{display:none}
     @media (max-width: 980px){
       .heroGrid{grid-template-columns: 1fr}
       .actions{display:none}
-      .statGrid{grid-template-columns: repeat(2, minmax(0,1fr))}
       .grid2{grid-template-columns:1fr}
       .twoCols{grid-template-columns:1fr}
       .headline{font-size:38px}
@@ -454,6 +535,7 @@
       .mobileNav.show{display:block}
       .mobileNav .row{display:flex; flex-wrap:wrap; gap:10px;}
       .mobileNav .navlink{background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.07)}
+      .scopeGrid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -568,30 +650,82 @@
                     <span class="badge" style="border-color: rgba(57,217,255,.24); color: rgba(57,217,255,.92); background: rgba(57,217,255,.08);">v0.1</span>
                   </div>
                   <div class="panelBody">
-                    <div class="statGrid">
-                      <div class="stat">
-                        <div class="num">20</div>
-                        <div class="lbl">Top leagues tracked</div>
-                        <div class="hint">EU + Global</div>
+                    <div class="scopeGrid">
+                      <div class="scopeTile">
+                        <div class="scopeIcon" aria-hidden="true">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 19V5M10 19V9M16 19V12M22 19V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <div class="scopeTop">
+                            <div class="num">20</div>
+                            <div class="unit">Leagues</div>
+                          </div>
+                          <div class="scopeLbl">Top leagues tracked</div>
+                          <div class="scopeHint">EU + Global</div>
+                        </div>
                       </div>
-                      <div class="stat">
-                        <div class="num">3</div>
-                        <div class="lbl">Indexes (launch set)</div>
-                        <div class="hint">Impact-driven</div>
+
+                      <div class="scopeTile">
+                        <div class="scopeIcon" aria-hidden="true">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 12h6l2-4 3 8 2-4h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <div class="scopeTop">
+                            <div class="num">3</div>
+                            <div class="unit">Indexes</div>
+                          </div>
+                          <div class="scopeLbl">Launch set</div>
+                          <div class="scopeHint">Impact-driven</div>
+                        </div>
                       </div>
-                      <div class="stat">
-                        <div class="num">AI</div>
-                        <div class="lbl">Daily signal updates</div>
-                        <div class="hint">Automated analysis</div>
+
+                      <div class="scopeTile">
+                        <div class="scopeIcon" aria-hidden="true">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2v4M12 18v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M2 12h4M18 12h4M4.2 19.8L7 17M17 7l2.8-2.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <div class="scopeTop">
+                            <div class="num">AI</div>
+                            <div class="unit">Updates</div>
+                          </div>
+                          <div class="scopeLbl">Daily signal generation</div>
+                          <div class="scopeHint">Automated analysis</div>
+                        </div>
                       </div>
-                      <div class="stat">
-                        <div class="num">Live</div>
-                        <div class="lbl">Goal moments</div>
-                        <div class="hint">Match impact</div>
+
+                      <div class="scopeTile">
+                        <div class="scopeIcon" aria-hidden="true">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 17l10-10M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <div class="scopeTop">
+                            <div class="num">Live</div>
+                            <div class="unit">Moments</div>
+                          </div>
+                          <div class="scopeLbl">Goal moments</div>
+                          <div class="scopeHint">Match impact</div>
+                        </div>
                       </div>
                     </div>
 
-                    <div style="height:14px"></div>
+                    <div class="scopeNotes">
+                      <h3>What this launch focuses on</h3>
+                      <ul>
+                        <li><span class="tick"></span>League-first interpretation (context beats isolated stats).</li>
+                        <li><span class="tick"></span>Three signal types: late volatility, first-goal impact, momentum shifts.</li>
+                        <li><span class="tick"></span>Fast homepage + scalable structure (dashboards next).</li>
+                      </ul>
+                    </div>
+
+                    <div style="height:12px"></div>
 
                     <div class="twoCols">
                       <div class="card">
@@ -648,7 +782,7 @@
           <span class="badge">20 tracked</span>
         </div>
         <div class="panelBody">
-          <p style="margin:0 0 14px; color:var(--muted); font-weight:650; line-height:1.6;">
+          <p style="margin:0 0 14px; color:var(--muted); font-weight:700; line-height:1.6;">
             League-first coverage. Clubs are interpreted through form, pressure, and table context — not isolated stats.
           </p>
           <div class="chips" id="leagueChips"></div>
@@ -789,7 +923,8 @@
 
   <!-- Audio (must exist as real mp3 files) -->
   <audio id="sfxThud" preload="auto" src="assets/audio/netthud.mp3"></audio>
-  <audio id="sfxCrowd" preload="auto" src="assets/audio/crowd.mp3"></audio>
+  <!-- IMPORTANT: your repo shows "Crowd.mp3" (capital C). GitHub Pages is case-sensitive -->
+  <audio id="sfxCrowd" preload="auto" src="assets/audio/Crowd.mp3"></audio>
 
   <script>
     const $ = (s, el=document) => el.querySelector(s);
@@ -809,24 +944,7 @@
       }));
     }
 
-    // Smooth scroll
-    $$('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const target = document.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({behavior:"smooth", block:"start"});
-        history.pushState(null, "", id);
-      });
-    });
-
-    // Active nav on scroll
-    const sections = ["#home","#leagues","#signals","#indexes","#about"]
-      .map(id => document.querySelector(id))
-      .filter(Boolean);
-
+    // Active nav (robust: prevents "stuck on Leagues")
     const navLinks = $$("nav .navlink");
     const navLinksMobile = $$("#mobileNav .navlink");
 
@@ -838,16 +956,55 @@
       });
     }
 
-    const io = new IntersectionObserver((entries)=>{
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible && visible.target && visible.target.id) {
-        setActive("#" + visible.target.id);
-      }
-    }, {rootMargin:"-30% 0px -60% 0px", threshold:[0.1,0.2,0.35]});
+    // Smooth scroll + set active immediately
+    $$('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const target = document.querySelector(id);
+        if (!target) return;
 
-    sections.forEach(s => io.observe(s));
+        e.preventDefault();
+        setActive(id);
+        target.scrollIntoView({behavior:"smooth", block:"start"});
+        history.pushState(null, "", id);
+      });
+    });
+
+    // Scroll-based active section detection (more reliable than IntersectionObserver here)
+    const sectionIds = ["home","leagues","signals","indexes","about"];
+    const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    function getActiveSectionId(){
+      const offset = 110; // header + breathing room
+      let best = null;
+      let bestDist = Infinity;
+
+      for (const el of sectionEls){
+        const r = el.getBoundingClientRect();
+        const dist = Math.abs(r.top - offset);
+        // prefer sections that are at/above the offset, but still allow nearest
+        const penalty = (r.bottom < offset) ? 99999 : 0;
+        const score = dist + penalty;
+        if (score < bestDist){
+          bestDist = score;
+          best = el;
+        }
+      }
+      return best ? ("#" + best.id) : "#home";
+    }
+
+    let ticking = false;
+    function onScroll(){
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setActive(getActiveSectionId());
+        ticking = false;
+      });
+    }
+    window.addEventListener("scroll", onScroll, {passive:true});
+    window.addEventListener("resize", onScroll);
 
     // Placeholder data
     const leagues = [
@@ -924,6 +1081,7 @@
 
     // Initial active state
     setActive(location.hash && document.querySelector(location.hash) ? location.hash : "#home");
+    onScroll();
 
     // ============================================================
     // SOUND: will play on FIRST interaction (no click required)
