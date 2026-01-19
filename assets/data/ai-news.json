@@ -1,0 +1,21 @@
+{
+  "date": "2026-01-18",
+  "items": [
+    {
+      "title": "Late-goal volatility rising in 3 leagues today",
+      "why": "Higher 75'+ swing rate usually correlates with fatigue/bench depth and tighter game state.",
+      "tags": ["LIVE", "LateGoals", "Volatility"],
+      "sourceLabel": "Net Thud AI",
+      "sourceUrl": "#",
+      "leagueHints": ["Premier League", "Serie A", "Süper Lig"]
+    },
+    {
+      "title": "First-goal impact strongest in mid-table clashes",
+      "why": "When both teams protect a point, conceding first shifts risk tolerance and triggers open transitions.",
+      "tags": ["MODEL", "FirstGoal", "MatchState"],
+      "sourceLabel": "Net Thud AI",
+      "sourceUrl": "#",
+      "leagueHints": ["La Liga", "Bundesliga"]
+    }
+  ]
+}
