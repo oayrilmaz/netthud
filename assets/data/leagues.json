@@ -1,25 +1,25 @@
-{
-  "updated": "2026-01-18",
-  "leagues": [
-    "Premier League",
-    "La Liga",
-    "Serie A",
-    "Bundesliga",
-    "Ligue 1",
-    "Eredivisie",
-    "Primeira Liga",
-    "Süper Lig",
-    "MLS",
-    "Brasileirão",
-    "Argentine Primera",
-    "J1 League",
-    "Saudi Pro League",
-    "Belgian Pro League",
-    "Scottish Premiership",
-    "Austrian Bundesliga",
-    "Swiss Super League",
-    "Danish Superliga",
-    "Norwegian Eliteserien",
-    "Swedish Allsvenskan"
-  ]
-}
+[
+  { "id": "epl", "name": "Premier League" },
+  { "id": "laliga", "name": "La Liga" },
+  { "id": "seriea", "name": "Serie A" },
+  { "id": "bundesliga", "name": "Bundesliga" },
+  { "id": "ligue1", "name": "Ligue 1" },
+  { "id": "eredivisie", "name": "Eredivisie" },
+
+  { "id": "primeiraliga", "name": "Primeira Liga" },
+  { "id": "superlig", "name": "Süper Lig" },
+  { "id": "mls", "name": "MLS" },
+  { "id": "brasileirao", "name": "Brasileirão" },
+  { "id": "argentina", "name": "Argentine Primera" },
+
+  { "id": "j1", "name": "J1 League" },
+  { "id": "saudi", "name": "Saudi Pro League" },
+  { "id": "belgium", "name": "Belgian Pro League" },
+  { "id": "scotland", "name": "Scottish Premiership" },
+
+  { "id": "austria", "name": "Austrian Bundesliga" },
+  { "id": "swiss", "name": "Swiss Super League" },
+  { "id": "denmark", "name": "Danish Superliga" },
+  { "id": "norway", "name": "Norwegian Eliteserien" },
+  { "id": "sweden", "name": "Swedish Allsvenskan" }
+]
