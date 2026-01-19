@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://netthud.com/" />
   <meta property="og:image" content="https://netthud.com/og.png" />
 
-  <!-- Twitter -->
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Net Thud — Goal Intelligence" />
   <meta name="twitter:description" content="Football intelligence at the moment it matters." />
@@ -23,7 +23,6 @@
     :root{
       --bg:#07090b;
       --card: rgba(255,255,255,.04);
-      --card2: rgba(255,255,255,.03);
       --stroke: rgba(255,255,255,.10);
       --text:#e9eef2;
       --muted:#aab6c3;
@@ -34,10 +33,9 @@
       --warn:#ffd35a;
 
       --radius:18px;
-      --shadow: 0 20px 60px rgba(0,0,0,.50);
-      --shadow2: 0 10px 30px rgba(0,0,0,.45);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
 
-      --container: 1120px;
+      --container: 1040px; /* a little narrower = calmer */
       --ease: cubic-bezier(.2,.9,.2,1);
     }
 
@@ -47,8 +45,8 @@
       margin:0;
       color:var(--text);
       background:
-        radial-gradient(1100px 650px at 18% 18%, rgba(120,255,106,.10), transparent 55%),
-        radial-gradient(900px 620px at 78% 24%, rgba(57,217,255,.09), transparent 55%),
+        radial-gradient(1100px 650px at 18% 18%, rgba(120,255,106,.09), transparent 55%),
+        radial-gradient(900px 620px at 78% 24%, rgba(57,217,255,.07), transparent 55%),
         linear-gradient(180deg, #06080a, #070a0d 55%, #07090b);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       letter-spacing:-0.01em;
@@ -56,10 +54,9 @@
     }
 
     a{color:inherit; text-decoration:none}
-    a:hover{opacity:.95}
     .container{max-width:var(--container); margin:0 auto; padding:0 22px}
 
-    /* ---------- Header / Nav (simpler) ---------- */
+    /* Header / Nav */
     header{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(12px);
@@ -83,23 +80,11 @@
         radial-gradient(22px 22px at 55% 75%, rgba(120,255,106,.55), transparent 65%),
         linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.08);
-      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+      box-shadow: 0 10px 25px rgba(0,0,0,.30);
     }
-    .brandTitle{
-      display:flex; flex-direction:column; gap:3px;
-      line-height:1.05;
-    }
-    .brandTitle strong{
-      font-size:13px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-    .brandTitle span{
-      font-size:12px;
-      color: var(--muted2);
-      font-weight:700;
-      letter-spacing:0;
-    }
+    .brandTitle{display:flex; flex-direction:column; gap:3px; line-height:1.05;}
+    .brandTitle strong{font-size:13px; letter-spacing:.14em; text-transform:uppercase;}
+    .brandTitle span{font-size:12px; color: var(--muted2); font-weight:700;}
 
     nav{display:flex; align-items:center; gap:8px;}
     .navlink{
@@ -127,27 +112,6 @@
       display:flex; align-items:center; gap:10px;
       min-width:220px; justify-content:flex-end;
     }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-weight:900;
-      font-size:12px;
-      white-space:nowrap;
-      transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease), color .15s var(--ease);
-      user-select:none;
-    }
-    .pill:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.14);
-      background: rgba(255,255,255,.045);
-      color: var(--text);
-    }
-    .dot{width:8px; height:8px; border-radius:999px; background: var(--accent); box-shadow: 0 0 14px rgba(120,255,106,.45);}
-
     .soundToggle{
       display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px;
@@ -196,19 +160,9 @@
       .mobileNav .navlink{background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.07)}
     }
 
-    /* ---------- Layout (relaxed spacing) ---------- */
+    /* Layout */
     main{padding: 34px 0 70px;}
-    section{padding: 40px 0 0; scroll-margin-top: 96px;}
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:22px;
-      align-items:start;
-    }
-    @media (max-width: 980px){
-      .hero{grid-template-columns:1fr}
-    }
+    section{padding: 54px 0 0; scroll-margin-top: 96px;}
 
     .card{
       border:1px solid rgba(255,255,255,.08);
@@ -217,13 +171,7 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .cardInner{padding: 26px 26px 24px;}
-    .soft{
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-    }
+    .cardInner{padding: 30px 28px;}
 
     .kicker{
       display:inline-flex; align-items:center; gap:10px;
@@ -233,30 +181,30 @@
       letter-spacing:.16em;
       text-transform:uppercase;
     }
-    .kicker .line{width:34px; height:1px; background: rgba(120,255,106,.55); box-shadow:0 0 14px rgba(120,255,106,.30);}
+    .kicker .line{width:34px; height:1px; background: rgba(120,255,106,.55); box-shadow:0 0 14px rgba(120,255,106,.25);}
 
     h1{
       margin: 14px 0 10px;
-      font-size: 44px;
+      font-size: 46px;
       line-height:1.08;
       letter-spacing:-0.03em;
     }
-    @media (max-width:980px){ h1{font-size:38px} }
+    @media (max-width:980px){ h1{font-size:40px} }
 
     .lead{
       margin:0;
       color: var(--muted);
       font-size:16px;
-      line-height:1.7;
+      line-height:1.8;
       font-weight:650;
-      max-width: 65ch;
+      max-width: 70ch;
     }
 
     .ctaRow{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:18px;
+      margin-top:22px;
     }
     .btn{
       display:inline-flex; align-items:center; gap:10px;
@@ -275,14 +223,6 @@
     }
     .btnPrimary:hover{border-color: rgba(120,255,106,.40); background: rgba(120,255,106,.18);}
 
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:22px;
-      align-items:start;
-    }
-    @media (max-width: 980px){ .grid2{grid-template-columns:1fr} }
-
     .sectionTitle{
       display:flex; align-items:baseline; justify-content:space-between; gap:12px;
       margin:0 0 14px;
@@ -295,19 +235,18 @@
       text-transform:uppercase;
       color: rgba(233,238,242,.90);
     }
-    .hint{
-      color: var(--muted2);
-      font-size:12px;
-      font-weight:800;
+    .hint{color: var(--muted2); font-size:12px; font-weight:800;}
+
+    .soft{
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
     }
 
-    /* ---------- Lists ---------- */
-    .list{
-      display:grid;
-      gap:12px;
-      padding: 18px;
-    }
-    .item{
+    /* Lists */
+    .list{display:grid; gap:12px; padding: 18px;}
+    .rowCard{
       border:1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.02);
       border-radius: 16px;
@@ -317,16 +256,17 @@
       justify-content:space-between;
       gap:14px;
     }
-    .item strong{display:block; font-size:14px;}
-    .item p{
-      margin:6px 0 0;
+    .rowText strong{display:block; font-size:14px;}
+    .rowText span{
+      display:block;
+      margin-top:6px;
       color: var(--muted2);
       font-weight:700;
       font-size:13px;
       line-height:1.55;
     }
 
-    .tag{
+    .chip{
       display:inline-flex; align-items:center; justify-content:center;
       padding:7px 10px;
       min-width:64px;
@@ -341,14 +281,22 @@
       white-space:nowrap;
       flex: 0 0 auto;
     }
-    .tag.live{border-color: rgba(120,255,106,.26); color: rgba(120,255,106,.95); background: rgba(120,255,106,.08);}
-    .tag.model{border-color: rgba(57,217,255,.25); color: rgba(57,217,255,.92); background: rgba(57,217,255,.07);}
-    .tag.track{border-color: rgba(255,211,90,.20); color: rgba(255,211,90,.92); background: rgba(255,211,90,.06);}
-    .tag.error{border-color: rgba(255,211,90,.30); color: rgba(255,211,90,.95); background: rgba(255,211,90,.08);}
+    .chip.live{border-color: rgba(120,255,106,.26); color: rgba(120,255,106,.95); background: rgba(120,255,106,.08);}
+    .chip.model{border-color: rgba(57,217,255,.25); color: rgba(57,217,255,.92); background: rgba(57,217,255,.07);}
+    .chip.track{border-color: rgba(255,211,90,.20); color: rgba(255,211,90,.92); background: rgba(255,211,90,.06);}
 
-    /* ---------- League chips ---------- */
-    .chips{display:flex; flex-wrap:wrap; gap:10px; padding: 18px;}
-    .chip{
+    .errorBox{
+      border:1px solid rgba(255,211,90,.25);
+      background: rgba(255,211,90,.06);
+      border-radius:16px;
+      padding:14px;
+      color: var(--text);
+    }
+    .muted{color: var(--muted2); font-weight:700; margin-top:6px;}
+
+    /* League pills */
+    .leagueGrid{padding:18px; display:flex; flex-wrap:wrap; gap:10px;}
+    .league-pill{
       display:inline-flex; align-items:center; gap:10px;
       padding:10px 12px;
       border-radius:999px;
@@ -358,11 +306,14 @@
       font-weight:950;
       font-size:12px;
     }
-    .miniDot{width:8px; height:8px; border-radius:999px; background: rgba(120,255,106,.9); box-shadow: 0 0 12px rgba(120,255,106,.40);}
+    .league-pill .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: rgba(120,255,106,.9);
+      box-shadow: 0 0 12px rgba(120,255,106,.35);
+    }
 
-    /* ---------- Footer ---------- */
     footer{
-      margin-top: 56px;
+      margin-top: 64px;
       padding-top: 18px;
       border-top:1px solid rgba(255,255,255,.06);
       color: var(--muted2);
@@ -371,7 +322,6 @@
       display:flex; gap:12px; justify-content:space-between; flex-wrap:wrap;
     }
     footer strong{color: var(--text);}
-
   </style>
 </head>
 
@@ -388,8 +338,8 @@
         </a>
 
         <nav aria-label="Primary navigation">
-          <a class="navlink active" href="#home">Home</a>
-          <a class="navlink" href="#news">AI News</a>
+          <a class="navlink" href="#home">Home</a>
+          <a class="navlink" href="#ai-news">AI News</a>
           <a class="navlink" href="#leagues">Leagues</a>
           <a class="navlink" href="#signals">Signals</a>
           <a class="navlink" href="#about">About</a>
@@ -400,7 +350,6 @@
             <span class="sDot" aria-hidden="true"></span>
             <span id="soundLabel">Sound: ON</span>
           </button>
-          <a class="pill" href="#news"><span class="dot"></span> AI updates</a>
         </div>
 
         <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
@@ -412,8 +361,8 @@
 
       <div class="mobileNav" id="mobileNav">
         <div class="row" aria-label="Mobile navigation">
-          <a class="navlink active" href="#home">Home</a>
-          <a class="navlink" href="#news">AI News</a>
+          <a class="navlink" href="#home">Home</a>
+          <a class="navlink" href="#ai-news">AI News</a>
           <a class="navlink" href="#leagues">Leagues</a>
           <a class="navlink" href="#signals">Signals</a>
           <a class="navlink" href="#about">About</a>
@@ -423,69 +372,23 @@
   </header>
 
   <main class="container" id="home">
-    <!-- HERO (clean / relaxed) -->
-    <div class="hero">
-      <div class="card">
-        <div class="cardInner">
-          <div class="kicker"><span class="line"></span> FOOTBALL INTELLIGENCE</div>
-          <h1>At the moment it matters.</h1>
-          <p class="lead">
-            Net Thud highlights the decisive seconds — when goals flip matches, tables, and seasons.
-            <strong>League-first.</strong> <strong>Signal-driven.</strong> No noise.
-          </p>
+    <!-- HERO -->
+    <div class="card">
+      <div class="cardInner">
+        <div class="kicker"><span class="line"></span> FOOTBALL INTELLIGENCE</div>
+        <h1>At the moment it matters.</h1>
+        <p class="lead">
+          Net Thud highlights the decisive seconds — when goals flip matches, tables, and seasons.
+          <strong>League-first.</strong> <strong>Signal-driven.</strong> No noise.
+        </p>
 
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="#news">Open AI news</a>
-            <a class="btn" href="#leagues">Browse leagues</a>
-            <a class="btn" href="#signals">See signals</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="soft">
-        <div class="cardInner" style="padding:22px 22px 20px">
-          <div class="sectionTitle" style="margin:0 0 10px">
-            <h2>Signal Board</h2>
-            <span class="hint">lightweight v0.1</span>
-          </div>
-          <div id="miniSignals" class="list" style="padding:0; gap:10px"></div>
-          <div style="height:12px"></div>
-          <a class="pill" href="#signals" style="width:100%; justify-content:center;">Open signals →</a>
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#ai-news">Open AI news</a>
+          <a class="btn" href="#leagues">Browse leagues</a>
+          <a class="btn" href="#signals">See signals</a>
         </div>
       </div>
     </div>
-
-    <!-- AI NEWS -->
-    <section id="news" aria-label="AI News">
-      <div class="sectionTitle">
-        <h2>AI News</h2>
-        <span class="hint" id="newsMeta">loading…</span>
-      </div>
-
-      <div class="soft">
-        <div class="list" id="newsList">
-          <div class="item">
-            <div>
-              <strong>Loading AI news…</strong>
-              <p>Fetching <code>assets/data/ai-news.json</code> from GitHub Pages.</p>
-            </div>
-            <span class="tag live">LIVE</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LEAGUES -->
-    <section id="leagues" aria-label="Top leagues">
-      <div class="sectionTitle">
-        <h2>Leagues</h2>
-        <span class="hint">20 tracked</span>
-      </div>
-
-      <div class="soft">
-        <div class="chips" id="leagueChips"></div>
-      </div>
-    </section>
 
     <!-- SIGNALS -->
     <section id="signals" aria-label="Signals">
@@ -494,12 +397,43 @@
         <span class="hint">starter set</span>
       </div>
 
-      <div class="grid2">
-        <div class="soft">
-          <div class="list" id="signalsList"></div>
+      <div class="soft">
+        <div class="list" id="signalsList">
+          <!-- populated by assets/app.js -->
         </div>
-        <div class="soft">
-          <div class="list" id="signalsList2"></div>
+      </div>
+    </section>
+
+    <!-- AI NEWS -->
+    <section id="ai-news" aria-label="AI News">
+      <div class="sectionTitle">
+        <h2>AI News</h2>
+        <span class="hint" id="aiNewsMeta">loading…</span>
+      </div>
+
+      <div class="soft">
+        <div class="list" id="aiNewsList">
+          <div class="rowCard">
+            <div class="rowText">
+              <strong>Loading AI news…</strong>
+              <span>Fetching <code>assets/data/ai-news.json</code> from GitHub Pages.</span>
+            </div>
+            <span class="chip live">NEW</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEAGUES -->
+    <section id="leagues" aria-label="Leagues">
+      <div class="sectionTitle">
+        <h2>Leagues</h2>
+        <span class="hint">from JSON</span>
+      </div>
+
+      <div class="soft">
+        <div class="leagueGrid" id="leagueChips">
+          <!-- populated by assets/app.js -->
         </div>
       </div>
     </section>
@@ -518,17 +452,17 @@
             We publish league-aware signals that explain match outcomes instead of recycling generic highlights.
           </p>
 
-          <div style="height:16px"></div>
+          <div style="height:18px"></div>
 
-          <div class="item" style="margin:0; padding:16px">
-            <div>
+          <div class="rowCard">
+            <div class="rowText">
               <strong>Contact</strong>
-              <p>
+              <span>
                 Want to collaborate, sponsor a league dashboard, or contribute data sources?
                 DM on X: <strong><a href="https://x.com/netthudpro" target="_blank" rel="noopener noreferrer">@netthudpro</a></strong>
-              </p>
+              </span>
             </div>
-            <span class="tag model">X</span>
+            <span class="chip model">X</span>
           </div>
         </div>
       </div>
@@ -540,317 +474,12 @@
     </footer>
   </main>
 
-  <!-- Audio (must exist as real mp3 files) -->
+  <!-- Audio -->
   <audio id="sfxThud" preload="auto" src="assets/audio/netthud.mp3"></audio>
-  <audio id="sfxCrowd" preload="auto" src="assets/audio/Crowd.mp3"></audio>
+  <!-- IMPORTANT: GitHub Pages is case-sensitive. Prefer lowercase file name crowd.mp3 -->
+  <audio id="sfxCrowd" preload="auto" src="assets/audio/crowd.mp3"></audio>
 
-  <script>
-    const $ = (s, el=document) => el.querySelector(s);
-    const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
-
-    // ---------------------------
-    // Mobile nav
-    // ---------------------------
-    const burger = $("#burger");
-    const mobileNav = $("#mobileNav");
-    if (burger && mobileNav) {
-      burger.addEventListener("click", () => {
-        const open = mobileNav.classList.toggle("show");
-        burger.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-      $$("#mobileNav a").forEach(a => a.addEventListener("click", () => {
-        mobileNav.classList.remove("show");
-        burger.setAttribute("aria-expanded", "false");
-      }));
-    }
-
-    // ---------------------------
-    // Active nav (non-sticky)
-    // ---------------------------
-    const navLinks = $$("nav .navlink");
-    const navLinksMobile = $$("#mobileNav .navlink");
-
-    function setActive(hash){
-      const all = [...navLinks, ...navLinksMobile];
-      all.forEach(l => l.classList.remove("active"));
-      all.forEach(l => { if (l.getAttribute("href") === hash) l.classList.add("active"); });
-    }
-
-    $$('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const target = document.querySelector(id);
-        if (!target) return;
-
-        e.preventDefault();
-        setActive(id);
-        target.scrollIntoView({behavior:"smooth", block:"start"});
-        history.pushState(null, "", id);
-      });
-    });
-
-    const sectionIds = ["home","news","leagues","signals","about"];
-    const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-
-    function getActiveSectionId(){
-      const offset = 110;
-      let best = null;
-      let bestDist = Infinity;
-
-      for (const el of sectionEls){
-        const r = el.getBoundingClientRect();
-        const dist = Math.abs(r.top - offset);
-        const penalty = (r.bottom < offset) ? 99999 : 0;
-        const score = dist + penalty;
-        if (score < bestDist){ bestDist = score; best = el; }
-      }
-      return best ? ("#" + best.id) : "#home";
-    }
-
-    let ticking = false;
-    function onScroll(){
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        setActive(getActiveSectionId());
-        ticking = false;
-      });
-    }
-    window.addEventListener("scroll", onScroll, {passive:true});
-    window.addEventListener("resize", onScroll);
-
-    // ---------------------------
-    // Static lists (starter)
-    // ---------------------------
-    const leagues = [
-      "Premier League","La Liga","Serie A","Bundesliga","Ligue 1",
-      "Eredivisie","Primeira Liga","Süper Lig","MLS","Brasileirão",
-      "Argentine Primera","J1 League","Saudi Pro League","Belgian Pro League","Scottish Premiership",
-      "Austrian Bundesliga","Swiss Super League","Danish Superliga","Norwegian Eliteserien","Swedish Allsvenskan"
-    ];
-
-    const signals = [
-      {title:"Late Goal Heat", desc:"Leagues with the highest 75+ minute volatility today.", tag:"LIVE", kind:"live"},
-      {title:"First Goal Impact", desc:"Where the opening goal most often decides the match.", tag:"MODEL", kind:"model"},
-      {title:"Momentum Shifts", desc:"Goal timing and response — who collapses, who resets, who strikes again.", tag:"TRACK", kind:"track"},
-    ];
-
-    function renderSignals(containerId, list){
-      const el = document.getElementById(containerId);
-      if (!el) return;
-      el.innerHTML = "";
-      list.forEach(s => {
-        const row = document.createElement("div");
-        row.className = "item";
-        row.innerHTML = `
-          <div>
-            <strong>${s.title}</strong>
-            <p>${s.desc}</p>
-          </div>
-          <span class="tag ${s.kind}">${s.tag}</span>
-        `;
-        el.appendChild(row);
-      });
-    }
-
-    function renderMiniSignals(){
-      const el = document.getElementById("miniSignals");
-      if (!el) return;
-      el.innerHTML = "";
-      signals.forEach(s => {
-        const row = document.createElement("div");
-        row.className = "item";
-        row.innerHTML = `
-          <div>
-            <strong>${s.title}</strong>
-            <p>${s.desc}</p>
-          </div>
-          <span class="tag ${s.kind}">${s.tag}</span>
-        `;
-        el.appendChild(row);
-      });
-    }
-
-    function renderLeagues(){
-      const el = document.getElementById("leagueChips");
-      if (!el) return;
-      el.innerHTML = "";
-      leagues.forEach(name => {
-        const chip = document.createElement("div");
-        chip.className = "chip";
-        chip.innerHTML = `<span class="miniDot"></span>${name}`;
-        el.appendChild(chip);
-      });
-    }
-
-    renderSignals("signalsList", signals);
-    renderSignals("signalsList2", signals);
-    renderMiniSignals();
-    renderLeagues();
-
-    // Footer year
-    const year = document.getElementById("year");
-    if (year) year.textContent = new Date().getFullYear();
-
-    // Initial active state
-    setActive(location.hash && document.querySelector(location.hash) ? location.hash : "#home");
-    onScroll();
-
-    // ---------------------------
-    // AI NEWS (GitHub Pages JSON)
-    // You created: assets/data/ai-news.json
-    // ---------------------------
-    const NEWS_URL = "assets/data/ai-news.json"; // IMPORTANT: matches your repo path
-    const newsList = document.getElementById("newsList");
-    const newsMeta = document.getElementById("newsMeta");
-
-    function safeText(v){ return (v ?? "").toString(); }
-
-    function renderNews(items, meta){
-      if (!newsList) return;
-      newsList.innerHTML = "";
-
-      if (!Array.isArray(items) || items.length === 0){
-        newsList.innerHTML = `
-          <div class="item">
-            <div>
-              <strong>No AI news yet</strong>
-              <p>Add items into <code>${NEWS_URL}</code>.</p>
-            </div>
-            <span class="tag track">EMPTY</span>
-          </div>
-        `;
-        if (newsMeta) newsMeta.textContent = "0 items";
-        return;
-      }
-
-      items.slice(0, 12).forEach(n => {
-        const title = safeText(n.title || n.headline || "Update");
-        const desc = safeText(n.summary || n.desc || n.description || "");
-        const url  = safeText(n.url || n.link || "");
-        const src  = safeText(n.source || "");
-        const time = safeText(n.time || n.published || n.date || "");
-
-        const subtitleParts = [src, time].filter(Boolean).join(" • ");
-        const subtitle = subtitleParts ? subtitleParts : "Net Thud AI feed";
-
-        const row = document.createElement("div");
-        row.className = "item";
-        row.innerHTML = `
-          <div>
-            <strong>${title}</strong>
-            <p>${desc ? desc : subtitle}</p>
-            ${url ? `<p style="margin-top:10px"><a class="pill" href="${url}" target="_blank" rel="noopener noreferrer">Open source →</a></p>` : ``}
-          </div>
-          <span class="tag live">NEW</span>
-        `;
-        newsList.appendChild(row);
-      });
-
-      const count = Array.isArray(items) ? items.length : 0;
-      const updated = meta?.updated || meta?.lastUpdated || meta?.generatedAt || "";
-      if (newsMeta) newsMeta.textContent = updated ? `${count} items • updated ${updated}` : `${count} items`;
-    }
-
-    async function loadNews(){
-      try{
-        const res = await fetch(NEWS_URL, { cache: "no-store" });
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        const data = await res.json();
-
-        // Accept either:
-        // 1) { meta:{...}, items:[...] }
-        // 2) [ ... ]
-        const items = Array.isArray(data) ? data : (data.items || data.news || data.articles || []);
-        const meta  = Array.isArray(data) ? null : (data.meta || null);
-
-        renderNews(items, meta);
-      }catch(err){
-        if (!newsList) return;
-        newsList.innerHTML = `
-          <div class="item">
-            <div>
-              <strong>AI news not loading</strong>
-              <p>
-                Check that <code>${NEWS_URL}</code> is committed to <strong>main</strong> and is accessible on your site.
-                (Error: ${safeText(err.message)})
-              </p>
-            </div>
-            <span class="tag error">ERROR</span>
-          </div>
-        `;
-        if (newsMeta) newsMeta.textContent = "error";
-      }
-    }
-
-    loadNews();
-    // Optional: refresh every 60 seconds (still GitHub-backed, not true “live”)
-    setInterval(loadNews, 60000);
-
-    // ---------------------------
-    // SOUND: play on first interaction
-    // ---------------------------
-    const thud = document.getElementById("sfxThud");
-    const crowd = document.getElementById("sfxCrowd");
-    const soundToggle = document.getElementById("soundToggle");
-    const soundLabel = document.getElementById("soundLabel");
-
-    let soundEnabled = true;
-    let playedOnce = false;
-
-    function stopAudio(){
-      if (thud){ thud.pause(); thud.currentTime = 0; }
-      if (crowd){ crowd.pause(); crowd.currentTime = 0; }
-    }
-    function setSoundUI(){
-      if (!soundToggle) return;
-      soundToggle.classList.toggle("off", !soundEnabled);
-      soundToggle.setAttribute("aria-pressed", soundEnabled ? "true" : "false");
-      if (soundLabel) soundLabel.textContent = soundEnabled ? "Sound: ON" : "Sound: OFF";
-    }
-    setSoundUI();
-
-    async function playVibe(){
-      if (!soundEnabled || playedOnce) return;
-      if (!thud || !crowd) return;
-
-      try{
-        thud.volume = 0.82;
-        crowd.volume = 0.55;
-
-        thud.currentTime = 0;
-        crowd.currentTime = 0;
-
-        await thud.play();
-
-        setTimeout(() => {
-          crowd.play().catch(()=>{});
-          setTimeout(() => {
-            if (crowd){ crowd.pause(); crowd.currentTime = 0; }
-          }, 2300);
-        }, 180);
-
-        playedOnce = true;
-      }catch(e){
-        playedOnce = false;
-      }
-    }
-
-    ["pointerdown","touchstart","wheel","keydown"].forEach(evt => {
-      window.addEventListener(evt, playVibe, { once:true, passive:true });
-    });
-
-    if (soundToggle){
-      soundToggle.addEventListener("click", async () => {
-        soundEnabled = !soundEnabled;
-        setSoundUI();
-        if (!soundEnabled) stopAudio();
-        else await playVibe();
-      });
-    }
-
-    document.addEventListener("visibilitychange", () => { if (document.hidden) stopAudio(); });
-  </script>
+  <!-- App logic -->
+  <script src="assets/app.js" defer></script>
 </body>
 </html>
