@@ -50,6 +50,10 @@ jobs:
       # TRANSFERS
       # -----------------------------
       - name: Generate transfers.json
+        env:
+          NETTHUD_TRANSFERS_MODE: "demo"
+          NETTHUD_SITE_URL: "https://netthud.com/"
+          NETTHUD_TRANSFERS_ITEMS: "8"
         run: |
           node scripts/generate-transfers.mjs
 
@@ -71,6 +75,6 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Update scores & upcoming matches"
+          git commit -m "Update scores, upcoming & transfers"
           git pull --rebase origin main
           git push origin main
