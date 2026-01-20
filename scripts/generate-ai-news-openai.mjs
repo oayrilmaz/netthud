@@ -1,41 +1,17 @@
 import fs from "fs";
 
-const OUTPUT = "assets/data/ai-news.json";
+const OUT = "assets/data/ai-news.json";
 
-if (!process.env.OPENAI_API_KEY) {
-  console.error("OPENAI_API_KEY is missing");
-  process.exit(1);
+function safeJsonParse(text) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return [];
+  }
 }
 
-const prompt = `
-Return ONLY valid JSON.
-No markdown.
-No explanation.
-
-Schema:
-{
-  "updatedAt": "ISO_DATE",
-  "items": [
-    {
-      "title": "string",
-      "summary": "string",
-      "league": "string",
-      "teams": ["string"],
-      "confidence": 0-100
-    }
-  ]
-}
-
-Rules:
-- Football only
-- Tactical or performance insight
-- No links
-- No ESPN / BBC
-- Max 10 items
-`;
-
-async function run() {
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+async function main() {
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -43,38 +19,40 @@ async function run() {
     },
     body: JSON.stringify({
       model: "gpt-4o-mini",
-      temperature: 0.3,
       messages: [
-        { role: "system", content: "You are a football match analyst." },
-        { role: "user", content: prompt }
+        {
+          role: "system",
+          content:
+            "Return ONLY valid JSON array. No markdown. No commentary."
+        },
+        {
+          role: "user",
+          content:
+            "Generate 10 short football news items. Fields: title, source, date, url."
+        }
       ]
     })
   });
 
-  const data = await response.json();
+  const data = await res.json();
+  const text = data.choices?.[0]?.message?.content || "[]";
 
-  const content = data?.choices?.[0]?.message?.content;
-  if (!content) {
-    console.error("Invalid OpenAI response:", data);
-    process.exit(1);
-  }
-
-  let parsed;
-  try {
-    parsed = JSON.parse(content);
-  } catch (err) {
-    console.error("FAILED TO PARSE JSON:");
-    console.error(content);
-    process.exit(1);
-  }
+  const items = safeJsonParse(text);
 
   fs.writeFileSync(
-    OUTPUT,
-    JSON.stringify(parsed, null, 2),
-    "utf-8"
+    OUT,
+    JSON.stringify(
+      {
+        updated: new Date().toISOString(),
+        count: items.length,
+        items
+      },
+      null,
+      2
+    )
   );
 
-  console.log("AI news written to", OUTPUT);
+  console.log("AI News updated:", items.length);
 }
 
-run();
+main();
