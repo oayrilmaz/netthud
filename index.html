@@ -4,8 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Net Thud — Goal Intelligence</title>
-
-  <meta name="description" content="Net Thud tracks decisive football moments. Final scores first. AI intelligence next." />
+  <meta name="description" content="Net Thud tracks decisive football moments. Scores, upcoming + TV, transfers, and AI signals." />
 
   <style>
     :root{
@@ -14,136 +13,47 @@
       --text:#eaeef3;
       --muted:#9aa3ad;
       --accent:#78ff6a;
+      --warn:#ffd166;
       --border:rgba(255,255,255,.08);
       --radius:16px;
       --container:1100px;
     }
-
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      background:var(--bg);
-      color:var(--text);
-    }
-
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text)}
     a{color:inherit;text-decoration:none}
-
-    .container{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:24px;
-    }
-
-    header{
-      border-bottom:1px solid var(--border);
-      background:#0f1218;
-    }
-
-    .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      height:64px;
-    }
-
-    .brand{
-      font-weight:900;
-      letter-spacing:.14em;
-      font-size:13px;
-    }
-
-    .subtitle{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:2px;
-    }
-
-    main{padding:40px 0}
-
-    h1{
-      font-size:42px;
-      margin:0 0 12px;
-    }
-
-    p.lead{
-      color:var(--muted);
-      max-width:60ch;
-      line-height:1.7;
-      margin-bottom:36px;
-    }
-
-    section{margin-bottom:48px}
-
-    .sectionTitle{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:16px;
-    }
-
-    .sectionTitle h2{
-      font-size:13px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-
-    .hint{
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:20px;
-    }
-
-    .list{
-      display:grid;
-      gap:14px;
-    }
-
-    .item{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      padding:14px 16px;
-      border-radius:12px;
-      background:#0f131b;
-      border:1px solid var(--border);
-    }
-
-    .item strong{
-      font-size:15px;
-      display:block;
-    }
-
-    .item p{
-      margin:6px 0 0;
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    .tag{
-      font-size:11px;
-      font-weight:800;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(120,255,106,.3);
-      color:var(--accent);
-      white-space:nowrap;
-    }
-
-    footer{
-      border-top:1px solid var(--border);
-      padding:20px 0;
-      font-size:12px;
-      color:var(--muted);
-      text-align:center;
-    }
+    .container{max-width:var(--container);margin:0 auto;padding:24px}
+    header{border-bottom:1px solid var(--border);background:#0f1218;position:sticky;top:0;z-index:10}
+    .nav{display:flex;justify-content:space-between;align-items:center;height:64px;gap:12px}
+    .brand{font-weight:900;letter-spacing:.14em;font-size:13px}
+    .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+    .right{display:flex;align-items:center;gap:10px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:12px;color:var(--muted)}
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 12px rgba(120,255,106,.35)}
+    main{padding:28px 0 40px}
+    h1{font-size:42px;margin:0 0 12px}
+    p.lead{color:var(--muted);max-width:70ch;line-height:1.7;margin:0 0 26px}
+    .grid{display:grid;gap:18px}
+    @media(min-width:980px){.grid.two{grid-template-columns:1fr 1fr}}
+    section{margin:26px 0}
+    .sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .sectionTitle h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0}
+    .hint{font-size:12px;color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+    .list{display:grid;gap:12px}
+    .item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 14px;border-radius:12px;background:#0f131b;border:1px solid var(--border)}
+    .item strong{font-size:15px;display:block}
+    .item p{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.35}
+    .tag{font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;border:1px solid rgba(120,255,106,.3);color:var(--accent);white-space:nowrap}
+    .tag.warn{border-color:rgba(255,209,102,.35);color:var(--warn)}
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:13px;color:var(--text)}
+    .chip .dot{width:10px;height:10px}
+    footer{border-top:1px solid var(--border);padding:20px 0;font-size:12px;color:var(--muted);text-align:center;margin-top:28px}
+    .muted{color:var(--muted)}
+    .btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:#0f131b;font-weight:800;font-size:13px}
+    .btn.primary{border-color:rgba(120,255,106,.25);box-shadow:0 0 0 1px rgba(120,255,106,.08) inset}
+    .btn:active{transform:translateY(1px)}
   </style>
 </head>
 
@@ -155,37 +65,82 @@
       <div class="brand">NET THUD</div>
       <div class="subtitle">Goal Intelligence</div>
     </div>
+    <div class="right">
+      <div class="pill"><span class="dot"></span>Sound: <strong id="soundState">ON</strong></div>
+      <a class="pill" href="https://x.com/netthudpro" target="_blank" rel="noopener">@netthudpro</a>
+    </div>
   </div>
 </header>
 
 <main class="container">
 
-  <!-- HERO -->
   <section>
     <h1>At the moment it matters.</h1>
     <p class="lead">
-      Net Thud focuses on completed football matches and decisive outcomes.
-      No noise. No guessing. Final scores first — intelligence next.
+      Net Thud focuses on decisive outcomes and match context — with a clean pipeline.
+      Scores & schedules are data-driven. Signals come next.
     </p>
+
+    <div class="btnRow">
+      <a class="btn primary" href="#finalScores">Final scores</a>
+      <a class="btn" href="#upcoming">Upcoming + TV</a>
+      <a class="btn" href="#transfers">Transfer desk</a>
+      <a class="btn" href="#aiNews">AI news</a>
+      <a class="btn" href="#leagues">Leagues</a>
+    </div>
   </section>
 
-  <!-- FINAL SCORES -->
-  <section id="scores">
-    <div class="sectionTitle">
-      <h2>Final Scores</h2>
-      <span class="hint">Completed matches</span>
-    </div>
+  <div class="grid two">
 
-    <div class="card">
-      <div id="scoresList" class="list">
-        <div class="item">
-          <div>
-            <strong>Loading scores…</strong>
-            <p>Reading assets/data/scores.json</p>
-          </div>
-          <span class="tag">FT</span>
-        </div>
+    <section id="finalScores">
+      <div class="sectionTitle">
+        <h2>Final Scores</h2>
+        <span class="hint" id="scoresMeta">Loading…</span>
       </div>
+      <div class="card">
+        <div id="scoresList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="upcoming">
+      <div class="sectionTitle">
+        <h2>Upcoming + TV</h2>
+        <span class="hint" id="upcomingMeta">Loading…</span>
+      </div>
+      <div class="card">
+        <div id="upcomingList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="transfers">
+      <div class="sectionTitle">
+        <h2>Transfer Desk</h2>
+        <span class="hint" id="transfersMeta">Loading…</span>
+      </div>
+      <div class="card">
+        <div id="transfersList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="aiNews">
+      <div class="sectionTitle">
+        <h2>AI News</h2>
+        <span class="hint" id="newsMeta">Loading…</span>
+      </div>
+      <div class="card">
+        <div id="newsList" class="list"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <section id="leagues">
+    <div class="sectionTitle">
+      <h2>Leagues</h2>
+      <span class="hint" id="leaguesMeta">Loading…</span>
+    </div>
+    <div class="card">
+      <div id="leagueChips" class="chips"></div>
     </div>
   </section>
 
@@ -196,59 +151,217 @@
 </footer>
 
 <script>
-  const SCORES_URL = "assets/data/scores.json";
-  const scoresList = document.getElementById("scoresList");
+  const PATHS = {
+    scores:   "assets/data/scores.json",
+    upcoming: "assets/data/upcoming.json",
+    transfers:"assets/data/transfers.json",
+    news:     "assets/data/ai-news.json",
+    leagues:  "leagues.json"
+  };
 
-  function renderScores(matches){
-    scoresList.innerHTML = "";
+  const $ = (id) => document.getElementById(id);
 
-    if (!matches || matches.length === 0) {
-      scoresList.innerHTML = `
-        <div class="item">
-          <div>
-            <strong>No final scores yet</strong>
-            <p>Matches will appear here once completed.</p>
-          </div>
-          <span class="tag">—</span>
-        </div>`;
-      return;
-    }
-
-    matches.forEach(m => {
-      const row = document.createElement("div");
-      row.className = "item";
-      row.innerHTML = `
-        <div>
-          <strong>${m.home} ${m.homeScore}–${m.awayScore} ${m.away}</strong>
-          <p>${m.league} • ${m.date}</p>
-        </div>
-        <span class="tag">FT</span>
-      `;
-      scoresList.appendChild(row);
-    });
+  function row(title, meta, tagText, tagClass="") {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.innerHTML = `
+      <div>
+        <strong>${title}</strong>
+        <p>${meta}</p>
+      </div>
+      <span class="tag ${tagClass}">${tagText}</span>
+    `;
+    return d;
   }
 
-  async function loadScores(){
+  function emptyState(container, title, meta) {
+    container.innerHTML = "";
+    container.appendChild(row(title, meta, "EMPTY", "warn"));
+  }
+
+  async function readJson(url) {
+    const res = await fetch(url, { cache:"no-store" });
+    if (!res.ok) throw new Error(`Missing: ${url}`);
+    return res.json();
+  }
+
+  async function loadScores() {
+    const list = $("scoresList");
+    const meta = $("scoresMeta");
     try {
-      const res = await fetch(SCORES_URL, { cache:"no-store" });
-      if (!res.ok) throw new Error("scores.json not found");
-      const data = await res.json();
-      renderScores(data.matches);
+      const data = await readJson(PATHS.scores);
+      const matches = data.matches || [];
+      meta.textContent = `${matches.length} • updated ${data.generatedAt || "—"}`;
+
+      list.innerHTML = "";
+      if (!matches.length) return emptyState(list, "No final scores yet", "Matches will appear here once completed.");
+
+      matches.forEach(m => {
+        list.appendChild(
+          row(
+            `${m.home} ${m.homeScore}–${m.awayScore} ${m.away}`,
+            `${m.league} • ${m.date}`,
+            "FT"
+          )
+        );
+      });
     } catch (e) {
-      scoresList.innerHTML = `
-        <div class="item">
-          <div>
-            <strong>Error loading scores</strong>
-            <p>Check assets/data/scores.json</p>
-          </div>
-          <span class="tag">ERR</span>
-        </div>`;
+      meta.textContent = "error";
+      list.innerHTML = "";
+      list.appendChild(row("Scores not loading", e.message, "ERR", "warn"));
       console.error(e);
     }
   }
 
+  async function loadUpcoming() {
+    const list = $("upcomingList");
+    const meta = $("upcomingMeta");
+    try {
+      const data = await readJson(PATHS.upcoming);
+      const items = data.items || [];
+      meta.textContent = `${items.length} • updated ${data.generatedAt || "—"}`;
+
+      list.innerHTML = "";
+      if (!items.length) return emptyState(list, "No upcoming games yet", "Populate assets/data/upcoming.json");
+
+      items.forEach(g => {
+        const channels = (g.tv || []).join(", ");
+        list.appendChild(
+          row(
+            `${g.home} vs ${g.away}`,
+            `${g.league} • ${g.kickoffLocal || g.kickoffUTC || ""}${channels ? " • " + channels : ""}`,
+            "UP"
+          )
+        );
+      });
+    } catch (e) {
+      meta.textContent = "error";
+      list.innerHTML = "";
+      list.appendChild(row("Upcoming not loading", e.message, "ERR", "warn"));
+      console.error(e);
+    }
+  }
+
+  async function loadTransfers() {
+    const list = $("transfersList");
+    const meta = $("transfersMeta");
+    try {
+      const data = await readJson(PATHS.transfers);
+      const items = data.items || [];
+      meta.textContent = `${items.length} • updated ${data.generatedAt || "—"}`;
+
+      list.innerHTML = "";
+      if (!items.length) return emptyState(list, "No transfer items yet", "Populate assets/data/transfers.json");
+
+      items.forEach(t => {
+        list.appendChild(
+          row(
+            t.title,
+            `${t.source || "source"} • ${t.publishedAt || ""}`,
+            "NEW"
+          )
+        );
+      });
+    } catch (e) {
+      meta.textContent = "error";
+      list.innerHTML = "";
+      list.appendChild(row("Transfers not loading", e.message, "ERR", "warn"));
+      console.error(e);
+    }
+  }
+
+  async function loadNews() {
+    const list = $("newsList");
+    const meta = $("newsMeta");
+    try {
+      const data = await readJson(PATHS.news);
+      const items = data.items || [];
+      meta.textContent = `${items.length} • updated ${data.generatedAt || "—"}`;
+
+      list.innerHTML = "";
+      if (!items.length) return emptyState(list, "No news items yet", "Populate assets/data/ai-news.json");
+
+      items.slice(0, 10).forEach(n => {
+        const el = document.createElement("a");
+        el.href = n.url || "#";
+        el.target = "_blank";
+        el.rel = "noopener";
+        el.className = "item";
+        el.innerHTML = `
+          <div>
+            <strong>${n.title || "News item"}</strong>
+            <p>${n.source || ""}${n.publishedAt ? " • " + (n.publishedAt.slice(0,10)) : ""}${n.summary ? " • " + n.summary : ""}</p>
+          </div>
+          <span class="tag">OPEN</span>
+        `;
+        list.appendChild(el);
+      });
+    } catch (e) {
+      meta.textContent = "error";
+      list.innerHTML = "";
+      list.appendChild(row("AI News not loading", e.message, "ERR", "warn"));
+      console.error(e);
+    }
+  }
+
+  async function loadLeagues() {
+    const container = $("leagueChips");
+    const meta = $("leaguesMeta");
+    try {
+      const data = await readJson(PATHS.leagues);
+      const leagues = Array.isArray(data) ? data : (data.leagues || []);
+      meta.textContent = `${leagues.length} tracked`;
+
+      container.innerHTML = "";
+      leagues.forEach(l => {
+        const el = document.createElement("div");
+        el.className = "chip";
+        el.innerHTML = `<span class="dot"></span>${l.name || l}`;
+        container.appendChild(el);
+      });
+    } catch (e) {
+      meta.textContent = "error";
+      container.innerHTML = "";
+      container.appendChild(row("Leagues not loading", e.message, "ERR", "warn"));
+      console.error(e);
+    }
+  }
+
+  // Sound toggle (simple + safe)
+  const SOUND_KEY = "netthud_sound";
+  function setSoundUI(on){ $("soundState").textContent = on ? "ON" : "OFF"; }
+  function getSound(){ return localStorage.getItem(SOUND_KEY) !== "0"; }
+  function setSound(on){ localStorage.setItem(SOUND_KEY, on ? "1" : "0"); setSoundUI(on); }
+  function beep(){
+    if (!getSound()) return;
+    try{
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = ctx.createOscillator(); const g = ctx.createGain();
+      o.type="sine"; o.frequency.value=440; g.gain.value=0.02;
+      o.connect(g); g.connect(ctx.destination);
+      o.start(); setTimeout(()=>{o.stop(); ctx.close();}, 80);
+    }catch{}
+  }
+
   document.getElementById("year").textContent = new Date().getFullYear();
-  document.addEventListener("DOMContentLoaded", loadScores);
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    setSoundUI(getSound());
+    // Tap the sound pill to toggle
+    document.querySelector(".pill").addEventListener("click", (e)=>{
+      // only toggle on the first pill (Sound)
+      if (!e.currentTarget.textContent.includes("Sound")) return;
+      const on = !getSound();
+      setSound(on);
+      beep();
+    });
+
+    await loadScores();
+    await loadUpcoming();
+    await loadTransfers();
+    await loadNews();
+    await loadLeagues();
+  });
 </script>
 
 </body>
