@@ -161,7 +161,6 @@
 
   const $ = (id) => document.getElementById(id);
 
-  // ✅ harden against JSON content breaking HTML
   function esc(s){
     return String(s ?? "")
       .replaceAll("&","&amp;")
@@ -197,7 +196,7 @@
   }
 
   // ✅ supports BOTH schemas:
-  // - { items: [] } (your current)
+  // - { items: [] } (new)
   // - { matches: [] } (old)
   async function loadScores() {
     const list = $("scoresList");
@@ -214,21 +213,19 @@
       list.innerHTML = "";
       if (!count) return emptyState(list, "No final scores yet", "Matches will appear here once completed.");
 
-      // If new schema exists, render it
+      // New schema
       if (items.length) {
         items.forEach(m => {
-          list.appendChild(
-            row(
-              `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim(),
-              `${m.league || ""}${m.when ? " • " + m.when : ""}${m.status ? " • " + m.status : ""}`,
-              m.status || "FT"
-            )
-          );
+          const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+          const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}${m.status ? " • " + m.status : ""}`;
+          const tag = m.status || "FT";
+          const tagClass = (tag === "FT") ? "" : (tag === "LIVE" || tag === "HT") ? "" : "warn";
+          list.appendChild(row(title, metaLine, tag, tagClass));
         });
         return;
       }
 
-      // Else render old matches schema
+      // Old schema
       matches.forEach(m => {
         list.appendChild(
           row(
@@ -238,6 +235,7 @@
           )
         );
       });
+
     } catch (e) {
       meta.textContent = "error";
       list.innerHTML = "";
