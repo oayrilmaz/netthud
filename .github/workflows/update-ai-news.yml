@@ -5,25 +5,35 @@ on:
   schedule:
     - cron: "*/30 * * * *"
 
+permissions:
+  contents: write
+
+concurrency:
+  group: update-ai-news
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "20"
+          cache: npm
 
-      - run: npm install openai
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Generate AI News
+      - name: Generate assets/data/ai-news.json
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node scripts/generate-ai-news-openai.mjs
 
-      - name: Commit if changed
+      - name: Commit & push if changed
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
