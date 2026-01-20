@@ -3,7 +3,7 @@ name: NetThud - Update AI News (OpenAI)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 * * * *" # hourly at :15 UTC
+    - cron: "15 * * * *" # every hour at :15 UTC
 
 permissions:
   contents: write
@@ -15,40 +15,37 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      # IMPORTANT: Pull BEFORE generating files to avoid non-fast-forward & unstaged errors
       - name: Sync with latest main
         run: |
           git fetch origin main
           git checkout main
           git reset --hard origin/main
 
-      - name: Generate AI News (OpenAI)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate assets/data/ai-news.json
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: gpt-4o-mini
-        run: |
-          node scripts/generate-ai-news-openai.mjs
+        run: node scripts/generate-ai-news-openai.mjs
 
       - name: Commit & push if changed
         run: |
-          git status --porcelain
-          if [ -n "$(git status --porcelain)" ]; then
+          if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add assets/data/ai-news.json
+            git add -A
             git commit -m "Update ai-news.json"
-            git push origin main
+            git push
           else
             echo "No changes to commit."
           fi
