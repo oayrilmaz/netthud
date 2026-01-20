@@ -1,86 +1,425 @@
 {
-  "updatedAt": "2023-10-01T00:00:00Z",
+  "updatedAt": "2026-01-20T06:56:56.819Z",
   "items": [
     {
-      "title": "Defensive Solidity of Napoli",
-      "summary": "Napoli has shown remarkable defensive organization, limiting opponents to an average of 1.2 shots on target per match in the last five games.",
-      "league": "Serie A",
-      "teams": [
-        "Napoli"
+      "id": "1",
+      "title": "Rising Stars: Youth Talent Shines in Premier League",
+      "summary": "An analysis of the impact of young players in the Premier League this season shows a promising trend for the future of English football.",
+      "tags": [
+        "youth",
+        "Premier League",
+        "talent",
+        "football"
       ],
-      "confidence": 85
+      "createdAt": "2023-10-01T09:00:00Z",
+      "source": "NetThud AI",
+      "url": ""
     },
     {
-      "title": "Manchester City's Possession Dominance",
-      "summary": "Manchester City maintains an average possession rate of 68% this season, allowing them to control the tempo and create more scoring opportunities.",
-      "league": "Premier League",
-      "teams": [
-        "Manchester City"
+      "id": "2",
+      "title": "Tactical Evolution: Teams Embrace Fluid Formations",
+      "summary": "With more clubs adopting fluid formations, the tactical landscape of football is undergoing significant changes that impact match outcomes.",
+      "tags": [
+        "tactics",
+        "formation",
+        "football",
+        "analysis"
       ],
-      "confidence": 90
+      "createdAt": "2023-10-01T09:15:00Z",
+      "source": "NetThud AI",
+      "url": ""
     },
     {
-      "title": "Barcelona's High Press Effectiveness",
-      "summary": "Barcelona's high pressing strategy has resulted in a 30% increase in turnovers in the opponent's half, leading to more goal-scoring chances.",
-      "league": "La Liga",
-      "teams": [
-        "Barcelona"
+      "id": "3",
+      "title": "Injury Woes: Key Players Side-lined Ahead of Critical Matches",
+      "summary": "As injuries mount, teams face tough decisions about squad depth and strategy in the lead-up to crucial fixtures.",
+      "tags": [
+        "injury",
+        "squad",
+        "strategy",
+        "football"
       ],
-      "confidence": 80
+      "createdAt": "2023-10-01T09:30:00Z",
+      "source": "NetThud AI",
+      "url": ""
     },
     {
-      "title": "Bayern Munich's Counter-Attacking Prowess",
-      "summary": "Bayern Munich has successfully executed counter-attacks leading to goals in 50% of their matches this season, showcasing their speed and precision.",
-      "league": "Bundesliga",
-      "teams": [
-        "Bayern Munich"
+      "id": "4",
+      "title": "Goalkeeping Revolution: The Rise of Sweeper Keepers",
+      "summary": "The role of the goalkeeper is evolving, with more players adopting the sweeper-keeper style, changing how teams defend.",
+      "tags": [
+        "goalkeeping",
+        "sweeper",
+        "defense",
+        "football"
       ],
-      "confidence": 88
+      "createdAt": "2023-10-01T09:45:00Z",
+      "source": "NetThud AI",
+      "url": ""
     },
     {
-      "title": "Inter Milan's Set-Piece Threat",
-      "summary": "Inter Milan has scored 40% of their goals from set-pieces, indicating a strong tactical focus on dead-ball situations.",
-      "league": "Serie A",
-      "teams": [
-        "Inter Milan"
+      "id": "5",
+      "title": "VAR Controversies: The Debate Continues",
+      "summary": "As VAR decisions spark heated discussions, the technology's place in football remains contentious among fans and players alike.",
+      "tags": [
+        "VAR",
+        "controversy",
+        "technology",
+        "football"
       ],
-      "confidence": 75
+      "createdAt": "2023-10-01T10:00:00Z",
+      "source": "NetThud AI",
+      "url": ""
     },
     {
-      "title": "Arsenal's Young Talent Integration",
-      "summary": "Arsenal's integration of young players has led to a 25% increase in goal contributions from under-23 players this season, highlighting their future potential.",
-      "league": "Premier League",
-      "teams": [
-        "Arsenal"
+      "id": "6",
+      "title": "Midfield Mastery: The Importance of Control",
+      "summary": "An in-depth look at how dominant midfielders are shaping the flow of games and their teams' success this season.",
+      "tags": [
+        "midfield",
+        "control",
+        "strategy",
+        "football"
       ],
-      "confidence": 82
+      "createdAt": "2023-10-01T10:15:00Z",
+      "source": "NetThud AI",
+      "url": ""
     },
     {
-      "title": "Juventus' Midfield Control",
-      "summary": "Juventus has dominated midfield battles, winning 60% of duels, which has been crucial for their possession and build-up play.",
-      "league": "Serie A",
-      "teams": [
-        "Juventus"
+      "id": "7",
+      "title": "Defensive Strategies: The Art of Counter-Pressing",
+      "summary": "Counter-pressing has become a key strategy for teams looking to regain possession quickly, altering traditional defensive tactics.",
+      "tags": [
+        "defense",
+        "counter-pressing",
+        "strategy",
+        "football"
       ],
-      "confidence": 78
+      "createdAt": "2023-10-01T10:30:00Z",
+      "source": "NetThud AI",
+      "url": ""
     },
     {
-      "title": "Liverpool's Transition Speed",
-      "summary": "Liverpool's ability to transition quickly from defense to attack has resulted in a 20% increase in fast-break goals this season.",
-      "league": "Premier League",
-      "teams": [
-        "Liverpool"
+      "id": "8",
+      "title": "Fan Engagement: How Clubs Connect with Supporters",
+      "summary": "Clubs are leveraging technology to enhance fan engagement, creating new opportunities for interaction and loyalty.",
+      "tags": [
+        "fan engagement",
+        "technology",
+        "loyalty",
+        "football"
       ],
-      "confidence": 85
+      "createdAt": "2023-10-01T10:45:00Z",
+      "source": "NetThud AI",
+      "url": ""
     },
     {
-      "title": "Real Madrid's Versatile Attack",
-      "summary": "Real Madrid's attacking versatility, with multiple players contributing to goals, has made them unpredictable and difficult to defend against.",
-      "league": "La Liga",
-      "teams": [
-        "Real Madrid"
+      "id": "9",
+      "title": "Transfer Trends: The Market's New Dynamics",
+      "summary": "The current transfer market reflects shifting priorities, with clubs increasingly investing in youth over established stars.",
+      "tags": [
+        "transfers",
+        "market",
+        "youth",
+        "football"
       ],
-      "confidence": 87
+      "createdAt": "2023-10-01T11:00:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "10",
+      "title": "Mental Health in Football: A Growing Concern",
+      "summary": "As the pressures of professional football mount, mental health support for players is becoming a crucial aspect of club management.",
+      "tags": [
+        "mental health",
+        "support",
+        "players",
+        "football"
+      ],
+      "createdAt": "2023-10-01T11:15:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "11",
+      "title": "International Break: Implications for Club Form",
+      "summary": "The upcoming international break presents challenges for clubs as they navigate player fatigue and form consistency.",
+      "tags": [
+        "international break",
+        "club form",
+        "challenges",
+        "football"
+      ],
+      "createdAt": "2023-10-01T11:30:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "12",
+      "title": "Coaching Changes: Impact on Team Performance",
+      "summary": "Recent coaching changes across leagues have led to immediate shifts in team performance and tactics.",
+      "tags": [
+        "coaching",
+        "performance",
+        "tactics",
+        "football"
+      ],
+      "createdAt": "2023-10-01T11:45:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "13",
+      "title": "Sustainability in Football: A New Frontier",
+      "summary": "Clubs are increasingly focusing on sustainability initiatives, aiming to reduce their environmental impact while engaging fans.",
+      "tags": [
+        "sustainability",
+        "environment",
+        "clubs",
+        "football"
+      ],
+      "createdAt": "2023-10-01T12:00:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "14",
+      "title": "The Role of Analytics: Data-Driven Decisions",
+      "summary": "As analytics become integral to decision-making, clubs are harnessing data to improve performance on and off the pitch.",
+      "tags": [
+        "analytics",
+        "data",
+        "performance",
+        "football"
+      ],
+      "createdAt": "2023-10-01T12:15:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "15",
+      "title": "Emerging Leagues: The Growth of Football Worldwide",
+      "summary": "The rise of football leagues in non-traditional markets is reshaping the global landscape of the sport.",
+      "tags": [
+        "emerging leagues",
+        "global",
+        "growth",
+        "football"
+      ],
+      "createdAt": "2023-10-01T12:30:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "16",
+      "title": "Women's Football: Breaking Barriers and Setting Records",
+      "summary": "The women's game continues to break barriers, with increasing viewership and support highlighting its growth.",
+      "tags": [
+        "women's football",
+        "growth",
+        "viewership",
+        "records"
+      ],
+      "createdAt": "2023-10-01T12:45:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "17",
+      "title": "Crisis Management: How Clubs Handle Scandals",
+      "summary": "Clubs are facing the challenge of managing crises effectively, balancing public relations and team morale.",
+      "tags": [
+        "crisis management",
+        "scandals",
+        "public relations",
+        "football"
+      ],
+      "createdAt": "2023-10-01T13:00:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "18",
+      "title": "Fan Culture: The Evolution of Supporter Groups",
+      "summary": "Supporter groups are evolving, with a shift towards inclusivity and community engagement in football culture.",
+      "tags": [
+        "fan culture",
+        "supporter groups",
+        "community",
+        "football"
+      ],
+      "createdAt": "2023-10-01T13:15:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "19",
+      "title": "Scouting Networks: The Search for Hidden Gems",
+      "summary": "Clubs are expanding their scouting networks, utilizing technology to uncover hidden talent across the globe.",
+      "tags": [
+        "scouting",
+        "talent",
+        "technology",
+        "football"
+      ],
+      "createdAt": "2023-10-01T13:30:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "20",
+      "title": "Player Development: Investing in the Future",
+      "summary": "Clubs are prioritizing youth academies, recognizing the long-term benefits of investing in player development.",
+      "tags": [
+        "player development",
+        "youth academies",
+        "investment",
+        "football"
+      ],
+      "createdAt": "2023-10-01T13:45:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "21",
+      "title": "Matchday Experience: Enhancing Fan Interaction",
+      "summary": "Clubs are innovating the matchday experience, using technology to create memorable interactions for fans.",
+      "tags": [
+        "matchday",
+        "experience",
+        "interaction",
+        "football"
+      ],
+      "createdAt": "2023-10-01T14:00:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "22",
+      "title": "The Globalization of Football: A Double-Edged Sword",
+      "summary": "As football becomes more globalized, the balance between local culture and international influence is a complex issue for clubs.",
+      "tags": [
+        "globalization",
+        "culture",
+        "clubs",
+        "football"
+      ],
+      "createdAt": "2023-10-01T14:15:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "23",
+      "title": "The Impact of Social Media on Player Reputation",
+      "summary": "Social media plays a significant role in shaping player reputations, impacting their careers and club dynamics.",
+      "tags": [
+        "social media",
+        "reputation",
+        "players",
+        "football"
+      ],
+      "createdAt": "2023-10-01T14:30:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "24",
+      "title": "The Future of Football: Trends to Watch",
+      "summary": "As the sport evolves, several key trends are emerging that could redefine the future of football.",
+      "tags": [
+        "future",
+        "trends",
+        "evolution",
+        "football"
+      ],
+      "createdAt": "2023-10-01T14:45:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "25",
+      "title": "Financial Fair Play: Challenges and Opportunities",
+      "summary": "The Financial Fair Play regulations are reshaping the strategies of clubs, balancing competitiveness with financial responsibility.",
+      "tags": [
+        "financial fair play",
+        "regulations",
+        "competition",
+        "football"
+      ],
+      "createdAt": "2023-10-01T15:00:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "26",
+      "title": "The Role of Technology in Injury Prevention",
+      "summary": "Clubs are increasingly turning to technology to monitor player health and prevent injuries, ensuring squad longevity.",
+      "tags": [
+        "technology",
+        "injury prevention",
+        "health",
+        "football"
+      ],
+      "createdAt": "2023-10-01T15:15:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "27",
+      "title": "Youth Academies: The Backbone of Future Teams",
+      "summary": "A focus on youth academies is crucial for clubs looking to build sustainable success and develop homegrown talent.",
+      "tags": [
+        "youth academies",
+        "sustainability",
+        "talent",
+        "football"
+      ],
+      "createdAt": "2023-10-01T15:30:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "28",
+      "title": "The Importance of Community Engagement in Football",
+      "summary": "Clubs are realizing the significance of community engagement, fostering loyalty and support from local fans.",
+      "tags": [
+        "community",
+        "engagement",
+        "loyalty",
+        "football"
+      ],
+      "createdAt": "2023-10-01T15:45:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "29",
+      "title": "The Evolution of Match Analysis: Beyond the Numbers",
+      "summary": "Match analysis is evolving, with a growing emphasis on qualitative insights to complement traditional statistics.",
+      "tags": [
+        "match analysis",
+        "statistics",
+        "evolution",
+        "football"
+      ],
+      "createdAt": "2023-10-01T16:00:00Z",
+      "source": "NetThud AI",
+      "url": ""
+    },
+    {
+      "id": "30",
+      "title": "The Role of Sports Psychology in Player Performance",
+      "summary": "Understanding the mental aspect of the game is becoming increasingly important for enhancing player performance on the pitch.",
+      "tags": [
+        "sports psychology",
+        "performance",
+        "mental aspect",
+        "football"
+      ],
+      "createdAt": "2023-10-01T16:15:00Z",
+      "source": "NetThud AI",
+      "url": ""
     }
   ]
 }
