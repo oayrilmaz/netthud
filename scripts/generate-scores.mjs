@@ -4,6 +4,8 @@
 // Env:
 //   NETTHUD_SCORES_API_PROVIDER=football-data
 //   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
+// Optional:
+//   NETTHUD_SCORES_DAYS_BACK=7
 
 import fs from "node:fs";
 import path from "node:path";
@@ -31,13 +33,15 @@ function writeJson(filePath, data) {
 }
 
 function mapFootballDataStatus(status) {
-  switch (status) {
+  switch (safeStr(status)) {
     case "FINISHED":
       return "FT";
     case "IN_PLAY":
       return "LIVE";
     case "PAUSED":
       return "HT";
+    case "SUSPENDED":
+      return "LIVE";
     case "TIMED":
     case "SCHEDULED":
       return "UP";
@@ -49,7 +53,6 @@ function mapFootballDataStatus(status) {
 function calcScore(fdMatch) {
   const ft = fdMatch?.score?.fullTime;
   const ht = fdMatch?.score?.halfTime;
-
   const homeFT = ft?.home;
   const awayFT = ft?.away;
 
@@ -78,60 +81,118 @@ function utcMidnight(dateObj) {
   return new Date(Date.UTC(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate()));
 }
 
+async function httpJson(url, token) {
+  const res = await fetch(url, { headers: { "X-Auth-Token": token } });
+  const text = await res.text().catch(() => "");
+  if (!res.ok) {
+    throw new Error(`football-data HTTP ${res.status} ${res.statusText} :: ${text.slice(0, 200)}`);
+  }
+  return JSON.parse(text || "{}");
+}
+
+async function tryFetchMatches(url, token) {
+  try {
+    const json = await httpJson(url, token);
+    const matches = Array.isArray(json?.matches) ? json.matches : [];
+    return matches;
+  } catch (e) {
+    // silently fail, caller will fallback
+    return [];
+  }
+}
+
+function normalizeMatch(m) {
+  const league = leagueNameFromCompetition(m?.competition);
+  const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name);
+  const away = safeStr(m?.awayTeam?.shortName || m?.awayTeam?.name);
+  const score = calcScore(m);
+  const status = mapFootballDataStatus(m?.status);
+  const when = safeStr(m?.utcDate || "").slice(0, 10);
+  return {
+    id: m?.id,
+    league,
+    home,
+    away,
+    score,
+    status,
+    when,
+  };
+}
+
 async function fetchFootballDataScores() {
   const token = env("NETTHUD_SCORES_API_TOKEN");
   if (!token) {
     throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
   }
 
-  // ✅ last 7 days to avoid empty results
+  const daysBack = Math.max(1, parseInt(env("NETTHUD_SCORES_DAYS_BACK", "7"), 10) || 7);
+
+  // ✅ Use UTC midnight boundaries; set dateTo to TOMORROW so "today" is always included.
   const now = new Date();
   const today = utcMidnight(now);
+  const tomorrow = new Date(today);
+  tomorrow.setUTCDate(today.getUTCDate() + 1);
+
   const dateFromD = new Date(today);
-  dateFromD.setUTCDate(today.getUTCDate() - 7);
+  dateFromD.setUTCDate(today.getUTCDate() - daysBack);
 
   const dateFrom = yyyyMmDdUTC(dateFromD);
-  const dateTo = yyyyMmDdUTC(today);
+  const dateTo = yyyyMmDdUTC(tomorrow);
 
-  const url = `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`;
+  // ✅ 1) Try to fetch LIVE right now (some plans/APIs behave better with status queries)
+  const base = "https://api.football-data.org/v4/matches";
+  const liveUrls = [
+    `${base}?status=LIVE`,      // if supported
+    `${base}?status=IN_PLAY`,   // common status
+    `${base}?status=PAUSED`,    // halftime
+  ];
 
-  const res = await fetch(url, {
-    headers: { "X-Auth-Token": token },
-  });
-
-  if (!res.ok) {
-    const t = await res.text().catch(() => "");
-    throw new Error(`football-data HTTP ${res.status} ${res.statusText} :: ${t.slice(0, 200)}`);
+  let liveMatches = [];
+  for (const u of liveUrls) {
+    const ms = await tryFetchMatches(u, token);
+    if (ms.length) {
+      liveMatches = ms;
+      break;
+    }
   }
 
-  const json = await res.json();
-  const matches = Array.isArray(json?.matches) ? json.matches : [];
+  // ✅ 2) Fetch recent results window (finished + any live/paused inside window)
+  const windowUrl = `${base}?dateFrom=${dateFrom}&dateTo=${dateTo}`;
+  const windowJson = await httpJson(windowUrl, token);
+  const windowMatches = Array.isArray(windowJson?.matches) ? windowJson.matches : [];
 
-  // ✅ keep REAL score states only
+  // ✅ Combine + de-dupe by match id
+  const byId = new Map();
+  for (const m of [...windowMatches, ...liveMatches]) {
+    if (!m) continue;
+    const id = m.id ?? `${m?.utcDate || ""}-${m?.homeTeam?.id || ""}-${m?.awayTeam?.id || ""}`;
+    byId.set(id, m);
+  }
+
+  const matches = Array.from(byId.values());
+
+  // ✅ keep REAL score states only (LIVE-like + FINISHED)
   const keep = matches.filter((m) => {
     const st = safeStr(m?.status);
-    return st === "FINISHED" || st === "IN_PLAY" || st === "PAUSED";
+    return st === "FINISHED" || st === "IN_PLAY" || st === "PAUSED" || st === "SUSPENDED" || st === "LIVE";
   });
 
-  // ✅ write your site's schema: { updated, items:[...] }
-  const items = keep.map((m) => {
-    const league = leagueNameFromCompetition(m?.competition);
-    const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name);
-    const away = safeStr(m?.awayTeam?.shortName || m?.awayTeam?.name);
-
-    const score = calcScore(m);
-    const status = mapFootballDataStatus(m?.status);
-    const when = safeStr(m?.utcDate || "").slice(0, 10);
-
-    return { league, home, away, score, status, when };
-  });
+  const items = keep.map(normalizeMatch);
 
   // Sort: LIVE/HT first, then FT (newest first)
   const rank = (s) => (s === "LIVE" ? 0 : s === "HT" ? 1 : 2);
   items.sort((a, b) => {
     const r = rank(a.status) - rank(b.status);
     if (r !== 0) return r;
-    return safeStr(b.when).localeCompare(safeStr(a.when));
+
+    // Prefer most recent date, then stable by league/home
+    const dw = safeStr(b.when).localeCompare(safeStr(a.when));
+    if (dw !== 0) return dw;
+
+    const dl = safeStr(a.league).localeCompare(safeStr(b.league));
+    if (dl !== 0) return dl;
+
+    return safeStr(a.home).localeCompare(safeStr(b.home));
   });
 
   return { updated: isoNow(), items };
