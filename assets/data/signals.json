@@ -1,264 +1,264 @@
 {
-  "updatedAt": "2026-01-20T09:18:31.218Z",
+  "updatedAt": "2026-01-20T10:01:10.899Z",
   "items": [
     {
       "id": "signal-001",
-      "title": "Home Advantage Boost",
-      "signal": "Teams playing at home have won 70% of their last 10 matches.",
-      "whyItMatters": "Home teams often perform better due to familiar conditions and fan support.",
+      "title": "Home Advantage",
+      "signal": "Teams playing at home have a 20% higher win rate compared to away games.",
+      "whyItMatters": "Understanding home advantage can help in predicting match outcomes.",
       "tags": [
-        "home advantage",
-        "performance",
-        "statistics"
+        "home",
+        "advantage",
+        "win rate"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-002",
-      "title": "Injury Impact",
-      "signal": "Key players missing from the squad have led to a 40% drop in win probability.",
-      "whyItMatters": "Injuries to star players can significantly weaken a team's competitive edge.",
+      "title": "Late Goals Trend",
+      "signal": "Over 30% of goals are scored in the last 15 minutes of matches.",
+      "whyItMatters": "Recognizing this trend can influence betting strategies and in-game tactics.",
       "tags": [
-        "injuries",
-        "player impact",
-        "analytics"
+        "late goals",
+        "trend",
+        "strategy"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-003",
-      "title": "High Scoring Games Trend",
-      "signal": "The last 5 matches between these teams have averaged over 3 goals.",
-      "whyItMatters": "Historical scoring trends indicate potential for high-scoring matches.",
+      "title": "Injury Impact",
+      "signal": "Teams missing key players due to injury lose 15% more matches.",
+      "whyItMatters": "Assessing injury reports can provide insights into possible outcomes.",
       "tags": [
-        "scoring",
-        "historical data",
-        "trends"
+        "injury",
+        "impact",
+        "key players"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-004",
-      "title": "Tactical Shift",
-      "signal": "Recent formation changes have resulted in a 60% increase in offensive plays.",
-      "whyItMatters": "Tactical adjustments can lead to improved team performance and scoring opportunities.",
+      "title": "Draw Frequency",
+      "signal": "Matches involving mid-table teams have a 25% higher likelihood of ending in a draw.",
+      "whyItMatters": "This can inform betting decisions when predicting match results.",
       "tags": [
-        "tactics",
-        "formation",
-        "offense"
+        "draw",
+        "frequency",
+        "mid-table"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-005",
-      "title": "Momentum Shift",
-      "signal": "Teams on a 3-match winning streak tend to outperform opponents in the next fixture.",
-      "whyItMatters": "Winning momentum can boost team confidence and performance levels.",
+      "title": "Team Form",
+      "signal": "Teams on a winning streak of three or more games win 70% of their next matches.",
+      "whyItMatters": "Evaluating team form can enhance predictions for upcoming fixtures.",
       "tags": [
-        "momentum",
+        "team form",
         "winning streak",
-        "psychology"
+        "predictions"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-006",
-      "title": "Defensive Weakness",
-      "signal": "Teams conceding more than 2 goals per match have a 75% chance of losing.",
-      "whyItMatters": "A leaky defense is a strong indicator of potential losses in upcoming games.",
+      "title": "Red Card Influence",
+      "signal": "Teams receiving a red card lose 60% of their matches following the incident.",
+      "whyItMatters": "Understanding the impact of red cards can shift match dynamics significantly.",
       "tags": [
-        "defense",
-        "conceding",
-        "loss probability"
+        "red card",
+        "influence",
+        "match dynamics"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-007",
-      "title": "Head-to-Head Dominance",
-      "signal": "One team has won 8 out of the last 10 encounters against their opponent.",
-      "whyItMatters": "Historical dominance can influence current match outcomes and player mentality.",
+      "title": "Goalkeeper Saves",
+      "signal": "Teams with goalkeepers making more than 5 saves per game have a 40% lower win rate.",
+      "whyItMatters": "Analyzing goalkeeper performance can be crucial for assessing overall team strength.",
       "tags": [
-        "head-to-head",
-        "dominance",
-        "history"
+        "goalkeeper",
+        "saves",
+        "performance"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-008",
-      "title": "Late Game Performance",
-      "signal": "Teams scoring in the last 10 minutes have a 50% higher chance of winning.",
-      "whyItMatters": "Late-game scoring can shift the momentum and secure important points.",
+      "title": "Fixture Congestion",
+      "signal": "Teams playing three matches in a week lose 50% of their next game.",
+      "whyItMatters": "Understanding fixture congestion helps in evaluating player fatigue and performance.",
       "tags": [
-        "late game",
-        "scoring",
-        "momentum"
+        "fixture congestion",
+        "fatigue",
+        "performance"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-009",
-      "title": "Weather Conditions",
-      "signal": "Rainy conditions have historically favored teams with strong defensive setups.",
-      "whyItMatters": "Weather can impact playing styles and advantages of certain teams.",
+      "title": "Head-to-Head Record",
+      "signal": "Teams with a favorable head-to-head record win 65% of their encounters.",
+      "whyItMatters": "Historical performance can be a strong indicator of future results.",
       "tags": [
-        "weather",
-        "conditions",
-        "defense"
+        "head-to-head",
+        "record",
+        "historical performance"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-010",
-      "title": "Youth Player Breakthrough",
-      "signal": "Emerging youth talents have scored 30% of the team's goals this season.",
-      "whyItMatters": "Incorporating youth players can rejuvenate a team's scoring potential and energy.",
+      "title": "Weather Conditions",
+      "signal": "Rainy weather increases the likelihood of a low-scoring game by 30%.",
+      "whyItMatters": "Weather can significantly affect game dynamics and scoring potential.",
       "tags": [
-        "youth players",
-        "breakthrough",
-        "scoring"
+        "weather",
+        "conditions",
+        "low scoring"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-011",
-      "title": "Penalty Conversion Rate",
-      "signal": "Teams with a penalty conversion rate above 80% have won 9 out of 10 matches.",
-      "whyItMatters": "High penalty success rates can be crucial in tight matches.",
+      "title": "Substitution Impact",
+      "signal": "Teams making tactical substitutions at halftime improve their win rate by 20%.",
+      "whyItMatters": "Effective substitutions can turn the tide of a match in favor of a team.",
       "tags": [
-        "penalties",
-        "conversion rate",
-        "importance"
+        "substitution",
+        "tactical",
+        "win rate"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-012",
-      "title": "Managerial Influence",
-      "signal": "Teams under new management have shown a 50% improvement in match results.",
-      "whyItMatters": "A change in leadership can inspire better performances and strategies.",
+      "title": "First Goal Importance",
+      "signal": "Teams scoring the first goal win 70% of their matches.",
+      "whyItMatters": "Scoring first can dictate match momentum and psychological advantage.",
       "tags": [
-        "management",
-        "changes",
-        "performance"
+        "first goal",
+        "importance",
+        "momentum"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-013",
-      "title": "Set Piece Efficiency",
-      "signal": "Teams scoring from set pieces have increased their goal tally by 40% this season.",
-      "whyItMatters": "Effective set piece strategies can provide teams with an edge in tightly contested matches.",
+      "title": "Youth Player Performance",
+      "signal": "Teams with youth players scoring regularly have a 30% higher chance of finishing in the top half of the league.",
+      "whyItMatters": "Investing in youth can lead to sustainable success and competitive advantages.",
       "tags": [
-        "set pieces",
-        "efficiency",
-        "strategy"
+        "youth players",
+        "performance",
+        "league success"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-014",
-      "title": "Red Card Impact",
-      "signal": "Teams receiving a red card have lost 80% of their matches this season.",
-      "whyItMatters": "Playing with a man down severely limits a team's chances of success.",
+      "title": "Penalty Conversion Rates",
+      "signal": "Teams converting over 80% of their penalties have a 25% higher win rate.",
+      "whyItMatters": "Strong penalty conversion can be pivotal in close matches.",
       "tags": [
-        "red cards",
-        "impact",
-        "statistics"
+        "penalty",
+        "conversion",
+        "win rate"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-015",
-      "title": "Fan Influence",
-      "signal": "Home teams with high fan attendance have a 65% win rate.",
-      "whyItMatters": "Strong fan support can motivate players and lead to better home performances.",
+      "title": "Counter-Attack Efficiency",
+      "signal": "Teams that score from counter-attacks win 50% more matches than those that don't.",
+      "whyItMatters": "Counter-attacking prowess can be a game-changer in tactical matchups.",
       "tags": [
-        "fan support",
-        "attendance",
-        "home advantage"
+        "counter-attack",
+        "efficiency",
+        "tactics"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-016",
-      "title": "Counter Attack Success",
-      "signal": "Teams utilizing counter-attacks have scored 50% of their goals in recent matches.",
-      "whyItMatters": "Effective counter-attacking can exploit defensive weaknesses of opponents.",
+      "title": "Goal Differential",
+      "signal": "Teams with a positive goal differential of +10 or more win 80% of their matches.",
+      "whyItMatters": "Goal differential is a strong indicator of overall team strength and consistency.",
       "tags": [
-        "counter-attack",
-        "success",
-        "strategy"
+        "goal differential",
+        "strength",
+        "consistency"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-017",
-      "title": "Midfield Control",
-      "signal": "Teams dominating possession in midfield have won 75% of their recent games.",
-      "whyItMatters": "Controlling midfield is crucial for dictating the pace and flow of the game.",
+      "title": "Matchday Pressure",
+      "signal": "Teams playing in must-win situations have a 40% higher chance of winning.",
+      "whyItMatters": "Understanding matchday pressure can influence player performance and outcomes.",
       "tags": [
-        "midfield",
-        "possession",
-        "control"
+        "pressure",
+        "must-win",
+        "performance"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-018",
-      "title": "Streaky Performers",
-      "signal": "Teams alternating wins and losses tend to follow the pattern consistently.",
-      "whyItMatters": "Identifying patterns in performance can help predict future outcomes.",
+      "title": "Defensive Errors",
+      "signal": "Teams making more than two defensive errors per match have a 60% lower win rate.",
+      "whyItMatters": "Minimizing defensive errors is crucial for maintaining competitive edge.",
       "tags": [
-        "streaks",
-        "performance",
-        "patterns"
+        "defensive errors",
+        "win rate",
+        "competitive edge"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-019",
-      "title": "Goalkeeper Form",
-      "signal": "Goalkeepers with a save rate above 85% significantly boost their team's chances of winning.",
-      "whyItMatters": "A strong goalkeeper can be the difference in close matches.",
+      "title": "Fan Support",
+      "signal": "Teams with a strong home crowd support have a 15% higher chance of winning.",
+      "whyItMatters": "Crowd support can significantly boost team morale and performance.",
       "tags": [
-        "goalkeeper",
-        "form",
-        "importance"
+        "fan support",
+        "home crowd",
+        "morale"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     },
     {
       "id": "signal-020",
-      "title": "Late Transfers Impact",
-      "signal": "New signings made in the last transfer window have contributed to 25% of total goals.",
-      "whyItMatters": "Late transfers can provide a much-needed boost to a team's attacking options.",
+      "title": "Referee Decisions",
+      "signal": "Teams favored by referees (more penalties awarded) win 35% more matches.",
+      "whyItMatters": "Referee bias can influence match outcomes and betting strategies.",
       "tags": [
-        "transfers",
-        "impact",
-        "scoring"
+        "referee",
+        "decisions",
+        "bias"
       ],
-      "createdAt": "2023-10-05T12:00:00Z",
+      "createdAt": "2023-10-01T12:00:00Z",
       "source": "NetThud AI"
     }
   ]
