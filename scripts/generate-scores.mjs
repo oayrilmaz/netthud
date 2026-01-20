@@ -1,45 +1,41 @@
-import fs from "fs/promises";
+// scripts/generate-scores.mjs
+import fs from "fs";
+import path from "path";
 
-async function main() {
-  const out = {
-    generatedAt: new Date().toISOString(),
-    mode: "demo-final",
-    items: [
-      {
-        league: "Premier League",
-        home: "Arsenal",
-        away: "Liverpool",
-        status: "FT",
-        score: "2-1",
-        date: "2026-01-18"
-      },
-      {
-        league: "La Liga",
-        home: "Real Madrid",
-        away: "Barcelona",
-        status: "FT",
-        score: "0-0",
-        date: "2026-01-18"
-      },
-      {
-        league: "Serie A",
-        home: "Inter",
-        away: "Juventus",
-        status: "FT",
-        score: "3-2",
-        date: "2026-01-18"
-      }
-    ]
-  };
+const OUT_PATH = path.join("assets", "data", "scores.json");
 
-  await fs.mkdir("assets/data", { recursive: true });
-  await fs.writeFile(
-    "assets/data/scores.json",
-    JSON.stringify(out, null, 2),
-    "utf8"
-  );
-
-  console.log("Final scores written");
+function requireEnv(name) {
+  const v = process.env[name];
+  if (!v) throw new Error(`Missing env: ${name}`);
+  return v;
 }
 
-main();
+function writeJson(filePath, obj) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, JSON.stringify(obj, null, 2), "utf8");
+}
+
+const url = requireEnv("NETTHUD_SCORES_API_URL");
+const apiKey = process.env.NETTHUD_API_KEY || "";
+
+(async () => {
+  const res = await fetch(url, {
+    headers: apiKey ? { "Authorization": `Bearer ${apiKey}` } : {}
+  });
+
+  if (!res.ok) {
+    const txt = await res.text();
+    throw new Error(`Scores API HTTP ${res.status}: ${txt}`);
+  }
+
+  const data = await res.json();
+  const now = new Date().toISOString();
+
+  // Store whatever your API returns, plus updatedAt wrapper
+  writeJson(OUT_PATH, {
+    updatedAt: now,
+    items: data
+  });
+
+  console.log(`Wrote scores -> ${OUT_PATH}`);
+})();
