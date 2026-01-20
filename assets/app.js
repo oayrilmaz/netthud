@@ -1,449 +1,392 @@
-(() => {
-  const $ = (s, el=document) => el.querySelector(s);
+/* NetThud app.js (static GitHub Pages) */
 
-  // -----------------------------
-  // Paths (match your repo)
-  // -----------------------------
-  const PATHS = {
-    scores:   "assets/data/scores.json",
-    upcoming: "assets/data/upcoming.json",
-    transfers:"assets/data/transfers.json",
-    news:     "assets/data/ai-news.json",
-    leagues:  "assets/data/leagues.json",
-  };
+function qs(id) {
+  return document.getElementById(id);
+}
 
-  // -----------------------------
-  // UI helpers
-  // -----------------------------
-  function setYear(){
-    const y = $("#year");
-    if (y) y.textContent = new Date().getFullYear();
+function esc(s = "") {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  }[c]));
+}
+
+function fmtDate(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toISOString().slice(0, 10);
+}
+
+function fmtUpdated(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "—";
+  return d.toISOString().replace(".000Z", "Z");
+}
+
+/**
+ * Fetch JSON with cache-busting.
+ * Tries multiple paths (so your site survives file moves).
+ */
+async function fetchJson(paths) {
+  const bust = `v=${Date.now()}`;
+  let lastErr;
+
+  for (const p of paths) {
+    try {
+      const url = p.includes("?") ? `${p}&${bust}` : `${p}?${bust}`;
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      return await res.json();
+    } catch (e) {
+      lastErr = e;
+    }
+  }
+  throw lastErr || new Error("Fetch failed");
+}
+
+/* ---------- SOUND (keeps your Sound ON toggle working) ---------- */
+
+const SOUND_KEY = "netthud_sound";
+let soundOn = true;
+let crowdAudio = null;
+
+function initSound() {
+  const saved = localStorage.getItem(SOUND_KEY);
+  soundOn = saved ? saved === "1" : true;
+
+  const chip = qs("soundChip");
+  if (chip) {
+    chip.classList.toggle("on", soundOn);
+    chip.textContent = `Sound: ${soundOn ? "ON" : "OFF"}`;
+    chip.addEventListener("click", () => {
+      soundOn = !soundOn;
+      localStorage.setItem(SOUND_KEY, soundOn ? "1" : "0");
+      chip.classList.toggle("on", soundOn);
+      chip.textContent = `Sound: ${soundOn ? "ON" : "OFF"}`;
+      if (soundOn) playCrowd();
+      else stopCrowd();
+    });
   }
 
-  function showEmpty(listEl, title, subtitle, badgeText="SOON", badgeKind="info"){
-    if (!listEl) return;
-    listEl.innerHTML = `
-      <div class="row">
-        <div>
-          <strong>${escapeHtml(title)}</strong>
-          <div class="sub">${escapeHtml(subtitle)}</div>
-        </div>
-        <span class="badge ${badgeKind}">${escapeHtml(badgeText)}</span>
+  crowdAudio = new Audio("assets/audio/crowd.mp3");
+  crowdAudio.loop = true;
+  crowdAudio.volume = 0.25;
+
+  if (soundOn) {
+    // Safari/iOS requires user gesture to actually start audio — but we keep state.
+  }
+}
+
+function playCrowd() {
+  if (!crowdAudio) return;
+  crowdAudio.play().catch(() => {
+    // iOS may block autoplay until user interacts — no error UI needed
+  });
+}
+
+function stopCrowd() {
+  if (!crowdAudio) return;
+  crowdAudio.pause();
+  crowdAudio.currentTime = 0;
+}
+
+/* ---------- SECTION RENDER HELPERS ---------- */
+
+function setSectionMeta(metaEl, text) {
+  if (!metaEl) return;
+  metaEl.textContent = text;
+}
+
+function setSectionError(container, message) {
+  if (!container) return;
+  container.innerHTML = `
+    <div class="empty-card">
+      <div class="empty-title">Not loading</div>
+      <div class="empty-sub">${esc(message || "Data file missing.")}</div>
+      <div class="pill warn">ERR</div>
+    </div>
+  `;
+}
+
+/* ---------- LEAGUES ---------- */
+
+async function loadLeagues() {
+  const container = qs("leagueChips");
+  const meta = qs("leaguesMeta");
+  if (!container) return;
+
+  try {
+    // Prefer assets path. Fallback to /leagues.json (old version).
+    const data = await fetchJson([
+      "assets/data/leagues.json",
+      "/assets/data/leagues.json",
+      "/leagues.json"
+    ]);
+
+    const leagues = Array.isArray(data) ? data : (data.items || []);
+    const updatedAt = data.generatedAt || data.updatedAt || "";
+
+    container.innerHTML = "";
+    leagues.forEach((l) => {
+      const el = document.createElement("div");
+      el.className = "league-pill";
+      el.innerHTML = `<span class="dot"></span>${esc(l.name || l)}`;
+      container.appendChild(el);
+    });
+
+    setSectionMeta(meta, `${leagues.length} • updated ${fmtUpdated(updatedAt)}`);
+  } catch (err) {
+    setSectionMeta(meta, `error`);
+    setSectionError(container, `Missing leagues.json (expected assets/data/leagues.json)`);
+    console.error("Leagues load error:", err);
+  }
+}
+
+/* ---------- FINAL SCORES (assets/data/scores.json) ---------- */
+
+function renderScoresItem(it) {
+  const title = `${it.home} ${it.score} ${it.away}`;
+  const sub = `${it.league} • ${it.date || fmtDate(it.endedAt || it.utcDate || it.kickoff || it.generatedAt)}`;
+  const badge = it.status || "FT";
+  const url = it.url || it.matchUrl || "";
+
+  return `
+    <div class="card-row">
+      <div class="card-main">
+        <div class="card-title">${esc(title)}</div>
+        <div class="card-sub">${esc(sub)}</div>
       </div>
-    `;
-  }
+      ${url ? `<a class="pill link" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>` : `<div class="pill ok">${esc(badge)}</div>`}
+    </div>
+  `;
+}
 
-  function renderRows(listEl, rowsHtml){
-    if (!listEl) return;
-    listEl.innerHTML = rowsHtml.join("");
-  }
+async function loadScores() {
+  const container = qs("scoresList");
+  const meta = qs("scoresMeta");
+  if (!container) return;
 
-  function escapeHtml(s){
-    return String(s ?? "")
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
-  }
+  try {
+    const data = await fetchJson([
+      "assets/data/scores.json",
+      "/assets/data/scores.json",
+      "/scores.json"
+    ]);
 
-  async function fetchJson(url){
-    // Important: avoid “sticky cache” on iOS + GH Pages
-    const res = await fetch(url, { cache: "no-store" });
+    const items = data.items || [];
+    const updatedAt = data.generatedAt || data.updatedAt || "";
 
-    // If file doesn’t exist yet, return null (NOT an error UI)
-    if (res.status === 404) return null;
-    if (!res.ok) throw new Error(`HTTP ${res.status} loading ${url}`);
-    return await res.json();
-  }
+    setSectionMeta(meta, `${items.length} • updated ${fmtUpdated(updatedAt)}`);
 
-  function fmtTime(iso){
-    if (!iso) return "";
-    try{
-      const d = new Date(iso);
-      if (Number.isNaN(d.getTime())) return String(iso);
-      return d.toLocaleString(undefined, { weekday:"short", hour:"2-digit", minute:"2-digit", month:"short", day:"numeric" });
-    }catch{
-      return String(iso);
-    }
-  }
-
-  // -----------------------------
-  // Burger / mobile nav
-  // -----------------------------
-  function setupMobileNav(){
-    const burger = $("#burger");
-    const mobileNav = $("#mobileNav");
-    if (!burger || !mobileNav) return;
-
-    burger.addEventListener("click", () => {
-      const open = mobileNav.classList.toggle("show");
-      burger.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-
-    mobileNav.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => {
-        mobileNav.classList.remove("show");
-        burger.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
-
-  // -----------------------------
-  // SOUND (thud then crowd)
-  // -----------------------------
-  function setupSound(){
-    const thud = $("#sfxThud");
-    const crowd = $("#sfxCrowd");
-    const toggle = $("#soundToggle");
-    const label = $("#soundLabel");
-
-    if (!toggle || !label) return;
-
-    let enabled = true;
-    let playedOnce = false;
-
-    function setUI(){
-      toggle.classList.toggle("off", !enabled);
-      toggle.setAttribute("aria-pressed", enabled ? "true" : "false");
-      label.textContent = enabled ? "Sound: ON" : "Sound: OFF";
-    }
-
-    function stopAll(){
-      [thud, crowd].forEach(a => {
-        if (!a) return;
-        a.pause();
-        a.currentTime = 0;
-      });
-    }
-
-    async function playVibe(){
-      if (!enabled || playedOnce) return;
-      if (!thud || !crowd) return;
-
-      try{
-        thud.volume = 0.85;
-        crowd.volume = 0.55;
-
-        thud.currentTime = 0;
-        crowd.currentTime = 0;
-
-        await thud.play();
-        setTimeout(() => {
-          crowd.play().catch(()=>{});
-          setTimeout(() => { crowd.pause(); crowd.currentTime = 0; }, 2200);
-        }, 160);
-
-        playedOnce = true;
-      }catch{
-        // autoplay restrictions can block until interaction
-        playedOnce = false;
-      }
-    }
-
-    ["pointerdown","touchstart","keydown","wheel"].forEach(evt => {
-      window.addEventListener(evt, playVibe, { once:true, passive:true });
-    });
-
-    toggle.addEventListener("click", async () => {
-      enabled = !enabled;
-      setUI();
-      if (!enabled) stopAll();
-      else await playVibe();
-    });
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) stopAll();
-    });
-
-    setUI();
-  }
-
-  // -----------------------------
-  // LEAGUES
-  // expects: { meta:{updated}, items:[{name, id?}] } OR just [{name}]
-  // -----------------------------
-  async function loadLeagues(){
-    const chips = $("#leagueChips");
-    const meta = $("#leaguesMeta");
-    if (!chips) return;
-
-    chips.innerHTML = "";
-    if (meta) meta.textContent = "loading…";
-
-    const data = await fetchJson(PATHS.leagues);
-    if (!data){
-      showEmpty(chips, "Leagues feed not published yet", `Create ${PATHS.leagues} in your repo.`, "SOON", "info");
-      if (meta) meta.textContent = "not published";
+    if (!items.length) {
+      container.innerHTML = `
+        <div class="empty-card">
+          <div class="empty-title">No final scores yet</div>
+          <div class="empty-sub">Once scores.json is generated, it will show here.</div>
+          <div class="pill ok">OK</div>
+        </div>`;
       return;
     }
 
-    const items = Array.isArray(data) ? data : (data.items || []);
-    const updated = Array.isArray(data) ? "" : (data.meta?.updated || data.meta?.generatedAt || "");
-
-    if (!items.length){
-      showEmpty(chips, "No leagues yet", "Add items into leagues.json", "EMPTY", "warn");
-      if (meta) meta.textContent = "0";
-      return;
-    }
-
-    chips.innerHTML = items.map(l => {
-      const name = escapeHtml(l.name || l);
-      return `<span class="chip"><i></i>${name}</span>`;
-    }).join("");
-
-    if (meta) meta.textContent = updated ? `${items.length} • updated ${updated}` : `${items.length} tracked`;
+    container.innerHTML = items.map(renderScoresItem).join("");
+  } catch (err) {
+    setSectionMeta(meta, `error`);
+    setSectionError(container, `Missing assets/data/scores.json`);
+    console.error("Scores load error:", err);
   }
+}
 
-  // -----------------------------
-  // AI NEWS
-  // expects: { meta:{updated}, items:[{title, summary, url, source, time}] } OR just [{...}]
-  // -----------------------------
-  async function loadNews(){
-    const list = $("#newsList");
-    const meta = $("#newsMeta");
-    if (!list) return;
+/* ---------- AI NEWS (assets/data/ai-news.json) ---------- */
 
-    showEmpty(list, "Loading AI news…", `Fetching ${PATHS.news}`, "LIVE", "live");
-    if (meta) meta.textContent = "loading…";
+function renderNewsItem(it) {
+  const title = it.title || "News";
+  const sub = `${it.source || ""}${it.publishedAt ? ` • ${fmtDate(it.publishedAt)}` : ""}`;
+  const summary = it.summary || "";
+  const url = it.url || "";
 
-    const data = await fetchJson(PATHS.news);
-    if (!data){
-      showEmpty(list, "AI news not published yet", `Create ${PATHS.news} in your repo.`, "SOON", "info");
-      if (meta) meta.textContent = "not published";
+  return `
+    <div class="card-row">
+      <div class="card-main">
+        <div class="card-title">${esc(title)}</div>
+        <div class="card-sub">${esc(sub)}</div>
+        ${summary ? `<div class="card-desc">${esc(summary)}</div>` : ""}
+      </div>
+      ${url ? `<a class="pill link" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>` : ""}
+    </div>
+  `;
+}
+
+async function loadAiNews() {
+  const container = qs("aiNewsList");
+  const meta = qs("aiNewsMeta");
+  if (!container) return;
+
+  try {
+    const data = await fetchJson([
+      "assets/data/ai-news.json",
+      "/assets/data/ai-news.json",
+      "/ai-news.json"
+    ]);
+
+    const items = data.items || [];
+    const updatedAt = data.generatedAt || data.updatedAt || "";
+
+    setSectionMeta(meta, `${items.length} • updated ${fmtUpdated(updatedAt)}`);
+
+    if (!items.length) {
+      container.innerHTML = `
+        <div class="empty-card">
+          <div class="empty-title">No news items yet</div>
+          <div class="empty-sub">Once ai-news.json is generated, it will show here.</div>
+          <div class="pill warn">EMPTY</div>
+        </div>`;
       return;
     }
 
-    const items = Array.isArray(data) ? data : (data.items || []);
-    const updated = Array.isArray(data) ? "" : (data.meta?.updated || data.meta?.generatedAt || "");
-
-    if (!items.length){
-      showEmpty(list, "No AI news yet", "Your feed file exists, but has 0 items.", "EMPTY", "warn");
-      if (meta) meta.textContent = "0";
-      return;
-    }
-
-    const rows = items.slice(0, 12).map(n => {
-      const title = escapeHtml(n.title || n.headline || "Update");
-      const summary = escapeHtml(n.summary || n.description || "");
-      const source = escapeHtml(n.source || "Net Thud AI feed");
-      const time = escapeHtml(n.time || n.published || "");
-      const url = (n.url || n.link) ? String(n.url || n.link) : "";
-      const sub = [source, time].filter(Boolean).join(" • ");
-
-      return `
-        <div class="row">
-          <div>
-            <strong>${title}</strong>
-            <div class="sub">${summary || sub}</div>
-            ${url ? `<div class="sub" style="margin-top:10px;"><a class="chipBtn" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">Open source →</a></div>` : ``}
-          </div>
-          <span class="badge live">NEW</span>
-        </div>
-      `;
-    });
-
-    renderRows(list, rows);
-    if (meta) meta.textContent = updated ? `${items.length} • updated ${updated}` : `${items.length} items`;
+    container.innerHTML = items.slice(0, 12).map(renderNewsItem).join("");
+  } catch (err) {
+    setSectionMeta(meta, `error`);
+    setSectionError(container, `Missing assets/data/ai-news.json`);
+    console.error("AI news load error:", err);
   }
+}
 
-  // -----------------------------
-  // LIVE SCORES
-  // expects: { meta:{updated}, matches:[{league, home, away, score, minute, status, url?}] }
-  // -----------------------------
-  async function loadScores(){
-    const list = $("#scoresList");
-    const meta = $("#scoresMeta");
-    if (!list) return;
+/* ---------- UPCOMING + TV (assets/data/upcoming.json) ---------- */
 
-    showEmpty(list, "Loading live scores…", `Fetching ${PATHS.scores}`, "LIVE", "live");
-    if (meta) meta.textContent = "loading…";
+function renderUpcomingItem(it) {
+  const title = `${it.home || it.match || "Match"}${it.away ? ` vs ${it.away}` : ""}`;
+  const subParts = [];
+  if (it.league) subParts.push(it.league);
+  if (it.kickoff) subParts.push(it.kickoff);
+  if (it.tv) subParts.push(it.tv);
+  const sub = subParts.join(" • ");
 
-    const data = await fetchJson(PATHS.scores);
-    if (!data){
-      showEmpty(list, "Live scores not published yet", `Create ${PATHS.scores} (your workflow should generate it).`, "SOON", "info");
-      if (meta) meta.textContent = "not published";
+  return `
+    <div class="card-row">
+      <div class="card-main">
+        <div class="card-title">${esc(title)}</div>
+        <div class="card-sub">${esc(sub)}</div>
+      </div>
+      <div class="pill ok">UP</div>
+    </div>
+  `;
+}
+
+async function loadUpcoming() {
+  const container = qs("upcomingList");
+  const meta = qs("upcomingMeta");
+  if (!container) return;
+
+  try {
+    const data = await fetchJson([
+      "assets/data/upcoming.json",
+      "/assets/data/upcoming.json",
+      "/upcoming.json"
+    ]);
+
+    const items = data.items || [];
+    const updatedAt = data.generatedAt || data.updatedAt || "";
+
+    setSectionMeta(meta, `${items.length} • updated ${fmtUpdated(updatedAt)}`);
+
+    if (!items.length) {
+      container.innerHTML = `
+        <div class="empty-card">
+          <div class="empty-title">No upcoming games yet</div>
+          <div class="empty-sub">Populate assets/data/upcoming.json</div>
+          <div class="pill warn">EMPTY</div>
+        </div>`;
       return;
     }
 
-    const matches = data.matches || data.items || [];
-    const updated = data.meta?.updated || data.meta?.generatedAt || "";
-
-    if (!matches.length){
-      showEmpty(list, "No live matches right now", "When matches are live, they’ll appear here.", "OK", "info");
-      if (meta) meta.textContent = updated ? `updated ${updated}` : "none live";
-      return;
-    }
-
-    const rows = matches.slice(0, 20).map(m => {
-      const league = escapeHtml(m.league || "");
-      const home = escapeHtml(m.home || m.homeTeam || "");
-      const away = escapeHtml(m.away || m.awayTeam || "");
-      const score = escapeHtml(m.score || "");
-      const minute = escapeHtml(m.minute || "");
-      const status = escapeHtml(m.status || "LIVE");
-
-      const left = [league].filter(Boolean).join(" • ");
-      const line = `${home} vs ${away}`;
-      const sub = [left, minute ? `${minute}'` : "", status].filter(Boolean).join(" • ");
-
-      return `
-        <div class="row">
-          <div>
-            <strong>${line}</strong>
-            <div class="sub">${sub}</div>
-          </div>
-          <span class="badge live">${score || "LIVE"}</span>
-        </div>
-      `;
-    });
-
-    renderRows(list, rows);
-    if (meta) meta.textContent = updated ? `updated ${updated}` : `${matches.length} live`;
+    container.innerHTML = items.slice(0, 12).map(renderUpcomingItem).join("");
+  } catch (err) {
+    setSectionMeta(meta, `error`);
+    setSectionError(container, `Missing assets/data/upcoming.json`);
+    console.error("Upcoming load error:", err);
   }
+}
 
-  // -----------------------------
-  // UPCOMING + TV
-  // expects: { meta:{updated}, games:[{time, league, home, away, venue, tv:[...], stream:[...]}] }
-  // -----------------------------
-  async function loadUpcoming(){
-    const list = $("#upcomingList");
-    const meta = $("#upcomingMeta");
-    if (!list) return;
+/* ---------- TRANSFER DESK (assets/data/transfers.json) ---------- */
 
-    showEmpty(list, "Loading upcoming games…", `Fetching ${PATHS.upcoming}`, "LIVE", "live");
-    if (meta) meta.textContent = "loading…";
+function renderTransferItem(it) {
+  const title = it.title || `${it.player || "Player"} → ${it.to || "Club"}`;
+  const sub = it.source ? `${it.source}${it.publishedAt ? ` • ${fmtDate(it.publishedAt)}` : ""}` : (it.publishedAt ? fmtDate(it.publishedAt) : "");
+  const url = it.url || "";
 
-    const data = await fetchJson(PATHS.upcoming);
-    if (!data){
-      showEmpty(list, "Upcoming schedule not published yet", `Create ${PATHS.upcoming} (generated by workflow).`, "SOON", "info");
-      if (meta) meta.textContent = "not published";
+  return `
+    <div class="card-row">
+      <div class="card-main">
+        <div class="card-title">${esc(title)}</div>
+        <div class="card-sub">${esc(sub)}</div>
+        ${it.summary ? `<div class="card-desc">${esc(it.summary)}</div>` : ""}
+      </div>
+      ${url ? `<a class="pill link" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>` : `<div class="pill warn">NEW</div>`}
+    </div>
+  `;
+}
+
+async function loadTransfers() {
+  const container = qs("transferList");
+  const meta = qs("transferMeta");
+  if (!container) return;
+
+  try {
+    const data = await fetchJson([
+      "assets/data/transfers.json",
+      "/assets/data/transfers.json",
+      "/transfers.json"
+    ]);
+
+    const items = data.items || [];
+    const updatedAt = data.generatedAt || data.updatedAt || "";
+
+    setSectionMeta(meta, `${items.length} • updated ${fmtUpdated(updatedAt)}`);
+
+    if (!items.length) {
+      container.innerHTML = `
+        <div class="empty-card">
+          <div class="empty-title">No transfer items yet</div>
+          <div class="empty-sub">Populate assets/data/transfers.json</div>
+          <div class="pill warn">EMPTY</div>
+        </div>`;
       return;
     }
 
-    const games = data.games || data.items || [];
-    const updated = data.meta?.updated || data.meta?.generatedAt || "";
-
-    if (!games.length){
-      showEmpty(list, "No upcoming games in the feed", "Once your generator writes upcoming.json, it will show here.", "EMPTY", "warn");
-      if (meta) meta.textContent = updated ? `updated ${updated}` : "0";
-      return;
-    }
-
-    const rows = games.slice(0, 20).map(g => {
-      const t = fmtTime(g.time || g.kickoff);
-      const league = escapeHtml(g.league || "");
-      const home = escapeHtml(g.home || "");
-      const away = escapeHtml(g.away || "");
-      const venue = escapeHtml(g.venue || "");
-      const tv = Array.isArray(g.tv) ? g.tv : (g.tv ? [g.tv] : []);
-      const stream = Array.isArray(g.stream) ? g.stream : (g.stream ? [g.stream] : []);
-
-      const title = `${home} vs ${away}`;
-      const subParts = [
-        t,
-        league,
-        venue ? `@ ${venue}` : ""
-      ].filter(Boolean);
-
-      const tvLine = [...tv, ...stream].filter(Boolean).join(", ");
-      const sub2 = tvLine ? `TV/Stream: ${escapeHtml(tvLine)}` : "TV/Stream: (feed will add channels here)";
-
-      return `
-        <div class="row">
-          <div>
-            <strong>${escapeHtml(title)}</strong>
-            <div class="sub">${escapeHtml(subParts.join(" • "))}</div>
-            <div class="sub" style="margin-top:6px;">${sub2}</div>
-          </div>
-          <span class="badge info">NEXT</span>
-        </div>
-      `;
-    });
-
-    renderRows(list, rows);
-    if (meta) meta.textContent = updated ? `updated ${updated}` : `${games.length} upcoming`;
+    container.innerHTML = items.slice(0, 12).map(renderTransferItem).join("");
+  } catch (err) {
+    setSectionMeta(meta, `error`);
+    setSectionError(container, `Missing assets/data/transfers.json`);
+    console.error("Transfers load error:", err);
   }
+}
 
-  // -----------------------------
-  // TRANSFERS
-  // expects: { meta:{updated}, items:[{player, from, to, fee, status, source, url, time}] }
-  // -----------------------------
-  async function loadTransfers(){
-    const list = $("#transfersList");
-    const meta = $("#transfersMeta");
-    if (!list) return;
+/* ---------- INIT ---------- */
 
-    showEmpty(list, "Loading transfer desk…", `Fetching ${PATHS.transfers}`, "LIVE", "live");
-    if (meta) meta.textContent = "loading…";
+async function loadAll() {
+  initSound();
 
-    const data = await fetchJson(PATHS.transfers);
-    if (!data){
-      showEmpty(list, "Transfer feed not published yet", `Create ${PATHS.transfers} (generated by workflow).`, "SOON", "info");
-      if (meta) meta.textContent = "not published";
-      return;
-    }
+  // Load everything independently (one failing won't break others)
+  loadScores();
+  loadUpcoming();
+  loadTransfers();
+  loadAiNews();
+  loadLeagues();
 
-    const items = data.items || data.transfers || [];
-    const updated = data.meta?.updated || data.meta?.generatedAt || "";
+  // Optional: periodic refresh for a static site
+  // (Only refreshes if JSON files change in repo)
+  setInterval(() => {
+    loadScores();
+    loadUpcoming();
+    loadTransfers();
+    loadAiNews();
+    loadLeagues();
+  }, 60_000);
+}
 
-    if (!items.length){
-      showEmpty(list, "No transfer items yet", "When your generator writes transfers.json, it will show here.", "EMPTY", "warn");
-      if (meta) meta.textContent = updated ? `updated ${updated}` : "0";
-      return;
-    }
-
-    const rows = items.slice(0, 20).map(t => {
-      const player = escapeHtml(t.player || "");
-      const from = escapeHtml(t.from || "");
-      const to = escapeHtml(t.to || "");
-      const fee = escapeHtml(t.fee || "");
-      const status = escapeHtml(t.status || "RUMOR");
-      const src = escapeHtml(t.source || "");
-      const time = escapeHtml(t.time || "");
-      const url = t.url ? String(t.url) : "";
-
-      const title = player ? player : "Transfer update";
-      const sub = [from && to ? `${from} → ${to}` : "", fee, status].filter(Boolean).join(" • ");
-      const sub2 = [src, time].filter(Boolean).join(" • ");
-
-      return `
-        <div class="row">
-          <div>
-            <strong>${title}</strong>
-            <div class="sub">${escapeHtml(sub || sub2 || "Net Thud transfer desk")}</div>
-            ${url ? `<div class="sub" style="margin-top:10px;"><a class="chipBtn" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">Open source →</a></div>` : ``}
-          </div>
-          <span class="badge warn">${escapeHtml(status)}</span>
-        </div>
-      `;
-    });
-
-    renderRows(list, rows);
-    if (meta) meta.textContent = updated ? `updated ${updated}` : `${items.length} items`;
-  }
-
-  // -----------------------------
-  // Boot
-  // -----------------------------
-  async function boot(){
-    setYear();
-    setupMobileNav();
-    setupSound();
-
-    // Load everything
-    try{ await loadScores(); }catch(e){ console.error(e); }
-    try{ await loadUpcoming(); }catch(e){ console.error(e); }
-    try{ await loadTransfers(); }catch(e){ console.error(e); }
-    try{ await loadNews(); }catch(e){ console.error(e); }
-    try{ await loadLeagues(); }catch(e){ console.error(e); }
-
-    // Refresh cadence (GitHub-backed “near live”)
-    setInterval(() => { loadScores().catch(()=>{}); },   30_000);
-    setInterval(() => { loadUpcoming().catch(()=>{}); }, 5*60_000);
-    setInterval(() => { loadTransfers().catch(()=>{}); },3*60_000);
-    setInterval(() => { loadNews().catch(()=>{}); },     60_000);
-  }
-
-  document.addEventListener("DOMContentLoaded", boot);
-})();
+document.addEventListener("DOMContentLoaded", loadAll);
