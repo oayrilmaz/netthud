@@ -1,15 +1,15 @@
-name: NetThud - Update AI News (RSS)
+name: NetThud - Update AI Signals (OpenAI)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "12 * * * *"
+    - cron: "12 * * * *" # hourly at :12 UTC
 
 permissions:
   contents: write
 
 concurrency:
-  group: netthud-update-ai-news
+  group: netthud-update-ai-signals
   cancel-in-progress: true
 
 jobs:
@@ -24,7 +24,10 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate ai-news.json
+      - name: Generate assets/data/ai-news.json via OpenAI
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node scripts/generate-ai-news.mjs
 
       - name: Commit & push if changed
@@ -32,4 +35,4 @@ jobs:
           git config user.name "netthud-bot"
           git config user.email "netthud-bot@users.noreply.github.com"
           git add assets/data/ai-news.json
-          git diff --cached --quiet || (git commit -m "Update ai-news.json" && git push)
+          git diff --cached --quiet || (git commit -m "Update ai-news.json (OpenAI)" && git push)
