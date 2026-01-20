@@ -1,16 +1,13 @@
 // scripts/generate-upcoming.mjs
 // Generates: assets/data/upcoming.json
-// Uses football-data.org (requires API token)
 //
+// Uses football-data.org (requires API token)
 // Env:
-//   NETTHUD_SCORES_API_TOKEN=xxxxxxxx   (same token you already use for scores)
-// Optional:
-//   NETTHUD_UPCOMING_DAYS=7             (default: next 7 days)
+//   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
+//   NETTHUD_UPCOMING_DAYS=7   (optional)
 
 import fs from "node:fs";
 import path from "node:path";
-
-/* ---------------- utils ---------------- */
 
 function env(name, fallback = "") {
   const v = process.env[name];
@@ -39,36 +36,48 @@ function yyyyMmDdUTC(d) {
 }
 
 function utcMidnight(dateObj) {
-  return new Date(
-    Date.UTC(
-      dateObj.getUTCFullYear(),
-      dateObj.getUTCMonth(),
-      dateObj.getUTCDate()
-    )
-  );
+  return new Date(Date.UTC(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate()));
 }
 
-/* ---------------- fetch upcoming ---------------- */
+function formatET(utcDateISO) {
+  // "Jan 20 • 3:00 PM ET"
+  try {
+    const d = new Date(utcDateISO);
+    if (Number.isNaN(d.getTime())) return "";
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/New_York",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).formatToParts(d);
 
-async function fetchUpcoming() {
-  const token = env("NETTHUD_SCORES_API_TOKEN");
-  if (!token) {
-    throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
+    const get = (type) => parts.find((p) => p.type === type)?.value || "";
+    const month = get("month");
+    const day = get("day");
+    const hour = get("hour");
+    const minute = get("minute");
+    const dayPeriod = get("dayPeriod"); // AM/PM
+    return `${month} ${day} • ${hour}:${minute} ${dayPeriod} ET`;
+  } catch {
+    return "";
   }
+}
 
-  const days = Number(env("NETTHUD_UPCOMING_DAYS", "7")) || 7;
+async function fetchFootballDataUpcoming(days) {
+  const token = env("NETTHUD_SCORES_API_TOKEN");
+  if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
 
   const now = new Date();
-  const start = utcMidnight(now);
+  const start = utcMidnight(now); // today UTC
   const end = new Date(start);
   end.setUTCDate(start.getUTCDate() + days);
 
   const dateFrom = yyyyMmDdUTC(start);
   const dateTo = yyyyMmDdUTC(end);
 
-  const url =
-    `https://api.football-data.org/v4/matches` +
-    `?dateFrom=${dateFrom}&dateTo=${dateTo}`;
+  const url = `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`;
 
   const res = await fetch(url, {
     headers: { "X-Auth-Token": token },
@@ -76,63 +85,60 @@ async function fetchUpcoming() {
 
   if (!res.ok) {
     const t = await res.text().catch(() => "");
-    throw new Error(
-      `football-data HTTP ${res.status} ${res.statusText} :: ${t.slice(0, 200)}`
-    );
+    throw new Error(`football-data HTTP ${res.status} ${res.statusText} :: ${t.slice(0, 200)}`);
   }
 
   const json = await res.json();
   const matches = Array.isArray(json?.matches) ? json.matches : [];
 
-  // Keep only UPCOMING states
-  const upcoming = matches.filter((m) => {
+  // Keep only "scheduled-ish" matches
+  const keepStatuses = new Set(["SCHEDULED", "TIMED"]);
+
+  // Limit to the big competitions you want (clean + relevant)
+  // football-data competition codes: PL, PD, SA, BL1, FL1, CL
+  const allowedCompCodes = new Set(["PL", "PD", "SA", "BL1", "FL1", "CL"]);
+
+  const keep = matches.filter((m) => {
     const st = safeStr(m?.status);
-    return st === "SCHEDULED" || st === "TIMED";
+    const code = safeStr(m?.competition?.code);
+    return keepStatuses.has(st) && allowedCompCodes.has(code);
   });
 
-  // Map to NetThud schema
-  const items = upcoming
-    .map((m) => {
-      const league = safeStr(m?.competition?.name || "");
-      const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name);
-      const away = safeStr(m?.awayTeam?.shortName || m?.awayTeam?.name);
-      const kickoffUTC = safeStr(m?.utcDate || "");
+  const items = keep.map((m) => {
+    const league = safeStr(m?.competition?.name || "");
+    const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name || "");
+    const away = safeStr(m?.awayTeam?.shortName || m?.awayTeam?.name || "");
+    const kickoffUTC = safeStr(m?.utcDate || "");
+    const kickoffLocal = kickoffUTC ? formatET(kickoffUTC) : "";
 
-      return {
-        league,
-        home,
-        away,
-        kickoffUTC,
-        tv: [] // you can enrich later if needed
-      };
-    })
-    .sort((a, b) =>
-      safeStr(a.kickoffUTC).localeCompare(safeStr(b.kickoffUTC))
-    );
+    // football-data.org doesn't reliably provide TV channels
+    return {
+      league,
+      home,
+      away,
+      kickoffUTC,
+      kickoffLocal,
+      tv: [],
+    };
+  });
+
+  // Sort by kickoffUTC ascending
+  items.sort((a, b) => safeStr(a.kickoffUTC).localeCompare(safeStr(b.kickoffUTC)));
 
   return {
-    updated: isoNow(),
-    range: { dateFrom, dateTo },
+    generatedAt: isoNow(),
     items,
   };
 }
 
-/* ---------------- main ---------------- */
-
 async function main() {
-  const outFile = path.join(
-    process.cwd(),
-    "assets",
-    "data",
-    "upcoming.json"
-  );
+  const days = Math.max(1, Math.min(14, Number(env("NETTHUD_UPCOMING_DAYS", "7")) || 7));
+  const outFile = path.join(process.cwd(), "assets", "data", "upcoming.json");
 
-  const payload = await fetchUpcoming();
+  const payload = await fetchFootballDataUpcoming(days);
+
   writeJson(outFile, payload);
-
-  console.log(
-    `Wrote ${outFile} (${payload.items.length} upcoming matches)`
-  );
+  console.log(`Wrote ${outFile} (${payload.items.length} items)`);
 }
 
 main().catch((err) => {
