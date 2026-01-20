@@ -27,17 +27,18 @@
     .brand{font-weight:900;letter-spacing:.14em;font-size:13px}
     .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
     .right{display:flex;align-items:center;gap:10px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:12px;color:var(--muted)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:12px;color:var(--muted);cursor:pointer}
+    .pill a{cursor:pointer}
     .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 12px rgba(120,255,106,.35)}
     main{padding:28px 0 40px}
     h1{font-size:42px;margin:0 0 12px}
     p.lead{color:var(--muted);max-width:70ch;line-height:1.7;margin:0 0 26px}
-    .grid{display:grid;gap:18px}
-    @media(min-width:980px){.grid.two{grid-template-columns:1fr 1fr}}
-    section{margin:26px 0}
+
+    section{margin:18px 0}
     .sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
     .sectionTitle h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0}
     .hint{font-size:12px;color:var(--muted)}
+
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
     .list{display:grid;gap:12px}
     .item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 14px;border-radius:12px;background:#0f131b;border:1px solid var(--border)}
@@ -45,15 +46,39 @@
     .item p{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.35}
     .tag{font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;border:1px solid rgba(120,255,106,.3);color:var(--accent);white-space:nowrap}
     .tag.warn{border-color:rgba(255,209,102,.35);color:var(--warn)}
+
     .chips{display:flex;flex-wrap:wrap;gap:10px}
     .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:13px;color:var(--text)}
     .chip .dot{width:10px;height:10px}
+
     footer{border-top:1px solid var(--border);padding:20px 0;font-size:12px;color:var(--muted);text-align:center;margin-top:28px}
-    .muted{color:var(--muted)}
+
     .btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:#0f131b;font-weight:800;font-size:13px}
     .btn.primary{border-color:rgba(120,255,106,.25);box-shadow:0 0 0 1px rgba(120,255,106,.08) inset}
     .btn:active{transform:translateY(1px)}
+
+    /* ✅ NEW LAYOUT (matches your sketch) */
+    .layoutGrid{display:grid;gap:18px;align-items:start}
+    .colStack{display:grid;gap:18px}
+    @media(min-width:980px){.layoutGrid{grid-template-columns:1fr 1fr}}
+
+    /* ✅ Transfer tabs */
+    .tabs{display:flex;gap:10px;margin:0 0 12px}
+    .tab{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid var(--border);
+      background:#0f131b;font-weight:900;font-size:12px;
+      letter-spacing:.06em;text-transform:uppercase;
+      color:var(--muted);cursor:pointer;
+    }
+    .tab.active{
+      color:var(--text);
+      border-color:rgba(120,255,106,.25);
+      box-shadow:0 0 0 1px rgba(120,255,106,.08) inset
+    }
+    .hidden{display:none !important}
   </style>
 </head>
 
@@ -82,58 +107,88 @@
     </p>
 
     <div class="btnRow">
-      <a class="btn primary" href="#finalScores">Final scores</a>
-      <a class="btn" href="#upcoming">Upcoming + TV</a>
+      <a class="btn primary" href="#upcoming">Upcoming + TV</a>
+      <a class="btn" href="#liveScores">Live scores</a>
+      <a class="btn" href="#finalScores">Final scores</a>
       <a class="btn" href="#transfers">Transfer desk</a>
       <a class="btn" href="#aiNews">AI news</a>
       <a class="btn" href="#leagues">Leagues</a>
     </div>
   </section>
 
-  <div class="grid two">
+  <!-- ✅ NEW: Two-column layout -->
+  <div class="layoutGrid">
 
-    <section id="finalScores">
-      <div class="sectionTitle">
-        <h2>Final Scores</h2>
-        <span class="hint" id="scoresMeta">Loading…</span>
-      </div>
-      <div class="card">
-        <div id="scoresList" class="list"></div>
-      </div>
-    </section>
+    <!-- LEFT column (Upcoming + Live + Final) -->
+    <div class="colStack">
 
-    <section id="upcoming">
-      <div class="sectionTitle">
-        <h2>Upcoming + TV</h2>
-        <span class="hint" id="upcomingMeta">Loading…</span>
-      </div>
-      <div class="card">
-        <div id="upcomingList" class="list"></div>
-      </div>
-    </section>
+      <section id="upcoming">
+        <div class="sectionTitle">
+          <h2>Upcoming + TV</h2>
+          <span class="hint" id="upcomingMeta">Loading…</span>
+        </div>
+        <div class="card">
+          <div id="upcomingList" class="list"></div>
+        </div>
+      </section>
 
-    <section id="transfers">
-      <div class="sectionTitle">
-        <h2>Transfer Desk</h2>
-        <span class="hint" id="transfersMeta">Loading…</span>
-      </div>
-      <div class="card">
-        <div id="transfersList" class="list"></div>
-      </div>
-    </section>
+      <section id="liveScores">
+        <div class="sectionTitle">
+          <h2>Live Scores</h2>
+          <span class="hint" id="liveMeta">Loading…</span>
+        </div>
+        <div class="card">
+          <div id="liveList" class="list"></div>
+        </div>
+      </section>
 
-    <section id="aiNews">
-      <div class="sectionTitle">
-        <h2>AI News</h2>
-        <span class="hint" id="newsMeta">Loading…</span>
-      </div>
-      <div class="card">
-        <div id="newsList" class="list"></div>
-      </div>
-    </section>
+      <section id="finalScores">
+        <div class="sectionTitle">
+          <h2>Final Scores</h2>
+          <span class="hint" id="scoresMeta">Loading…</span>
+        </div>
+        <div class="card">
+          <div id="scoresList" class="list"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT column (Transfer Desk + AI News) -->
+    <div class="colStack">
+
+      <section id="transfers">
+        <div class="sectionTitle">
+          <h2>Transfer Desk</h2>
+          <span class="hint" id="transfersMeta">Loading…</span>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Transfer Desk Tabs">
+          <button class="tab active" type="button" data-tab="transfersNews" aria-selected="true">Transfer News</button>
+          <button class="tab" type="button" data-tab="transfersRumors" aria-selected="false">Rumors</button>
+        </div>
+
+        <div class="card">
+          <div id="transfersNews" class="list"></div>
+          <div id="transfersRumors" class="list hidden"></div>
+        </div>
+      </section>
+
+      <section id="aiNews">
+        <div class="sectionTitle">
+          <h2>AI News</h2>
+          <span class="hint" id="newsMeta">Loading…</span>
+        </div>
+        <div class="card">
+          <div id="newsList" class="list"></div>
+        </div>
+      </section>
+
+    </div>
 
   </div>
 
+  <!-- Bottom full-width -->
   <section id="leagues">
     <div class="sectionTitle">
       <h2>Leagues</h2>
@@ -195,51 +250,59 @@
     return res.json();
   }
 
-  // ✅ supports BOTH schemas:
-  // - { items: [] } (new)
-  // - { matches: [] } (old)
+  function isLiveStatus(s){
+    const st = String(s || "").toUpperCase();
+    return st === "LIVE" || st === "HT" || st === "IN_PLAY" || st === "PAUSED";
+  }
+  function isFinalStatus(s){
+    const st = String(s || "").toUpperCase();
+    return st === "FT" || st === "FINISHED";
+  }
+
+  // ✅ Scores: split into Live + Final (from same scores.json)
   async function loadScores() {
-    const list = $("scoresList");
-    const meta = $("scoresMeta");
+    const finalList = $("scoresList");
+    const finalMeta = $("scoresMeta");
+    const liveList  = $("liveList");
+    const liveMeta  = $("liveMeta");
+
     try {
       const data = await readJson(PATHS.scores);
 
+      // New schema: { updated, items:[{league,home,away,score,status,when}] }
       const items = Array.isArray(data.items) ? data.items : [];
-      const matches = Array.isArray(data.matches) ? data.matches : [];
 
-      const count = items.length || matches.length || 0;
-      meta.textContent = `${count} • updated ${data.generatedAt || data.updated || "—"}`;
+      const live = items.filter(m => isLiveStatus(m.status));
+      const finals = items.filter(m => isFinalStatus(m.status));
 
-      list.innerHTML = "";
-      if (!count) return emptyState(list, "No final scores yet", "Matches will appear here once completed.");
+      liveMeta.textContent  = `${live.length} • updated ${data.generatedAt || data.updated || "—"}`;
+      finalMeta.textContent = `${finals.length} • updated ${data.generatedAt || data.updated || "—"}`;
 
-      // New schema
-      if (items.length) {
-        items.forEach(m => {
-          const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-          const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}${m.status ? " • " + m.status : ""}`;
-          const tag = m.status || "FT";
-          const tagClass = (tag === "FT") ? "" : (tag === "LIVE" || tag === "HT") ? "" : "warn";
-          list.appendChild(row(title, metaLine, tag, tagClass));
-        });
-        return;
-      }
+      // Live
+      liveList.innerHTML = "";
+      if (!live.length) emptyState(liveList, "No live matches right now", "Live matches will appear here.");
+      else live.forEach(m => {
+        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
+        liveList.appendChild(row(title, metaLine, (m.status || "LIVE")));
+      });
 
-      // Old schema
-      matches.forEach(m => {
-        list.appendChild(
-          row(
-            `${m.home} ${m.homeScore}–${m.awayScore} ${m.away}`,
-            `${m.league} • ${m.date}`,
-            "FT"
-          )
-        );
+      // Final
+      finalList.innerHTML = "";
+      if (!finals.length) emptyState(finalList, "No final scores yet", "Finished matches will appear here.");
+      else finals.forEach(m => {
+        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
+        finalList.appendChild(row(title, metaLine, (m.status || "FT")));
       });
 
     } catch (e) {
-      meta.textContent = "error";
-      list.innerHTML = "";
-      list.appendChild(row("Scores not loading", e.message, "ERR", "warn"));
+      liveMeta.textContent = "error";
+      finalMeta.textContent = "error";
+      liveList.innerHTML = "";
+      finalList.innerHTML = "";
+      liveList.appendChild(row("Live scores not loading", e.message, "ERR", "warn"));
+      finalList.appendChild(row("Final scores not loading", e.message, "ERR", "warn"));
       console.error(e);
     }
   }
@@ -273,30 +336,68 @@
     }
   }
 
+  function setupTransferTabs(){
+    const tabs = Array.from(document.querySelectorAll(".tab[data-tab]"));
+    if (!tabs.length) return;
+
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-tab");
+
+        tabs.forEach(b => {
+          const active = (b === btn);
+          b.classList.toggle("active", active);
+          b.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        ["transfersNews","transfersRumors"].forEach(id=>{
+          const el = $(id);
+          if (!el) return;
+          el.classList.toggle("hidden", id !== targetId);
+        });
+      });
+    });
+  }
+
   async function loadTransfers() {
-    const list = $("transfersList");
     const meta = $("transfersMeta");
+    const newsPane = $("transfersNews");
+    const rumorsPane = $("transfersRumors");
     try {
       const data = await readJson(PATHS.transfers);
       const items = data.items || [];
       meta.textContent = `${items.length} • updated ${data.generatedAt || data.updated || "—"}`;
 
-      list.innerHTML = "";
-      if (!items.length) return emptyState(list, "No transfer items yet", "Populate assets/data/transfers.json");
+      // Split by type/kind if present; fallback split in half
+      const news = items.filter(x => String(x.type || x.kind || "").toLowerCase() === "news");
+      const rumors = items.filter(x => String(x.type || x.kind || "").toLowerCase() === "rumor");
 
-      items.forEach(t => {
-        list.appendChild(
-          row(
-            t.title || "Transfer update",
-            `${t.source || "source"} • ${t.publishedAt || t.date || ""}`,
-            "NEW"
-          )
-        );
-      });
+      const useNews = news.length ? news : items.slice(0, Math.ceil(items.length/2));
+      const useRumors = rumors.length ? rumors : items.slice(Math.ceil(items.length/2));
+
+      function render(pane, arr, emptyTitle){
+        pane.innerHTML = "";
+        if (!arr.length) return emptyState(pane, emptyTitle, "Populate assets/data/transfers.json");
+        arr.slice(0, 12).forEach(t => {
+          pane.appendChild(
+            row(
+              t.title || "Transfer update",
+              `${t.source || "source"} • ${t.publishedAt || t.date || ""}`,
+              "NEW"
+            )
+          );
+        });
+      }
+
+      render(newsPane, useNews, "No transfer news yet");
+      render(rumorsPane, useRumors, "No rumors yet");
+
     } catch (e) {
       meta.textContent = "error";
-      list.innerHTML = "";
-      list.appendChild(row("Transfers not loading", e.message, "ERR", "warn"));
+      newsPane.innerHTML = "";
+      rumorsPane.innerHTML = "";
+      newsPane.appendChild(row("Transfers not loading", e.message, "ERR", "warn"));
+      rumorsPane.appendChild(row("Transfers not loading", e.message, "ERR", "warn"));
       console.error(e);
     }
   }
@@ -408,8 +509,10 @@
       beep();
     });
 
-    await loadScores();
+    setupTransferTabs();
+
     await loadUpcoming();
+    await loadScores();
     await loadTransfers();
     await loadNews();
     await loadLeagues();
