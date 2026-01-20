@@ -28,17 +28,6 @@ jobs:
           node-version: "20"
 
       # -----------------------------
-      # SYNC FIRST (avoid rebase conflicts later)
-      # -----------------------------
-      - name: Sync with latest main
-        shell: bash
-        run: |
-          set -e
-          git fetch origin main
-          git checkout main
-          git reset --hard origin/main
-
-      # -----------------------------
       # FINAL + LIVE SCORES
       # -----------------------------
       - name: Generate scores.json
@@ -68,7 +57,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add assets/data/scores.json assets/data/upcoming.json
+          git add assets/data/scores.json assets/data/upcoming.json assets/data/transfers.json
 
           if git diff --cached --quiet; then
             echo "No changes detected."
@@ -76,4 +65,5 @@ jobs:
           fi
 
           git commit -m "Update scores & upcoming matches"
+          git pull --rebase origin main
           git push origin main
