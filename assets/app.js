@@ -10,6 +10,9 @@
   function qs(sel) {
     return document.querySelector(sel);
   }
+  function qsa(sel) {
+    return Array.from(document.querySelectorAll(sel));
+  }
   function esc(s) {
     return String(s ?? "")
       .replaceAll("&", "&amp;")
@@ -30,9 +33,11 @@
     }
   }
 
-  // Always fetch from GitHub Pages root path + avoid caching
+  // Robust data URL builder (works on custom domains + GitHub Pages subpaths)
   function dataUrl(file) {
-    return `/assets/data/${file}?v=${Date.now()}`;
+    const u = new URL(`assets/data/${file}`, document.baseURI);
+    u.searchParams.set("v", String(Date.now())); // cache bust
+    return u.toString();
   }
 
   async function safeFetchJson(file) {
@@ -65,8 +70,8 @@
   };
 
   function getUpdatedStamp(json) {
-    // Support BOTH formats
-    return json?.updated || json?.generatedAt || null;
+    // Your leagues.json uses "updated". Some other feeds may use "generatedAt".
+    return json?.generatedAt || json?.updated || null;
   }
 
   function setUpdated(el, iso) {
@@ -266,28 +271,24 @@
     });
   }
 
-  function renderLeagues(wrap, items, hadJson) {
+  function renderLeagues(wrap, items) {
     if (!wrap) return;
     clearWrap(wrap);
 
     if (!items.length) {
-      renderEmptyState(
-        wrap,
-        "Leagues not loading",
-        hadJson ? "Invalid or empty: leagues.json" : "Missing: leagues.json",
-        "ERR"
-      );
+      renderEmptyState(wrap, "Leagues not loading", "Missing: leagues.json", "ERR");
       return;
     }
 
     items.forEach((l) => {
       const name = l?.name || "League";
       const country = l?.country || "";
+      const emoji = l?.emoji || "";
       renderCard(
         wrap,
         `
         <div class="card">
-          <div class="card__title">${esc(name)}</div>
+          <div class="card__title">${emoji ? esc(emoji) + " " : ""}${esc(name)}</div>
           ${country ? `<div class="card__sub">${esc(country)}</div>` : ""}
         </div>
         `
@@ -324,23 +325,18 @@
     const signalsItems = filterExternal(signalsItemsRaw);
     const transfersItemsFiltered = filterExternal(transfersItems);
 
-    // Leagues
     setUpdated(UI.leaguesUpdated, getUpdatedStamp(leaguesJson));
-    renderLeagues(UI.leaguesWrap, leaguesItems, !!leaguesJson);
+    renderLeagues(UI.leaguesWrap, leaguesItems);
 
-    // Scores
     setUpdated(UI.finalScoresUpdated, getUpdatedStamp(scoresJson));
     renderScores(UI.finalScoresWrap, scoresItems);
 
-    // Upcoming
     setUpdated(UI.upcomingUpdated, getUpdatedStamp(upcomingJson));
     renderUpcoming(UI.upcomingWrap, upcomingItems);
 
-    // Transfers
     setUpdated(UI.transfersUpdated, getUpdatedStamp(transfersJson));
     renderTransfers(UI.transfersWrap, transfersItemsFiltered);
 
-    // AI News
     setUpdated(UI.aiNewsUpdated, getUpdatedStamp(aiNewsJson));
     renderNewsList(UI.aiNewsWrap, aiNewsItems);
 
