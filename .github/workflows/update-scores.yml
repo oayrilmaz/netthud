@@ -3,7 +3,7 @@ name: NetThud - Update Scores
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *" # hourly at :00 UTC
+    - cron: "*/30 * * * *" # every 30 minutes
 
 permissions:
   contents: write
@@ -26,13 +26,28 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate assets/data/scores.json
-        run: node scripts/generate-scores.mjs
+      - name: Sync with latest main
+        run: |
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+
+      - name: Generate Scores (Your API)
+        env:
+          NETTHUD_SCORES_API_URL: ${{ secrets.NETTHUD_SCORES_API_URL }}
+          NETTHUD_API_KEY: ${{ secrets.NETTHUD_API_KEY }}
+        run: |
+          node scripts/generate-scores.mjs
 
       - name: Commit & push if changed
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/scores.json
-          git diff --cached --quiet || git commit -m "Update scores.json"
-          git push
+          git status --porcelain
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add assets/data/scores.json
+            git commit -m "Update scores.json"
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi
