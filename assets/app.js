@@ -70,7 +70,7 @@
   };
 
   function getUpdatedStamp(json) {
-    // Your leagues.json uses "updated". Some other feeds may use "generatedAt".
+    // leagues.json uses "updated". Some other feeds may use "generatedAt".
     return json?.generatedAt || json?.updated || null;
   }
 
@@ -197,8 +197,8 @@
         <div class="card">
           <div class="card__title">${esc(home)} <span class="muted">vs</span> ${esc(away)}</div>
           <div class="card__meta">${esc(league)}${status ? " \u2022 " + esc(status) : ""}${
-          minute ? " \u2022 " + esc(minute) + "'" : ""
-        }</div>
+            minute ? " \u2022 " + esc(minute) + "'" : ""
+          }</div>
           ${score ? `<div class="score">${esc(score)}</div>` : ""}
         </div>
         `
@@ -230,8 +230,8 @@
             <div class="badge green">UP</div>
           </div>
           <div class="card__meta">${esc(league)}${when ? " \u2022 " + esc(when) : ""}${
-          tv ? " \u2022 " + esc(tv) : ""
-        }</div>
+            tv ? " \u2022 " + esc(tv) : ""
+          }</div>
         </div>
         `
       );
@@ -271,12 +271,19 @@
     });
   }
 
-  function renderLeagues(wrap, items) {
+  function renderLeagues(wrap, items, leaguesJson) {
     if (!wrap) return;
     clearWrap(wrap);
 
+    // ✅ FIX: if file is missing/unreadable, show ERR.
+    // ✅ If file exists but items is empty, show a different message (not "Missing leagues.json").
+    if (!leaguesJson) {
+      renderEmptyState(wrap, "Leagues not loading", "Could not fetch leagues.json", "ERR");
+      return;
+    }
+
     if (!items.length) {
-      renderEmptyState(wrap, "Leagues not loading", "Missing: leagues.json", "ERR");
+      renderEmptyState(wrap, "No leagues yet", "leagues.json loaded but items[] is empty.", "EMPTY");
       return;
     }
 
@@ -325,8 +332,9 @@
     const signalsItems = filterExternal(signalsItemsRaw);
     const transfersItemsFiltered = filterExternal(transfersItems);
 
-    setUpdated(UI.leaguesUpdated, leaguesJson?.updated || leaguesJson?.generatedAt);
-    renderLeagues(UI.leaguesWrap, leaguesItems);
+    // ✅ FIX: use updated/generatedAt consistently everywhere
+    setUpdated(UI.leaguesUpdated, getUpdatedStamp(leaguesJson));
+    renderLeagues(UI.leaguesWrap, leaguesItems, leaguesJson);
 
     setUpdated(UI.finalScoresUpdated, getUpdatedStamp(scoresJson));
     renderScores(UI.finalScoresWrap, scoresItems);
