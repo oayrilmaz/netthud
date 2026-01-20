@@ -7,12 +7,7 @@
 
 (function () {
   // ---------- Utilities ----------
-  function qs(sel) {
-    return document.querySelector(sel);
-  }
-  function qsa(sel) {
-    return Array.from(document.querySelectorAll(sel));
-  }
+  function qs(sel) { return document.querySelector(sel); }
   function esc(s) {
     return String(s ?? "")
       .replaceAll("&", "&amp;")
@@ -20,9 +15,7 @@
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;");
   }
-  function isoNow() {
-    return new Date().toISOString();
-  }
+  function isoNow() { return new Date().toISOString(); }
   function fmtDateTime(iso) {
     try {
       const d = new Date(iso);
@@ -33,32 +26,42 @@
     }
   }
 
-  // Robust data URL builder (works on custom domains + GitHub Pages subpaths)
-  function dataUrl(file) {
-    const u = new URL(`assets/data/${file}`, document.baseURI);
-    u.searchParams.set("v", String(Date.now())); // cache bust
+  // ---------- Robust URL building ----------
+  function withCacheBust(urlStr) {
+    const u = new URL(urlStr, document.baseURI);
+    u.searchParams.set("v", String(Date.now()));
     return u.toString();
   }
 
+  // Try multiple paths because GitHub Pages + custom domain + baseURI can vary
+  function candidateDataUrls(file) {
+    const rel = new URL(`assets/data/${file}`, document.baseURI).toString();     // relative
+    const abs = new URL(`/assets/data/${file}`, window.location.origin).toString(); // absolute
+    const dot = new URL(`./assets/data/${file}`, document.baseURI).toString();   // dot relative
+    // Deduplicate
+    return Array.from(new Set([rel, abs, dot])).map(withCacheBust);
+  }
+
   async function safeFetchJson(file) {
-    try {
-      const res = await fetch(dataUrl(file), { cache: "no-store" });
-      if (!res.ok) throw new Error(`${file} HTTP ${res.status}`);
-      return await res.json();
-    } catch (err) {
-      console.warn("Data load failed:", file, err);
-      return null; // never crash the UI
+    const urls = candidateDataUrls(file);
+
+    for (const url of urls) {
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error(`${file} HTTP ${res.status} @ ${url}`);
+        return await res.json();
+      } catch (err) {
+        console.warn("Data load failed:", file, err);
+      }
     }
+    return null; // never crash UI
   }
 
   // ---------- UI Targets ----------
   const UI = {
-    finalScoresWrap:
-      qs("#finalScores") || qs('[data-section="finalScores"]') || qs("#final-scores"),
-    upcomingWrap:
-      qs("#upcoming") || qs('[data-section="upcoming"]') || qs("#upcoming-tv"),
-    transfersWrap:
-      qs("#transfers") || qs('[data-section="transfers"]') || qs("#transfer-desk"),
+    finalScoresWrap: qs("#finalScores") || qs('[data-section="finalScores"]') || qs("#final-scores"),
+    upcomingWrap: qs("#upcoming") || qs('[data-section="upcoming"]') || qs("#upcoming-tv"),
+    transfersWrap: qs("#transfers") || qs('[data-section="transfers"]') || qs("#transfer-desk"),
     aiNewsWrap: qs("#aiNews") || qs('[data-section="aiNews"]') || qs("#ai-news"),
     leaguesWrap: qs("#leagues") || qs('[data-section="leagues"]') || qs("#leagues"),
 
@@ -70,7 +73,6 @@
   };
 
   function getUpdatedStamp(json) {
-    // leagues.json uses "updated". Some other feeds may use "generatedAt".
     return json?.generatedAt || json?.updated || null;
   }
 
@@ -138,12 +140,7 @@
     clearWrap(wrap);
 
     if (!items.length) {
-      renderEmptyState(
-        wrap,
-        "No AI news yet",
-        "Once OpenAI generation is enabled, items will appear here.",
-        "EMPTY"
-      );
+      renderEmptyState(wrap, "No AI news yet", "Once OpenAI generation is enabled, items will appear here.", "EMPTY");
       return;
     }
 
@@ -166,7 +163,7 @@
             <div class="card__title">${esc(title)}</div>
             ${btn}
           </div>
-          <div class="card__meta">${esc(source)}${date ? " \u2022 " + esc(date) : ""}</div>
+          <div class="card__meta">${esc(source)}${date ? " • " + esc(date) : ""}</div>
           ${summary ? `<div class="card__sub">${esc(summary)}</div>` : ""}
         </div>
         `
@@ -196,9 +193,7 @@
         `
         <div class="card">
           <div class="card__title">${esc(home)} <span class="muted">vs</span> ${esc(away)}</div>
-          <div class="card__meta">${esc(league)}${status ? " \u2022 " + esc(status) : ""}${
-            minute ? " \u2022 " + esc(minute) + "'" : ""
-          }</div>
+          <div class="card__meta">${esc(league)}${status ? " • " + esc(status) : ""}${minute ? " • " + esc(minute) + "'" : ""}</div>
           ${score ? `<div class="score">${esc(score)}</div>` : ""}
         </div>
         `
@@ -229,9 +224,7 @@
             <div class="card__title">${esc(title)}</div>
             <div class="badge green">UP</div>
           </div>
-          <div class="card__meta">${esc(league)}${when ? " \u2022 " + esc(when) : ""}${
-            tv ? " \u2022 " + esc(tv) : ""
-          }</div>
+          <div class="card__meta">${esc(league)}${when ? " • " + esc(when) : ""}${tv ? " • " + esc(tv) : ""}</div>
         </div>
         `
       );
@@ -264,7 +257,7 @@
             <div class="card__title">${esc(title)}</div>
             ${btn}
           </div>
-          <div class="card__meta">${esc(source)}${date ? " \u2022 " + esc(date) : ""}</div>
+          <div class="card__meta">${esc(source)}${date ? " • " + esc(date) : ""}</div>
         </div>
         `
       );
@@ -275,13 +268,13 @@
     if (!wrap) return;
     clearWrap(wrap);
 
-    // ✅ FIX: if file is missing/unreadable, show ERR.
-    // ✅ If file exists but items is empty, show a different message (not "Missing leagues.json").
+    // If fetch failed entirely
     if (!leaguesJson) {
-      renderEmptyState(wrap, "Leagues not loading", "Could not fetch leagues.json", "ERR");
+      renderEmptyState(wrap, "Leagues not loading", "Could not fetch leagues.json (path/cache issue).", "ERR");
       return;
     }
 
+    // File loaded but empty list
     if (!items.length) {
       renderEmptyState(wrap, "No leagues yet", "leagues.json loaded but items[] is empty.", "EMPTY");
       return;
@@ -305,21 +298,15 @@
 
   // ---------- Load & Render ----------
   async function main() {
-    const [
-      leaguesJson,
-      scoresJson,
-      upcomingJson,
-      transfersJson,
-      aiNewsJson,
-      signalsJson,
-    ] = await Promise.all([
-      safeFetchJson("leagues.json"),
-      safeFetchJson("scores.json"),
-      safeFetchJson("upcoming.json"),
-      safeFetchJson("transfers.json"),
-      safeFetchJson("ai-news.json"),
-      safeFetchJson("signals.json"),
-    ]);
+    const [leaguesJson, scoresJson, upcomingJson, transfersJson, aiNewsJson, signalsJson] =
+      await Promise.all([
+        safeFetchJson("leagues.json"),
+        safeFetchJson("scores.json"),
+        safeFetchJson("upcoming.json"),
+        safeFetchJson("transfers.json"),
+        safeFetchJson("ai-news.json"),
+        safeFetchJson("signals.json"),
+      ]);
 
     const leaguesItems = leaguesJson?.items ?? [];
     const scoresItems = scoresJson?.items ?? [];
@@ -332,7 +319,6 @@
     const signalsItems = filterExternal(signalsItemsRaw);
     const transfersItemsFiltered = filterExternal(transfersItems);
 
-    // ✅ FIX: use updated/generatedAt consistently everywhere
     setUpdated(UI.leaguesUpdated, getUpdatedStamp(leaguesJson));
     renderLeagues(UI.leaguesWrap, leaguesItems, leaguesJson);
 
@@ -350,19 +336,8 @@
 
     window.NETTHUD = {
       loadedAt: isoNow(),
-      data: {
-        leagues: leaguesJson,
-        scores: scoresJson,
-        upcoming: upcomingJson,
-        transfers: transfersJson,
-        aiNews: aiNewsJson,
-        signals: signalsJson,
-      },
-      filtered: {
-        aiNewsItems,
-        signalsItems,
-        transfersItemsFiltered,
-      },
+      data: { leagues: leaguesJson, scores: scoresJson, upcoming: upcomingJson, transfers: transfersJson, aiNews: aiNewsJson, signals: signalsJson },
+      filtered: { aiNewsItems, signalsItems, transfersItemsFiltered },
     };
 
     console.log("NetThud loaded", window.NETTHUD);
