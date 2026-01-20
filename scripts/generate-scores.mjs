@@ -1,41 +1,36 @@
-// scripts/generate-scores.mjs
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 const OUT_PATH = path.join("assets", "data", "scores.json");
 
-function requireEnv(name) {
-  const v = process.env[name];
-  if (!v) throw new Error(`Missing env: ${name}`);
-  return v;
-}
+async function main() {
+  const url = process.env.NETTHUD_SCORES_API_URL;
 
-function writeJson(filePath, obj) {
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(obj, null, 2), "utf8");
-}
+  let out = {
+    updated: new Date().toISOString(),
+    items: [],
+  };
 
-const url = requireEnv("NETTHUD_SCORES_API_URL");
-const apiKey = process.env.NETTHUD_API_KEY || "";
+  try {
+    if (!url) {
+      console.log("NETTHUD_SCORES_API_URL missing. Writing empty scores.json (valid).");
+    } else {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Scores API HTTP ${res.status}`);
+      const data = await res.json();
 
-(async () => {
-  const res = await fetch(url, {
-    headers: apiKey ? { "Authorization": `Bearer ${apiKey}` } : {}
-  });
-
-  if (!res.ok) {
-    const txt = await res.text();
-    throw new Error(`Scores API HTTP ${res.status}: ${txt}`);
+      // Expecting data.items array; fallback safely
+      const items = Array.isArray(data?.items) ? data.items : [];
+      out.items = items;
+      out.updated = new Date().toISOString();
+    }
+  } catch (e) {
+    console.error("Scores generation failed, writing empty valid scores.json:", e?.message || e);
   }
 
-  const data = await res.json();
-  const now = new Date().toISOString();
+  fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
+  fs.writeFileSync(OUT_PATH, JSON.stringify(out, null, 2) + "\n", "utf8");
+  console.log(`Wrote ${out.items.length} items to ${OUT_PATH}`);
+}
 
-  // Store whatever your API returns, plus updatedAt wrapper
-  writeJson(OUT_PATH, {
-    updatedAt: now,
-    items: data
-  });
-
-  console.log(`Wrote scores -> ${OUT_PATH}`);
-})();
+main();
