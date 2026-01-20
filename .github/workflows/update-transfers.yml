@@ -1,0 +1,35 @@
+name: NetThud - Update Transfers
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "25 * * * *" # hourly at :25 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: netthud-update-transfers
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate transfers.json
+        run: node scripts/generate-transfers.mjs
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "netthud-bot"
+          git config user.email "netthud-bot@users.noreply.github.com"
+          git add assets/data/transfers.json
+          git diff --cached --quiet || (git commit -m "Update transfers.json" && git push)
