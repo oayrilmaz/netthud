@@ -3,18 +3,16 @@ import fs from "fs/promises";
 const FEEDS = [
   "https://feeds.bbci.co.uk/sport/football/rss.xml",
   "https://www.espn.com/espn/rss/soccer/news",
-  "https://www.theguardian.com/football/rss"
+  "https://www.theguardian.com/football/rss",
 ];
 
 function pickTag(xml, tag) {
   const m = xml.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i"));
   return m ? m[1].trim() : "";
 }
-
 function stripCdata(s = "") {
   return s.replace("<![CDATA[", "").replace("]]>", "").trim();
 }
-
 function stripHtml(s = "") {
   return s.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 }
@@ -36,7 +34,7 @@ function parseRss(xml) {
         url: link,
         source: "",
         publishedAt: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString(),
-        summary: summary || "Football update."
+        summary: summary || "Football update.",
       });
     }
   }
@@ -74,7 +72,7 @@ async function main() {
   const out = {
     generatedAt: new Date().toISOString(),
     source: "NetThud RSS aggregation",
-    items
+    items,
   };
 
   await fs.mkdir("assets/data", { recursive: true });
