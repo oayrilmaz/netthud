@@ -1,13 +1,11 @@
-{
-  "generatedAt": "2026-01-18T00:00:00.000Z",
-  "source": "NetThud config",
-  "items": [
-    { "name": "Premier League", "code": "PL", "country": "England" },
-    { "name": "La Liga", "code": "PD", "country": "Spain" },
-    { "name": "Serie A", "code": "SA", "country": "Italy" },
-    { "name": "Bundesliga", "code": "BL1", "country": "Germany" },
-    { "name": "Ligue 1", "code": "FL1", "country": "France" },
-    { "name": "Eredivisie", "code": "DED", "country": "Netherlands" },
-    { "name": "Primeira Liga", "code": "PPL", "country": "Portugal" }
-  ]
-}
+[
+  { "name": "Premier League", "code": "PL" },
+  { "name": "La Liga", "code": "PD" },
+  { "name": "Serie A", "code": "SA" },
+  { "name": "Bundesliga", "code": "BL1" },
+  { "name": "Ligue 1", "code": "FL1" },
+  { "name": "Eredivisie", "code": "DED" },
+  { "name": "Primeira Liga", "code": "PPL" },
+  { "name": "MLS", "code": "MLS" },
+  { "name": "Brasileirão", "code": "BSA" }
+]
