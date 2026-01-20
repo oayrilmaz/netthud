@@ -325,7 +325,7 @@
     const signalsItems = filterExternal(signalsItemsRaw);
     const transfersItemsFiltered = filterExternal(transfersItems);
 
-    setUpdated(UI.leaguesUpdated, getUpdatedStamp(leaguesJson));
+    setUpdated(UI.leaguesUpdated, leaguesJson?.updated || leaguesJson?.generatedAt);
     renderLeagues(UI.leaguesWrap, leaguesItems);
 
     setUpdated(UI.finalScoresUpdated, getUpdatedStamp(scoresJson));
