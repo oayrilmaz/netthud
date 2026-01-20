@@ -270,15 +270,27 @@
 </div>
 
 <script>
+  // ✅ IMPORTANT: absolute paths prevent baseURI/subpath issues on GitHub Pages & caching edge cases
   const PATHS = {
-    scores:   "assets/data/scores.json",
-    upcoming: "assets/data/upcoming.json",
-    transfers:"assets/data/transfers.json",
-    news:     "assets/data/ai-news.json",
-    leagues:  "assets/data/leagues.json"
+    scores:   "/assets/data/scores.json",
+    upcoming: "/assets/data/upcoming.json",
+    transfers:"/assets/data/transfers.json",
+    news:     "/assets/data/ai-news.json",
+    leagues:  "/assets/data/leagues.json"
   };
 
   const $ = (id) => document.getElementById(id);
+
+  // ✅ Guard helpers (prevents silent “everything loading” if an element id changed)
+  function safeEl(id){ return document.getElementById(id); }
+  function safeSetText(id, text){
+    const el = safeEl(id);
+    if (el) el.textContent = text;
+  }
+
+  // ✅ If JS errors, you will see it in DevTools console (and it won’t silently stop)
+  window.addEventListener("error", (e)=>console.error("NetThud JS Error:", e.message, e.filename, e.lineno));
+  window.addEventListener("unhandledrejection", (e)=>console.error("NetThud Promise Error:", e.reason));
 
   function esc(s){
     return String(s ?? "")
@@ -307,10 +319,11 @@
   }
 
   async function readJson(url) {
-    const u = new URL(url, document.baseURI);
+    // cache-bust every time
+    const u = new URL(url, window.location.origin);
     u.searchParams.set("v", Date.now());
     const res = await fetch(u.toString(), { cache:"no-store" });
-    if (!res.ok) throw new Error(\`Missing: \${url} (HTTP \${res.status})\`);
+    if (!res.ok) throw new Error(`Missing: ${url} (HTTP ${res.status})`);
     return res.json();
   }
 
@@ -361,9 +374,7 @@
   // ✅ Scores: split into Live + Final (from same scores.json)
   async function loadScores() {
     const finalList = $("scoresList");
-    const finalMeta = $("scoresMeta");
     const liveList  = $("liveList");
-    const liveMeta  = $("liveMeta");
 
     try {
       const data = await readJson(PATHS.scores);
@@ -372,62 +383,63 @@
       const live = items.filter(m => isLiveStatus(m.status));
       const finals = items.filter(m => isFinalStatus(m.status));
 
-      liveMeta.textContent  = \`\${live.length} • updated \${data.generatedAt || data.updated || "—"}\`;
-      finalMeta.textContent = \`\${finals.length} • updated \${data.generatedAt || data.updated || "—"}\`;
+      safeSetText("liveMeta",  `${live.length} • updated ${data.generatedAt || data.updated || "—"}`);
+      safeSetText("scoresMeta",`${finals.length} • updated ${data.generatedAt || data.updated || "—"}`);
 
-      // Live
       liveList.innerHTML = "";
       if (!live.length) emptyState(liveList, "No live matches right now", "Live matches will appear here.");
       else live.slice(0,20).forEach(m => {
-        const title = \`\${m.home || ""} \${m.score || ""} \${m.away || ""}\`.trim();
-        const metaLine = \`\${m.league || ""}\${m.when ? " • " + m.when : ""}\`;
+        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
         const tag = (String(m.status||"").toUpperCase()==="HT") ? "HT" : "LIVE";
         liveList.appendChild(row(title, metaLine, tag, "live"));
       });
 
-      // Final
       finalList.innerHTML = "";
       if (!finals.length) emptyState(finalList, "No final scores yet", "Finished matches will appear here.");
       else finals.slice(0,40).forEach(m => {
-        const title = \`\${m.home || ""} \${m.score || ""} \${m.away || ""}\`.trim();
-        const metaLine = \`\${m.league || ""}\${m.when ? " • " + m.when : ""}\`;
+        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
         finalList.appendChild(row(title, metaLine, "FT"));
       });
 
     } catch (e) {
-      liveMeta.textContent = "error";
-      finalMeta.textContent = "error";
-      liveList.innerHTML = "";
-      finalList.innerHTML = "";
-      liveList.appendChild(row("Live scores not loading", e.message, "ERR", "warn"));
-      finalList.appendChild(row("Final scores not loading", e.message, "ERR", "warn"));
+      safeSetText("liveMeta","error");
+      safeSetText("scoresMeta","error");
+      if (liveList) {
+        liveList.innerHTML = "";
+        liveList.appendChild(row("Live scores not loading", e.message, "ERR", "warn"));
+      }
+      if (finalList) {
+        finalList.innerHTML = "";
+        finalList.appendChild(row("Final scores not loading", e.message, "ERR", "warn"));
+      }
       console.error(e);
     }
   }
 
   async function loadUpcoming() {
     const list = $("upcomingList");
-    const meta = $("upcomingMeta");
     try {
       const data = await readJson(PATHS.upcoming);
-      const items = data.items || [];
-      meta.textContent = \`\${items.length} • updated \${data.generatedAt || data.updated || "—"}\`;
+      const items = Array.isArray(data.items) ? data.items : [];
+      safeSetText("upcomingMeta", `${items.length} • updated ${data.generatedAt || data.updated || "—"}`);
 
       list.innerHTML = "";
-      if (!items.length) return emptyState(list, "No upcoming games yet", "Populate assets/data/upcoming.json");
+      if (!items.length) return emptyState(list, "No upcoming games yet", "Populate /assets/data/upcoming.json");
 
       items.slice(0,25).forEach(g => {
-        const channels = (g.tv || []).join(", ");
+        const channels = Array.isArray(g.tv) ? g.tv.join(", ") : "";
         list.appendChild(
           row(
-            \`\${g.home} vs \${g.away}\`,
-            \`\${g.league} • \${g.kickoffLocal || g.kickoffUTC || g.when || ""}\${channels ? " • " + channels : ""}\`,
+            `${g.home} vs ${g.away}`,
+            `${g.league} • ${g.kickoffLocal || g.kickoffUTC || g.when || ""}${channels ? " • " + channels : ""}`,
             "UP"
           )
         );
       });
     } catch (e) {
-      meta.textContent = "error";
+      safeSetText("upcomingMeta","error");
       list.innerHTML = "";
       list.appendChild(row("Upcoming not loading", e.message, "ERR", "warn"));
       console.error(e);
@@ -459,14 +471,40 @@
 
   // ✅ Transfer desk fallback so it’s never empty
   const DEFAULT_TRANSFERS = [
-    { kind:"news",  title:"Agreement in principle reached for midfielder move", source:"NetThud Desk", publishedAt:new Date().toISOString() },
-    { kind:"news",  title:"Medical scheduled for winger transfer",               source:"NetThud Desk", publishedAt:new Date().toISOString() },
-    { kind:"rumor", title:"Striker linked with 2 clubs amid agent talks",        source:"NetThud Desk", publishedAt:new Date().toISOString() },
-    { kind:"rumor", title:"Loan discussions open for young defender",           source:"NetThud Desk", publishedAt:new Date().toISOString() }
+    { kind:"news",  title:"Agreement in principle reached for midfielder move", source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
+    { kind:"news",  title:"Medical scheduled for winger transfer",               source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
+    { kind:"rumor", title:"Striker linked with 2 clubs amid agent talks",        source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
+    { kind:"rumor", title:"Loan discussions open for young defender",           source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" }
   ];
 
+  function normalizeTransfers(items){
+    return (items || []).map(x => {
+      // 1) If already in "title" schema
+      if (x && x.title) {
+        return {
+          kind: String(x.type || x.kind || x.status || "").toLowerCase() || "news",
+          title: x.title,
+          source: x.source || "source",
+          publishedAt: x.publishedAt || x.date || "",
+          url: x.url || ""
+        };
+      }
+
+      // 2) Your current demo schema: {player, from, to, fee, status, publishedAt, url}
+      const status = String(x.status || x.kind || "news").toLowerCase();
+      const kind = (status === "rumor" || status === "rumours" || status === "rumors") ? "rumor" : "news";
+      const title = `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}`;
+      return {
+        kind,
+        title,
+        source: "NetThud Desk",
+        publishedAt: x.publishedAt || "",
+        url: x.url || ""
+      };
+    });
+  }
+
   async function loadTransfers() {
-    const meta = $("transfersMeta");
     const newsPane = $("transfersNews");
     const rumorsPane = $("transfersRumors");
 
@@ -474,23 +512,22 @@
     let stamp = "—";
     try {
       const data = await readJson(PATHS.transfers);
-      items = Array.isArray(data.items) ? data.items : [];
-      stamp = data.generatedAt || data.updated || "—";
+      stamp = data.generatedAt || data.updated || data.updatedAt || "—";
+      items = normalizeTransfers(Array.isArray(data.items) ? data.items : []);
     } catch (e) {
-      // file missing -> fallback
       items = [];
       stamp = "—";
     }
 
     if (!items.length) items = DEFAULT_TRANSFERS;
-    meta.textContent = \`\${items.length} • updated \${stamp}\`;
+    safeSetText("transfersMeta", `${items.length} • updated ${stamp}`);
 
-    const news = items.filter(x => String(x.type || x.kind || "").toLowerCase() === "news");
-    const rumors = items.filter(x => String(x.type || x.kind || "").toLowerCase() === "rumor");
+    const news = items.filter(x => (x.kind || "").toLowerCase() === "news");
+    const rumors = items.filter(x => (x.kind || "").toLowerCase() === "rumor");
 
     function render(pane, arr, emptyTitle, tabName){
       pane.innerHTML = "";
-      if (!arr.length) return emptyState(pane, emptyTitle, "Populate assets/data/transfers.json");
+      if (!arr.length) return emptyState(pane, emptyTitle, "Populate /assets/data/transfers.json");
 
       arr.slice(0, 12).forEach((t, idx) => {
         const wrap = document.createElement("div");
@@ -498,30 +535,40 @@
 
         const left = document.createElement("div");
         left.style.minWidth = "0";
-        left.innerHTML = \`
-          <strong>\${esc(t.title || "Transfer update")}</strong>
-          <p>\${esc((t.source || "source") + " • " + (t.publishedAt || t.date || ""))}</p>
+        left.innerHTML = `
+          <strong>${esc(t.title || "Transfer update")}</strong>
+          <p>${esc((t.source || "source") + (t.publishedAt ? " • " + String(t.publishedAt).slice(0,19) : ""))}</p>
           <div class="rowActions"></div>
-        \`;
+        `;
 
         const actions = left.querySelector(".rowActions");
-        const h = \`transfer=\${tabName}-\${idx}\`;
+        const h = `transfer=${tabName}-${idx}`;
         const u = shareUrl(h);
         actions.appendChild(makeBtn("Share X", ()=>shareToX((t.title||"Transfer update")+" — NetThud", u)));
         actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
 
         const right = document.createElement("span");
         right.className = "tag";
-        right.textContent = "NEW";
+        right.textContent = "OPEN";
 
         wrap.appendChild(left);
         wrap.appendChild(right);
+
+        // If item has a URL, clicking the row opens it
+        if (t.url) {
+          wrap.style.cursor = "pointer";
+          wrap.addEventListener("click", (e)=>{
+            if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
+            window.open(t.url, "_blank", "noopener");
+          });
+        }
+
         pane.appendChild(wrap);
       });
     }
 
-    render(newsPane, news.length ? news : items.slice(0,2), "No transfer news yet", "news");
-    render(rumorsPane, rumors.length ? rumors : items.slice(2), "No rumors yet", "rumor");
+    render(newsPane, news.length ? news : items.filter(x=>x.kind==="news"), "No transfer news yet", "news");
+    render(rumorsPane, rumors.length ? rumors : items.filter(x=>x.kind==="rumor"), "No rumors yet", "rumor");
   }
 
   // ✅ AI News modal behavior (shareable)
@@ -534,17 +581,17 @@
       title,
       "",
       "Context",
-      "This item was generated/curated by NetThud AI based on recent coverage and signals.",
+      "This item is generated by NetThud AI as a fast brief + a longer read format.",
       "",
       "What happened",
       summary || "No summary provided yet.",
       "",
       "Why it matters",
-      "This can affect tactics, availability, momentum, and short-term attention around fixtures.",
+      "This can influence match prep, tactics, availability, and short-term attention around fixtures.",
       "",
       "What to watch next",
-      "Look for confirmation from primary sources and follow-up signals."
-    ].join("\\n");
+      "Look for primary-source confirmation and follow-on signals over the next 24–72 hours."
+    ].join("\n");
   }
 
   function openModal(payload){
@@ -584,6 +631,16 @@
     closeBtn.addEventListener("click", close);
   }
 
+  function slugify(s){
+    return String(s||"")
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g,"")
+      .replace(/\s+/g,"-")
+      .replace(/-+/g,"-")
+      .slice(0,60) || ("news-"+Math.random().toString(16).slice(2));
+  }
+
   function tryOpenFromHash(){
     const h = window.location.hash || "";
     if (!h.startsWith("#news=")) return;
@@ -601,38 +658,28 @@
     });
   }
 
-  function slugify(s){
-    return String(s||"")
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g,"")
-      .replace(/\s+/g,"-")
-      .replace(/-+/g,"-")
-      .slice(0,60) || ("news-"+Math.random().toString(16).slice(2));
-  }
-
   async function loadNews() {
     const list = $("newsList");
-    const meta = $("newsMeta");
     try {
       const data = await readJson(PATHS.news);
       const items = Array.isArray(data.items) ? data.items : [];
-      meta.textContent = \`\${items.length} • updated \${data.generatedAt || data.updated || "—"}\`;
+      safeSetText("newsMeta", `${items.length} • updated ${data.generatedAt || data.updated || data.updatedAt || "—"}`);
 
       list.innerHTML = "";
-      if (!items.length) return emptyState(list, "No news items yet", "Populate assets/data/ai-news.json");
+      if (!items.length) return emptyState(list, "No news items yet", "Populate /assets/data/ai-news.json");
 
       NEWS_INDEX = items.map((n,i)=>{
         const id = n.id || ("news-"+(i+1));
         const slug = slugify(id);
         const title = n.title || ("News-"+(i+1));
         const source = n.source || "NetThud AI";
-        const publishedAt = n.publishedAt || n.date || "";
-        const metaLine = [source, publishedAt ? String(publishedAt).slice(0,19) : ""].filter(Boolean).join(" • ");
+        const createdAt = n.createdAt || n.publishedAt || n.date || "";
+        const metaLine = [source, createdAt ? String(createdAt).slice(0,19) : ""].filter(Boolean).join(" • ");
         const article = (n.article && String(n.article).trim().length > 60) ? String(n.article) : buildFallbackArticle({title, summary:n.summary});
 
         return {
-          slug, title, meta: metaLine,
+          slug, title,
+          meta: metaLine,
           summary: n.summary || n.short || "",
           article
         };
@@ -647,11 +694,11 @@
 
         const left = document.createElement("div");
         left.style.minWidth = "0";
-        left.innerHTML = \`
-          <strong>\${esc(label)} • \${esc(n.title)}</strong>
-          <p>\${esc(n.summary || "Click to open the full AI article.")}</p>
+        left.innerHTML = `
+          <strong>${esc(label)} • ${esc(n.title)}</strong>
+          <p>${esc(n.summary || "Click to open the full AI article.")}</p>
           <div class="rowActions"></div>
-        \`;
+        `;
 
         const actions = left.querySelector(".rowActions");
         const u = shareUrl("news=" + n.slug);
@@ -684,7 +731,7 @@
       window.addEventListener("hashchange", tryOpenFromHash);
 
     } catch (e) {
-      meta.textContent = "error";
+      safeSetText("newsMeta","error");
       list.innerHTML = "";
       list.appendChild(row("AI News not loading", e.message, "ERR", "warn"));
       console.error(e);
@@ -693,7 +740,6 @@
 
   async function loadLeagues() {
     const container = $("leagueChips");
-    const meta = $("leaguesMeta");
     try {
       const data = await readJson(PATHS.leagues);
 
@@ -702,19 +748,19 @@
                     : Array.isArray(data.leagues) ? data.leagues
                     : [];
 
-      meta.textContent = \`\${leagues.length} • updated \${data.updated || data.generatedAt || "—"}\`;
+      safeSetText("leaguesMeta", `${leagues.length} • updated ${data.updated || data.generatedAt || "—"}`);
 
       container.innerHTML = "";
       if (!leagues.length) {
         const empty = document.createElement("div");
         empty.className = "item";
-        empty.innerHTML = \`
+        empty.innerHTML = `
           <div>
             <strong>No leagues yet</strong>
-            <p>assets/data/leagues.json loaded, but items[] is empty.</p>
+            <p>/assets/data/leagues.json loaded, but items[] is empty.</p>
           </div>
           <span class="tag warn">EMPTY</span>
-        \`;
+        `;
         container.appendChild(empty);
         return;
       }
@@ -727,11 +773,11 @@
         const emoji = (l && typeof l === "object") ? (l.emoji || "") : "";
         const country = (l && typeof l === "object") ? (l.country || "") : "";
 
-        el.innerHTML = \`<span class="dot"></span>\${esc(emoji ? emoji + " " : "")}\${esc(name)}\${esc(country ? " • " + country : "")}\`;
+        el.innerHTML = `<span class="dot"></span>${esc(emoji ? emoji + " " : "")}${esc(name)}${esc(country ? " • " + country : "")}`;
         container.appendChild(el);
       });
     } catch (e) {
-      meta.textContent = "error";
+      safeSetText("leaguesMeta","error");
       container.innerHTML = "";
       container.appendChild(row("Leagues not loading", e.message, "ERR", "warn"));
       console.error(e);
@@ -740,7 +786,10 @@
 
   // Sound toggle
   const SOUND_KEY = "netthud_sound";
-  function setSoundUI(on){ $("soundState").textContent = on ? "ON" : "OFF"; }
+  function setSoundUI(on){
+    const st = $("soundState");
+    if (st) st.textContent = on ? "ON" : "OFF";
+  }
   function getSound(){ return localStorage.getItem(SOUND_KEY) !== "0"; }
   function setSound(on){ localStorage.setItem(SOUND_KEY, on ? "1" : "0"); setSoundUI(on); }
   function beep(){
@@ -754,24 +803,39 @@
     }catch{}
   }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const yearEl = $("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   document.addEventListener("DOMContentLoaded", async () => {
-    setSoundUI(getSound());
-    document.getElementById("soundPill").addEventListener("click", ()=>{
-      const on = !getSound();
-      setSound(on);
-      beep();
-    });
+    try{
+      setSoundUI(getSound());
+      const sp = $("soundPill");
+      if (sp) {
+        sp.addEventListener("click", ()=>{
+          const on = !getSound();
+          setSound(on);
+          beep();
+        });
+      }
 
-    setupTransferTabs();
+      setupTransferTabs();
 
-    // ✅ order doesn’t matter, layout is fixed; but load in this order:
-    await loadScores();
-    await loadUpcoming();
-    await loadTransfers();
-    await loadNews();
-    await loadLeagues();
+      // ✅ order doesn’t matter, but keep your requested order
+      await loadScores();
+      await loadUpcoming();
+      await loadTransfers();
+      await loadNews();
+      await loadLeagues();
+    }catch(e){
+      // If something unexpected happens, at least show it in console
+      console.error("NetThud boot failed:", e);
+      safeSetText("liveMeta","error");
+      safeSetText("upcomingMeta","error");
+      safeSetText("scoresMeta","error");
+      safeSetText("transfersMeta","error");
+      safeSetText("newsMeta","error");
+      safeSetText("leaguesMeta","error");
+    }
   });
 </script>
 
