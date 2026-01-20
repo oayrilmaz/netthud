@@ -1,11 +1,15 @@
 // scripts/generate-scores.mjs
 // Generates: assets/data/scores.json
 // Uses football-data.org (requires API token)
+//
 // Env:
 //   NETTHUD_SCORES_API_PROVIDER=football-data
 //   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
 // Optional:
-//   NETTHUD_SCORES_DAYS_BACK=7
+//   NETTHUD_SCORES_FINAL_DAYS=3        (default 3)
+//   NETTHUD_SCORES_LIMIT=120          (default 120)
+//   NETTHUD_SCORES_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL (optional allowlist)
+//     - If set, we only keep those competition codes (helps keep feed “big leagues only”)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -32,47 +36,6 @@ function writeJson(filePath, data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + "\n", "utf8");
 }
 
-function mapFootballDataStatus(status) {
-  switch (safeStr(status)) {
-    case "FINISHED":
-      return "FT";
-    case "IN_PLAY":
-      return "LIVE";
-    case "PAUSED":
-      return "HT";
-    case "SUSPENDED":
-      return "LIVE";
-    case "TIMED":
-    case "SCHEDULED":
-      return "UP";
-    default:
-      return safeStr(status || "");
-  }
-}
-
-function calcScore(fdMatch) {
-  const ft = fdMatch?.score?.fullTime;
-  const ht = fdMatch?.score?.halfTime;
-  const homeFT = ft?.home;
-  const awayFT = ft?.away;
-
-  if (Number.isFinite(homeFT) && Number.isFinite(awayFT)) {
-    return `${homeFT}–${awayFT}`;
-  }
-
-  const homeHT = ht?.home;
-  const awayHT = ht?.away;
-  if (Number.isFinite(homeHT) && Number.isFinite(awayHT)) {
-    return `${homeHT}–${awayHT}`;
-  }
-
-  return "";
-}
-
-function leagueNameFromCompetition(comp) {
-  return safeStr(comp?.name || "");
-}
-
 function yyyyMmDdUTC(d) {
   return d.toISOString().slice(0, 10);
 }
@@ -81,121 +44,160 @@ function utcMidnight(dateObj) {
   return new Date(Date.UTC(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate()));
 }
 
-async function httpJson(url, token) {
+function mapFootballDataStatus(status) {
+  // normalize for your index.html logic
+  switch (status) {
+    case "FINISHED":
+      return "FT";
+    case "IN_PLAY":
+      return "LIVE";
+    case "PAUSED":
+      return "HT";
+    default:
+      return safeStr(status || "");
+  }
+}
+
+function calcScore(fdMatch) {
+  // Prefer fullTime; if not there, fall back to halfTime
+  const ft = fdMatch?.score?.fullTime;
+  const ht = fdMatch?.score?.halfTime;
+
+  const homeFT = ft?.home;
+  const awayFT = ft?.away;
+
+  if (Number.isFinite(homeFT) && Number.isFinite(awayFT)) return `${homeFT}–${awayFT}`;
+
+  const homeHT = ht?.home;
+  const awayHT = ht?.away;
+  if (Number.isFinite(homeHT) && Number.isFinite(awayHT)) return `${homeHT}–${awayHT}`;
+
+  // Some live matches may also have "score" in other places on some plans,
+  // but we keep it simple.
+  return "";
+}
+
+function leagueNameFromCompetition(comp) {
+  return safeStr(comp?.name || "");
+}
+
+function competitionCode(comp) {
+  return safeStr(comp?.code || "");
+}
+
+function parseAllowlist() {
+  const raw = env("NETTHUD_SCORES_COMP_CODES", "").trim();
+  if (!raw) return null; // no filtering
+  const set = new Set(
+    raw
+      .split(",")
+      .map((x) => x.trim())
+      .filter(Boolean)
+  );
+  return set.size ? set : null;
+}
+
+async function fetchFootballData(url, token) {
   const res = await fetch(url, { headers: { "X-Auth-Token": token } });
-  const text = await res.text().catch(() => "");
   if (!res.ok) {
-    throw new Error(`football-data HTTP ${res.status} ${res.statusText} :: ${text.slice(0, 200)}`);
+    const t = await res.text().catch(() => "");
+    throw new Error(`football-data HTTP ${res.status} ${res.statusText} :: ${t.slice(0, 200)}`);
   }
-  return JSON.parse(text || "{}");
+  return res.json();
 }
 
-async function tryFetchMatches(url, token) {
-  try {
-    const json = await httpJson(url, token);
-    const matches = Array.isArray(json?.matches) ? json.matches : [];
-    return matches;
-  } catch (e) {
-    // silently fail, caller will fallback
-    return [];
-  }
-}
-
-function normalizeMatch(m) {
+function mapMatch(m) {
   const league = leagueNameFromCompetition(m?.competition);
+  const code = competitionCode(m?.competition);
   const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name);
   const away = safeStr(m?.awayTeam?.shortName || m?.awayTeam?.name);
+
   const score = calcScore(m);
   const status = mapFootballDataStatus(m?.status);
   const when = safeStr(m?.utcDate || "").slice(0, 10);
-  return {
-    id: m?.id,
-    league,
-    home,
-    away,
-    score,
-    status,
-    when,
-  };
+
+  return { league, code, home, away, score, status, when };
 }
 
 async function fetchFootballDataScores() {
   const token = env("NETTHUD_SCORES_API_TOKEN");
-  if (!token) {
-    throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
-  }
+  if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
 
-  const daysBack = Math.max(1, parseInt(env("NETTHUD_SCORES_DAYS_BACK", "7"), 10) || 7);
+  const allow = parseAllowlist();
+  const limit = Math.max(20, Math.min(400, Number(env("NETTHUD_SCORES_LIMIT", "120")) || 120));
+  const finalDays = Math.max(1, Math.min(14, Number(env("NETTHUD_SCORES_FINAL_DAYS", "3")) || 3));
 
-  // ✅ Use UTC midnight boundaries; set dateTo to TOMORROW so "today" is always included.
-  const now = new Date();
-  const today = utcMidnight(now);
-  const tomorrow = new Date(today);
-  tomorrow.setUTCDate(today.getUTCDate() + 1);
+  // ✅ 1) LIVE matches (IN_PLAY + PAUSED) fetched directly via status filter
+  // This fixes the “there are live games on ESPN but NetThud shows 0” issue.
+  const liveJson1 = await fetchFootballData(
+    "https://api.football-data.org/v4/matches?status=IN_PLAY",
+    token
+  );
+  const liveJson2 = await fetchFootballData(
+    "https://api.football-data.org/v4/matches?status=PAUSED",
+    token
+  );
 
-  const dateFromD = new Date(today);
-  dateFromD.setUTCDate(today.getUTCDate() - daysBack);
-
-  const dateFrom = yyyyMmDdUTC(dateFromD);
-  const dateTo = yyyyMmDdUTC(tomorrow);
-
-  // ✅ 1) Try to fetch LIVE right now (some plans/APIs behave better with status queries)
-  const base = "https://api.football-data.org/v4/matches";
-  const liveUrls = [
-    `${base}?status=LIVE`,      // if supported
-    `${base}?status=IN_PLAY`,   // common status
-    `${base}?status=PAUSED`,    // halftime
+  const liveMatches = [
+    ...(Array.isArray(liveJson1?.matches) ? liveJson1.matches : []),
+    ...(Array.isArray(liveJson2?.matches) ? liveJson2.matches : []),
   ];
 
-  let liveMatches = [];
-  for (const u of liveUrls) {
-    const ms = await tryFetchMatches(u, token);
-    if (ms.length) {
-      liveMatches = ms;
-      break;
-    }
+  // ✅ 2) Recent FINISHED matches (last N days) for your "Final scores"
+  const now = new Date();
+  const today = utcMidnight(now);
+  const fromD = new Date(today);
+  fromD.setUTCDate(today.getUTCDate() - finalDays);
+
+  // Add +1 day safety on dateTo so today’s finished games are not missed
+  const toPlusOne = new Date(today);
+  toPlusOne.setUTCDate(today.getUTCDate() + 1);
+
+  const dateFrom = yyyyMmDdUTC(fromD);
+  const dateTo = yyyyMmDdUTC(toPlusOne);
+
+  const finishedJson = await fetchFootballData(
+    `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`,
+    token
+  );
+
+  const finishedMatches = (Array.isArray(finishedJson?.matches) ? finishedJson.matches : []).filter(
+    (m) => safeStr(m?.status) === "FINISHED"
+  );
+
+  // Map + merge
+  const mapped = [...liveMatches, ...finishedMatches].map(mapMatch);
+
+  // Optional allowlist filter
+  const filtered = allow
+    ? mapped.filter((x) => !x.code || allow.has(x.code))
+    : mapped;
+
+  // Deduplicate (same match can appear twice across queries)
+  const seen = new Set();
+  const unique = [];
+  for (const it of filtered) {
+    const k = `${it.code}|${it.home}|${it.away}|${it.when}|${it.status}|${it.score}`;
+    if (seen.has(k)) continue;
+    seen.add(k);
+    unique.push(it);
   }
 
-  // ✅ 2) Fetch recent results window (finished + any live/paused inside window)
-  const windowUrl = `${base}?dateFrom=${dateFrom}&dateTo=${dateTo}`;
-  const windowJson = await httpJson(windowUrl, token);
-  const windowMatches = Array.isArray(windowJson?.matches) ? windowJson.matches : [];
-
-  // ✅ Combine + de-dupe by match id
-  const byId = new Map();
-  for (const m of [...windowMatches, ...liveMatches]) {
-    if (!m) continue;
-    const id = m.id ?? `${m?.utcDate || ""}-${m?.homeTeam?.id || ""}-${m?.awayTeam?.id || ""}`;
-    byId.set(id, m);
-  }
-
-  const matches = Array.from(byId.values());
-
-  // ✅ keep REAL score states only (LIVE-like + FINISHED)
-  const keep = matches.filter((m) => {
-    const st = safeStr(m?.status);
-    return st === "FINISHED" || st === "IN_PLAY" || st === "PAUSED" || st === "SUSPENDED" || st === "LIVE";
-  });
-
-  const items = keep.map(normalizeMatch);
-
-  // Sort: LIVE/HT first, then FT (newest first)
+  // Sort: LIVE first, then HT, then FT (most recent first)
   const rank = (s) => (s === "LIVE" ? 0 : s === "HT" ? 1 : 2);
-  items.sort((a, b) => {
+  unique.sort((a, b) => {
     const r = rank(a.status) - rank(b.status);
     if (r !== 0) return r;
-
-    // Prefer most recent date, then stable by league/home
-    const dw = safeStr(b.when).localeCompare(safeStr(a.when));
-    if (dw !== 0) return dw;
-
-    const dl = safeStr(a.league).localeCompare(safeStr(b.league));
-    if (dl !== 0) return dl;
-
-    return safeStr(a.home).localeCompare(safeStr(b.home));
+    return safeStr(b.when).localeCompare(safeStr(a.when));
   });
 
-  return { updated: isoNow(), items };
+  // Trim & remove internal "code" before writing (keep schema stable for index.html)
+  const items = unique.slice(0, limit).map(({ code, ...rest }) => rest);
+
+  return {
+    updated: isoNow(),
+    items,
+  };
 }
 
 async function main() {
