@@ -1,23 +1,48 @@
 {
-  "generatedAt": "2026-01-20T03:29:26.385Z",
-  "mode": "demo",
+  "generatedAt": "2026-01-20T22:23:00.000Z",
+  "mode": "feed",
   "items": [
     {
-      "player": "Forward X",
-      "from": "Club A",
-      "to": "Club B",
-      "fee": "loan",
-      "status": "rumor",
-      "publishedAt": "2026-01-20T03:29:26.385Z",
+      "type": "news",
+      "title": "Midfielder Y: Club C → Club D (€18m) — agreement advanced",
+      "source": "NetThud Desk",
+      "publishedAt": "2026-01-20T21:55:00.000Z",
       "url": "https://netthud.com/"
     },
     {
-      "player": "Midfielder Y",
-      "from": "Club C",
-      "to": "Club D",
-      "fee": "€18m",
-      "status": "advanced",
-      "publishedAt": "2026-01-20T03:29:26.385Z",
+      "type": "news",
+      "title": "Winger Z: medical scheduled after fee agreed in principle",
+      "source": "NetThud Desk",
+      "publishedAt": "2026-01-20T21:30:00.000Z",
+      "url": "https://netthud.com/"
+    },
+    {
+      "type": "news",
+      "title": "Club E open talks for defender — discussions moving quickly",
+      "source": "NetThud Desk",
+      "publishedAt": "2026-01-20T20:40:00.000Z",
+      "url": "https://netthud.com/"
+    },
+
+    {
+      "type": "rumor",
+      "title": "Forward X: Club A → Club B (loan) — agent contact reported",
+      "source": "NetThud Desk",
+      "publishedAt": "2026-01-20T21:10:00.000Z",
+      "url": "https://netthud.com/"
+    },
+    {
+      "type": "rumor",
+      "title": "Striker linked with two clubs as January shortlist narrows",
+      "source": "NetThud Desk",
+      "publishedAt": "2026-01-20T20:20:00.000Z",
+      "url": "https://netthud.com/"
+    },
+    {
+      "type": "rumor",
+      "title": "Young defender loan discussed — decision expected within 72 hours",
+      "source": "NetThud Desk",
+      "publishedAt": "2026-01-20T19:45:00.000Z",
       "url": "https://netthud.com/"
     }
   ]
