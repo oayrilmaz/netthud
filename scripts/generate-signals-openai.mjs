@@ -1,130 +1,130 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const OUT_PATH = path.join("assets", "data", "signals.json");
+const OUT_PATH = path.resolve("assets/data/signals.json");
 
-function safeReadJson(filePath, fallback) {
+function readJsonSafe(filePath, fallback) {
   try {
     if (!fs.existsSync(filePath)) return fallback;
-    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const txt = fs.readFileSync(filePath, "utf8").trim();
+    if (!txt) return fallback;
+    return JSON.parse(txt);
   } catch {
     return fallback;
   }
 }
 
-function extractJson(text) {
-  if (!text) throw new Error("Empty response");
-  const s = text.trim();
-
-  if ((s.startsWith("{") && s.endsWith("}")) || (s.startsWith("[") && s.endsWith("]"))) {
-    return JSON.parse(s);
-  }
-
-  const firstObj = s.indexOf("{");
-  const firstArr = s.indexOf("[");
-  let start = -1;
-  if (firstObj === -1) start = firstArr;
-  else if (firstArr === -1) start = firstObj;
-  else start = Math.min(firstObj, firstArr);
-
-  if (start === -1) throw new Error("No JSON start found in response");
-
-  const lastObj = s.lastIndexOf("}");
-  const lastArr = s.lastIndexOf("]");
-  const end = Math.max(lastObj, lastArr);
-
-  if (end === -1 || end <= start) throw new Error("No JSON end found in response");
-
-  return JSON.parse(s.slice(start, end + 1));
+function writeJsonAtomic(filePath, obj) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  const tmp = filePath + ".tmp";
+  fs.writeFileSync(tmp, JSON.stringify(obj, null, 2) + "\n", "utf8");
+  fs.renameSync(tmp, filePath);
 }
 
-async function callOpenAI({ apiKey, prompt }) {
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "gpt-4o-mini",
-      temperature: 0.3,
-      messages: [
-        {
-          role: "system",
-          content:
-            "Return ONLY valid JSON. No markdown, no extra text. If you cannot comply, return an empty JSON array [].",
-        },
-        { role: "user", content: prompt },
-      ],
-    }),
-  });
+function extractFirstJsonObject(text) {
+  const s = text.indexOf("{");
+  const e = text.lastIndexOf("}");
+  if (s === -1 || e === -1 || e <= s) throw new Error("No JSON object found in response.");
+  return JSON.parse(text.slice(s, e + 1));
+}
 
-  if (!res.ok) {
-    const t = await res.text();
-    throw new Error(`OpenAI HTTP ${res.status}: ${t}`);
+async function callOpenAI(prompt) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    console.log("OPENAI_API_KEY missing. Keeping existing signals.json (no-op).");
+    return null;
   }
 
-  const data = await res.json();
-  return data?.choices?.[0]?.message?.content ?? "";
+  const body = {
+    model: "gpt-4o-mini",
+    input: [
+      {
+        role: "system",
+        content:
+          "Return ONLY valid JSON. No markdown, no commentary. The JSON must match the requested shape exactly.",
+      },
+      { role: "user", content: prompt },
+    ],
+    response_format: { type: "json_object" }, //  [oai_citation:2‡OpenAI Platform](https://platform.openai.com/docs/api-reference/runs%3Flang%3Dpython?utm_source=chatgpt.com)
+  };
+
+  const res = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  const raw = await res.text();
+  if (!res.ok) throw new Error(`OpenAI HTTP ${res.status}: ${raw}`);
+
+  try {
+    const data = JSON.parse(raw);
+    const text =
+      data?.output?.[0]?.content?.map?.(c => c?.text).filter(Boolean).join("") ??
+      data?.output_text ??
+      raw;
+    return extractFirstJsonObject(text);
+  } catch {
+    return extractFirstJsonObject(raw);
+  }
 }
 
 async function main() {
-  const previous = safeReadJson(OUT_PATH, { updated: null, items: [] });
-
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    console.log("OPENAI_API_KEY missing. Keeping existing signals.json unchanged.");
-    process.exit(0);
-  }
+  const existing = readJsonSafe(OUT_PATH, { updated: null, items: [] });
 
   const prompt = `
-Create 12 short "match signals" for football fans (injury, form, fatigue, travel, tactics).
-Output JSON ONLY with this exact shape:
-
+Create "Signals" for NetThud (football insights).
+Return JSON with this exact shape:
 {
   "updated": "<ISO timestamp>",
   "items": [
     {
-      "title": "...",
-      "signal": "...",
-      "confidence": "low|medium|high"
+      "title": "string",
+      "tag": "string",
+      "confidence": "low|medium|high",
+      "summary": "string"
     }
   ]
 }
-
 Rules:
-- items length must be 12
-- confidence must be exactly low, medium, or high
-- no undefined / null fields
+- Exactly 12 items.
+- Keep summaries short (max ~180 chars).
+- Use practical, not silly signals (injury impact, schedule congestion, tactical shift, transfer rumor reliability, etc).
 `;
 
+  let obj = null;
   try {
-    const raw = await callOpenAI({ apiKey, prompt });
-    const parsed = extractJson(raw);
-
-    const items = Array.isArray(parsed?.items) ? parsed.items : [];
-    const cleaned = items
-      .filter((x) => x && typeof x === "object")
-      .map((x) => ({
-        title: String(x.title ?? "").trim(),
-        signal: String(x.signal ?? "").trim(),
-        confidence: String(x.confidence ?? "").trim(),
-      }))
-      .filter((x) => x.title && x.signal && ["low", "medium", "high"].includes(x.confidence))
-      .slice(0, 12);
-
-    const out = { updated: new Date().toISOString(), items: cleaned };
-
-    fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
-    fs.writeFileSync(OUT_PATH, JSON.stringify(out, null, 2) + "\n", "utf8");
-    console.log(`Wrote ${cleaned.length} signals to ${OUT_PATH}`);
-  } catch (err) {
-    console.error("Signals generation failed:", err?.message || err);
-    console.log("Keeping existing signals.json unchanged.");
-    fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
-    fs.writeFileSync(OUT_PATH, JSON.stringify(previous, null, 2) + "\n", "utf8");
-    process.exit(0);
+    obj = await callOpenAI(prompt);
+  } catch (e) {
+    console.log("generate-signals-openai failed:", e?.message || e);
   }
+
+  if (!obj || !Array.isArray(obj.items)) {
+    console.log("OpenAI output invalid. Keeping existing signals.json.");
+    writeJsonAtomic(OUT_PATH, existing);
+    return;
+  }
+
+  const cleaned = {
+    updated: new Date().toISOString(),
+    items: obj.items.slice(0, 12).map((x) => ({
+      title: String(x.title || "").trim(),
+      tag: String(x.tag || "").trim(),
+      confidence: ["low", "medium", "high"].includes(String(x.confidence))
+        ? String(x.confidence)
+        : "medium",
+      summary: String(x.summary || "").trim(),
+    })),
+  };
+
+  writeJsonAtomic(OUT_PATH, cleaned);
+  console.log(`Wrote ${cleaned.items.length} items -> ${OUT_PATH}`);
 }
 
-main();
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
