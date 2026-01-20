@@ -1,17 +1,25 @@
 {
-  "generatedAt": "2026-01-20T04:16:35.372Z",
-  "items": [
+  "updated": "2026-01-20T05:12:34.568Z",
+  "signals": [
     {
-      "title": "Late-goal pressure increased",
-      "description": "Matches decided by a single goal show elevated late-phase volatility.",
-      "confidence": 0.71,
-      "generatedBy": "NetThud AI"
+      "label": "Momentum shift",
+      "confidence": "medium"
     },
     {
-      "title": "Home advantage confirmed",
-      "description": "Home teams won 67% of completed fixtures today.",
-      "confidence": 0.64,
-      "generatedBy": "NetThud AI"
+      "label": "Injury impact on team performance",
+      "confidence": "high"
+    },
+    {
+      "label": "Home advantage effect",
+      "confidence": "medium"
+    },
+    {
+      "label": "Player form analysis",
+      "confidence": "high"
+    },
+    {
+      "label": "Tactical adjustments by coach",
+      "confidence": "medium"
     }
   ]
 }
