@@ -1,11 +1,24 @@
 {
-  "generatedAt": "2026-01-18T23:59:00Z",
+  "generatedAt": "2026-01-20T03:16:59.234Z",
+  "mode": "demo",
   "items": [
     {
-      "title": "Transfer desk placeholder — add real items later",
-      "source": "Net Thud",
-      "publishedAt": "2026-01-18T23:59:00Z",
-      "url": "https://netthud.com"
+      "player": "Forward X",
+      "from": "Club A",
+      "to": "Club B",
+      "fee": "€45m",
+      "status": "rumor",
+      "publishedAt": "2026-01-20T03:16:59.234Z",
+      "url": "https://netthud.com/"
+    },
+    {
+      "player": "Midfielder Y",
+      "from": "Club C",
+      "to": "Club D",
+      "fee": "€18m",
+      "status": "advanced",
+      "publishedAt": "2026-01-20T03:16:59.234Z",
+      "url": "https://netthud.com/"
     }
   ]
 }
