@@ -28,6 +28,17 @@ jobs:
           node-version: "20"
 
       # -----------------------------
+      # SYNC FIRST (avoid rebase conflicts later)
+      # -----------------------------
+      - name: Sync with latest main
+        shell: bash
+        run: |
+          set -e
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+
+      # -----------------------------
       # FINAL + LIVE SCORES
       # -----------------------------
       - name: Generate scores.json
@@ -65,5 +76,4 @@ jobs:
           fi
 
           git commit -m "Update scores & upcoming matches"
-          git pull --rebase origin main
           git push origin main
