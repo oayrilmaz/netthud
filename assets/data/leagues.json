@@ -1,11 +1,11 @@
 {
   "updated": "2026-01-20T00:00:00.000Z",
   "items": [
-    { "key": "epl", "name": "Premier League" },
-    { "key": "laliga", "name": "La Liga" },
-    { "key": "seriea", "name": "Serie A" },
-    { "key": "bundesliga", "name": "Bundesliga" },
-    { "key": "ligue1", "name": "Ligue 1" },
-    { "key": "ucl", "name": "UEFA Champions League" }
+    { "key": "epl", "name": "Premier League", "country": "England", "emoji": "🏴" },
+    { "key": "laliga", "name": "La Liga", "country": "Spain", "emoji": "🇪🇸" },
+    { "key": "seriea", "name": "Serie A", "country": "Italy", "emoji": "🇮🇹" },
+    { "key": "bundesliga", "name": "Bundesliga", "country": "Germany", "emoji": "🇩🇪" },
+    { "key": "ligue1", "name": "Ligue 1", "country": "France", "emoji": "🇫🇷" },
+    { "key": "ucl", "name": "UEFA Champions League", "country": "Europe", "emoji": "⭐" }
   ]
-} 
+}
