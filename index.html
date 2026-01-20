@@ -477,23 +477,33 @@
     { kind:"rumor", title:"Loan discussions open for young defender",           source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" }
   ];
 
+  function toKindFromStatus(status){
+    const st = String(status || "").toLowerCase().trim();
+    if (st === "rumor" || st === "rumours" || st === "rumors") return "rumor";
+    return "news"; // everything else treated as “news/confirmed progress”
+  }
+
   function normalizeTransfers(items){
     return (items || []).map(x => {
-      // 1) If already in "title" schema
-      if (x && x.title) {
+      if (!x || typeof x !== "object") return null;
+
+      // Already-normalized schema
+      if (x.title) {
+        const kind = toKindFromStatus(x.type || x.kind || x.status);
         return {
-          kind: String(x.type || x.kind || x.status || "").toLowerCase() || "news",
-          title: x.title,
-          source: x.source || "source",
+          kind,
+          title: String(x.title || ""),
+          source: x.source || "NetThud Desk",
           publishedAt: x.publishedAt || x.date || "",
           url: x.url || ""
         };
       }
 
-      // 2) Your current demo schema: {player, from, to, fee, status, publishedAt, url}
-      const status = String(x.status || x.kind || "news").toLowerCase();
-      const kind = (status === "rumor" || status === "rumours" || status === "rumors") ? "rumor" : "news";
-      const title = `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}`;
+      // Your current schema: {player, from, to, fee, status, publishedAt, url}
+      const kind = toKindFromStatus(x.status);
+      const title =
+        `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}`;
+
       return {
         kind,
         title,
@@ -501,7 +511,7 @@
         publishedAt: x.publishedAt || "",
         url: x.url || ""
       };
-    });
+    }).filter(Boolean);
   }
 
   async function loadTransfers() {
@@ -510,10 +520,12 @@
 
     let items = [];
     let stamp = "—";
+
     try {
       const data = await readJson(PATHS.transfers);
-      stamp = data.generatedAt || data.updated || data.updatedAt || "—";
-      items = normalizeTransfers(Array.isArray(data.items) ? data.items : []);
+      stamp = data.generatedAt || data.updated || data.updatedAt || data.updatedAt || "—";
+      const raw = Array.isArray(data.items) ? data.items : [];
+      items = normalizeTransfers(raw);
     } catch (e) {
       items = [];
       stamp = "—";
@@ -535,9 +547,11 @@
 
         const left = document.createElement("div");
         left.style.minWidth = "0";
+
+        const dateShort = t.publishedAt ? String(t.publishedAt).slice(0,19) : "";
         left.innerHTML = `
           <strong>${esc(t.title || "Transfer update")}</strong>
-          <p>${esc((t.source || "source") + (t.publishedAt ? " • " + String(t.publishedAt).slice(0,19) : ""))}</p>
+          <p>${esc((t.source || "NetThud Desk") + (dateShort ? " • " + dateShort : ""))}</p>
           <div class="rowActions"></div>
         `;
 
@@ -549,12 +563,12 @@
 
         const right = document.createElement("span");
         right.className = "tag";
-        right.textContent = "OPEN";
+        right.textContent = (tabName === "rumor") ? "RUMOR" : "OPEN";
 
         wrap.appendChild(left);
         wrap.appendChild(right);
 
-        // If item has a URL, clicking the row opens it
+        // Clicking the row opens the URL (if present)
         if (t.url) {
           wrap.style.cursor = "pointer";
           wrap.addEventListener("click", (e)=>{
@@ -567,8 +581,8 @@
       });
     }
 
-    render(newsPane, news.length ? news : items.filter(x=>x.kind==="news"), "No transfer news yet", "news");
-    render(rumorsPane, rumors.length ? rumors : items.filter(x=>x.kind==="rumor"), "No rumors yet", "rumor");
+    render(newsPane, news, "No transfer news yet", "news");
+    render(rumorsPane, rumors, "No rumors yet", "rumor");
   }
 
   // ✅ AI News modal behavior (shareable)
@@ -827,7 +841,6 @@
       await loadNews();
       await loadLeagues();
     }catch(e){
-      // If something unexpected happens, at least show it in console
       console.error("NetThud boot failed:", e);
       safeSetText("liveMeta","error");
       safeSetText("upcomingMeta","error");
