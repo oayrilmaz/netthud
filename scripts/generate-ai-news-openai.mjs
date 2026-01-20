@@ -1,114 +1,151 @@
-// scripts/generate-ai-news-openai.mjs
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 const OUT_PATH = path.join("assets", "data", "ai-news.json");
 
-function requireEnv(name) {
-  const v = process.env[name];
-  if (!v) throw new Error(`Missing env: ${name}`);
-  return v;
+function safeReadJson(filePath, fallback) {
+  try {
+    if (!fs.existsSync(filePath)) return fallback;
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return fallback;
+  }
 }
 
-async function callOpenAIJson({ apiKey, model, system, user }) {
+function extractJson(text) {
+  if (!text) throw new Error("Empty response");
+  const s = text.trim();
+
+  // If it's already pure JSON:
+  if ((s.startsWith("{") && s.endsWith("}")) || (s.startsWith("[") && s.endsWith("]"))) {
+    return JSON.parse(s);
+  }
+
+  // Try to find the first JSON object/array block inside the text:
+  const firstObj = s.indexOf("{");
+  const firstArr = s.indexOf("[");
+  let start = -1;
+  if (firstObj === -1) start = firstArr;
+  else if (firstArr === -1) start = firstObj;
+  else start = Math.min(firstObj, firstArr);
+
+  if (start === -1) throw new Error("No JSON start found in response");
+
+  // Find last matching end char
+  const lastObj = s.lastIndexOf("}");
+  const lastArr = s.lastIndexOf("]");
+  let end = Math.max(lastObj, lastArr);
+  if (end === -1 || end <= start) throw new Error("No JSON end found in response");
+
+  const candidate = s.slice(start, end + 1);
+  return JSON.parse(candidate);
+}
+
+async function callOpenAI({ apiKey, prompt }) {
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${apiKey}`,
-      "Content-Type": "application/json"
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model,
-      temperature: 0.6,
-      response_format: { type: "json_object" },
+      model: "gpt-4o-mini",
+      temperature: 0.3,
       messages: [
-        { role: "system", content: system },
-        { role: "user", content: user }
-      ]
-    })
+        {
+          role: "system",
+          content:
+            "Return ONLY valid JSON. No markdown, no extra text. If you cannot comply, return an empty JSON array [].",
+        },
+        { role: "user", content: prompt },
+      ],
+    }),
   });
 
   if (!res.ok) {
-    const txt = await res.text();
-    throw new Error(`OpenAI HTTP ${res.status}: ${txt}`);
+    const t = await res.text();
+    throw new Error(`OpenAI HTTP ${res.status}: ${t}`);
   }
 
   const data = await res.json();
-  const content = data?.choices?.[0]?.message?.content ?? "";
+  const text = data?.choices?.[0]?.message?.content ?? "";
+  return text;
+}
 
-  // Should already be JSON, but keep a safety fallback.
-  try {
-    return JSON.parse(content);
-  } catch (e) {
-    const start = content.indexOf("{");
-    const end = content.lastIndexOf("}");
-    if (start >= 0 && end > start) {
-      return JSON.parse(content.slice(start, end + 1));
+async function main() {
+  const previous = safeReadJson(OUT_PATH, { updated: null, items: [] });
+
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    console.log("OPENAI_API_KEY missing. Keeping existing ai-news.json unchanged.");
+    process.exit(0);
+  }
+
+  const prompt = `
+Create 30 football news items. Output JSON ONLY with this exact shape:
+
+{
+  "updated": "<ISO timestamp>",
+  "items": [
+    {
+      "title": "...",
+      "url": "...",
+      "source": "...",
+      "published": "<YYYY-MM-DD>",
+      "summary": "..."
     }
-    throw e;
+  ]
+}
+
+Rules:
+- items length must be 30
+- published must be YYYY-MM-DD
+- url must be a valid https URL
+- no undefined / null fields
+`;
+
+  try {
+    const raw = await callOpenAI({ apiKey, prompt });
+    const parsed = extractJson(raw);
+
+    // Basic validation / normalization
+    const items = Array.isArray(parsed?.items) ? parsed.items : [];
+    const cleaned = items
+      .filter((x) => x && typeof x === "object")
+      .map((x) => ({
+        title: String(x.title ?? "").trim(),
+        url: String(x.url ?? "").trim(),
+        source: String(x.source ?? "").trim(),
+        published: String(x.published ?? "").trim(),
+        summary: String(x.summary ?? "").trim(),
+      }))
+      .filter(
+        (x) =>
+          x.title &&
+          x.summary &&
+          x.source &&
+          x.published &&
+          x.url &&
+          x.url.startsWith("https://")
+      )
+      .slice(0, 30);
+
+    const out = {
+      updated: new Date().toISOString(),
+      items: cleaned,
+    };
+
+    fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
+    fs.writeFileSync(OUT_PATH, JSON.stringify(out, null, 2) + "\n", "utf8");
+    console.log(`Wrote ${cleaned.length} items to ${OUT_PATH}`);
+  } catch (err) {
+    console.error("AI News generation failed:", err?.message || err);
+    console.log("Keeping existing ai-news.json unchanged.");
+    // Do NOT fail the workflow
+    fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
+    fs.writeFileSync(OUT_PATH, JSON.stringify(previous, null, 2) + "\n", "utf8");
+    process.exit(0);
   }
 }
 
-function writeJson(filePath, obj) {
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(obj, null, 2), "utf8");
-}
-
-const OPENAI_API_KEY = requireEnv("OPENAI_API_KEY");
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
-
-const system = `
-You are NetThud AI.
-Do NOT cite or reference external websites (ESPN, BBC, etc.).
-Generate original football "AI News" items as analysis headlines.
-Return STRICT JSON ONLY.
-`;
-
-const user = `
-Create exactly 30 AI news items.
-Each item must have:
-- id (string, short)
-- title (string)
-- summary (string, 1-2 sentences)
-- tags (array of 2-5 strings)
-- createdAt (ISO string)
-- source (always "NetThud AI")
-- url (always "")
-
-Return JSON with shape:
-{
-  "updatedAt": "ISO",
-  "items": [ ...30 items... ]
-}
-`;
-
-(async () => {
-  const json = await callOpenAIJson({
-    apiKey: OPENAI_API_KEY,
-    model: OPENAI_MODEL,
-    system,
-    user
-  });
-
-  const now = new Date().toISOString();
-  const items = Array.isArray(json.items) ? json.items : [];
-
-  // Normalize / harden
-  const normalized = items.slice(0, 30).map((it, idx) => ({
-    id: String(it.id || `ain-${idx + 1}`),
-    title: String(it.title || "Untitled"),
-    summary: String(it.summary || ""),
-    tags: Array.isArray(it.tags) ? it.tags.map(String).slice(0, 6) : [],
-    createdAt: it.createdAt ? String(it.createdAt) : now,
-    source: "NetThud AI",
-    url: "" // no external links
-  }));
-
-  const out = {
-    updatedAt: now,
-    items: normalized
-  };
-
-  writeJson(OUT_PATH, out);
-  console.log(`Wrote ${normalized.length} items -> ${OUT_PATH}`);
-})();
+main();
