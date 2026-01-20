@@ -1,6 +1,6 @@
 // scripts/generate-scores.mjs
 // Generates: assets/data/scores.json
-// Uses football-data.org by default (requires API token)
+// Uses football-data.org (requires API token)
 // Env:
 //   NETTHUD_SCORES_API_PROVIDER=football-data
 //   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
@@ -70,7 +70,6 @@ function leagueNameFromCompetition(comp) {
   return safeStr(comp?.name || "");
 }
 
-// Helpers for date range
 function yyyyMmDdUTC(d) {
   return d.toISOString().slice(0, 10);
 }
@@ -81,20 +80,25 @@ function utcMidnight(dateObj) {
 
 async function fetchFootballDataScores() {
   const token = env("NETTHUD_SCORES_API_TOKEN");
-  if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
+  if (!token) {
+    throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
+  }
 
-  // ✅ Wider window so you almost always see real finished matches
+  // ✅ last 7 days to avoid empty results
   const now = new Date();
   const today = utcMidnight(now);
   const dateFromD = new Date(today);
-  dateFromD.setUTCDate(today.getUTCDate() - 7); // last 7 days
+  dateFromD.setUTCDate(today.getUTCDate() - 7);
 
   const dateFrom = yyyyMmDdUTC(dateFromD);
   const dateTo = yyyyMmDdUTC(today);
 
   const url = `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`;
 
-  const res = await fetch(url, { headers: { "X-Auth-Token": token } });
+  const res = await fetch(url, {
+    headers: { "X-Auth-Token": token },
+  });
+
   if (!res.ok) {
     const t = await res.text().catch(() => "");
     throw new Error(`football-data HTTP ${res.status} ${res.statusText} :: ${t.slice(0, 200)}`);
@@ -103,12 +107,13 @@ async function fetchFootballDataScores() {
   const json = await res.json();
   const matches = Array.isArray(json?.matches) ? json.matches : [];
 
-  // ✅ Real scores only (FINISHED/LIVE/HT)
+  // ✅ keep REAL score states only
   const keep = matches.filter((m) => {
     const st = safeStr(m?.status);
     return st === "FINISHED" || st === "IN_PLAY" || st === "PAUSED";
   });
 
+  // ✅ write your site's schema: { updated, items:[...] }
   const items = keep.map((m) => {
     const league = leagueNameFromCompetition(m?.competition);
     const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name);
@@ -121,11 +126,11 @@ async function fetchFootballDataScores() {
     return { league, home, away, score, status, when };
   });
 
-  // Sort: LIVE/HT first, then FT; newest first inside FT
-  const statusRank = (s) => (s === "LIVE" ? 0 : s === "HT" ? 1 : 2);
+  // Sort: LIVE/HT first, then FT (newest first)
+  const rank = (s) => (s === "LIVE" ? 0 : s === "HT" ? 1 : 2);
   items.sort((a, b) => {
-    const sr = statusRank(a.status) - statusRank(b.status);
-    if (sr !== 0) return sr;
+    const r = rank(a.status) - rank(b.status);
+    if (r !== 0) return r;
     return safeStr(b.when).localeCompare(safeStr(a.when));
   });
 
