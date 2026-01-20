@@ -1,22 +1,13 @@
-[
-  { "name": "Premier League" },
-  { "name": "La Liga" },
-  { "name": "Serie A" },
-  { "name": "Bundesliga" },
-  { "name": "Ligue 1" },
-  { "name": "Eredivisie" },
-  { "name": "Primeira Liga" },
-  { "name": "Süper Lig" },
-  { "name": "MLS" },
-  { "name": "Brasileirão" },
-  { "name": "Argentine Primera" },
-  { "name": "J1 League" },
-  { "name": "Saudi Pro League" },
-  { "name": "Belgian Pro League" },
-  { "name": "Scottish Premiership" },
-  { "name": "Austrian Bundesliga" },
-  { "name": "Swiss Super League" },
-  { "name": "Danish Superliga" },
-  { "name": "Norwegian Eliteserien" },
-  { "name": "Swedish Allsvenskan" }
-]
+{
+  "generatedAt": "2026-01-18T00:00:00.000Z",
+  "source": "NetThud config",
+  "items": [
+    { "name": "Premier League", "code": "PL", "country": "England" },
+    { "name": "La Liga", "code": "PD", "country": "Spain" },
+    { "name": "Serie A", "code": "SA", "country": "Italy" },
+    { "name": "Bundesliga", "code": "BL1", "country": "Germany" },
+    { "name": "Ligue 1", "code": "FL1", "country": "France" },
+    { "name": "Eredivisie", "code": "DED", "country": "Netherlands" },
+    { "name": "Primeira Liga", "code": "PPL", "country": "Portugal" }
+  ]
+}
