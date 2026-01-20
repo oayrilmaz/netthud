@@ -66,7 +66,7 @@
       <div class="subtitle">Goal Intelligence</div>
     </div>
     <div class="right">
-      <div class="pill"><span class="dot"></span>Sound: <strong id="soundState">ON</strong></div>
+      <div class="pill" id="soundPill"><span class="dot"></span>Sound: <strong id="soundState">ON</strong></div>
       <a class="pill" href="https://x.com/netthudpro" target="_blank" rel="noopener">@netthudpro</a>
     </div>
   </div>
@@ -156,7 +156,8 @@
     upcoming: "assets/data/upcoming.json",
     transfers:"assets/data/transfers.json",
     news:     "assets/data/ai-news.json",
-    leagues:  "leagues.json"
+    // ✅ FIX: leagues.json is inside assets/data/
+    leagues:  "assets/data/leagues.json"
   };
 
   const $ = (id) => document.getElementById(id);
@@ -179,9 +180,12 @@
     container.appendChild(row(title, meta, "EMPTY", "warn"));
   }
 
+  // ✅ Cache-bust every JSON fetch so iOS Safari/GitHub pages won't keep stale data
   async function readJson(url) {
-    const res = await fetch(url, { cache:"no-store" });
-    if (!res.ok) throw new Error(`Missing: ${url}`);
+    const u = new URL(url, document.baseURI);
+    u.searchParams.set("v", Date.now());
+    const res = await fetch(u.toString(), { cache:"no-store" });
+    if (!res.ok) throw new Error(`Missing: ${url} (HTTP ${res.status})`);
     return res.json();
   }
 
@@ -191,7 +195,7 @@
     try {
       const data = await readJson(PATHS.scores);
       const matches = data.matches || [];
-      meta.textContent = `${matches.length} • updated ${data.generatedAt || "—"}`;
+      meta.textContent = `${matches.length} • updated ${data.generatedAt || data.updated || "—"}`;
 
       list.innerHTML = "";
       if (!matches.length) return emptyState(list, "No final scores yet", "Matches will appear here once completed.");
@@ -219,7 +223,7 @@
     try {
       const data = await readJson(PATHS.upcoming);
       const items = data.items || [];
-      meta.textContent = `${items.length} • updated ${data.generatedAt || "—"}`;
+      meta.textContent = `${items.length} • updated ${data.generatedAt || data.updated || "—"}`;
 
       list.innerHTML = "";
       if (!items.length) return emptyState(list, "No upcoming games yet", "Populate assets/data/upcoming.json");
@@ -248,7 +252,7 @@
     try {
       const data = await readJson(PATHS.transfers);
       const items = data.items || [];
-      meta.textContent = `${items.length} • updated ${data.generatedAt || "—"}`;
+      meta.textContent = `${items.length} • updated ${data.generatedAt || data.updated || "—"}`;
 
       list.innerHTML = "";
       if (!items.length) return emptyState(list, "No transfer items yet", "Populate assets/data/transfers.json");
@@ -256,8 +260,8 @@
       items.forEach(t => {
         list.appendChild(
           row(
-            t.title,
-            `${t.source || "source"} • ${t.publishedAt || ""}`,
+            t.title || "Transfer update",
+            `${t.source || "source"} • ${t.publishedAt || t.date || ""}`,
             "NEW"
           )
         );
@@ -276,7 +280,7 @@
     try {
       const data = await readJson(PATHS.news);
       const items = data.items || [];
-      meta.textContent = `${items.length} • updated ${data.generatedAt || "—"}`;
+      meta.textContent = `${items.length} • updated ${data.generatedAt || data.updated || "—"}`;
 
       list.innerHTML = "";
       if (!items.length) return emptyState(list, "No news items yet", "Populate assets/data/ai-news.json");
@@ -309,14 +313,40 @@
     const meta = $("leaguesMeta");
     try {
       const data = await readJson(PATHS.leagues);
-      const leagues = Array.isArray(data) ? data : (data.leagues || []);
-      meta.textContent = `${leagues.length} tracked`;
+
+      // ✅ FIX: your file shape is { updated, items: [...] }
+      const leagues = Array.isArray(data) ? data
+                    : Array.isArray(data.items) ? data.items
+                    : Array.isArray(data.leagues) ? data.leagues
+                    : [];
+
+      meta.textContent = `${leagues.length} • updated ${data.updated || data.generatedAt || "—"}`;
 
       container.innerHTML = "";
+      if (!leagues.length) {
+        // show a nice empty state inside the leagues card
+        const empty = document.createElement("div");
+        empty.className = "item";
+        empty.innerHTML = `
+          <div>
+            <strong>No leagues yet</strong>
+            <p>assets/data/leagues.json loaded, but items[] is empty.</p>
+          </div>
+          <span class="tag warn">EMPTY</span>
+        `;
+        container.appendChild(empty);
+        return;
+      }
+
       leagues.forEach(l => {
         const el = document.createElement("div");
         el.className = "chip";
-        el.innerHTML = `<span class="dot"></span>${l.name || l}`;
+
+        const name = (l && typeof l === "object") ? (l.name || l.key || "League") : String(l);
+        const emoji = (l && typeof l === "object") ? (l.emoji || "") : "";
+        const country = (l && typeof l === "object") ? (l.country || "") : "";
+
+        el.innerHTML = `<span class="dot"></span>${emoji ? emoji + " " : ""}${name}${country ? " • " + country : ""}`;
         container.appendChild(el);
       });
     } catch (e) {
@@ -347,10 +377,9 @@
 
   document.addEventListener("DOMContentLoaded", async () => {
     setSoundUI(getSound());
-    // Tap the sound pill to toggle
-    document.querySelector(".pill").addEventListener("click", (e)=>{
-      // only toggle on the first pill (Sound)
-      if (!e.currentTarget.textContent.includes("Sound")) return;
+
+    // ✅ FIX: Toggle only on the sound pill
+    document.getElementById("soundPill").addEventListener("click", ()=>{
       const on = !getSound();
       setSound(on);
       beep();
