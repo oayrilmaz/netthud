@@ -1,14 +1,11 @@
 {
-  "generatedAt": "2026-01-20T00:00:00.000Z",
+  "updated": "2026-01-20T00:00:00.000Z",
   "items": [
-    { "id": "PL", "name": "Premier League", "country": "England" },
-    { "id": "PD", "name": "La Liga", "country": "Spain" },
-    { "id": "SA", "name": "Serie A", "country": "Italy" },
-    { "id": "BL1", "name": "Bundesliga", "country": "Germany" },
-    { "id": "FL1", "name": "Ligue 1", "country": "France" },
-    { "id": "DED", "name": "Eredivisie", "country": "Netherlands" },
-    { "id": "PPL", "name": "Primeira Liga", "country": "Portugal" },
-    { "id": "BSA", "name": "Campeonato Brasileiro Série A", "country": "Brazil" },
-    { "id": "CL", "name": "UEFA Champions League", "country": "Europe" }
+    { "key": "epl", "name": "Premier League" },
+    { "key": "laliga", "name": "La Liga" },
+    { "key": "seriea", "name": "Serie A" },
+    { "key": "bundesliga", "name": "Bundesliga" },
+    { "key": "ligue1", "name": "Ligue 1" },
+    { "key": "ucl", "name": "UEFA Champions League" }
   ]
 }
