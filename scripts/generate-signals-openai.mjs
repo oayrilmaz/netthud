@@ -1,68 +1,58 @@
 import fs from "fs";
-import OpenAI from "openai";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const OUT = "assets/data/signals.json";
 
-const OUT_FILE = "assets/data/signals.json";
-
-function extractJSON(text) {
+function safeJsonParse(text) {
   try {
     return JSON.parse(text);
-  } catch {}
-
-  const cleaned = text
-    .replace(/```json/gi, "```")
-    .replace(/```/g, "")
-    .trim();
-
-  try {
-    return JSON.parse(cleaned);
-  } catch {}
-
-  const match = cleaned.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
-  if (!match) throw new Error("No JSON found in OpenAI response");
-
-  return JSON.parse(match[0]);
+  } catch {
+    return [];
+  }
 }
 
 async function main() {
-  if (!process.env.OPENAI_API_KEY) {
-    throw new Error("Missing OPENAI_API_KEY secret");
-  }
-
-  const prompt = `
-Return ONLY valid JSON. No markdown. No extra text.
-
-Schema:
-{
-  "signals": [
-    { "label": "Momentum shift", "confidence": "low|medium|high" }
-  ]
-}
-
-Generate 10 football intelligence signals.
-Keep labels short (2-6 words).
-`;
-
-  const resp = await client.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [{ role: "user", content: prompt }],
-    temperature: 0.3
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content:
+            "Return ONLY valid JSON array. No markdown. No commentary."
+        },
+        {
+          role: "user",
+          content:
+            "Generate football match signals. Fields: match, signal, confidence."
+        }
+      ]
+    })
   });
 
-  const raw = resp.choices?.[0]?.message?.content ?? "";
-  const data = extractJSON(raw);
+  const data = await res.json();
+  const text = data.choices?.[0]?.message?.content || "[]";
 
-  const out = {
-    updated: new Date().toISOString(),
-    signals: Array.isArray(data.signals) ? data.signals : []
-  };
+  const items = safeJsonParse(text);
 
-  fs.writeFileSync(OUT_FILE, JSON.stringify(out, null, 2), "utf8");
-  console.log("✅ Wrote", OUT_FILE, "signals:", out.signals.length);
+  fs.writeFileSync(
+    OUT,
+    JSON.stringify(
+      {
+        updated: new Date().toISOString(),
+        count: items.length,
+        items
+      },
+      null,
+      2
+    )
+  );
+
+  console.log("Signals updated:", items.length);
 }
 
-main().catch((err) => {
-  console.error("❌ generate-signals-openai failed:", err);
-  process.exit(1);
-});
+main();
