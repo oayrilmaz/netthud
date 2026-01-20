@@ -26,21 +26,10 @@ jobs:
         with:
           node-version: "20"
 
-      # Optional: only needed if you rely on dependencies.
-      - name: Install dependencies (if package-lock exists)
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else echo "No package-lock.json, skipping npm ci"; fi
-
       - name: Generate assets/data/scores.json
         env:
-          # Keep your existing secret
-          NETTHUD_SCORES_API_URL: ${{ secrets.NETTHUD_SCORES_API_URL }}
-
-          # Add this secret if your API needs it (most do)
+          NETTHUD_SCORES_API_PROVIDER: football-data
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
-
-          # If your script supports provider switching
-          NETTHUD_SCORES_API_PROVIDER: ${{ secrets.NETTHUD_SCORES_API_PROVIDER }}
         run: node scripts/generate-scores.mjs
 
       - name: Commit & push if changed
@@ -52,7 +41,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add assets/data/scores.json
-
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
@@ -60,11 +48,9 @@ jobs:
 
           git commit -m "Update scores.json"
 
-          # Always sync with remote first (DON'T hide failures)
           git fetch origin main
           git rebase origin/main
 
-          # Push; if rejected, retry once after rebase
           if ! git push origin HEAD:main; then
             echo "Push rejected, retrying after fresh fetch+rebase..."
             git fetch origin main
