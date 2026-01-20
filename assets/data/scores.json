@@ -1,33 +1,51 @@
 {
-  "generatedAt": "2026-01-18T23:59:00Z",
-  "type": "final-scores",
-  "matches": [
+  "generatedAt": "2026-01-20T03:15:58.715Z",
+  "mode": "demo",
+  "items": [
     {
-      "date": "2026-01-18",
       "league": "Premier League",
       "home": "Arsenal",
       "away": "Liverpool",
-      "homeScore": 2,
-      "awayScore": 1,
-      "status": "FT"
+      "status": "LIVE",
+      "minute": 16,
+      "score": "1-0",
+      "url": "https://netthud.com/"
     },
     {
-      "date": "2026-01-18",
       "league": "La Liga",
       "home": "Real Madrid",
       "away": "Barcelona",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "FT"
+      "status": "LIVE",
+      "minute": 9,
+      "score": "0-0",
+      "url": "https://netthud.com/"
     },
     {
-      "date": "2026-01-18",
       "league": "Serie A",
       "home": "Inter",
       "away": "Juventus",
-      "homeScore": 3,
-      "awayScore": 2,
-      "status": "FT"
+      "status": "HT",
+      "minute": 45,
+      "score": "2-1",
+      "url": "https://netthud.com/"
+    },
+    {
+      "league": "Bundesliga",
+      "home": "Bayern Munich",
+      "away": "Borussia Dortmund",
+      "status": "LIVE",
+      "minute": 1,
+      "score": "1-1",
+      "url": "https://netthud.com/"
+    },
+    {
+      "league": "Ligue 1",
+      "home": "PSG",
+      "away": "Marseille",
+      "status": "FT",
+      "minute": 90,
+      "score": "3-2",
+      "url": "https://netthud.com/"
     }
   ]
 }
