@@ -1,106 +1,145 @@
-import fs from "fs/promises";
+// scripts/generate-signals-openai.mjs
+// Generates: assets/data/signals.json
+// OpenAI-only. No external feeds. No npm deps.
 
-function requireEnv(name) {
+import fs from "fs";
+import path from "path";
+
+const OUT_FILE = path.join("assets", "data", "signals.json");
+const SITE_URL = "https://netthud.com/";
+
+function ensureDir(p) {
+  fs.mkdirSync(p, { recursive: true });
+}
+
+function writeJson(filePath, obj) {
+  ensureDir(path.dirname(filePath));
+  fs.writeFileSync(filePath, JSON.stringify(obj, null, 2), "utf8");
+}
+
+function requiredEnv(name) {
   const v = process.env[name];
-  if (!v) throw new Error(`Missing required env var: ${name}`);
+  if (!v) throw new Error(`Missing env: ${name}`);
   return v;
 }
 
-async function openaiJSON({ apiKey, system, user }) {
-  const url = "https://api.openai.com/v1/responses";
-  const body = {
-    model: "gpt-4.1-mini",
-    input: [
-      { role: "system", content: system },
-      { role: "user", content: user },
-    ],
-    text: { format: { type: "json_object" } },
-  };
-
-  const r = await fetch(url, {
+async function openaiResponseJSON({ apiKey, model, input }) {
+  const res = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: {
-      authorization: `Bearer ${apiKey}`,
-      "content-type": "application/json",
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify({
+      model,
+      input,
+      temperature: 0.5,
+      max_output_tokens: 1200,
+    }),
   });
 
-  if (!r.ok) {
-    const t = await r.text();
-    throw new Error(`OpenAI error ${r.status}: ${t}`);
+  const text = await res.text();
+  if (!res.ok) throw new Error(`OpenAI error ${res.status}: ${text}`);
+
+  const data = JSON.parse(text);
+  const blocks = data.output || [];
+  for (const b of blocks) {
+    const content = b.content || [];
+    for (const c of content) {
+      if (c.type === "output_text" && c.text) return c.text;
+    }
   }
+  throw new Error("OpenAI response had no output_text.");
+}
 
-  const data = await r.json();
-  const text =
-    data?.output?.[0]?.content?.find((c) => c.type === "output_text")?.text ||
-    data?.output_text ||
-    "";
+function buildPrompt() {
+  return `
+You are NetThud AI. Generate "Signals" — short football context indicators.
+Rules:
+- DO NOT reference external sources (ESPN/BBC/Sky/etc.).
+- DO NOT claim real-time match events or factual breaking news.
+- Signals must be general, analytical, useful, and clearly not dependent on live data.
+- Output MUST be valid JSON ONLY, no markdown.
 
-  if (!text) throw new Error("OpenAI returned empty output_text");
+Return JSON schema exactly:
+{
+  "items": [
+    {
+      "id": "sig-001",
+      "title": "Signal title",
+      "summary": "1-2 sentences. Practical. Non-factual/general.",
+      "confidence": 0.0,
+      "source": "NetThud AI",
+      "date": "YYYY-MM-DD"
+    }
+  ]
+}
 
-  let obj;
-  try {
-    obj = JSON.parse(text);
-  } catch {
-    throw new Error(`OpenAI did not return valid JSON. Raw text:\n${text}`);
-  }
+Make exactly 20 items.
+Confidence must be a number between 0.45 and 0.75.
+Dates: use today's date.
+`.trim();
+}
 
-  if (!obj.items || !Array.isArray(obj.items)) {
-    throw new Error(`JSON missing 'items' array. Got:\n${JSON.stringify(obj, null, 2)}`);
-  }
-  return obj;
+function todayISODate() {
+  const d = new Date();
+  const yyyy = d.getUTCFullYear();
+  const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(d.getUTCDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+function normalizeSignals(parsed) {
+  const date = todayISODate();
+  const raw = Array.isArray(parsed?.items) ? parsed.items : [];
+
+  const items = raw.slice(0, 20).map((it, idx) => {
+    let c = Number(it?.confidence);
+    if (!Number.isFinite(c)) c = 0.6;
+    c = Math.max(0.45, Math.min(0.75, c));
+
+    return {
+      id: it?.id || `sig-${String(idx + 1).padStart(3, "0")}`,
+      title: String(it?.title || "NetThud Signal").slice(0, 110),
+      summary: String(it?.summary || "").slice(0, 260),
+      confidence: c,
+      source: "NetThud AI",
+      date: it?.date || date,
+      url: SITE_URL,
+    };
+  });
+
+  return {
+    generatedAt: new Date().toISOString(),
+    mode: "openai",
+    items,
+  };
 }
 
 async function main() {
-  const apiKey = requireEnv("OPENAI_API_KEY");
+  const apiKey = requiredEnv("OPENAI_API_KEY");
+  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
-  const system =
-    "You are NetThud AI. Generate original football 'signals' as short analyst bullets. " +
-    "No external sources. No links except netthud.com. Strict JSON only.";
+  const prompt = buildPrompt();
+  const text = await openaiResponseJSON({ apiKey, model, input: prompt });
 
-  const user =
-    "Create 12 signals for today. Each signal must include: title, what it means, and a confidence (0-100). " +
-    "Keep them general (league-wide, style-wide), not claiming real-time injuries or confirmed events. " +
-    "Return STRICT JSON:\n" +
-    "{\n" +
-    '  "generatedAt": "ISO-8601",\n' +
-    '  "source": "NetThud AI",\n' +
-    '  "items": [\n' +
-    "    {\n" +
-    '      "title": "string",\n' +
-    '      "signal": "string (<= 160 chars)",\n' +
-    '      "meaning": "string (<= 220 chars)",\n' +
-    '      "confidence": 0,\n' +
-    '      "tag": "one of: PRESS|TRANSITION|SETPIECE|DISCIPLINE|FATIGUE|VOLATILITY|DEFENSE|ATTACK",\n' +
-    '      "publishedAt": "ISO-8601",\n' +
-    '      "url": "https://netthud.com/#signals"\n' +
-    "    }\n" +
-    "  ]\n" +
-    "}";
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    const start = text.indexOf("{");
+    const end = text.lastIndexOf("}");
+    if (start >= 0 && end > start) parsed = JSON.parse(text.slice(start, end + 1));
+    else throw new Error(`Could not parse JSON from OpenAI output:\n${text}`);
+  }
 
-  const obj = await openaiJSON({ apiKey, system, user });
+  const out = normalizeSignals(parsed);
+  writeJson(OUT_FILE, out);
 
-  const now = new Date().toISOString();
-  const items = obj.items.slice(0, 20).map((x) => ({
-    title: String(x.title || "").trim() || "Market signal",
-    signal: String(x.signal || "").trim().slice(0, 160),
-    meaning: String(x.meaning || "").trim().slice(0, 220),
-    confidence: Math.max(0, Math.min(100, Number(x.confidence ?? 55))),
-    tag: String(x.tag || "VOLATILITY").toUpperCase(),
-    publishedAt: x.publishedAt ? new Date(x.publishedAt).toISOString() : now,
-    url: "https://netthud.com/#signals",
-    source: "NetThud AI",
-  }));
-
-  const out = { generatedAt: now, source: "NetThud AI", items };
-
-  await fs.mkdir("assets/data", { recursive: true });
-  await fs.writeFile("assets/data/signals.json", JSON.stringify(out, null, 2) + "\n", "utf8");
-  console.log(`Wrote assets/data/signals.json with ${items.length} items`);
+  console.log(`✅ Wrote ${OUT_FILE} (${out.items.length} items)`);
 }
 
-main().catch((e) => {
-  console.error(e);
+main().catch((err) => {
+  console.error("❌ generate-signals-openai failed:", err);
   process.exit(1);
 });
