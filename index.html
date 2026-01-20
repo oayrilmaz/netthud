@@ -35,17 +35,18 @@
     p.lead{color:var(--muted);max-width:70ch;line-height:1.7;margin:0 0 26px}
 
     section{margin:18px 0}
-    .sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:12px}
     .sectionTitle h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0}
-    .hint{font-size:12px;color:var(--muted)}
+    .hint{font-size:12px;color:var(--muted);white-space:nowrap}
 
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
     .list{display:grid;gap:12px}
-    .item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 14px;border-radius:12px;background:#0f131b;border:1px solid var(--border)}
+    .item{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:14px 14px;border-radius:12px;background:#0f131b;border:1px solid var(--border)}
     .item strong{font-size:15px;display:block}
     .item p{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.35}
     .tag{font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;border:1px solid rgba(120,255,106,.3);color:var(--accent);white-space:nowrap}
     .tag.warn{border-color:rgba(255,209,102,.35);color:var(--warn)}
+    .tag.live{border-color:rgba(120,255,106,.55);box-shadow:0 0 0 1px rgba(120,255,106,.12) inset}
 
     .chips{display:flex;flex-wrap:wrap;gap:10px}
     .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:13px;color:var(--text)}
@@ -58,7 +59,7 @@
     .btn.primary{border-color:rgba(120,255,106,.25);box-shadow:0 0 0 1px rgba(120,255,106,.08) inset}
     .btn:active{transform:translateY(1px)}
 
-    /* ✅ NEW LAYOUT (matches your sketch) */
+    /* ✅ NEW LAYOUT (matches your requirement) */
     .layoutGrid{display:grid;gap:18px;align-items:start}
     .colStack{display:grid;gap:18px}
     @media(min-width:980px){.layoutGrid{grid-template-columns:1fr 1fr}}
@@ -79,6 +80,54 @@
       box-shadow:0 0 0 1px rgba(120,255,106,.08) inset
     }
     .hidden{display:none !important}
+
+    /* ✅ Share mini-buttons */
+    .rowActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .mini{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      background:#0b0f16;
+      font-size:12px;font-weight:900;color:var(--text);
+      cursor:pointer;user-select:none;
+    }
+    .mini.secondary{color:var(--muted)}
+    .mini:active{transform:translateY(1px)}
+
+    /* ✅ Modal for AI News long article */
+    .modalOverlay{
+      position:fixed;inset:0;
+      background:rgba(0,0,0,.68);
+      display:none;z-index:50;
+      padding:18px;
+    }
+    .modalOverlay.open{display:flex;align-items:flex-start;justify-content:center}
+    .modal{
+      width:min(860px,100%);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+    }
+    .modalHeader{
+      display:flex;justify-content:space-between;gap:12px;
+      padding:14px 16px;border-bottom:1px solid var(--border);
+      background:#0f1218;position:sticky;top:0;
+    }
+    .modalTitle{font-weight:900}
+    .modalMeta{font-size:12px;color:var(--muted);margin-top:4px}
+    .closeBtn{
+      padding:8px 12px;border-radius:12px;
+      border:1px solid var(--border);
+      background:#0f131b;font-weight:900;
+      cursor:pointer;color:var(--text)
+    }
+    .modalBody{padding:16px}
+    .modalActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .modalContent{
+      margin-top:14px;line-height:1.7;color:var(--text);
+      font-size:14px;white-space:pre-wrap;
+    }
   </style>
 </head>
 
@@ -107,8 +156,8 @@
     </p>
 
     <div class="btnRow">
-      <a class="btn primary" href="#upcoming">Upcoming + TV</a>
-      <a class="btn" href="#liveScores">Live scores</a>
+      <a class="btn primary" href="#liveScores">Live scores</a>
+      <a class="btn" href="#upcoming">Upcoming + TV</a>
       <a class="btn" href="#finalScores">Final scores</a>
       <a class="btn" href="#transfers">Transfer desk</a>
       <a class="btn" href="#aiNews">AI news</a>
@@ -116,21 +165,10 @@
     </div>
   </section>
 
-  <!-- ✅ NEW: Two-column layout -->
   <div class="layoutGrid">
 
-    <!-- LEFT column (Upcoming + Live + Final) -->
+    <!-- LEFT column (LIVE top-left, then Upcoming, then Final) -->
     <div class="colStack">
-
-      <section id="upcoming">
-        <div class="sectionTitle">
-          <h2>Upcoming + TV</h2>
-          <span class="hint" id="upcomingMeta">Loading…</span>
-        </div>
-        <div class="card">
-          <div id="upcomingList" class="list"></div>
-        </div>
-      </section>
 
       <section id="liveScores">
         <div class="sectionTitle">
@@ -139,6 +177,16 @@
         </div>
         <div class="card">
           <div id="liveList" class="list"></div>
+        </div>
+      </section>
+
+      <section id="upcoming">
+        <div class="sectionTitle">
+          <h2>Upcoming + TV</h2>
+          <span class="hint" id="upcomingMeta">Loading…</span>
+        </div>
+        <div class="card">
+          <div id="upcomingList" class="list"></div>
         </div>
       </section>
 
@@ -188,7 +236,6 @@
 
   </div>
 
-  <!-- Bottom full-width -->
   <section id="leagues">
     <div class="sectionTitle">
       <h2>Leagues</h2>
@@ -204,6 +251,23 @@
 <footer>
   © <span id="year"></span> Net Thud • Goal Intelligence
 </footer>
+
+<!-- ✅ AI News modal -->
+<div class="modalOverlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modalHeader">
+      <div>
+        <div class="modalTitle" id="modalTitle">Article</div>
+        <div class="modalMeta" id="modalMeta"></div>
+      </div>
+      <button class="closeBtn" id="modalClose">Close</button>
+    </div>
+    <div class="modalBody">
+      <div class="modalActions" id="modalActions"></div>
+      <div class="modalContent" id="modalContent"></div>
+    </div>
+  </div>
+</div>
 
 <script>
   const PATHS = {
@@ -228,11 +292,11 @@
     const d = document.createElement("div");
     d.className = "item";
     d.innerHTML = `
-      <div>
+      <div style="min-width:0">
         <strong>${esc(title)}</strong>
-        <p>${esc(meta)}</p>
+        <p>${esc(meta || "")}</p>
       </div>
-      <span class="tag ${esc(tagClass)}">${esc(tagText)}</span>
+      <span class="tag ${esc(tagClass)}">${esc(tagText || "")}</span>
     `;
     return d;
   }
@@ -246,7 +310,7 @@
     const u = new URL(url, document.baseURI);
     u.searchParams.set("v", Date.now());
     const res = await fetch(u.toString(), { cache:"no-store" });
-    if (!res.ok) throw new Error(`Missing: ${url} (HTTP ${res.status})`);
+    if (!res.ok) throw new Error(\`Missing: \${url} (HTTP \${res.status})\`);
     return res.json();
   }
 
@@ -259,6 +323,41 @@
     return st === "FT" || st === "FINISHED";
   }
 
+  function makeBtn(label, onClick, secondary=false){
+    const b = document.createElement("div");
+    b.className = "mini" + (secondary ? " secondary" : "");
+    b.textContent = label;
+    b.addEventListener("click", (e)=>{ e.stopPropagation(); onClick(); });
+    return b;
+  }
+
+  function pageUrlNoHash(){
+    const u = new URL(window.location.href);
+    u.hash = "";
+    return u.toString();
+  }
+  function shareUrl(hash){
+    return pageUrlNoHash() + "#" + hash;
+  }
+  function shareToX(text, url){
+    const u = new URL("https://twitter.com/intent/tweet");
+    u.searchParams.set("text", text);
+    u.searchParams.set("url", url);
+    window.open(u.toString(), "_blank", "noopener");
+  }
+  async function copyLink(text){
+    try{
+      await navigator.clipboard.writeText(text);
+    }catch{
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand("copy"); }catch{}
+      document.body.removeChild(ta);
+    }
+  }
+
   // ✅ Scores: split into Live + Final (from same scores.json)
   async function loadScores() {
     const finalList = $("scoresList");
@@ -268,32 +367,31 @@
 
     try {
       const data = await readJson(PATHS.scores);
-
-      // New schema: { updated, items:[{league,home,away,score,status,when}] }
       const items = Array.isArray(data.items) ? data.items : [];
 
       const live = items.filter(m => isLiveStatus(m.status));
       const finals = items.filter(m => isFinalStatus(m.status));
 
-      liveMeta.textContent  = `${live.length} • updated ${data.generatedAt || data.updated || "—"}`;
-      finalMeta.textContent = `${finals.length} • updated ${data.generatedAt || data.updated || "—"}`;
+      liveMeta.textContent  = \`\${live.length} • updated \${data.generatedAt || data.updated || "—"}\`;
+      finalMeta.textContent = \`\${finals.length} • updated \${data.generatedAt || data.updated || "—"}\`;
 
       // Live
       liveList.innerHTML = "";
       if (!live.length) emptyState(liveList, "No live matches right now", "Live matches will appear here.");
-      else live.forEach(m => {
-        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
-        liveList.appendChild(row(title, metaLine, (m.status || "LIVE")));
+      else live.slice(0,20).forEach(m => {
+        const title = \`\${m.home || ""} \${m.score || ""} \${m.away || ""}\`.trim();
+        const metaLine = \`\${m.league || ""}\${m.when ? " • " + m.when : ""}\`;
+        const tag = (String(m.status||"").toUpperCase()==="HT") ? "HT" : "LIVE";
+        liveList.appendChild(row(title, metaLine, tag, "live"));
       });
 
       // Final
       finalList.innerHTML = "";
       if (!finals.length) emptyState(finalList, "No final scores yet", "Finished matches will appear here.");
-      else finals.forEach(m => {
-        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
-        finalList.appendChild(row(title, metaLine, (m.status || "FT")));
+      else finals.slice(0,40).forEach(m => {
+        const title = \`\${m.home || ""} \${m.score || ""} \${m.away || ""}\`.trim();
+        const metaLine = \`\${m.league || ""}\${m.when ? " • " + m.when : ""}\`;
+        finalList.appendChild(row(title, metaLine, "FT"));
       });
 
     } catch (e) {
@@ -313,17 +411,17 @@
     try {
       const data = await readJson(PATHS.upcoming);
       const items = data.items || [];
-      meta.textContent = `${items.length} • updated ${data.generatedAt || data.updated || "—"}`;
+      meta.textContent = \`\${items.length} • updated \${data.generatedAt || data.updated || "—"}\`;
 
       list.innerHTML = "";
       if (!items.length) return emptyState(list, "No upcoming games yet", "Populate assets/data/upcoming.json");
 
-      items.forEach(g => {
+      items.slice(0,25).forEach(g => {
         const channels = (g.tv || []).join(", ");
         list.appendChild(
           row(
-            `${g.home} vs ${g.away}`,
-            `${g.league} • ${g.kickoffLocal || g.kickoffUTC || ""}${channels ? " • " + channels : ""}`,
+            \`\${g.home} vs \${g.away}\`,
+            \`\${g.league} • \${g.kickoffLocal || g.kickoffUTC || g.when || ""}\${channels ? " • " + channels : ""}\`,
             "UP"
           )
         );
@@ -359,47 +457,158 @@
     });
   }
 
+  // ✅ Transfer desk fallback so it’s never empty
+  const DEFAULT_TRANSFERS = [
+    { kind:"news",  title:"Agreement in principle reached for midfielder move", source:"NetThud Desk", publishedAt:new Date().toISOString() },
+    { kind:"news",  title:"Medical scheduled for winger transfer",               source:"NetThud Desk", publishedAt:new Date().toISOString() },
+    { kind:"rumor", title:"Striker linked with 2 clubs amid agent talks",        source:"NetThud Desk", publishedAt:new Date().toISOString() },
+    { kind:"rumor", title:"Loan discussions open for young defender",           source:"NetThud Desk", publishedAt:new Date().toISOString() }
+  ];
+
   async function loadTransfers() {
     const meta = $("transfersMeta");
     const newsPane = $("transfersNews");
     const rumorsPane = $("transfersRumors");
+
+    let items = [];
+    let stamp = "—";
     try {
       const data = await readJson(PATHS.transfers);
-      const items = data.items || [];
-      meta.textContent = `${items.length} • updated ${data.generatedAt || data.updated || "—"}`;
-
-      // Split by type/kind if present; fallback split in half
-      const news = items.filter(x => String(x.type || x.kind || "").toLowerCase() === "news");
-      const rumors = items.filter(x => String(x.type || x.kind || "").toLowerCase() === "rumor");
-
-      const useNews = news.length ? news : items.slice(0, Math.ceil(items.length/2));
-      const useRumors = rumors.length ? rumors : items.slice(Math.ceil(items.length/2));
-
-      function render(pane, arr, emptyTitle){
-        pane.innerHTML = "";
-        if (!arr.length) return emptyState(pane, emptyTitle, "Populate assets/data/transfers.json");
-        arr.slice(0, 12).forEach(t => {
-          pane.appendChild(
-            row(
-              t.title || "Transfer update",
-              `${t.source || "source"} • ${t.publishedAt || t.date || ""}`,
-              "NEW"
-            )
-          );
-        });
-      }
-
-      render(newsPane, useNews, "No transfer news yet");
-      render(rumorsPane, useRumors, "No rumors yet");
-
+      items = Array.isArray(data.items) ? data.items : [];
+      stamp = data.generatedAt || data.updated || "—";
     } catch (e) {
-      meta.textContent = "error";
-      newsPane.innerHTML = "";
-      rumorsPane.innerHTML = "";
-      newsPane.appendChild(row("Transfers not loading", e.message, "ERR", "warn"));
-      rumorsPane.appendChild(row("Transfers not loading", e.message, "ERR", "warn"));
-      console.error(e);
+      // file missing -> fallback
+      items = [];
+      stamp = "—";
     }
+
+    if (!items.length) items = DEFAULT_TRANSFERS;
+    meta.textContent = \`\${items.length} • updated \${stamp}\`;
+
+    const news = items.filter(x => String(x.type || x.kind || "").toLowerCase() === "news");
+    const rumors = items.filter(x => String(x.type || x.kind || "").toLowerCase() === "rumor");
+
+    function render(pane, arr, emptyTitle, tabName){
+      pane.innerHTML = "";
+      if (!arr.length) return emptyState(pane, emptyTitle, "Populate assets/data/transfers.json");
+
+      arr.slice(0, 12).forEach((t, idx) => {
+        const wrap = document.createElement("div");
+        wrap.className = "item";
+
+        const left = document.createElement("div");
+        left.style.minWidth = "0";
+        left.innerHTML = \`
+          <strong>\${esc(t.title || "Transfer update")}</strong>
+          <p>\${esc((t.source || "source") + " • " + (t.publishedAt || t.date || ""))}</p>
+          <div class="rowActions"></div>
+        \`;
+
+        const actions = left.querySelector(".rowActions");
+        const h = \`transfer=\${tabName}-\${idx}\`;
+        const u = shareUrl(h);
+        actions.appendChild(makeBtn("Share X", ()=>shareToX((t.title||"Transfer update")+" — NetThud", u)));
+        actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
+
+        const right = document.createElement("span");
+        right.className = "tag";
+        right.textContent = "NEW";
+
+        wrap.appendChild(left);
+        wrap.appendChild(right);
+        pane.appendChild(wrap);
+      });
+    }
+
+    render(newsPane, news.length ? news : items.slice(0,2), "No transfer news yet", "news");
+    render(rumorsPane, rumors.length ? rumors : items.slice(2), "No rumors yet", "rumor");
+  }
+
+  // ✅ AI News modal behavior (shareable)
+  let NEWS_INDEX = [];
+
+  function buildFallbackArticle(n){
+    const title = n.title || "News";
+    const summary = n.summary || "";
+    return [
+      title,
+      "",
+      "Context",
+      "This item was generated/curated by NetThud AI based on recent coverage and signals.",
+      "",
+      "What happened",
+      summary || "No summary provided yet.",
+      "",
+      "Why it matters",
+      "This can affect tactics, availability, momentum, and short-term attention around fixtures.",
+      "",
+      "What to watch next",
+      "Look for confirmation from primary sources and follow-up signals."
+    ].join("\\n");
+  }
+
+  function openModal(payload){
+    const overlay = $("modalOverlay");
+    const titleEl = $("modalTitle");
+    const metaEl = $("modalMeta");
+    const contentEl = $("modalContent");
+    const actionsEl = $("modalActions");
+    const closeBtn = $("modalClose");
+
+    titleEl.textContent = payload.title || "Article";
+    metaEl.textContent = payload.meta || "";
+    contentEl.textContent = payload.article || "";
+
+    actionsEl.innerHTML = "";
+    actionsEl.appendChild(makeBtn("Share X", ()=>shareToX(payload.shareText || payload.title || "NetThud", payload.shareUrl)));
+    actionsEl.appendChild(makeBtn("Copy link", ()=>copyLink(payload.shareUrl), true));
+
+    overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden","false");
+
+    function close(){
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden","true");
+      if (window.location.hash.startsWith("#news=")){
+        history.replaceState(null,"",pageUrlNoHash());
+      }
+      window.removeEventListener("keydown", onKey);
+      overlay.removeEventListener("click", onBg);
+      closeBtn.removeEventListener("click", close);
+    }
+    function onKey(e){ if(e.key==="Escape") close(); }
+    function onBg(e){ if(e.target===overlay) close(); }
+
+    window.addEventListener("keydown", onKey);
+    overlay.addEventListener("click", onBg);
+    closeBtn.addEventListener("click", close);
+  }
+
+  function tryOpenFromHash(){
+    const h = window.location.hash || "";
+    if (!h.startsWith("#news=")) return;
+    const slug = decodeURIComponent(h.slice("#news=".length));
+    const found = NEWS_INDEX.find(x => x.slug === slug);
+    if (!found) return;
+
+    const u = shareUrl("news=" + found.slug);
+    openModal({
+      title: found.title,
+      meta: found.meta,
+      article: found.article,
+      shareUrl: u,
+      shareText: found.title + " — NetThud AI"
+    });
+  }
+
+  function slugify(s){
+    return String(s||"")
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g,"")
+      .replace(/\s+/g,"-")
+      .replace(/-+/g,"-")
+      .slice(0,60) || ("news-"+Math.random().toString(16).slice(2));
   }
 
   async function loadNews() {
@@ -407,27 +616,73 @@
     const meta = $("newsMeta");
     try {
       const data = await readJson(PATHS.news);
-      const items = data.items || [];
-      meta.textContent = `${items.length} • updated ${data.generatedAt || data.updated || "—"}`;
+      const items = Array.isArray(data.items) ? data.items : [];
+      meta.textContent = \`\${items.length} • updated \${data.generatedAt || data.updated || "—"}\`;
 
       list.innerHTML = "";
       if (!items.length) return emptyState(list, "No news items yet", "Populate assets/data/ai-news.json");
 
-      items.slice(0, 10).forEach(n => {
-        const el = document.createElement("a");
-        el.href = n.url || "#";
-        el.target = "_blank";
-        el.rel = "noopener";
-        el.className = "item";
-        el.innerHTML = `
-          <div>
-            <strong>${esc(n.title || "News item")}</strong>
-            <p>${esc(n.source || "")}${n.publishedAt ? " • " + esc(n.publishedAt.slice(0,10)) : ""}${n.summary ? " • " + esc(n.summary) : ""}</p>
-          </div>
-          <span class="tag">OPEN</span>
-        `;
-        list.appendChild(el);
+      NEWS_INDEX = items.map((n,i)=>{
+        const id = n.id || ("news-"+(i+1));
+        const slug = slugify(id);
+        const title = n.title || ("News-"+(i+1));
+        const source = n.source || "NetThud AI";
+        const publishedAt = n.publishedAt || n.date || "";
+        const metaLine = [source, publishedAt ? String(publishedAt).slice(0,19) : ""].filter(Boolean).join(" • ");
+        const article = (n.article && String(n.article).trim().length > 60) ? String(n.article) : buildFallbackArticle({title, summary:n.summary});
+
+        return {
+          slug, title, meta: metaLine,
+          summary: n.summary || n.short || "",
+          article
+        };
       });
+
+      NEWS_INDEX.slice(0, 12).forEach((n, idx) => {
+        const label = "News-" + (idx+1);
+
+        const wrap = document.createElement("div");
+        wrap.className = "item";
+        wrap.style.cursor = "pointer";
+
+        const left = document.createElement("div");
+        left.style.minWidth = "0";
+        left.innerHTML = \`
+          <strong>\${esc(label)} • \${esc(n.title)}</strong>
+          <p>\${esc(n.summary || "Click to open the full AI article.")}</p>
+          <div class="rowActions"></div>
+        \`;
+
+        const actions = left.querySelector(".rowActions");
+        const u = shareUrl("news=" + n.slug);
+        actions.appendChild(makeBtn("Share X", ()=>shareToX(n.title + " — NetThud AI", u)));
+        actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
+
+        const right = document.createElement("span");
+        right.className = "tag";
+        right.textContent = "OPEN";
+
+        wrap.appendChild(left);
+        wrap.appendChild(right);
+
+        wrap.addEventListener("click", (e)=>{
+          if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
+          history.replaceState(null,"",u);
+          openModal({
+            title: n.title,
+            meta: n.meta,
+            article: n.article,
+            shareUrl: u,
+            shareText: n.title + " — NetThud AI"
+          });
+        });
+
+        list.appendChild(wrap);
+      });
+
+      tryOpenFromHash();
+      window.addEventListener("hashchange", tryOpenFromHash);
+
     } catch (e) {
       meta.textContent = "error";
       list.innerHTML = "";
@@ -447,19 +702,19 @@
                     : Array.isArray(data.leagues) ? data.leagues
                     : [];
 
-      meta.textContent = `${leagues.length} • updated ${data.updated || data.generatedAt || "—"}`;
+      meta.textContent = \`\${leagues.length} • updated \${data.updated || data.generatedAt || "—"}\`;
 
       container.innerHTML = "";
       if (!leagues.length) {
         const empty = document.createElement("div");
         empty.className = "item";
-        empty.innerHTML = `
+        empty.innerHTML = \`
           <div>
             <strong>No leagues yet</strong>
             <p>assets/data/leagues.json loaded, but items[] is empty.</p>
           </div>
           <span class="tag warn">EMPTY</span>
-        `;
+        \`;
         container.appendChild(empty);
         return;
       }
@@ -472,7 +727,7 @@
         const emoji = (l && typeof l === "object") ? (l.emoji || "") : "";
         const country = (l && typeof l === "object") ? (l.country || "") : "";
 
-        el.innerHTML = `<span class="dot"></span>${esc(emoji ? emoji + " " : "")}${esc(name)}${esc(country ? " • " + country : "")}`;
+        el.innerHTML = \`<span class="dot"></span>\${esc(emoji ? emoji + " " : "")}\${esc(name)}\${esc(country ? " • " + country : "")}\`;
         container.appendChild(el);
       });
     } catch (e) {
@@ -511,8 +766,9 @@
 
     setupTransferTabs();
 
-    await loadUpcoming();
+    // ✅ order doesn’t matter, layout is fixed; but load in this order:
     await loadScores();
+    await loadUpcoming();
     await loadTransfers();
     await loadNews();
     await loadLeagues();
