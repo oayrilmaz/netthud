@@ -3,7 +3,7 @@ name: NetThud - Update Scores
 on:
   workflow_dispatch:
   schedule:
-    - cron: "05 * * * *" # every hour at :05 UTC
+    - cron: "*/15 * * * *" # every 15 minutes
 
 permissions:
   contents: write
@@ -15,18 +15,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Sync with latest main
-        run: |
-          git fetch origin main
-          git checkout main
-          git reset --hard origin/main
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -39,13 +32,24 @@ jobs:
         run: node scripts/generate-scores.mjs
 
       - name: Commit & push if changed
+        shell: bash
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add -A
-            git commit -m "Update scores.json"
-            git push
-          else
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add assets/data/scores.json
+          if git diff --cached --quiet; then
             echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update scores.json"
+
+          git pull --rebase --autostash origin main || true
+
+          if ! git push origin HEAD:main; then
+            echo "Push rejected, retrying after pull..."
+            git pull --rebase --autostash origin main
+            git push origin HEAD:main
           fi
