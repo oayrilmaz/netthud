@@ -1,74 +1,80 @@
 import fs from "fs";
-import OpenAI from "openai";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const OUTPUT = "assets/data/ai-news.json";
 
-const OUT_FILE = "assets/data/ai-news.json";
-
-function extractJSON(text) {
-  // 1) try direct parse
-  try {
-    return JSON.parse(text);
-  } catch {}
-
-  // 2) strip common code fences
-  const cleaned = text
-    .replace(/```json/gi, "```")
-    .replace(/```/g, "")
-    .trim();
-
-  try {
-    return JSON.parse(cleaned);
-  } catch {}
-
-  // 3) find first JSON object/array anywhere in output
-  const match = cleaned.match(/(\{[\s\S]*\}|$begin:math:display$\[\\s\\S\]\*$end:math:display$)/);
-  if (!match) throw new Error("No JSON found in OpenAI response");
-
-  return JSON.parse(match[0]);
+if (!process.env.OPENAI_API_KEY) {
+  console.error("OPENAI_API_KEY is missing");
+  process.exit(1);
 }
 
-async function main() {
-  if (!process.env.OPENAI_API_KEY) {
-    throw new Error("Missing OPENAI_API_KEY secret");
-  }
-
-  const prompt = `
-Return ONLY valid JSON. No markdown. No extra text.
+const prompt = `
+Return ONLY valid JSON.
+No markdown.
+No explanation.
 
 Schema:
 {
+  "updatedAt": "ISO_DATE",
   "items": [
-    { "title": "...", "summary": "...", "source": "openai", "url": "#" }
+    {
+      "title": "string",
+      "summary": "string",
+      "league": "string",
+      "teams": ["string"],
+      "confidence": 0-100
+    }
   ]
 }
 
-Generate 20 football news items.
-- Use short titles
-- 1 sentence summaries
-- source must be "openai"
-- url must be "#"
+Rules:
+- Football only
+- Tactical or performance insight
+- No links
+- No ESPN / BBC
+- Max 10 items
 `;
 
-  const resp = await client.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [{ role: "user", content: prompt }],
-    temperature: 0.3
+async function run() {
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      temperature: 0.3,
+      messages: [
+        { role: "system", content: "You are a football match analyst." },
+        { role: "user", content: prompt }
+      ]
+    })
   });
 
-  const raw = resp.choices?.[0]?.message?.content ?? "";
-  const data = extractJSON(raw);
+  const data = await response.json();
 
-  const out = {
-    updated: new Date().toISOString(),
-    items: Array.isArray(data.items) ? data.items : []
-  };
+  const content = data?.choices?.[0]?.message?.content;
+  if (!content) {
+    console.error("Invalid OpenAI response:", data);
+    process.exit(1);
+  }
 
-  fs.writeFileSync(OUT_FILE, JSON.stringify(out, null, 2), "utf8");
-  console.log("✅ Wrote", OUT_FILE, "items:", out.items.length);
+  let parsed;
+  try {
+    parsed = JSON.parse(content);
+  } catch (err) {
+    console.error("FAILED TO PARSE JSON:");
+    console.error(content);
+    process.exit(1);
+  }
+
+  fs.writeFileSync(
+    OUTPUT,
+    JSON.stringify(parsed, null, 2),
+    "utf-8"
+  );
+
+  console.log("AI news written to", OUTPUT);
 }
 
-main().catch((err) => {
-  console.error("❌ generate-ai-news-openai failed:", err);
-  process.exit(1);
-});
+run();
