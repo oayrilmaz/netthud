@@ -10,9 +10,6 @@
   function qs(sel) {
     return document.querySelector(sel);
   }
-  function qsa(sel) {
-    return Array.from(document.querySelectorAll(sel));
-  }
   function esc(s) {
     return String(s ?? "")
       .replaceAll("&", "&amp;")
@@ -50,8 +47,6 @@
   }
 
   // ---------- UI Targets ----------
-  // These selectors are resilient: if an element doesn't exist, we just skip rendering.
-  // If your HTML uses different IDs, tell me the IDs and I’ll align perfectly.
   const UI = {
     finalScoresWrap:
       qs("#finalScores") || qs('[data-section="finalScores"]') || qs("#final-scores"),
@@ -62,13 +57,17 @@
     aiNewsWrap: qs("#aiNews") || qs('[data-section="aiNews"]') || qs("#ai-news"),
     leaguesWrap: qs("#leagues") || qs('[data-section="leagues"]') || qs("#leagues"),
 
-    // Optional "updated" text elements (if you have them)
     finalScoresUpdated: qs("#finalScoresUpdated") || qs('[data-updated="finalScores"]'),
     upcomingUpdated: qs("#upcomingUpdated") || qs('[data-updated="upcoming"]'),
     transfersUpdated: qs("#transfersUpdated") || qs('[data-updated="transfers"]'),
     aiNewsUpdated: qs("#aiNewsUpdated") || qs('[data-updated="aiNews"]'),
     leaguesUpdated: qs("#leaguesUpdated") || qs('[data-updated="leagues"]'),
   };
+
+  function getUpdatedStamp(json) {
+    // Support BOTH formats
+    return json?.updated || json?.generatedAt || null;
+  }
 
   function setUpdated(el, iso) {
     if (!el) return;
@@ -84,7 +83,6 @@
     if (!wrap) return;
     const div = document.createElement("div");
     div.innerHTML = html.trim();
-    // append the first element
     wrap.appendChild(div.firstElementChild);
   }
 
@@ -107,13 +105,11 @@
     }
   }
 
-  // Keep only items that are NOT from blocked domains.
-  // If you want “OpenAI only”, we can change this to allow only source==="openai".
   function filterExternal(items) {
     if (!Array.isArray(items)) return [];
     return items.filter((it) => {
       const domain = getDomainFromUrl(it?.url || "");
-      if (!domain) return true; // if no domain, keep (likely internal)
+      if (!domain) return true;
       return !BLOCKED_DOMAINS.some((b) => domain === b || domain.endsWith("." + b));
     });
   }
@@ -153,7 +149,6 @@
       const summary = it?.summary || it?.description || "";
       const url = it?.url || "";
 
-      // If no URL, no button
       const btn = url
         ? `<a class="btn-open" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>`
         : "";
@@ -271,16 +266,20 @@
     });
   }
 
-  function renderLeagues(wrap, items) {
+  function renderLeagues(wrap, items, hadJson) {
     if (!wrap) return;
     clearWrap(wrap);
 
     if (!items.length) {
-      renderEmptyState(wrap, "Leagues not loading", "Missing: leagues.json", "ERR");
+      renderEmptyState(
+        wrap,
+        "Leagues not loading",
+        hadJson ? "Invalid or empty: leagues.json" : "Missing: leagues.json",
+        "ERR"
+      );
       return;
     }
 
-    // Simple list cards
     items.forEach((l) => {
       const name = l?.name || "League";
       const country = l?.country || "";
@@ -298,7 +297,6 @@
 
   // ---------- Load & Render ----------
   async function main() {
-    // Load JSON safely
     const [
       leaguesJson,
       scoresJson,
@@ -315,7 +313,6 @@
       safeFetchJson("signals.json"),
     ]);
 
-    // Extract items arrays safely
     const leaguesItems = leaguesJson?.items ?? [];
     const scoresItems = scoresJson?.items ?? [];
     const upcomingItems = upcomingJson?.items ?? [];
@@ -323,35 +320,30 @@
     const aiNewsItemsRaw = aiNewsJson?.items ?? [];
     const signalsItemsRaw = signalsJson?.items ?? [];
 
-    // Filter out external sources for AI news/signals/transfers (prevents ESPN/BBC showing)
     const aiNewsItems = filterExternal(aiNewsItemsRaw);
     const signalsItems = filterExternal(signalsItemsRaw);
     const transfersItemsFiltered = filterExternal(transfersItems);
 
-    // Render
     // Leagues
-    setUpdated(UI.leaguesUpdated, leaguesJson?.generatedAt);
-    renderLeagues(UI.leaguesWrap, leaguesItems);
+    setUpdated(UI.leaguesUpdated, getUpdatedStamp(leaguesJson));
+    renderLeagues(UI.leaguesWrap, leaguesItems, !!leaguesJson);
 
     // Scores
-    setUpdated(UI.finalScoresUpdated, scoresJson?.generatedAt);
+    setUpdated(UI.finalScoresUpdated, getUpdatedStamp(scoresJson));
     renderScores(UI.finalScoresWrap, scoresItems);
 
     // Upcoming
-    setUpdated(UI.upcomingUpdated, upcomingJson?.generatedAt);
+    setUpdated(UI.upcomingUpdated, getUpdatedStamp(upcomingJson));
     renderUpcoming(UI.upcomingWrap, upcomingItems);
 
     // Transfers
-    setUpdated(UI.transfersUpdated, transfersJson?.generatedAt);
+    setUpdated(UI.transfersUpdated, getUpdatedStamp(transfersJson));
     renderTransfers(UI.transfersWrap, transfersItemsFiltered);
 
-    // AI News (OpenAI pipeline later)
-    setUpdated(UI.aiNewsUpdated, aiNewsJson?.generatedAt);
+    // AI News
+    setUpdated(UI.aiNewsUpdated, getUpdatedStamp(aiNewsJson));
     renderNewsList(UI.aiNewsWrap, aiNewsItems);
 
-    // If you show Signals on the page, reuse the AI News renderer:
-    // If you have a separate signals container, add it to UI and call renderNewsList there.
-    // (We keep this data available for your next step.)
     window.NETTHUD = {
       loadedAt: isoNow(),
       data: {
@@ -372,7 +364,6 @@
     console.log("NetThud loaded", window.NETTHUD);
   }
 
-  // Run after DOM is ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", main);
   } else {
