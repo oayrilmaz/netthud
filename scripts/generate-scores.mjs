@@ -4,9 +4,6 @@
 // Env:
 //   NETTHUD_SCORES_API_PROVIDER=football-data
 //   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
-//
-// Optional (if you later add other providers):
-//   NETTHUD_SCORES_API_URL=...
 
 import fs from "node:fs";
 import path from "node:path";
@@ -34,7 +31,6 @@ function writeJson(filePath, data) {
 }
 
 function mapFootballDataStatus(status) {
-  // football-data statuses: SCHEDULED, TIMED, IN_PLAY, PAUSED, FINISHED, POSTPONED, SUSPENDED, CANCELED
   switch (status) {
     case "FINISHED":
       return "FT";
@@ -71,51 +67,48 @@ function calcScore(fdMatch) {
 }
 
 function leagueNameFromCompetition(comp) {
-  // football-data competition names are good enough (e.g. "Premier League")
   return safeStr(comp?.name || "");
+}
+
+// Helpers for date range
+function yyyyMmDdUTC(d) {
+  return d.toISOString().slice(0, 10);
+}
+
+function utcMidnight(dateObj) {
+  return new Date(Date.UTC(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate()));
 }
 
 async function fetchFootballDataScores() {
   const token = env("NETTHUD_SCORES_API_TOKEN");
-  if (!token) {
-    throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
-  }
+  if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
 
-  // We’ll fetch “today” and “yesterday” to avoid empty days and timezone issues.
-  // football-data endpoint: /v4/matches?dateFrom=YYYY-MM-DD&dateTo=YYYY-MM-DD
+  // ✅ Wider window so you almost always see real finished matches
   const now = new Date();
-  const yyyyMmDd = (d) => d.toISOString().slice(0, 10);
+  const today = utcMidnight(now);
+  const dateFromD = new Date(today);
+  dateFromD.setUTCDate(today.getUTCDate() - 7); // last 7 days
 
-  const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
-  const yesterday = new Date(today);
-  yesterday.setUTCDate(today.getUTCDate() - 1);
-
-  const dateFrom = yyyyMmDd(yesterday);
-  const dateTo = yyyyMmDd(today);
+  const dateFrom = yyyyMmDdUTC(dateFromD);
+  const dateTo = yyyyMmDdUTC(today);
 
   const url = `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`;
 
-  const res = await fetch(url, {
-    headers: { "X-Auth-Token": token },
-  });
-
+  const res = await fetch(url, { headers: { "X-Auth-Token": token } });
   if (!res.ok) {
     const t = await res.text().catch(() => "");
     throw new Error(`football-data HTTP ${res.status} ${res.statusText} :: ${t.slice(0, 200)}`);
   }
 
   const json = await res.json();
-
   const matches = Array.isArray(json?.matches) ? json.matches : [];
 
-  // Keep only finished + in-play/paused (so you see real scores/updates).
+  // ✅ Real scores only (FINISHED/LIVE/HT)
   const keep = matches.filter((m) => {
     const st = safeStr(m?.status);
     return st === "FINISHED" || st === "IN_PLAY" || st === "PAUSED";
   });
 
-  // Map into YOUR site’s schema:
-  // assets/data/scores.json => { updated, items:[ {league, home, away, score, status, when, minute? } ] }
   const items = keep.map((m) => {
     const league = leagueNameFromCompetition(m?.competition);
     const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name);
@@ -123,17 +116,18 @@ async function fetchFootballDataScores() {
 
     const score = calcScore(m);
     const status = mapFootballDataStatus(m?.status);
-
-    // when: we’ll store UTC date-time or date
     const when = safeStr(m?.utcDate || "").slice(0, 10);
 
-    // football-data doesn't always give live minute. Keep it optional.
     return { league, home, away, score, status, when };
   });
 
-  // Sort: LIVE/HT first, then FT
+  // Sort: LIVE/HT first, then FT; newest first inside FT
   const statusRank = (s) => (s === "LIVE" ? 0 : s === "HT" ? 1 : 2);
-  items.sort((a, b) => statusRank(a.status) - statusRank(b.status));
+  items.sort((a, b) => {
+    const sr = statusRank(a.status) - statusRank(b.status);
+    if (sr !== 0) return sr;
+    return safeStr(b.when).localeCompare(safeStr(a.when));
+  });
 
   return { updated: isoNow(), items };
 }
@@ -143,7 +137,6 @@ async function main() {
   const outFile = path.join(process.cwd(), "assets", "data", "scores.json");
 
   let payload;
-
   if (provider === "football-data") {
     payload = await fetchFootballDataScores();
   } else {
