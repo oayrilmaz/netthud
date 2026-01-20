@@ -1,13 +1,13 @@
 /* NetThud - assets/app.js
-   - Safe JSON fetch from /assets/data/*
+   - Works with your index.html IDs (scoresList, leagueChips, etc.)
+   - Safe JSON fetch from assets/data/*
    - Cache busting
-   - Never crash UI if JSON missing
-   - Filters out external news sources (ESPN/BBC/etc.)
+   - Never crashes UI if JSON missing / empty
 */
 
 (function () {
-  // ---------- Utilities ----------
-  function qs(sel) { return document.querySelector(sel); }
+  const $ = (id) => document.getElementById(id);
+
   function esc(s) {
     return String(s ?? "")
       .replaceAll("&", "&amp;")
@@ -15,332 +15,277 @@
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;");
   }
-  function isoNow() { return new Date().toISOString(); }
-  function fmtDateTime(iso) {
+
+  function fmt(iso) {
     try {
       const d = new Date(iso);
-      if (Number.isNaN(d.getTime())) return String(iso || "");
-      return d.toISOString().replace("T", " ").replace("Z", "Z");
+      if (Number.isNaN(d.getTime())) return String(iso || "—");
+      return d.toISOString();
     } catch {
-      return String(iso || "");
+      return String(iso || "—");
     }
   }
 
-  // ---------- Robust URL building ----------
   function withCacheBust(urlStr) {
     const u = new URL(urlStr, document.baseURI);
     u.searchParams.set("v", String(Date.now()));
     return u.toString();
   }
 
-  // Try multiple paths because GitHub Pages + custom domain + baseURI can vary
   function candidateDataUrls(file) {
-    const rel = new URL(`assets/data/${file}`, document.baseURI).toString();     // relative
-    const abs = new URL(`/assets/data/${file}`, window.location.origin).toString(); // absolute
-    const dot = new URL(`./assets/data/${file}`, document.baseURI).toString();   // dot relative
-    // Deduplicate
+    // Always prefer assets/data/*
+    const rel = new URL(`assets/data/${file}`, document.baseURI).toString();
+    const abs = new URL(`/assets/data/${file}`, window.location.origin).toString();
+    const dot = new URL(`./assets/data/${file}`, document.baseURI).toString();
     return Array.from(new Set([rel, abs, dot])).map(withCacheBust);
   }
 
   async function safeFetchJson(file) {
     const urls = candidateDataUrls(file);
-
     for (const url of urls) {
       try {
         const res = await fetch(url, { cache: "no-store" });
         if (!res.ok) throw new Error(`${file} HTTP ${res.status} @ ${url}`);
         return await res.json();
-      } catch (err) {
-        console.warn("Data load failed:", file, err);
+      } catch (e) {
+        console.warn("Fetch failed:", e.message);
       }
     }
-    return null; // never crash UI
+    return null;
   }
 
-  // ---------- UI Targets ----------
-  const UI = {
-    finalScoresWrap: qs("#finalScores") || qs('[data-section="finalScores"]') || qs("#final-scores"),
-    upcomingWrap: qs("#upcoming") || qs('[data-section="upcoming"]') || qs("#upcoming-tv"),
-    transfersWrap: qs("#transfers") || qs('[data-section="transfers"]') || qs("#transfer-desk"),
-    aiNewsWrap: qs("#aiNews") || qs('[data-section="aiNews"]') || qs("#ai-news"),
-    leaguesWrap: qs("#leagues") || qs('[data-section="leagues"]') || qs("#leagues"),
-
-    finalScoresUpdated: qs("#finalScoresUpdated") || qs('[data-updated="finalScores"]'),
-    upcomingUpdated: qs("#upcomingUpdated") || qs('[data-updated="upcoming"]'),
-    transfersUpdated: qs("#transfersUpdated") || qs('[data-updated="transfers"]'),
-    aiNewsUpdated: qs("#aiNewsUpdated") || qs('[data-updated="aiNews"]'),
-    leaguesUpdated: qs("#leaguesUpdated") || qs('[data-updated="leagues"]'),
-  };
-
-  function getUpdatedStamp(json) {
-    return json?.generatedAt || json?.updated || null;
-  }
-
-  function setUpdated(el, iso) {
-    if (!el) return;
-    el.textContent = iso ? `updated ${fmtDateTime(iso)}` : `updated ${fmtDateTime(isoNow())}`;
-  }
-
-  function clearWrap(wrap) {
-    if (!wrap) return;
-    wrap.innerHTML = "";
-  }
-
-  function renderCard(wrap, html) {
-    if (!wrap) return;
-    const div = document.createElement("div");
-    div.innerHTML = html.trim();
-    wrap.appendChild(div.firstElementChild);
-  }
-
-  // ---------- Filtering (remove ESPN/BBC/etc.) ----------
-  const BLOCKED_DOMAINS = [
-    "espn.com",
-    "feeds.bbci.co.uk",
-    "bbc.co.uk",
-    "skysports.com",
-    "goal.com",
-    "theathletic.com",
-  ];
-
-  function getDomainFromUrl(url) {
-    try {
-      const u = new URL(url);
-      return u.hostname.replace(/^www\./, "");
-    } catch {
-      return "";
-    }
-  }
-
-  function filterExternal(items) {
-    if (!Array.isArray(items)) return [];
-    return items.filter((it) => {
-      const domain = getDomainFromUrl(it?.url || "");
-      if (!domain) return true;
-      return !BLOCKED_DOMAINS.some((b) => domain === b || domain.endsWith("." + b));
-    });
-  }
-
-  // ---------- Renderers ----------
-  function renderEmptyState(wrap, title, subtitle, badgeText) {
-    renderCard(
-      wrap,
-      `
-      <div class="card">
-        <div class="card__title">${esc(title)}</div>
-        <div class="card__sub">${esc(subtitle || "")}</div>
-        ${badgeText ? `<div class="badge">${esc(badgeText)}</div>` : ""}
+  function row(title, meta, tagText, tagClass = "") {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.innerHTML = `
+      <div>
+        <strong>${esc(title)}</strong>
+        <p>${esc(meta || "")}</p>
       </div>
-      `
-    );
+      <span class="tag ${esc(tagClass)}">${esc(tagText)}</span>
+    `;
+    return d;
   }
 
-  function renderNewsList(wrap, items) {
-    if (!wrap) return;
-    clearWrap(wrap);
+  function emptyState(container, title, meta) {
+    container.innerHTML = "";
+    container.appendChild(row(title, meta, "EMPTY", "warn"));
+  }
 
-    if (!items.length) {
-      renderEmptyState(wrap, "No AI news yet", "Once OpenAI generation is enabled, items will appear here.", "EMPTY");
-      return;
+  function errState(container, title, meta) {
+    container.innerHTML = "";
+    container.appendChild(row(title, meta, "ERR", "warn"));
+  }
+
+  function updatedStamp(json) {
+    return json?.generatedAt || json?.updated || json?.updatedAt || null;
+  }
+
+  function setMeta(el, count, iso) {
+    if (!el) return;
+    el.textContent = `${count} • updated ${iso ? fmt(iso) : "—"}`;
+  }
+
+  // ---------------- Scores ----------------
+  function normalizeScores(data) {
+    // Supports:
+    // - { items: [{league, home, away, score, status, minute, when}] }
+    // - { matches: [{home, away, homeScore, awayScore, league, date}] }
+    const items = Array.isArray(data?.items) ? data.items : [];
+    if (items.length) return { list: items, stamp: updatedStamp(data) };
+
+    const matches = Array.isArray(data?.matches) ? data.matches : [];
+    if (matches.length) {
+      const mapped = matches.map(m => ({
+        league: m.league,
+        home: m.home,
+        away: m.away,
+        score: (m.homeScore != null && m.awayScore != null) ? `${m.homeScore}–${m.awayScore}` : "",
+        status: "FT",
+        when: m.date || ""
+      }));
+      return { list: mapped, stamp: updatedStamp(data) };
     }
 
-    items.forEach((it) => {
-      const title = it?.title || "Untitled";
-      const source = it?.source || getDomainFromUrl(it?.url || "") || "source";
-      const date = it?.date || it?.publishedAt || "";
-      const summary = it?.summary || it?.description || "";
-      const url = it?.url || "";
+    return { list: [], stamp: updatedStamp(data) };
+  }
 
-      const btn = url
-        ? `<a class="btn-open" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>`
-        : "";
+  async function loadScores() {
+    const list = $("scoresList");
+    const meta = $("scoresMeta");
+    if (!list) return;
 
-      renderCard(
-        wrap,
-        `
-        <div class="card">
-          <div class="card__row">
-            <div class="card__title">${esc(title)}</div>
-            ${btn}
-          </div>
-          <div class="card__meta">${esc(source)}${date ? " • " + esc(date) : ""}</div>
-          ${summary ? `<div class="card__sub">${esc(summary)}</div>` : ""}
-        </div>
-        `
-      );
+    const data = await safeFetchJson("scores.json");
+    if (!data) {
+      meta && (meta.textContent = "error");
+      return errState(list, "Scores not loading", "Could not fetch assets/data/scores.json");
+    }
+
+    const { list: items, stamp } = normalizeScores(data);
+    setMeta(meta, items.length, stamp);
+
+    if (!items.length) return emptyState(list, "No final scores yet", "Matches will appear here once completed.");
+
+    list.innerHTML = "";
+    items.forEach(m => {
+      const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim() || "Match";
+      const metaLine = [m.league, m.when, m.status, (m.minute != null ? `${m.minute}'` : "")]
+        .filter(Boolean).join(" • ");
+      list.appendChild(row(title, metaLine, (m.status || "FT")));
     });
   }
 
-  function renderScores(wrap, items) {
-    if (!wrap) return;
-    clearWrap(wrap);
+  // ---------------- Upcoming ----------------
+  async function loadUpcoming() {
+    const list = $("upcomingList");
+    const meta = $("upcomingMeta");
+    if (!list) return;
 
-    if (!items.length) {
-      renderEmptyState(wrap, "No final scores yet", "Matches will appear here once completed.", "EMPTY");
-      return;
+    const data = await safeFetchJson("upcoming.json");
+    if (!data) {
+      meta && (meta.textContent = "error");
+      return errState(list, "Upcoming not loading", "Could not fetch assets/data/upcoming.json");
     }
 
-    items.forEach((m) => {
-      const league = m?.league || "";
-      const home = m?.home || "";
-      const away = m?.away || "";
-      const score = m?.score || "";
-      const status = m?.status || "";
-      const minute = m?.minute != null ? String(m.minute) : "";
+    const items = Array.isArray(data?.items) ? data.items : [];
+    setMeta(meta, items.length, updatedStamp(data));
 
-      renderCard(
-        wrap,
-        `
-        <div class="card">
-          <div class="card__title">${esc(home)} <span class="muted">vs</span> ${esc(away)}</div>
-          <div class="card__meta">${esc(league)}${status ? " • " + esc(status) : ""}${minute ? " • " + esc(minute) + "'" : ""}</div>
-          ${score ? `<div class="score">${esc(score)}</div>` : ""}
-        </div>
-        `
-      );
+    if (!items.length) return emptyState(list, "No upcoming matches", "Upcoming fixtures will appear here.");
+
+    list.innerHTML = "";
+    items.forEach(g => {
+      const title = `${g.home || ""} vs ${g.away || ""}`.trim() || (g.title || "Match");
+      const tv = Array.isArray(g.tv) ? g.tv.join(", ") : (g.tv || g.channel || "");
+      const when = g.kickoffLocal || g.when || g.date || g.kickoffUTC || "";
+      const metaLine = [g.league, when, tv].filter(Boolean).join(" • ");
+      list.appendChild(row(title, metaLine, "UP"));
     });
   }
 
-  function renderUpcoming(wrap, items) {
-    if (!wrap) return;
-    clearWrap(wrap);
+  // ---------------- Transfers ----------------
+  async function loadTransfers() {
+    const list = $("transfersList");
+    const meta = $("transfersMeta");
+    if (!list) return;
 
-    if (!items.length) {
-      renderEmptyState(wrap, "No upcoming matches", "Upcoming fixtures will appear here.", "EMPTY");
-      return;
+    const data = await safeFetchJson("transfers.json");
+    if (!data) {
+      meta && (meta.textContent = "error");
+      return errState(list, "Transfers not loading", "Could not fetch assets/data/transfers.json");
     }
 
-    items.forEach((m) => {
-      const title = m?.title || `${m?.home || ""} vs ${m?.away || ""}`.trim() || "Match";
-      const league = m?.league || "";
-      const when = m?.when || m?.date || "";
-      const tv = m?.tv || m?.channel || "";
+    const items = Array.isArray(data?.items) ? data.items : [];
+    setMeta(meta, items.length, updatedStamp(data));
 
-      renderCard(
-        wrap,
-        `
-        <div class="card">
-          <div class="card__row">
-            <div class="card__title">${esc(title)}</div>
-            <div class="badge green">UP</div>
-          </div>
-          <div class="card__meta">${esc(league)}${when ? " • " + esc(when) : ""}${tv ? " • " + esc(tv) : ""}</div>
-        </div>
-        `
-      );
+    if (!items.length) return emptyState(list, "No transfers yet", "Populate assets/data/transfers.json");
+
+    list.innerHTML = "";
+    items.forEach(t => {
+      const title = t.title || t.headline || "Transfer update";
+      const metaLine = [t.league, (t.source || "source"), (t.publishedAt || t.date || "")]
+        .filter(Boolean).join(" • ");
+      list.appendChild(row(title, metaLine, "NEW"));
     });
   }
 
-  function renderTransfers(wrap, items) {
-    if (!wrap) return;
-    clearWrap(wrap);
+  // ---------------- AI News ----------------
+  async function loadNews() {
+    const list = $("newsList");
+    const meta = $("newsMeta");
+    if (!list) return;
 
-    if (!items.length) {
-      renderEmptyState(wrap, "No transfers yet", "Once transfer generation is enabled, items will appear here.", "EMPTY");
-      return;
+    const data = await safeFetchJson("ai-news.json");
+    if (!data) {
+      meta && (meta.textContent = "error");
+      return errState(list, "AI News not loading", "Could not fetch assets/data/ai-news.json");
     }
 
-    items.forEach((t) => {
-      const title = t?.title || t?.headline || "Transfer update";
-      const source = t?.source || getDomainFromUrl(t?.url || "") || "source";
-      const date = t?.date || t?.publishedAt || "";
-      const url = t?.url || "";
-      const btn = url
-        ? `<a class="btn-open" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>`
-        : "";
+    const items = Array.isArray(data?.items) ? data.items : [];
+    setMeta(meta, items.length, updatedStamp(data));
 
-      renderCard(
-        wrap,
-        `
-        <div class="card">
-          <div class="card__row">
-            <div class="card__title">${esc(title)}</div>
-            ${btn}
-          </div>
-          <div class="card__meta">${esc(source)}${date ? " • " + esc(date) : ""}</div>
+    if (!items.length) return emptyState(list, "No AI news yet", "Populate assets/data/ai-news.json");
+
+    list.innerHTML = "";
+    items.slice(0, 10).forEach(n => {
+      const el = document.createElement("a");
+      el.href = n.url || "#";
+      el.target = "_blank";
+      el.rel = "noopener";
+      el.className = "item";
+      el.innerHTML = `
+        <div>
+          <strong>${esc(n.title || "News item")}</strong>
+          <p>${esc([n.source, n.publishedAt ? String(n.publishedAt).slice(0,10) : "", n.summary || ""].filter(Boolean).join(" • "))}</p>
         </div>
-        `
-      );
+        <span class="tag">OPEN</span>
+      `;
+      list.appendChild(el);
     });
   }
 
-  function renderLeagues(wrap, items, leaguesJson) {
-    if (!wrap) return;
-    clearWrap(wrap);
+  // ---------------- Leagues ----------------
+  async function loadLeagues() {
+    const container = $("leagueChips");
+    const meta = $("leaguesMeta");
+    if (!container) return;
 
-    // If fetch failed entirely
-    if (!leaguesJson) {
-      renderEmptyState(wrap, "Leagues not loading", "Could not fetch leagues.json (path/cache issue).", "ERR");
-      return;
+    const data = await safeFetchJson("leagues.json"); // <- MUST live in assets/data/leagues.json
+    if (!data) {
+      meta && (meta.textContent = "error");
+      return errState(container, "Leagues not loading", "Could not fetch assets/data/leagues.json");
     }
 
-    // File loaded but empty list
-    if (!items.length) {
-      renderEmptyState(wrap, "No leagues yet", "leagues.json loaded but items[] is empty.", "EMPTY");
-      return;
-    }
+    const items = Array.isArray(data?.items) ? data.items : [];
+    setMeta(meta, items.length, updatedStamp(data));
 
-    items.forEach((l) => {
-      const name = l?.name || "League";
-      const country = l?.country || "";
-      const emoji = l?.emoji || "";
-      renderCard(
-        wrap,
-        `
-        <div class="card">
-          <div class="card__title">${emoji ? esc(emoji) + " " : ""}${esc(name)}</div>
-          ${country ? `<div class="card__sub">${esc(country)}</div>` : ""}
-        </div>
-        `
-      );
+    if (!items.length) return emptyState(container, "No leagues yet", "assets/data/leagues.json loaded but items[] is empty.");
+
+    container.innerHTML = "";
+    items.forEach(l => {
+      const el = document.createElement("div");
+      el.className = "chip";
+      const emoji = l.emoji ? `${l.emoji} ` : "";
+      const country = l.country ? ` • ${l.country}` : "";
+      el.innerHTML = `<span class="dot"></span>${esc(emoji + (l.name || l.key || "League") + country)}`;
+      container.appendChild(el);
     });
   }
 
-  // ---------- Load & Render ----------
+  // ---------------- Sound toggle ----------------
+  const SOUND_KEY = "netthud_sound";
+  function getSound() { return localStorage.getItem(SOUND_KEY) !== "0"; }
+  function setSoundUI(on) { const el = $("soundState"); if (el) el.textContent = on ? "ON" : "OFF"; }
+  function setSound(on) { localStorage.setItem(SOUND_KEY, on ? "1" : "0"); setSoundUI(on); }
+  function beep() {
+    if (!getSound()) return;
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = ctx.createOscillator(); const g = ctx.createGain();
+      o.type = "sine"; o.frequency.value = 440; g.gain.value = 0.02;
+      o.connect(g); g.connect(ctx.destination);
+      o.start(); setTimeout(() => { o.stop(); ctx.close(); }, 80);
+    } catch {}
+  }
+
   async function main() {
-    const [leaguesJson, scoresJson, upcomingJson, transfersJson, aiNewsJson, signalsJson] =
-      await Promise.all([
-        safeFetchJson("leagues.json"),
-        safeFetchJson("scores.json"),
-        safeFetchJson("upcoming.json"),
-        safeFetchJson("transfers.json"),
-        safeFetchJson("ai-news.json"),
-        safeFetchJson("signals.json"),
-      ]);
+    const year = $("year");
+    if (year) year.textContent = String(new Date().getFullYear());
 
-    const leaguesItems = leaguesJson?.items ?? [];
-    const scoresItems = scoresJson?.items ?? [];
-    const upcomingItems = upcomingJson?.items ?? [];
-    const transfersItems = transfersJson?.items ?? [];
-    const aiNewsItemsRaw = aiNewsJson?.items ?? [];
-    const signalsItemsRaw = signalsJson?.items ?? [];
+    const pill = $("soundPill");
+    setSoundUI(getSound());
+    if (pill) {
+      pill.addEventListener("click", () => {
+        const on = !getSound();
+        setSound(on);
+        beep();
+      });
+    }
 
-    const aiNewsItems = filterExternal(aiNewsItemsRaw);
-    const signalsItems = filterExternal(signalsItemsRaw);
-    const transfersItemsFiltered = filterExternal(transfersItems);
-
-    setUpdated(UI.leaguesUpdated, getUpdatedStamp(leaguesJson));
-    renderLeagues(UI.leaguesWrap, leaguesItems, leaguesJson);
-
-    setUpdated(UI.finalScoresUpdated, getUpdatedStamp(scoresJson));
-    renderScores(UI.finalScoresWrap, scoresItems);
-
-    setUpdated(UI.upcomingUpdated, getUpdatedStamp(upcomingJson));
-    renderUpcoming(UI.upcomingWrap, upcomingItems);
-
-    setUpdated(UI.transfersUpdated, getUpdatedStamp(transfersJson));
-    renderTransfers(UI.transfersWrap, transfersItemsFiltered);
-
-    setUpdated(UI.aiNewsUpdated, getUpdatedStamp(aiNewsJson));
-    renderNewsList(UI.aiNewsWrap, aiNewsItems);
-
-    window.NETTHUD = {
-      loadedAt: isoNow(),
-      data: { leagues: leaguesJson, scores: scoresJson, upcoming: upcomingJson, transfers: transfersJson, aiNews: aiNewsJson, signals: signalsJson },
-      filtered: { aiNewsItems, signalsItems, transfersItemsFiltered },
-    };
-
-    console.log("NetThud loaded", window.NETTHUD);
+    await loadScores();
+    await loadUpcoming();
+    await loadTransfers();
+    await loadNews();
+    await loadLeagues();
   }
 
   if (document.readyState === "loading") {
