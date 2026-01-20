@@ -1,4 +1,4 @@
-name: NetThud - Update Scores
+name: NetThud - Update Scores & Upcoming
 
 on:
   workflow_dispatch:
@@ -15,8 +15,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -26,12 +27,28 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate assets/data/scores.json
+      # -----------------------------
+      # FINAL + LIVE SCORES
+      # -----------------------------
+      - name: Generate scores.json
         env:
-          NETTHUD_SCORES_API_PROVIDER: football-data
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
-        run: node scripts/generate-scores.mjs
+        run: |
+          node scripts/generate-scores.mjs
 
+      # -----------------------------
+      # UPCOMING MATCHES (NEXT 7 DAYS)
+      # -----------------------------
+      - name: Generate upcoming.json (next 7 days)
+        env:
+          NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
+          NETTHUD_UPCOMING_DAYS: "7"
+        run: |
+          node scripts/generate-upcoming.mjs
+
+      # -----------------------------
+      # COMMIT IF DATA CHANGED
+      # -----------------------------
       - name: Commit & push if changed
         shell: bash
         run: |
@@ -40,20 +57,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add assets/data/scores.json
+          git add assets/data/scores.json assets/data/upcoming.json
+
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No changes detected."
             exit 0
           fi
 
-          git commit -m "Update scores.json"
-
-          git fetch origin main
-          git rebase origin/main
-
-          if ! git push origin HEAD:main; then
-            echo "Push rejected, retrying after fresh fetch+rebase..."
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
-          fi 
+          git commit -m "Update scores & upcoming matches"
+          git pull --rebase origin main
+          git push origin main
