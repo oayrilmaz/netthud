@@ -1,392 +1,218 @@
-/* NetThud app.js (static GitHub Pages) */
+// assets/app.js
 
-function qs(id) {
-  return document.getElementById(id);
+const PATHS = {
+  leagues: "assets/data/leagues.json",
+  scores: "assets/data/scores.json",
+  upcoming: "assets/data/upcoming.json",
+  transfers: "assets/data/transfers.json",
+  aiNews: "assets/data/ai-news.json",
+};
+
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: "no-store" });
+  if (!res.ok) throw new Error(`${path} not found (${res.status})`);
+  return res.json();
 }
 
-function esc(s = "") {
-  return String(s).replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  }[c]));
+function setUpdated(labelId, iso) {
+  const el = document.getElementById(labelId);
+  if (!el) return;
+  el.textContent = iso ? new Date(iso).toISOString() : "—";
 }
 
-function fmtDate(iso) {
-  if (!iso) return "";
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toISOString().slice(0, 10);
-}
-
-function fmtUpdated(iso) {
-  if (!iso) return "—";
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "—";
-  return d.toISOString().replace(".000Z", "Z");
-}
-
-/**
- * Fetch JSON with cache-busting.
- * Tries multiple paths (so your site survives file moves).
- */
-async function fetchJson(paths) {
-  const bust = `v=${Date.now()}`;
-  let lastErr;
-
-  for (const p of paths) {
-    try {
-      const url = p.includes("?") ? `${p}&${bust}` : `${p}?${bust}`;
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-      return await res.json();
-    } catch (e) {
-      lastErr = e;
-    }
-  }
-  throw lastErr || new Error("Fetch failed");
-}
-
-/* ---------- SOUND (keeps your Sound ON toggle working) ---------- */
-
-const SOUND_KEY = "netthud_sound";
-let soundOn = true;
-let crowdAudio = null;
-
-function initSound() {
-  const saved = localStorage.getItem(SOUND_KEY);
-  soundOn = saved ? saved === "1" : true;
-
-  const chip = qs("soundChip");
-  if (chip) {
-    chip.classList.toggle("on", soundOn);
-    chip.textContent = `Sound: ${soundOn ? "ON" : "OFF"}`;
-    chip.addEventListener("click", () => {
-      soundOn = !soundOn;
-      localStorage.setItem(SOUND_KEY, soundOn ? "1" : "0");
-      chip.classList.toggle("on", soundOn);
-      chip.textContent = `Sound: ${soundOn ? "ON" : "OFF"}`;
-      if (soundOn) playCrowd();
-      else stopCrowd();
-    });
-  }
-
-  crowdAudio = new Audio("assets/audio/crowd.mp3");
-  crowdAudio.loop = true;
-  crowdAudio.volume = 0.25;
-
-  if (soundOn) {
-    // Safari/iOS requires user gesture to actually start audio — but we keep state.
-  }
-}
-
-function playCrowd() {
-  if (!crowdAudio) return;
-  crowdAudio.play().catch(() => {
-    // iOS may block autoplay until user interacts — no error UI needed
-  });
-}
-
-function stopCrowd() {
-  if (!crowdAudio) return;
-  crowdAudio.pause();
-  crowdAudio.currentTime = 0;
-}
-
-/* ---------- SECTION RENDER HELPERS ---------- */
-
-function setSectionMeta(metaEl, text) {
-  if (!metaEl) return;
-  metaEl.textContent = text;
-}
-
-function setSectionError(container, message) {
-  if (!container) return;
+function renderEmpty(container, title, subtitle = "") {
   container.innerHTML = `
-    <div class="empty-card">
-      <div class="empty-title">Not loading</div>
-      <div class="empty-sub">${esc(message || "Data file missing.")}</div>
-      <div class="pill warn">ERR</div>
+    <div class="card empty">
+      <div class="card-title">${title}</div>
+      ${subtitle ? `<div class="card-sub">${subtitle}</div>` : ""}
+      <span class="badge">EMPTY</span>
     </div>
   `;
 }
 
-/* ---------- LEAGUES ---------- */
+function renderError(container, msg) {
+  container.innerHTML = `
+    <div class="card error">
+      <div class="card-title">Error</div>
+      <div class="card-sub">${msg}</div>
+      <span class="badge">ERR</span>
+    </div>
+  `;
+}
 
 async function loadLeagues() {
-  const container = qs("leagueChips");
-  const meta = qs("leaguesMeta");
+  const container = document.getElementById("leagueChips");
   if (!container) return;
 
   try {
-    // Prefer assets path. Fallback to /leagues.json (old version).
-    const data = await fetchJson([
-      "assets/data/leagues.json",
-      "/assets/data/leagues.json",
-      "/leagues.json"
-    ]);
-
-    const leagues = Array.isArray(data) ? data : (data.items || []);
-    const updatedAt = data.generatedAt || data.updatedAt || "";
-
+    const leagues = await fetchJson(PATHS.leagues);
     container.innerHTML = "";
-    leagues.forEach((l) => {
+
+    (leagues || []).forEach((l) => {
       const el = document.createElement("div");
       el.className = "league-pill";
-      el.innerHTML = `<span class="dot"></span>${esc(l.name || l)}`;
+      el.innerHTML = `<span class="dot"></span>${l.name}`;
       container.appendChild(el);
     });
 
-    setSectionMeta(meta, `${leagues.length} • updated ${fmtUpdated(updatedAt)}`);
+    // optional updated label if exists
+    setUpdated("leaguesUpdatedAt", new Date().toISOString());
   } catch (err) {
-    setSectionMeta(meta, `error`);
-    setSectionError(container, `Missing leagues.json (expected assets/data/leagues.json)`);
-    console.error("Leagues load error:", err);
+    renderError(container, "Leagues not loading (check assets/data/leagues.json)");
+    console.error(err);
   }
 }
 
-/* ---------- FINAL SCORES (assets/data/scores.json) ---------- */
+function renderScores(items) {
+  const wrap = document.getElementById("scoresList");
+  if (!wrap) return;
 
-function renderScoresItem(it) {
-  const title = `${it.home} ${it.score} ${it.away}`;
-  const sub = `${it.league} • ${it.date || fmtDate(it.endedAt || it.utcDate || it.kickoff || it.generatedAt)}`;
-  const badge = it.status || "FT";
-  const url = it.url || it.matchUrl || "";
+  if (!items || !items.length) {
+    renderEmpty(wrap, "No final scores yet", "Matches will appear here once completed.");
+    return;
+  }
 
-  return `
-    <div class="card-row">
-      <div class="card-main">
-        <div class="card-title">${esc(title)}</div>
-        <div class="card-sub">${esc(sub)}</div>
+  wrap.innerHTML = "";
+  items.forEach((m) => {
+    const card = document.createElement("div");
+    card.className = "match-card";
+    card.innerHTML = `
+      <div class="match-main">
+        <div class="match-title">${m.home} ${m.score} ${m.away}</div>
+        <div class="match-sub">${m.league} • ${m.date || ""}</div>
       </div>
-      ${url ? `<a class="pill link" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>` : `<div class="pill ok">${esc(badge)}</div>`}
-    </div>
-  `;
+      <div class="match-badge">FT</div>
+    `;
+    wrap.appendChild(card);
+  });
 }
 
 async function loadScores() {
-  const container = qs("scoresList");
-  const meta = qs("scoresMeta");
-  if (!container) return;
-
   try {
-    const data = await fetchJson([
-      "assets/data/scores.json",
-      "/assets/data/scores.json",
-      "/scores.json"
-    ]);
-
-    const items = data.items || [];
-    const updatedAt = data.generatedAt || data.updatedAt || "";
-
-    setSectionMeta(meta, `${items.length} • updated ${fmtUpdated(updatedAt)}`);
-
-    if (!items.length) {
-      container.innerHTML = `
-        <div class="empty-card">
-          <div class="empty-title">No final scores yet</div>
-          <div class="empty-sub">Once scores.json is generated, it will show here.</div>
-          <div class="pill ok">OK</div>
-        </div>`;
-      return;
-    }
-
-    container.innerHTML = items.map(renderScoresItem).join("");
-  } catch (err) {
-    setSectionMeta(meta, `error`);
-    setSectionError(container, `Missing assets/data/scores.json`);
-    console.error("Scores load error:", err);
+    const data = await fetchJson(PATHS.scores);
+    setUpdated("scoresUpdatedAt", data.generatedAt);
+    renderScores(data.items || []);
+  } catch (e) {
+    const wrap = document.getElementById("scoresList");
+    if (wrap) renderError(wrap, `Scores not loading (${PATHS.scores})`);
+    console.error(e);
   }
 }
 
-/* ---------- AI NEWS (assets/data/ai-news.json) ---------- */
+function renderUpcoming(items) {
+  const wrap = document.getElementById("upcomingList");
+  if (!wrap) return;
 
-function renderNewsItem(it) {
-  const title = it.title || "News";
-  const sub = `${it.source || ""}${it.publishedAt ? ` • ${fmtDate(it.publishedAt)}` : ""}`;
-  const summary = it.summary || "";
-  const url = it.url || "";
-
-  return `
-    <div class="card-row">
-      <div class="card-main">
-        <div class="card-title">${esc(title)}</div>
-        <div class="card-sub">${esc(sub)}</div>
-        ${summary ? `<div class="card-desc">${esc(summary)}</div>` : ""}
-      </div>
-      ${url ? `<a class="pill link" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>` : ""}
-    </div>
-  `;
-}
-
-async function loadAiNews() {
-  const container = qs("aiNewsList");
-  const meta = qs("aiNewsMeta");
-  if (!container) return;
-
-  try {
-    const data = await fetchJson([
-      "assets/data/ai-news.json",
-      "/assets/data/ai-news.json",
-      "/ai-news.json"
-    ]);
-
-    const items = data.items || [];
-    const updatedAt = data.generatedAt || data.updatedAt || "";
-
-    setSectionMeta(meta, `${items.length} • updated ${fmtUpdated(updatedAt)}`);
-
-    if (!items.length) {
-      container.innerHTML = `
-        <div class="empty-card">
-          <div class="empty-title">No news items yet</div>
-          <div class="empty-sub">Once ai-news.json is generated, it will show here.</div>
-          <div class="pill warn">EMPTY</div>
-        </div>`;
-      return;
-    }
-
-    container.innerHTML = items.slice(0, 12).map(renderNewsItem).join("");
-  } catch (err) {
-    setSectionMeta(meta, `error`);
-    setSectionError(container, `Missing assets/data/ai-news.json`);
-    console.error("AI news load error:", err);
+  if (!items || !items.length) {
+    renderEmpty(wrap, "No upcoming games yet", "Populate assets/data/upcoming.json");
+    return;
   }
-}
 
-/* ---------- UPCOMING + TV (assets/data/upcoming.json) ---------- */
-
-function renderUpcomingItem(it) {
-  const title = `${it.home || it.match || "Match"}${it.away ? ` vs ${it.away}` : ""}`;
-  const subParts = [];
-  if (it.league) subParts.push(it.league);
-  if (it.kickoff) subParts.push(it.kickoff);
-  if (it.tv) subParts.push(it.tv);
-  const sub = subParts.join(" • ");
-
-  return `
-    <div class="card-row">
-      <div class="card-main">
-        <div class="card-title">${esc(title)}</div>
-        <div class="card-sub">${esc(sub)}</div>
+  wrap.innerHTML = "";
+  items.forEach((m) => {
+    const card = document.createElement("div");
+    card.className = "match-card";
+    card.innerHTML = `
+      <div class="match-main">
+        <div class="match-title">${m.home} vs ${m.away}</div>
+        <div class="match-sub">${m.league} • ${m.timeLocal || m.timeUTC || ""}${m.tv ? ` • ${m.tv}` : ""}</div>
       </div>
-      <div class="pill ok">UP</div>
-    </div>
-  `;
+      <div class="match-badge">UP</div>
+    `;
+    wrap.appendChild(card);
+  });
 }
 
 async function loadUpcoming() {
-  const container = qs("upcomingList");
-  const meta = qs("upcomingMeta");
-  if (!container) return;
-
   try {
-    const data = await fetchJson([
-      "assets/data/upcoming.json",
-      "/assets/data/upcoming.json",
-      "/upcoming.json"
-    ]);
-
-    const items = data.items || [];
-    const updatedAt = data.generatedAt || data.updatedAt || "";
-
-    setSectionMeta(meta, `${items.length} • updated ${fmtUpdated(updatedAt)}`);
-
-    if (!items.length) {
-      container.innerHTML = `
-        <div class="empty-card">
-          <div class="empty-title">No upcoming games yet</div>
-          <div class="empty-sub">Populate assets/data/upcoming.json</div>
-          <div class="pill warn">EMPTY</div>
-        </div>`;
-      return;
-    }
-
-    container.innerHTML = items.slice(0, 12).map(renderUpcomingItem).join("");
-  } catch (err) {
-    setSectionMeta(meta, `error`);
-    setSectionError(container, `Missing assets/data/upcoming.json`);
-    console.error("Upcoming load error:", err);
+    const data = await fetchJson(PATHS.upcoming);
+    setUpdated("upcomingUpdatedAt", data.generatedAt);
+    renderUpcoming(data.items || []);
+  } catch (e) {
+    const wrap = document.getElementById("upcomingList");
+    if (wrap) renderError(wrap, `Upcoming not loading (${PATHS.upcoming})`);
+    console.error(e);
   }
 }
 
-/* ---------- TRANSFER DESK (assets/data/transfers.json) ---------- */
+function renderAiNews(items) {
+  const wrap = document.getElementById("aiNewsList");
+  if (!wrap) return;
 
-function renderTransferItem(it) {
-  const title = it.title || `${it.player || "Player"} → ${it.to || "Club"}`;
-  const sub = it.source ? `${it.source}${it.publishedAt ? ` • ${fmtDate(it.publishedAt)}` : ""}` : (it.publishedAt ? fmtDate(it.publishedAt) : "");
-  const url = it.url || "";
+  if (!items || !items.length) {
+    renderEmpty(wrap, "No AI items yet", "Once OpenAI writes ai-news.json, it will show here.");
+    return;
+  }
 
-  return `
-    <div class="card-row">
-      <div class="card-main">
-        <div class="card-title">${esc(title)}</div>
-        <div class="card-sub">${esc(sub)}</div>
-        ${it.summary ? `<div class="card-desc">${esc(it.summary)}</div>` : ""}
+  wrap.innerHTML = "";
+  items.forEach((n) => {
+    const card = document.createElement("div");
+    card.className = "news-card";
+    card.innerHTML = `
+      <div class="news-main">
+        <div class="news-title">${n.title}</div>
+        <div class="news-sub">${n.league} • ${n.category === "watch" ? "Watch" : "Signal"}</div>
+        <div class="news-summary">${n.summary}</div>
+        ${
+          Array.isArray(n.evidence) && n.evidence.length
+            ? `<div class="news-evidence">${n.evidence.map((x) => `<span>${x}</span>`).join("")}</div>`
+            : ""
+        }
       </div>
-      ${url ? `<a class="pill link" href="${esc(url)}" target="_blank" rel="noopener">OPEN</a>` : `<div class="pill warn">NEW</div>`}
-    </div>
-  `;
+      <a class="news-btn" href="${n.url || "https://netthud.com/"}" target="_blank" rel="noreferrer">OPEN</a>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+async function loadAiNews() {
+  try {
+    const data = await fetchJson(PATHS.aiNews);
+    setUpdated("aiNewsUpdatedAt", data.generatedAt);
+    renderAiNews(data.items || []);
+  } catch (e) {
+    const wrap = document.getElementById("aiNewsList");
+    if (wrap) renderError(wrap, `AI news not loading (${PATHS.aiNews})`);
+    console.error(e);
+  }
+}
+
+function renderTransfers(items) {
+  const wrap = document.getElementById("transfersList");
+  if (!wrap) return;
+
+  if (!items || !items.length) {
+    renderEmpty(wrap, "No transfer items yet", "Populate assets/data/transfers.json");
+    return;
+  }
+
+  wrap.innerHTML = "";
+  items.forEach((t) => {
+    const card = document.createElement("div");
+    card.className = "news-card";
+    card.innerHTML = `
+      <div class="news-main">
+        <div class="news-title">${t.title}</div>
+        <div class="news-summary">${t.summary || ""}</div>
+      </div>
+      <a class="news-btn" href="${t.url || "https://netthud.com/"}" target="_blank" rel="noreferrer">OPEN</a>
+    `;
+    wrap.appendChild(card);
+  });
 }
 
 async function loadTransfers() {
-  const container = qs("transferList");
-  const meta = qs("transferMeta");
-  if (!container) return;
-
   try {
-    const data = await fetchJson([
-      "assets/data/transfers.json",
-      "/assets/data/transfers.json",
-      "/transfers.json"
-    ]);
-
-    const items = data.items || [];
-    const updatedAt = data.generatedAt || data.updatedAt || "";
-
-    setSectionMeta(meta, `${items.length} • updated ${fmtUpdated(updatedAt)}`);
-
-    if (!items.length) {
-      container.innerHTML = `
-        <div class="empty-card">
-          <div class="empty-title">No transfer items yet</div>
-          <div class="empty-sub">Populate assets/data/transfers.json</div>
-          <div class="pill warn">EMPTY</div>
-        </div>`;
-      return;
-    }
-
-    container.innerHTML = items.slice(0, 12).map(renderTransferItem).join("");
-  } catch (err) {
-    setSectionMeta(meta, `error`);
-    setSectionError(container, `Missing assets/data/transfers.json`);
-    console.error("Transfers load error:", err);
+    const data = await fetchJson(PATHS.transfers);
+    setUpdated("transfersUpdatedAt", data.generatedAt);
+    renderTransfers(data.items || []);
+  } catch (e) {
+    const wrap = document.getElementById("transfersList");
+    if (wrap) renderEmpty(wrap, "No transfer items yet", "Populate assets/data/transfers.json");
+    console.error(e);
   }
 }
 
-/* ---------- INIT ---------- */
-
-async function loadAll() {
-  initSound();
-
-  // Load everything independently (one failing won't break others)
-  loadScores();
-  loadUpcoming();
-  loadTransfers();
-  loadAiNews();
-  loadLeagues();
-
-  // Optional: periodic refresh for a static site
-  // (Only refreshes if JSON files change in repo)
-  setInterval(() => {
-    loadScores();
-    loadUpcoming();
-    loadTransfers();
-    loadAiNews();
-    loadLeagues();
-  }, 60_000);
-}
-
-document.addEventListener("DOMContentLoaded", loadAll);
+document.addEventListener("DOMContentLoaded", async () => {
+  await Promise.allSettled([loadLeagues(), loadScores(), loadUpcoming(), loadTransfers(), loadAiNews()]);
+});
