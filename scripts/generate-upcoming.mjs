@@ -4,7 +4,9 @@
 // Uses football-data.org (requires API token)
 // Env:
 //   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
-//   NETTHUD_UPCOMING_DAYS=7   (optional)
+//   NETTHUD_UPCOMING_DAYS=7            (optional, 1..14)
+//   NETTHUD_UPCOMING_LIMIT=80          (optional)
+//   NETTHUD_UPCOMING_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL,EC (optional override)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -65,17 +67,63 @@ function formatET(utcDateISO) {
   }
 }
 
+function parseCompAllowlist() {
+  // If user provides explicit list via env -> use it
+  const raw = env("NETTHUD_UPCOMING_COMP_CODES", "").trim();
+  if (raw) {
+    return new Set(
+      raw
+        .split(",")
+        .map((x) => x.trim())
+        .filter(Boolean)
+    );
+  }
+
+  // Default: broader, still “major + widely followed”
+  // football-data codes vary by plan/coverage; include commonly present ones.
+  return new Set([
+    // Top leagues
+    "PL",  // Premier League
+    "PD",  // La Liga
+    "SA",  // Serie A
+    "BL1", // Bundesliga
+    "FL1", // Ligue 1
+    "DED", // Eredivisie
+    "PPL", // Primeira Liga
+
+    // UEFA comps
+    "CL",  // Champions League
+    "EL",  // Europa League
+    "EC",  // Euro Championship (sometimes)
+    "CLI", // Copa Libertadores (sometimes)
+
+    // Domestic cups (if present on your plan)
+    "FAC", // FA Cup (sometimes)
+    "CDR", // Copa del Rey (sometimes)
+    "DFB", // DFB Pokal (sometimes)
+    "CIT", // Coppa Italia (sometimes)
+  ]);
+}
+
 async function fetchFootballDataUpcoming(days) {
   const token = env("NETTHUD_SCORES_API_TOKEN");
   if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
 
+  const limit = Math.max(10, Math.min(200, Number(env("NETTHUD_UPCOMING_LIMIT", "80")) || 80));
+  const allowedCompCodes = parseCompAllowlist();
+
+  // ✅ Window: today..(today+days) and add +1 day safety on dateTo (inclusive quirks)
   const now = new Date();
   const start = utcMidnight(now); // today UTC
   const end = new Date(start);
   end.setUTCDate(start.getUTCDate() + days);
 
   const dateFrom = yyyyMmDdUTC(start);
-  const dateTo = yyyyMmDdUTC(end);
+
+  // add +1 day safety so the last day is not dropped by inclusive/exclusive behavior
+  const endPlusOne = new Date(end);
+  endPlusOne.setUTCDate(end.getUTCDate() + 1);
+  const dateTo = yyyyMmDdUTC(endPlusOne);
 
   const url = `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`;
 
@@ -91,17 +139,24 @@ async function fetchFootballDataUpcoming(days) {
   const json = await res.json();
   const matches = Array.isArray(json?.matches) ? json.matches : [];
 
-  // Keep only "scheduled-ish" matches
-  const keepStatuses = new Set(["SCHEDULED", "TIMED"]);
+  // ✅ Upcoming statuses (keep)
+  // football-data typically uses TIMED/SCHEDULED; POSTPONED can still be "upcoming-ish"
+  const keepStatuses = new Set(["SCHEDULED", "TIMED", "POSTPONED"]);
 
-  // Limit to the big competitions you want (clean + relevant)
-  // football-data competition codes: PL, PD, SA, BL1, FL1, CL
-  const allowedCompCodes = new Set(["PL", "PD", "SA", "BL1", "FL1", "CL"]);
+  // ✅ Exclude live/final just in case API returns mixed results
+  const excludeStatuses = new Set(["IN_PLAY", "PAUSED", "FINISHED", "SUSPENDED", "LIVE"]);
 
   const keep = matches.filter((m) => {
     const st = safeStr(m?.status);
+    if (excludeStatuses.has(st)) return false;
+    if (!keepStatuses.has(st)) return false;
+
     const code = safeStr(m?.competition?.code);
-    return keepStatuses.has(st) && allowedCompCodes.has(code);
+    // If competition code is missing, keep it (don’t accidentally drop everything),
+    // but it will naturally sort and you can tighten later via allowlist env.
+    if (!code) return true;
+
+    return allowedCompCodes.has(code);
   });
 
   const items = keep.map((m) => {
@@ -111,7 +166,6 @@ async function fetchFootballDataUpcoming(days) {
     const kickoffUTC = safeStr(m?.utcDate || "");
     const kickoffLocal = kickoffUTC ? formatET(kickoffUTC) : "";
 
-    // football-data.org doesn't reliably provide TV channels
     return {
       league,
       home,
@@ -125,9 +179,15 @@ async function fetchFootballDataUpcoming(days) {
   // Sort by kickoffUTC ascending
   items.sort((a, b) => safeStr(a.kickoffUTC).localeCompare(safeStr(b.kickoffUTC)));
 
+  // ✅ Trim for UI sanity
+  const trimmed = items.slice(0, limit);
+
   return {
     generatedAt: isoNow(),
-    items,
+    days,
+    limit,
+    competitions: Array.from(allowedCompCodes),
+    items: trimmed,
   };
 }
 
