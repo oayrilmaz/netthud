@@ -3,7 +3,7 @@ name: NetThud - Update Final Scores
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *" # every 15 minutes (final scores can be less frequent)
+    - cron: "*/30 * * * *"
 
 permissions:
   contents: write
