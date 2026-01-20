@@ -1,30 +1,45 @@
-name: NetThud - Update AI Signals (OpenAI-ready)
+name: NetThud - Update AI Signals (OpenAI)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 * * * *"
+    - cron: "45 * * * *" # every hour at :45 UTC
 
 permissions:
   contents: write
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+concurrency:
+  group: netthud-ai-signals
+  cancel-in-progress: true
 
-      - uses: actions/setup-node@v4
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
 
-      - name: Generate signals.json
-        run: node scripts/generate-signals.mjs
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Commit & push
+      - name: Generate assets/data/signals.json (OpenAI)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/generate-signals-openai.mjs
+
+      - name: Commit & push if changed
         run: |
-          git config user.name "netthud-bot"
-          git config user.email "bot@netthud.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/data/signals.json
-          git commit -m "Update AI signals" || exit 0
+          git diff --cached --quiet || git commit -m "Update signals (OpenAI)"
           git push
