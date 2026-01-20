@@ -1,9 +1,9 @@
-name: Update AI News
+name: NetThud - Update AI News (OpenAI)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *" # hourly
+    - cron: "0 */6 * * *"
 
 permissions:
   contents: write
@@ -13,23 +13,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Generate AI News (OpenAI)
-        run: node scripts/generate-ai-news-openai.mjs
+      - name: Generate AI News
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
-      - name: Commit and push if changed
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          node scripts/generate-ai-news-openai.mjs
+
+      - name: Commit & push if changed
+        run: |
+          git pull --rebase
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions@users.noreply.github.com"
           git add assets/data/ai-news.json
-          git commit -m "Update AI news" || exit 0
+          git commit -m "Update ai-news.json" || echo "No changes"
           git push
