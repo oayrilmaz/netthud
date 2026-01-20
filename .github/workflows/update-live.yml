@@ -1,0 +1,35 @@
+name: NetThud - Update Live Feed
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: netthud-update-live
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate scores.json
+        run: node scripts/generate-live.mjs
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "netthud-bot"
+          git config user.email "netthud-bot@users.noreply.github.com"
+          git add assets/data/scores.json
+          git diff --cached --quiet || (git commit -m "Update scores.json" && git push)
