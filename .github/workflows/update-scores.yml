@@ -47,6 +47,13 @@ jobs:
           node scripts/generate-upcoming.mjs
 
       # -----------------------------
+      # TRANSFERS
+      # -----------------------------
+      - name: Generate transfers.json
+        run: |
+          node scripts/generate-transfers.mjs
+
+      # -----------------------------
       # COMMIT IF DATA CHANGED
       # -----------------------------
       - name: Commit & push if changed
