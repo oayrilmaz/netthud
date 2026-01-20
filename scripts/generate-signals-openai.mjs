@@ -1,107 +1,130 @@
-// scripts/generate-signals-openai.mjs
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 const OUT_PATH = path.join("assets", "data", "signals.json");
 
-function requireEnv(name) {
-  const v = process.env[name];
-  if (!v) throw new Error(`Missing env: ${name}`);
-  return v;
+function safeReadJson(filePath, fallback) {
+  try {
+    if (!fs.existsSync(filePath)) return fallback;
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return fallback;
+  }
 }
 
-async function callOpenAIJson({ apiKey, model, system, user }) {
+function extractJson(text) {
+  if (!text) throw new Error("Empty response");
+  const s = text.trim();
+
+  if ((s.startsWith("{") && s.endsWith("}")) || (s.startsWith("[") && s.endsWith("]"))) {
+    return JSON.parse(s);
+  }
+
+  const firstObj = s.indexOf("{");
+  const firstArr = s.indexOf("[");
+  let start = -1;
+  if (firstObj === -1) start = firstArr;
+  else if (firstArr === -1) start = firstObj;
+  else start = Math.min(firstObj, firstArr);
+
+  if (start === -1) throw new Error("No JSON start found in response");
+
+  const lastObj = s.lastIndexOf("}");
+  const lastArr = s.lastIndexOf("]");
+  const end = Math.max(lastObj, lastArr);
+
+  if (end === -1 || end <= start) throw new Error("No JSON end found in response");
+
+  return JSON.parse(s.slice(start, end + 1));
+}
+
+async function callOpenAI({ apiKey, prompt }) {
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${apiKey}`,
-      "Content-Type": "application/json"
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model,
-      temperature: 0.6,
-      response_format: { type: "json_object" },
+      model: "gpt-4o-mini",
+      temperature: 0.3,
       messages: [
-        { role: "system", content: system },
-        { role: "user", content: user }
-      ]
-    })
+        {
+          role: "system",
+          content:
+            "Return ONLY valid JSON. No markdown, no extra text. If you cannot comply, return an empty JSON array [].",
+        },
+        { role: "user", content: prompt },
+      ],
+    }),
   });
 
   if (!res.ok) {
-    const txt = await res.text();
-    throw new Error(`OpenAI HTTP ${res.status}: ${txt}`);
+    const t = await res.text();
+    throw new Error(`OpenAI HTTP ${res.status}: ${t}`);
   }
 
   const data = await res.json();
-  const content = data?.choices?.[0]?.message?.content ?? "";
+  return data?.choices?.[0]?.message?.content ?? "";
+}
+
+async function main() {
+  const previous = safeReadJson(OUT_PATH, { updated: null, items: [] });
+
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    console.log("OPENAI_API_KEY missing. Keeping existing signals.json unchanged.");
+    process.exit(0);
+  }
+
+  const prompt = `
+Create 12 short "match signals" for football fans (injury, form, fatigue, travel, tactics).
+Output JSON ONLY with this exact shape:
+
+{
+  "updated": "<ISO timestamp>",
+  "items": [
+    {
+      "title": "...",
+      "signal": "...",
+      "confidence": "low|medium|high"
+    }
+  ]
+}
+
+Rules:
+- items length must be 12
+- confidence must be exactly low, medium, or high
+- no undefined / null fields
+`;
 
   try {
-    return JSON.parse(content);
-  } catch (e) {
-    const start = content.indexOf("{");
-    const end = content.lastIndexOf("}");
-    if (start >= 0 && end > start) {
-      return JSON.parse(content.slice(start, end + 1));
-    }
-    throw e;
+    const raw = await callOpenAI({ apiKey, prompt });
+    const parsed = extractJson(raw);
+
+    const items = Array.isArray(parsed?.items) ? parsed.items : [];
+    const cleaned = items
+      .filter((x) => x && typeof x === "object")
+      .map((x) => ({
+        title: String(x.title ?? "").trim(),
+        signal: String(x.signal ?? "").trim(),
+        confidence: String(x.confidence ?? "").trim(),
+      }))
+      .filter((x) => x.title && x.signal && ["low", "medium", "high"].includes(x.confidence))
+      .slice(0, 12);
+
+    const out = { updated: new Date().toISOString(), items: cleaned };
+
+    fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
+    fs.writeFileSync(OUT_PATH, JSON.stringify(out, null, 2) + "\n", "utf8");
+    console.log(`Wrote ${cleaned.length} signals to ${OUT_PATH}`);
+  } catch (err) {
+    console.error("Signals generation failed:", err?.message || err);
+    console.log("Keeping existing signals.json unchanged.");
+    fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
+    fs.writeFileSync(OUT_PATH, JSON.stringify(previous, null, 2) + "\n", "utf8");
+    process.exit(0);
   }
 }
 
-function writeJson(filePath, obj) {
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(obj, null, 2), "utf8");
-}
-
-const OPENAI_API_KEY = requireEnv("OPENAI_API_KEY");
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
-
-const system = `
-You are NetThud AI.
-Do NOT cite or reference external websites.
-Generate original football "signals" (patterns, momentum, tactical/fixture/market-style signals).
-Return STRICT JSON ONLY.
-`;
-
-const user = `
-Create exactly 20 signals.
-Each signal must have:
-- id (string)
-- title (string)
-- signal (string, 1 sentence)
-- whyItMatters (string, 1 sentence)
-- tags (array of 2-5 strings)
-- createdAt (ISO string)
-- source (always "NetThud AI")
-
-Return JSON:
-{
-  "updatedAt": "ISO",
-  "items": [ ...20 items... ]
-}
-`;
-
-(async () => {
-  const json = await callOpenAIJson({
-    apiKey: OPENAI_API_KEY,
-    model: OPENAI_MODEL,
-    system,
-    user
-  });
-
-  const now = new Date().toISOString();
-  const items = Array.isArray(json.items) ? json.items : [];
-
-  const normalized = items.slice(0, 20).map((it, idx) => ({
-    id: String(it.id || `sig-${idx + 1}`),
-    title: String(it.title || "Untitled"),
-    signal: String(it.signal || ""),
-    whyItMatters: String(it.whyItMatters || ""),
-    tags: Array.isArray(it.tags) ? it.tags.map(String).slice(0, 6) : [],
-    createdAt: it.createdAt ? String(it.createdAt) : now,
-    source: "NetThud AI"
-  }));
-
-  writeJson(OUT_PATH, { updatedAt: now, items: normalized });
-  console.log(`Wrote ${normalized.length} items -> ${OUT_PATH}`);
-})();
+main();
