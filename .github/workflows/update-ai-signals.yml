@@ -3,7 +3,7 @@ name: NetThud - Update AI Signals (OpenAI)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "45 * * * *" # hourly at :45 UTC
+    - cron: "45 * * * *" # every hour at :45 UTC
 
 permissions:
   contents: write
@@ -15,16 +15,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
 
       - name: Sync with latest main
         run: |
@@ -32,22 +28,24 @@ jobs:
           git checkout main
           git reset --hard origin/main
 
-      - name: Generate AI Signals (OpenAI)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate assets/data/signals.json
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: gpt-4o-mini
-        run: |
-          node scripts/generate-signals-openai.mjs
+        run: node scripts/generate-signals-openai.mjs
 
       - name: Commit & push if changed
         run: |
-          git status --porcelain
-          if [ -n "$(git status --porcelain)" ]; then
+          if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add assets/data/signals.json
+            git add -A
             git commit -m "Update signals.json"
-            git push origin main
+            git push
           else
             echo "No changes to commit."
           fi
