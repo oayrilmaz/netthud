@@ -47,6 +47,9 @@
     .tag{font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;border:1px solid rgba(120,255,106,.3);color:var(--accent);white-space:nowrap}
     .tag.warn{border-color:rgba(255,209,102,.35);color:var(--warn)}
     .tag.live{border-color:rgba(120,255,106,.55);box-shadow:0 0 0 1px rgba(120,255,106,.12) inset}
+    /* ✅ signal tag (neutral but “analyst”) */
+    .tag.signal{border-color:rgba(120,255,106,.25);color:var(--text);background:rgba(120,255,106,.06)}
+    .tag.conf{border-color:rgba(255,255,255,.12);color:var(--muted);background:rgba(255,255,255,.04)}
 
     .chips{display:flex;flex-wrap:wrap;gap:10px}
     .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:13px;color:var(--text)}
@@ -63,23 +66,6 @@
     .layoutGrid{display:grid;gap:18px;align-items:start}
     .colStack{display:grid;gap:18px}
     @media(min-width:980px){.layoutGrid{grid-template-columns:1fr 1fr}}
-
-    /* ✅ Transfer tabs */
-    .tabs{display:flex;gap:10px;margin:0 0 12px}
-    .tab{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 14px;border-radius:999px;
-      border:1px solid var(--border);
-      background:#0f131b;font-weight:900;font-size:12px;
-      letter-spacing:.06em;text-transform:uppercase;
-      color:var(--muted);cursor:pointer;
-    }
-    .tab.active{
-      color:var(--text);
-      border-color:rgba(120,255,106,.25);
-      box-shadow:0 0 0 1px rgba(120,255,106,.08) inset
-    }
-    .hidden{display:none !important}
 
     /* ✅ Share mini-buttons */
     .rowActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
@@ -159,7 +145,7 @@
       <a class="btn primary" href="#liveScores">Live scores</a>
       <a class="btn" href="#upcoming">Upcoming + TV</a>
       <a class="btn" href="#finalScores">Final scores</a>
-      <a class="btn" href="#transfers">Transfer desk</a>
+      <a class="btn" href="#transferSignals">Transfer signals</a>
       <a class="btn" href="#aiNews">AI news</a>
       <a class="btn" href="#leagues">Leagues</a>
     </div>
@@ -202,23 +188,18 @@
 
     </div>
 
-    <!-- RIGHT column (Transfer Desk + AI News) -->
+    <!-- RIGHT column (Transfer Signals + AI News) -->
     <div class="colStack">
 
-      <section id="transfers">
+      <!-- ✅ Transfer Signals (single list, no tabs) -->
+      <section id="transferSignals">
         <div class="sectionTitle">
-          <h2>Transfer Desk</h2>
+          <h2>Transfer Signals</h2>
           <span class="hint" id="transfersMeta">Loading…</span>
         </div>
 
-        <div class="tabs" role="tablist" aria-label="Transfer Desk Tabs">
-          <button class="tab active" type="button" data-tab="transfersNews" aria-selected="true">Transfer News</button>
-          <button class="tab" type="button" data-tab="transfersRumors" aria-selected="false">Rumors</button>
-        </div>
-
         <div class="card">
-          <div id="transfersNews" class="list"></div>
-          <div id="transfersRumors" class="list hidden"></div>
+          <div id="transfersList" class="list"></div>
         </div>
       </section>
 
@@ -274,7 +255,7 @@
   const PATHS = {
     scores:   "/assets/data/scores.json",
     upcoming: "/assets/data/upcoming.json",
-    transfers:"/assets/data/transfers.json",
+    transfers:"/assets/data/transfers.json",      // (we keep the same filename for now)
     news:     "/assets/data/ai-news.json",
     leagues:  "/assets/data/leagues.json"
   };
@@ -446,143 +427,164 @@
     }
   }
 
-  function setupTransferTabs(){
-    const tabs = Array.from(document.querySelectorAll(".tab[data-tab]"));
-    if (!tabs.length) return;
-
-    tabs.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const targetId = btn.getAttribute("data-tab");
-
-        tabs.forEach(b => {
-          const active = (b === btn);
-          b.classList.toggle("active", active);
-          b.setAttribute("aria-selected", active ? "true" : "false");
-        });
-
-        ["transfersNews","transfersRumors"].forEach(id=>{
-          const el = $(id);
-          if (!el) return;
-          el.classList.toggle("hidden", id !== targetId);
-        });
-      });
-    });
-  }
-
-  // ✅ Transfer desk fallback so it’s never empty
-  const DEFAULT_TRANSFERS = [
-    { kind:"news",  title:"Agreement in principle reached for midfielder move", source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
-    { kind:"news",  title:"Medical scheduled for winger transfer",               source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
-    { kind:"rumor", title:"Striker linked with 2 clubs amid agent talks",        source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
-    { kind:"rumor", title:"Loan discussions open for young defender",           source:"NetThud Desk", publishedAt:new Date().toISOString(), url:"https://netthud.com/" }
+  // ✅ Transfer Signals (single list)
+  const DEFAULT_SIGNALS = [
+    { stage:"advanced", title:"Midfielder: fee agreed in principle — medical pending", confidence:0.74, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
+    { stage:"contact",  title:"Forward: agent contact reported — shortlist narrowing", confidence:0.52, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
+    { stage:"watch",    title:"Young defender: loan discussions open — minutes pathway", confidence:0.46, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" }
   ];
 
-  function toKindFromStatus(status){
-    const st = String(status || "").toLowerCase().trim();
-    if (st === "rumor" || st === "rumours" || st === "rumors") return "rumor";
-    return "news"; // everything else treated as “news/confirmed progress”
+  function clamp01(n){
+    const x = Number(n);
+    if (!Number.isFinite(x)) return null;
+    return Math.max(0, Math.min(1, x));
   }
 
-  function normalizeTransfers(items){
+  // Map any existing transfer items → signal items (so your current transfers.json still works)
+  function normalizeSignals(items){
     return (items || []).map(x => {
       if (!x || typeof x !== "object") return null;
 
-      // Already-normalized schema
-      if (x.title) {
-        const kind = toKindFromStatus(x.type || x.kind || x.status);
+      // If you later switch to real "signals" schema, we support it:
+      // { title, stage, confidence, source, publishedAt, url }
+      if (x.title && (x.stage || x.confidence != null)) {
         return {
-          kind,
           title: String(x.title || ""),
-          source: x.source || "NetThud Desk",
-          publishedAt: x.publishedAt || x.date || "",
+          stage: String(x.stage || "watch"),
+          confidence: clamp01(x.confidence),
+          source: x.source || "NetThud Signals",
+          publishedAt: x.publishedAt || x.createdAt || x.date || "",
           url: x.url || ""
         };
       }
 
-      // Your current schema: {player, from, to, fee, status, publishedAt, url}
-      const kind = toKindFromStatus(x.status);
-      const title =
-        `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}`;
+      // Current schema A (demo): {player, from, to, fee, status, publishedAt, url}
+      if (x.player || x.from || x.to) {
+        const title =
+          `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}` +
+          (x.status ? ` — ${x.status}` : "");
+        const st = String(x.status || "").toLowerCase();
+        const stage = (st === "advanced" || st === "agreement") ? "advanced"
+                    : (st === "rumor" || st === "contact") ? "contact"
+                    : "watch";
+        const confidence = (stage === "advanced") ? 0.72 : (stage === "contact") ? 0.50 : 0.40;
 
-      return {
-        kind,
-        title,
-        source: "NetThud Desk",
-        publishedAt: x.publishedAt || "",
-        url: x.url || ""
-      };
+        return {
+          title,
+          stage,
+          confidence,
+          source: "NetThud Signals",
+          publishedAt: x.publishedAt || "",
+          url: x.url || ""
+        };
+      }
+
+      // Current schema B: {type, title, source, publishedAt, url}
+      if (x.title) {
+        const st = String(x.type || x.status || "").toLowerCase();
+        const stage = (st === "news") ? "advanced" : (st === "rumor") ? "contact" : "watch";
+        const confidence = (stage === "advanced") ? 0.70 : (stage === "contact") ? 0.52 : 0.42;
+        return {
+          title: String(x.title || ""),
+          stage,
+          confidence,
+          source: x.source || "NetThud Signals",
+          publishedAt: x.publishedAt || "",
+          url: x.url || ""
+        };
+      }
+
+      return null;
     }).filter(Boolean);
   }
 
-  async function loadTransfers() {
-    const newsPane = $("transfersNews");
-    const rumorsPane = $("transfersRumors");
+  function confidenceLabel(c){
+    const n = clamp01(c);
+    if (n == null) return "—";
+    return Math.round(n * 100) + "%";
+  }
 
-    let items = [];
+  function stageLabel(stage){
+    const s = String(stage || "").toLowerCase();
+    if (s === "advanced") return "ADV";
+    if (s === "contact") return "CONTACT";
+    if (s === "watch") return "WATCH";
+    return s.toUpperCase() || "SIG";
+  }
+
+  async function loadTransferSignals(){
+    const list = $("transfersList");
     let stamp = "—";
+    let items = [];
 
-    try {
+    try{
       const data = await readJson(PATHS.transfers);
-      stamp = data.generatedAt || data.updated || data.updatedAt || data.updatedAt || "—";
-      const raw = Array.isArray(data.items) ? data.items : [];
-      items = normalizeTransfers(raw);
-    } catch (e) {
+      stamp = data.generatedAt || data.updated || data.updatedAt || "—";
+      items = normalizeSignals(Array.isArray(data.items) ? data.items : []);
+    }catch(e){
       items = [];
       stamp = "—";
     }
 
-    if (!items.length) items = DEFAULT_TRANSFERS;
+    if (!items.length) items = DEFAULT_SIGNALS;
+
     safeSetText("transfersMeta", `${items.length} • updated ${stamp}`);
 
-    const news = items.filter(x => (x.kind || "").toLowerCase() === "news");
-    const rumors = items.filter(x => (x.kind || "").toLowerCase() === "rumor");
+    list.innerHTML = "";
+    if (!items.length) return emptyState(list, "No transfer signals yet", "Populate /assets/data/transfers.json");
 
-    function render(pane, arr, emptyTitle, tabName){
-      pane.innerHTML = "";
-      if (!arr.length) return emptyState(pane, emptyTitle, "Populate /assets/data/transfers.json");
+    items.slice(0, 16).forEach((t, idx) => {
+      const wrap = document.createElement("div");
+      wrap.className = "item";
 
-      arr.slice(0, 12).forEach((t, idx) => {
-        const wrap = document.createElement("div");
-        wrap.className = "item";
+      const left = document.createElement("div");
+      left.style.minWidth = "0";
 
-        const left = document.createElement("div");
-        left.style.minWidth = "0";
+      const dateShort = t.publishedAt ? String(t.publishedAt).slice(0,19) : "";
+      const metaLine = `${t.source || "NetThud Signals"}${dateShort ? " • " + dateShort : ""}`;
 
-        const dateShort = t.publishedAt ? String(t.publishedAt).slice(0,19) : "";
-        left.innerHTML = `
-          <strong>${esc(t.title || "Transfer update")}</strong>
-          <p>${esc((t.source || "NetThud Desk") + (dateShort ? " • " + dateShort : ""))}</p>
-          <div class="rowActions"></div>
-        `;
+      left.innerHTML = `
+        <strong>${esc(t.title || "Transfer signal")}</strong>
+        <p>${esc(metaLine)}</p>
+        <div class="rowActions"></div>
+      `;
 
-        const actions = left.querySelector(".rowActions");
-        const h = `transfer=${tabName}-${idx}`;
-        const u = shareUrl(h);
-        actions.appendChild(makeBtn("Share X", ()=>shareToX((t.title||"Transfer update")+" — NetThud", u)));
-        actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
+      const actions = left.querySelector(".rowActions");
+      const h = `signal=${idx}`;
+      const u = shareUrl(h);
+      actions.appendChild(makeBtn("Share X", ()=>shareToX((t.title||"Transfer signal")+" — NetThud", u)));
+      actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
 
-        const right = document.createElement("span");
-        right.className = "tag";
-        right.textContent = (tabName === "rumor") ? "RUMOR" : "OPEN";
+      // Right side: stage + confidence
+      const right = document.createElement("div");
+      right.style.display = "grid";
+      right.style.gap = "8px";
+      right.style.justifyItems = "end";
 
-        wrap.appendChild(left);
-        wrap.appendChild(right);
+      const tagStage = document.createElement("span");
+      tagStage.className = "tag signal";
+      tagStage.textContent = stageLabel(t.stage);
 
-        // Clicking the row opens the URL (if present)
-        if (t.url) {
-          wrap.style.cursor = "pointer";
-          wrap.addEventListener("click", (e)=>{
-            if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
-            window.open(t.url, "_blank", "noopener");
-          });
-        }
+      const tagConf = document.createElement("span");
+      tagConf.className = "tag conf";
+      tagConf.textContent = confidenceLabel(t.confidence);
 
-        pane.appendChild(wrap);
-      });
-    }
+      right.appendChild(tagStage);
+      right.appendChild(tagConf);
 
-    render(newsPane, news, "No transfer news yet", "news");
-    render(rumorsPane, rumors, "No rumors yet", "rumor");
+      wrap.appendChild(left);
+      wrap.appendChild(right);
+
+      if (t.url) {
+        wrap.style.cursor = "pointer";
+        wrap.addEventListener("click", (e)=>{
+          if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
+          window.open(t.url, "_blank", "noopener");
+        });
+      }
+
+      list.appendChild(wrap);
+    });
   }
 
   // ✅ AI News modal behavior (shareable)
@@ -832,12 +834,10 @@
         });
       }
 
-      setupTransferTabs();
-
       // ✅ order doesn’t matter, but keep your requested order
       await loadScores();
       await loadUpcoming();
-      await loadTransfers();
+      await loadTransferSignals();   // ✅ replaced loadTransfers()
       await loadNews();
       await loadLeagues();
     }catch(e){
