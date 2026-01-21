@@ -17,11 +17,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # -----------------------------
+      # CHECKOUT
+      # -----------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # -----------------------------
+      # NODE
+      # -----------------------------
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -47,11 +53,11 @@ jobs:
           node scripts/generate-upcoming.mjs
 
       # -----------------------------
-      # TRANSFER SIGNALS (demo schema for now)
+      # TRANSFER SIGNALS (DEMO MODE)
       # -----------------------------
       - name: Generate transfers.json
         env:
-          NETTHUD_TRANSFERS_MODE: "signals-demo"
+          NETTHUD_TRANSFERS_MODE: "demo"
           NETTHUD_SITE_URL: "https://netthud.com/"
           NETTHUD_TRANSFERS_ITEMS: "8"
         run: |
@@ -68,13 +74,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add assets/data/scores.json assets/data/upcoming.json assets/data/transfers.json
+          git add \
+            assets/data/scores.json \
+            assets/data/upcoming.json \
+            assets/data/transfers.json
 
           if git diff --cached --quiet; then
             echo "No changes detected."
             exit 0
           fi
 
-          git commit -m "Update scores, upcoming & transfers"
+          git commit -m "Update scores, upcoming & transfer signals"
           git pull --rebase origin main
           git push origin main
