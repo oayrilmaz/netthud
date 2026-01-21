@@ -72,8 +72,6 @@ function calcScore(fdMatch) {
   const awayHT = ht?.away;
   if (Number.isFinite(homeHT) && Number.isFinite(awayHT)) return `${homeHT}–${awayHT}`;
 
-  // Some live matches may also have "score" in other places on some plans,
-  // but we keep it simple.
   return "";
 }
 
@@ -106,6 +104,44 @@ async function fetchFootballData(url, token) {
   return res.json();
 }
 
+function clampInt(n, lo, hi) {
+  const x = Math.trunc(Number(n));
+  if (!Number.isFinite(x)) return null;
+  return Math.max(lo, Math.min(hi, x));
+}
+
+function computeMinuteFromKickoffUTC(kickoffUTC, statusNorm) {
+  // football-data doesn't reliably provide "minute", so we compute it from kickoff time.
+  // This stays legal (public timestamp) and robust.
+  const kick = new Date(kickoffUTC);
+  if (!kickoffUTC || Number.isNaN(kick.getTime())) return null;
+
+  const now = new Date();
+  const diffMin = Math.floor((now.getTime() - kick.getTime()) / 60000);
+
+  // Basic caps for sanity
+  let m = clampInt(diffMin, 0, 130);
+  if (m == null) return null;
+
+  // If HT, cap around 45 (still useful/clean UI)
+  if (String(statusNorm).toUpperCase() === "HT") {
+    if (m > 60) m = 45;
+    if (m < 35) m = 45; // many feeds mark HT slightly late/early; show 45'
+  }
+
+  // If LIVE but extremely small/negative due to schedule shifts, clean it
+  if (String(statusNorm).toUpperCase() === "LIVE" && m < 0) m = 0;
+
+  return m;
+}
+
+function youtubeHighlightsUrl(home, away) {
+  const q = `${safeStr(home)} vs ${safeStr(away)} highlights`.trim();
+  const u = new URL("https://www.youtube.com/results");
+  u.searchParams.set("search_query", q);
+  return u.toString();
+}
+
 function mapMatch(m) {
   const league = leagueNameFromCompetition(m?.competition);
   const code = competitionCode(m?.competition);
@@ -114,9 +150,34 @@ function mapMatch(m) {
 
   const score = calcScore(m);
   const status = mapFootballDataStatus(m?.status);
-  const when = safeStr(m?.utcDate || "").slice(0, 10);
 
-  return { league, code, home, away, score, status, when };
+  // Keep "when" as date for existing UI, but ALSO provide kickoffUTC for minute/highlights logic
+  const kickoffUTC = safeStr(m?.utcDate || "");
+  const when = kickoffUTC ? kickoffUTC.slice(0, 10) : "";
+
+  const minute =
+    status === "LIVE" || status === "HT"
+      ? computeMinuteFromKickoffUTC(kickoffUTC, status)
+      : null;
+
+  const highlightsUrl = status === "FT" ? youtubeHighlightsUrl(home, away) : "";
+
+  // Optional: you can wire a match detail url later if you have a route; keep empty for now
+  const url = "";
+
+  return {
+    league,
+    code,
+    home,
+    away,
+    score,
+    status,       // LIVE / HT / FT
+    when,         // YYYY-MM-DD
+    kickoffUTC,   // full timestamp ISO
+    minute,       // integer (or null)
+    highlightsUrl,
+    url
+  };
 }
 
 async function fetchFootballDataScores() {
@@ -128,7 +189,6 @@ async function fetchFootballDataScores() {
   const finalDays = Math.max(1, Math.min(14, Number(env("NETTHUD_SCORES_FINAL_DAYS", "3")) || 3));
 
   // ✅ 1) LIVE matches (IN_PLAY + PAUSED) fetched directly via status filter
-  // This fixes the “there are live games on ESPN but NetThud shows 0” issue.
   const liveJson1 = await fetchFootballData(
     "https://api.football-data.org/v4/matches?status=IN_PLAY",
     token
@@ -143,13 +203,13 @@ async function fetchFootballDataScores() {
     ...(Array.isArray(liveJson2?.matches) ? liveJson2.matches : []),
   ];
 
-  // ✅ 2) Recent FINISHED matches (last N days) for your "Final scores"
+  // ✅ 2) Recent FINISHED matches (last N days) for "Final scores"
   const now = new Date();
   const today = utcMidnight(now);
   const fromD = new Date(today);
   fromD.setUTCDate(today.getUTCDate() - finalDays);
 
-  // Add +1 day safety on dateTo so today’s finished games are not missed
+  // +1 day safety so today’s finished games are not missed
   const toPlusOne = new Date(today);
   toPlusOne.setUTCDate(today.getUTCDate() + 1);
 
@@ -177,21 +237,28 @@ async function fetchFootballDataScores() {
   const seen = new Set();
   const unique = [];
   for (const it of filtered) {
-    const k = `${it.code}|${it.home}|${it.away}|${it.when}|${it.status}|${it.score}`;
+    const k = [
+      it.code,
+      it.home,
+      it.away,
+      it.kickoffUTC || it.when,
+      it.status,
+      it.score
+    ].join("|");
     if (seen.has(k)) continue;
     seen.add(k);
     unique.push(it);
   }
 
-  // Sort: LIVE first, then HT, then FT (most recent first)
+  // Sort: LIVE first, then HT, then FT (most recent kickoff first)
   const rank = (s) => (s === "LIVE" ? 0 : s === "HT" ? 1 : 2);
   unique.sort((a, b) => {
     const r = rank(a.status) - rank(b.status);
     if (r !== 0) return r;
-    return safeStr(b.when).localeCompare(safeStr(a.when));
+    return safeStr(b.kickoffUTC || b.when).localeCompare(safeStr(a.kickoffUTC || a.when));
   });
 
-  // Trim & remove internal "code" before writing (keep schema stable for index.html)
+  // Trim & remove internal "code" before writing
   const items = unique.slice(0, limit).map(({ code, ...rest }) => rest);
 
   return {
