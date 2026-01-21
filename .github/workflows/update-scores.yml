@@ -1,4 +1,4 @@
-name: NetThud - Update Scores & Upcoming
+name: NetThud - Update Scores, Upcoming & Transfer Signals
 
 on:
   workflow_dispatch:
@@ -17,21 +17,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # -----------------------------
-      # CHECKOUT
-      # -----------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # -----------------------------
-      # NODE
-      # -----------------------------
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
 
       # -----------------------------
       # FINAL + LIVE SCORES
@@ -53,13 +51,15 @@ jobs:
           node scripts/generate-upcoming.mjs
 
       # -----------------------------
-      # TRANSFER SIGNALS (DEMO MODE)
+      # TRANSFER SIGNALS (LIVE)
       # -----------------------------
-      - name: Generate transfers.json
+      - name: Generate transfers.json (live signals)
         env:
-          NETTHUD_TRANSFERS_MODE: "demo"
+          NETTHUD_TRANSFERS_MODE: "live"
           NETTHUD_SITE_URL: "https://netthud.com/"
-          NETTHUD_TRANSFERS_ITEMS: "8"
+          NETTHUD_TRANSFERS_ITEMS: "16"
+          NETTHUD_TRANSFERS_LANG: "en"
+          NETTHUD_TRANSFERS_REGION: "US"
         run: |
           node scripts/generate-transfers.mjs
 
@@ -74,10 +74,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add \
-            assets/data/scores.json \
-            assets/data/upcoming.json \
-            assets/data/transfers.json
+          git add assets/data/scores.json assets/data/upcoming.json assets/data/transfers.json
 
           if git diff --cached --quiet; then
             echo "No changes detected."
