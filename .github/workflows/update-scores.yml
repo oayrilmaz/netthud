@@ -47,13 +47,27 @@ jobs:
           node scripts/generate-upcoming.mjs
 
       # -----------------------------
-      # TRANSFER SIGNALS
+      # TRANSFER SIGNALS (LIVE via RSS + optional AI)
       # -----------------------------
-      - name: Generate transfers.json
+      - name: Generate transfers.json (live signals)
         env:
-          NETTHUD_TRANSFERS_MODE: "demo"
+          NETTHUD_TRANSFERS_MODE: "live"
           NETTHUD_SITE_URL: "https://netthud.com/"
-          NETTHUD_TRANSFERS_ITEMS: "16"
+          NETTHUD_TRANSFERS_ITEMS: "60"
+          NETTHUD_TRANSFERS_LOOKBACK_HOURS: "72"
+          # RSS sources (pipe-separated). Add/remove as you like.
+          NETTHUD_TRANSFERS_RSS: >-
+            https://www.theguardian.com/football/rss|
+            https://feeds.bbci.co.uk/sport/football/rss.xml|
+            https://www.skysports.com/rss/12040|
+            https://www.espn.com/espn/rss/soccer/news|
+            https://www.football-italia.net/feed|
+            https://www.90min.com/posts.rss|
+            https://www.goal.com/feeds/news?fmt=rss
+          # Optional AI enrichment (recommended). Add this secret in repo settings:
+          # Settings → Secrets and variables → Actions → New repository secret
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NETTHUD_USE_OPENAI: "1"
         run: |
           node scripts/generate-transfers.mjs
 
