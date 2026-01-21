@@ -17,6 +17,8 @@
       --border:rgba(255,255,255,.08);
       --radius:16px;
       --container:1100px;
+      --headerH:64px;
+      --tabsH:66px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -25,14 +27,33 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       background:var(--bg);
       color:var(--text);
-      overflow:hidden; /* ✅ page itself doesn't scroll */
+      overflow:hidden; /* page itself doesn't scroll; main scrolls */
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--container);margin:0 auto;padding:24px}
-    header{border-bottom:1px solid var(--border);background:#0f1218;position:sticky;top:0;z-index:10}
-    .nav{display:flex;justify-content:space-between;align-items:center;height:64px;gap:12px}
-    .brand{font-weight:900;letter-spacing:.14em;font-size:13px}
-    .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+
+    /* Header */
+    header{
+      border-bottom:1px solid var(--border);
+      background:#0f1218;
+      position:sticky;top:0;z-index:30;
+    }
+    .nav{display:flex;justify-content:space-between;align-items:center;height:var(--headerH);gap:12px}
+    .brandWrap{display:flex;flex-direction:column;gap:2px}
+    .brand{
+      font-weight:950;
+      letter-spacing:.06em;
+      font-size:15px;
+      display:flex;align-items:center;gap:10px;
+      text-transform:uppercase;
+    }
+    .brandMark{
+      width:10px;height:10px;border-radius:999px;
+      background:var(--accent);
+      box-shadow:0 0 18px rgba(120,255,106,.35);
+      flex:0 0 auto;
+    }
+    .subtitle{font-size:12px;color:var(--muted)}
     .right{display:flex;align-items:center;gap:10px}
     .pill{
       display:inline-flex;align-items:center;gap:8px;
@@ -42,33 +63,73 @@
     .pill a{cursor:pointer}
     .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 12px rgba(120,255,106,.35)}
 
+    /* Main scroll area */
     main{
-      padding:18px 0 18px;
-      height:calc(100vh - 64px); /* header height */
-      overflow:hidden; /* ✅ main area doesn't scroll */
+      height:calc(100vh - var(--headerH));
+      overflow:auto;
+      padding:18px 0 24px;
     }
 
     h1{font-size:42px;margin:0 0 12px}
     p.lead{color:var(--muted);max-width:70ch;line-height:1.7;margin:0 0 14px}
 
-    .btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .btn{
+    /* Sticky Tabs row (always available) */
+    .tabsBar{
+      position:sticky;
+      top:var(--headerH);
+      z-index:25;
+      background:linear-gradient(to bottom, rgba(11,13,16,.96), rgba(11,13,16,.70));
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid var(--border);
+      margin-top:14px;
+      padding:12px 0;
+    }
+    .tabsRow{
+      display:flex;gap:10px;flex-wrap:wrap;
+      padding:0 24px;
+      max-width:var(--container);
+      margin:0 auto;
+    }
+    .tabBtn{
       display:inline-flex;align-items:center;gap:10px;
       padding:10px 14px;border-radius:12px;border:1px solid var(--border);
-      background:#0f131b;font-weight:800;font-size:13px
+      background:#0f131b;font-weight:900;font-size:13px;
+      cursor:pointer;user-select:none;
+      color:var(--text);
     }
-    .btn.primary{border-color:rgba(120,255,106,.25);box-shadow:0 0 0 1px rgba(120,255,106,.08) inset}
-    .btn:active{transform:translateY(1px)}
+    .tabBtn.primary{
+      border-color:rgba(120,255,106,.25);
+      box-shadow:0 0 0 1px rgba(120,255,106,.08) inset;
+    }
+    .tabBtn.active{
+      border-color:rgba(120,255,106,.55);
+      box-shadow:0 0 0 1px rgba(120,255,106,.14) inset, 0 0 18px rgba(120,255,106,.08);
+    }
+    .tabBtn:active{transform:translateY(1px)}
 
-    /* ✅ Layout */
-    .layoutGrid{display:grid;gap:18px;align-items:start;height:calc(100% - 110px)} /* hero approx height */
-    .colStack{display:grid;gap:18px;min-height:0}
-    @media(min-width:980px){.layoutGrid{grid-template-columns:1fr 1fr}}
+    .disclaimer{
+      margin-top:12px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.5;
+      border:1px solid var(--border);
+      background:#0f1218;
+      padding:10px 12px;
+      border-radius:12px;
+    }
+
+    /* One-column content */
+    .stack{
+      display:grid;
+      gap:18px;
+      padding:18px 24px 0;
+      max-width:var(--container);
+      margin:0 auto;
+    }
 
     section{margin:0}
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;min-height:0}
 
-    /* ✅ Boxed header inside each card */
     .boxHead{
       display:flex;justify-content:space-between;align-items:center;gap:12px;
       padding:10px 12px;border-radius:12px;
@@ -81,16 +142,12 @@
     }
     .boxHead .hint{font-size:12px;color:var(--muted);white-space:nowrap}
 
-    /* ✅ Scrollable lists (not page) */
+    /* Lists scroll inside card */
     .list{
       display:grid;gap:12px;
       overflow:auto;
-      max-height:320px;         /* desktop default */
-      padding-right:6px;        /* space for scrollbar */
-    }
-    /* Make lists taller on large screens */
-    @media(min-width:980px){
-      .list{max-height:380px}
+      max-height:min(62vh, 560px);
+      padding-right:6px;
     }
 
     .item{
@@ -105,11 +162,10 @@
     .tag.signal{border-color:rgba(120,255,106,.25);color:var(--text);background:rgba(120,255,106,.06)}
     .tag.conf{border-color:rgba(255,255,255,.12);color:var(--muted);background:rgba(255,255,255,.04)}
 
-    .chips{display:flex;flex-wrap:wrap;gap:10px;overflow:auto;max-height:150px;padding-right:6px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;overflow:auto;max-height:220px;padding-right:6px}
     .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:13px;color:var(--text)}
     .chip .dot{width:10px;height:10px}
 
-    /* ✅ Share mini-buttons */
     .rowActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .mini{
       display:inline-flex;align-items:center;gap:8px;
@@ -122,25 +178,17 @@
     .mini.secondary{color:var(--muted)}
     .mini:active{transform:translateY(1px)}
 
-    /* ✅ Footer note (legal) */
-    .disclaimer{
-      margin-top:12px;
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.5;
-      border:1px solid var(--border);
-      background:#0f1218;
-      padding:10px 12px;
-      border-radius:12px;
-    }
-
     footer{border-top:1px solid var(--border);padding:14px 0;font-size:12px;color:var(--muted);text-align:center}
 
-    /* ✅ Modal (used for AI News + NEW Details view) */
+    /* Tabs content visibility */
+    .tabSection{display:none}
+    .tabSection.active{display:block}
+
+    /* Modal */
     .modalOverlay{
       position:fixed;inset:0;
       background:rgba(0,0,0,.68);
-      display:none;z-index:50;
+      display:none;z-index:60;
       padding:18px;
     }
     .modalOverlay.open{display:flex;align-items:flex-start;justify-content:center}
@@ -188,9 +236,6 @@
     .kv{display:grid;grid-template-columns:140px 1fr;gap:8px 12px;font-size:13px}
     .kv div{color:var(--muted)}
     .kv strong{color:var(--text);font-weight:900}
-
-    /* ✅ small helper */
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
   </style>
 </head>
 
@@ -198,8 +243,8 @@
 
 <header>
   <div class="container nav">
-    <div>
-      <div class="brand">NET THUD</div>
+    <div class="brandWrap">
+      <div class="brand"><span class="brandMark"></span>NET THUD</div>
       <div class="subtitle">Goal Intelligence</div>
     </div>
     <div class="right">
@@ -209,110 +254,107 @@
   </div>
 </header>
 
-<main class="container">
+<main>
 
-  <section>
-    <h1>At the moment it matters.</h1>
-    <p class="lead">
-      Net Thud focuses on decisive outcomes and match context — with a clean pipeline.
-      Scores & schedules are data-driven. Signals come next.
-    </p>
+  <div class="container">
+    <section>
+      <h1>At the moment it matters.</h1>
+      <p class="lead">
+        Net Thud focuses on decisive outcomes and match context — with a clean pipeline.
+        Scores & schedules are data-driven. Signals come next.
+      </p>
 
-    <div class="btnRow">
-      <a class="btn primary" href="#liveScores">Live scores</a>
-      <a class="btn" href="#upcoming">Upcoming + TV</a>
-      <a class="btn" href="#finalScores">Final scores</a>
-      <a class="btn" href="#transferSignals">Transfer signals</a>
-      <a class="btn" href="#aiNews">AI news</a>
-      <a class="btn" href="#leagues">Leagues</a>
-    </div>
+      <div class="disclaimer" role="note">
+        <strong>Note:</strong> NetThud uses automated pipelines (including AI) to summarize public data.
+        Items may be incomplete, delayed, or incorrect. Always verify with primary sources before acting.
+      </div>
+    </section>
+  </div>
 
-    <div class="disclaimer" role="note">
-      <strong>Note:</strong> NetThud uses automated pipelines (including AI) to summarize public data.
-      Items may be incomplete, delayed, or incorrect. Always verify with primary sources before acting.
-    </div>
-  </section>
-
-  <div class="layoutGrid">
-
-    <!-- LEFT column -->
-    <div class="colStack">
-
-      <section id="liveScores">
-        <div class="card">
-          <div class="boxHead">
-            <div class="title">Live Scores</div>
-            <div class="hint" id="liveMeta">Loading…</div>
-          </div>
-          <div id="liveList" class="list"></div>
-        </div>
-      </section>
-
-      <section id="upcoming">
-        <div class="card">
-          <div class="boxHead">
-            <div class="title">Upcoming + TV</div>
-            <div class="hint" id="upcomingMeta">Loading…</div>
-          </div>
-          <div id="upcomingList" class="list"></div>
-        </div>
-      </section>
-
-      <section id="finalScores">
-        <div class="card">
-          <div class="boxHead">
-            <div class="title">Final Scores</div>
-            <div class="hint" id="scoresMeta">Loading…</div>
-          </div>
-          <div id="scoresList" class="list"></div>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- RIGHT column -->
-    <div class="colStack">
-
-      <section id="transferSignals">
-        <div class="card">
-          <div class="boxHead">
-            <div class="title">Transfer Signals</div>
-            <div class="hint" id="transfersMeta">Loading…</div>
-          </div>
-          <div id="transfersList" class="list"></div>
-        </div>
-      </section>
-
-      <section id="aiNews">
-        <div class="card">
-          <div class="boxHead">
-            <div class="title">AI News</div>
-            <div class="hint" id="newsMeta">Loading…</div>
-          </div>
-          <div id="newsList" class="list"></div>
-        </div>
-      </section>
-
-      <section id="leagues">
-        <div class="card">
-          <div class="boxHead">
-            <div class="title">Leagues</div>
-            <div class="hint" id="leaguesMeta">Loading…</div>
-          </div>
-          <div id="leagueChips" class="chips"></div>
-        </div>
-      </section>
-
+  <!-- Sticky tabs (always clickable) -->
+  <div class="tabsBar" role="navigation" aria-label="Sections">
+    <div class="tabsRow" id="tabsRow">
+      <div class="tabBtn primary active" data-tab="liveScores" id="tab_liveScores">Live scores</div>
+      <div class="tabBtn" data-tab="upcoming" id="tab_upcoming">Upcoming + TV</div>
+      <div class="tabBtn" data-tab="finalScores" id="tab_finalScores">Final scores</div>
+      <div class="tabBtn" data-tab="transferSignals" id="tab_transferSignals">Transfer signals</div>
+      <div class="tabBtn" data-tab="aiNews" id="tab_aiNews">AI news</div>
+      <div class="tabBtn" data-tab="leagues" id="tab_leagues">Leagues</div>
     </div>
   </div>
 
+  <!-- One column content -->
+  <div class="stack">
+
+    <section id="liveScores" class="tabSection active">
+      <div class="card">
+        <div class="boxHead">
+          <div class="title">Live Scores</div>
+          <div class="hint" id="liveMeta">Loading…</div>
+        </div>
+        <div id="liveList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="upcoming" class="tabSection">
+      <div class="card">
+        <div class="boxHead">
+          <div class="title">Upcoming + TV</div>
+          <div class="hint" id="upcomingMeta">Loading…</div>
+        </div>
+        <div id="upcomingList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="finalScores" class="tabSection">
+      <div class="card">
+        <div class="boxHead">
+          <div class="title">Final Scores</div>
+          <div class="hint" id="scoresMeta">Loading…</div>
+        </div>
+        <div id="scoresList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="transferSignals" class="tabSection">
+      <div class="card">
+        <div class="boxHead">
+          <div class="title">Transfer Signals</div>
+          <div class="hint" id="transfersMeta">Loading…</div>
+        </div>
+        <div id="transfersList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="aiNews" class="tabSection">
+      <div class="card">
+        <div class="boxHead">
+          <div class="title">AI News</div>
+          <div class="hint" id="newsMeta">Loading…</div>
+        </div>
+        <div id="newsList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="leagues" class="tabSection">
+      <div class="card">
+        <div class="boxHead">
+          <div class="title">Leagues</div>
+          <div class="hint" id="leaguesMeta">Loading…</div>
+        </div>
+        <div id="leagueChips" class="chips"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    © <span id="year"></span> Net Thud • Goal Intelligence
+  </footer>
+
 </main>
 
-<footer>
-  © <span id="year"></span> Net Thud • Goal Intelligence
-</footer>
-
-<!-- ✅ Unified modal for: (1) AI News articles (2) NEW details pages for scores/upcoming/signals -->
+<!-- Modal -->
 <div class="modalOverlay" id="modalOverlay" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modalHeader">
@@ -326,7 +368,6 @@
       <div class="modalActions" id="modalActions"></div>
       <div class="modalContent" id="modalContent"></div>
 
-      <!-- extra structured info (optional) -->
       <div class="subBox" id="modalKVBox" style="display:none">
         <div class="subBoxTitle">Snapshot</div>
         <div class="kv" id="modalKV"></div>
@@ -344,7 +385,6 @@
 </div>
 
 <script>
-  // ✅ IMPORTANT: absolute paths prevent baseURI/subpath issues on GitHub Pages & caching edge cases
   const PATHS = {
     scores:   "/assets/data/scores.json",
     upcoming: "/assets/data/upcoming.json",
@@ -354,13 +394,8 @@
   };
 
   const $ = (id) => document.getElementById(id);
-
-  // Guards
   function safeEl(id){ return document.getElementById(id); }
-  function safeSetText(id, text){
-    const el = safeEl(id);
-    if (el) el.textContent = text;
-  }
+  function safeSetText(id, text){ const el = safeEl(id); if (el) el.textContent = text; }
 
   window.addEventListener("error", (e)=>console.error("NetThud JS Error:", e.message, e.filename, e.lineno));
   window.addEventListener("unhandledrejection", (e)=>console.error("NetThud Promise Error:", e.reason));
@@ -371,11 +406,6 @@
       .replaceAll("<","&lt;")
       .replaceAll(">","&gt;")
       .replaceAll('"',"&quot;");
-  }
-
-  function emptyState(container, title, meta) {
-    container.innerHTML = "";
-    container.appendChild(rowBasic(title, meta, "EMPTY", "warn"));
   }
 
   async function readJson(url) {
@@ -395,7 +425,6 @@
     return st === "FT" || st === "FINISHED";
   }
 
-  // Share helpers
   function makeBtn(label, onClick, secondary=false){
     const b = document.createElement("div");
     b.className = "mini" + (secondary ? " secondary" : "");
@@ -430,7 +459,6 @@
     }
   }
 
-  // ✅ Basic row renderer (used for empty/error states too)
   function rowBasic(title, meta, tagText, tagClass="") {
     const d = document.createElement("div");
     d.className = "item";
@@ -444,8 +472,23 @@
     return d;
   }
 
-  // ✅ Clickable row with actions + hash-based “details view”
-  function rowClickable({ title, meta, tagText, tagClass="", hash, onOpenDetails }) {
+  function emptyState(container, title, meta) {
+    container.innerHTML = "";
+    container.appendChild(rowBasic(title, meta, "EMPTY", "warn"));
+  }
+
+  /* Highlights helpers */
+  function ytHighlightsUrl(home, away){
+    const q = encodeURIComponent(`${home} vs ${away} highlights`);
+    return `https://www.youtube.com/results?search_query=${q}`;
+  }
+  function openHighlights(item){
+    const direct = String(item.highlightsUrl || "").trim();
+    const url = direct || ytHighlightsUrl(item.home || "Home", item.away || "Away");
+    window.open(url, "_blank", "noopener");
+  }
+
+  function rowClickable({ title, meta, tagText, tagClass="", hash, onOpenDetails, extraButtons=[] }) {
     const wrap = document.createElement("div");
     wrap.className = "item";
     wrap.style.cursor = "pointer";
@@ -460,10 +503,15 @@
 
     const actions = left.querySelector(".rowActions");
     const u = shareUrl(hash);
+
     actions.appendChild(makeBtn("Details", ()=>{
       history.replaceState(null,"",u);
       onOpenDetails();
     }));
+
+    // optional extra buttons like Highlights
+    extraButtons.forEach(btn => actions.appendChild(btn));
+
     actions.appendChild(makeBtn("Share X", ()=>shareToX(title + " — NetThud", u)));
     actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
 
@@ -474,7 +522,6 @@
     wrap.appendChild(left);
     wrap.appendChild(right);
 
-    // Whole row opens details (except button clicks)
     wrap.addEventListener("click", (e)=>{
       if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
       history.replaceState(null,"",u);
@@ -484,7 +531,7 @@
     return wrap;
   }
 
-  // ✅ Modal (unified)
+  /* Modal */
   function openModal(payload){
     const overlay = $("modalOverlay");
     const titleEl = $("modalTitle");
@@ -500,7 +547,6 @@
     metaEl.textContent = payload.meta || "";
     contentEl.textContent = payload.article || "";
 
-    // KV snapshot
     if (payload.kv && typeof payload.kv === "object") {
       kvBox.style.display = "";
       kv.innerHTML = "";
@@ -521,6 +567,9 @@
     if (payload.shareUrl) {
       actionsEl.appendChild(makeBtn("Share X", ()=>shareToX(payload.shareText || payload.title || "NetThud", payload.shareUrl)));
       actionsEl.appendChild(makeBtn("Copy link", ()=>copyLink(payload.shareUrl), true));
+    }
+    if (payload.highlightsUrl) {
+      actionsEl.appendChild(makeBtn("Highlights", ()=>window.open(payload.highlightsUrl, "_blank", "noopener")));
     }
     actionsEl.appendChild(makeBtn("Home", ()=>{
       history.replaceState(null,"",pageUrlNoHash());
@@ -545,9 +594,7 @@
     closeBtn.addEventListener("click", close);
   }
 
-  // ✅ Build AI-ish details (no external scraping; this is your own text)
   function buildMatchDetails({ kind, item }) {
-    // kind: live | final | upcoming
     const league = item.league || "";
     const when = item.when || item.kickoffLocal || item.kickoffUTC || "";
     const home = item.home || "";
@@ -591,7 +638,9 @@
       Score: score || "—"
     };
 
-    return { title, meta, article: lines.join("\n"), kv };
+    const highlightsUrl = String(item.highlightsUrl || "").trim() || ytHighlightsUrl(home, away);
+
+    return { title, meta, article: lines.join("\n"), kv, highlightsUrl };
   }
 
   function buildSignalDetails({ item }) {
@@ -618,23 +667,15 @@
 
     const meta = [source, publishedAt].filter(Boolean).join(" • ");
 
-    const kv = {
-      Stage: stage,
-      Confidence: conf,
-      Source: source,
-      Time: publishedAt || "—"
-    };
-
+    const kv = { Stage: stage, Confidence: conf, Source: source, Time: publishedAt || "—" };
     return { title, meta, article: lines.join("\n"), kv };
   }
 
-  // ✅ Hash routing: open details view from shared link
-  // Format:
-  //  #d=live-<i>
-  //  #d=final-<i>
-  //  #d=upcoming-<i>
-  //  #d=signal-<i>
-  //  #news=<slug>  (existing behavior preserved)
+  /* Hash routing for modal + tabs
+     - #d=...   details modal
+     - #news=... news modal
+     - #t=...   tab selection (no scrolling)
+  */
   let LIVE_INDEX = [];
   let FINAL_INDEX = [];
   let UPCOMING_INDEX = [];
@@ -654,12 +695,18 @@
   function tryOpenFromHash(){
     const h = window.location.hash || "";
 
+    // Tabs
+    if (h.startsWith("#t=")){
+      const tabId = decodeURIComponent(h.slice(3));
+      if (tabId) showTab(tabId, { push:false });
+      return;
+    }
+
     // News modal
     if (h.startsWith("#news=")){
       const slug = decodeURIComponent(h.slice("#news=".length));
       const found = NEWS_INDEX.find(x => x.slug === slug);
       if (!found) return;
-
       const u = shareUrl("news=" + found.slug);
       openModal({
         title: found.title,
@@ -673,7 +720,7 @@
 
     // Details modal
     if (!h.startsWith("#d=")) return;
-    const key = decodeURIComponent(h.slice("#d=".length)); // like live-3
+    const key = decodeURIComponent(h.slice("#d=".length)); // live-3
     const [kind, idxStr] = key.split("-");
     const idx = Number(idxStr);
     if (!Number.isFinite(idx) || idx < 0) return;
@@ -692,12 +739,46 @@
       meta: payload.meta,
       article: payload.article,
       kv: payload.kv,
+      highlightsUrl: payload.highlightsUrl,
       shareUrl: u,
       shareText: payload.title + " — NetThud"
     });
   }
 
-  // ✅ Scores: split into Live + Final (from same scores.json)
+  /* Tabs logic (no anchor scrolling) */
+  function showTab(tabId, { push=true } = {}){
+    const sections = document.querySelectorAll(".tabSection");
+    sections.forEach(s => s.classList.remove("active"));
+    const target = document.getElementById(tabId);
+    if (target) target.classList.add("active");
+
+    const btns = document.querySelectorAll(".tabBtn");
+    btns.forEach(b => b.classList.remove("active"));
+    const btn = document.querySelector(`.tabBtn[data-tab="${CSS.escape(tabId)}"]`);
+    if (btn) btn.classList.add("active");
+
+    // ensure content is at top of scroll area
+    const main = document.querySelector("main");
+    if (main) main.scrollTo({ top: 0, behavior: "smooth" });
+
+    // update hash without breaking #d / #news behavior
+    if (push){
+      history.replaceState(null, "", "#t=" + encodeURIComponent(tabId));
+    }
+  }
+
+  function wireTabs(){
+    const row = document.getElementById("tabsRow");
+    if (!row) return;
+    row.querySelectorAll(".tabBtn").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const tabId = btn.getAttribute("data-tab");
+        if (tabId) showTab(tabId, { push:true });
+      });
+    });
+  }
+
+  /* Loaders */
   async function loadScores() {
     const finalList = $("scoresList");
     const liveList  = $("liveList");
@@ -722,6 +803,9 @@
         const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
         const tag = (String(m.status||"").toUpperCase()==="HT") ? "HT" : "LIVE";
         const hash = `d=live-${i}`;
+
+        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(m), true);
+
         liveList.appendChild(
           rowClickable({
             title,
@@ -729,9 +813,14 @@
             tagText: tag,
             tagClass: "live",
             hash,
+            extraButtons:[highlightsBtn],
             onOpenDetails: () => {
               const payload = buildMatchDetails({ kind:"live", item: m });
-              openModal({ ...payload, shareUrl: shareUrl(hash), shareText: title + " — NetThud" });
+              openModal({
+                ...payload,
+                shareUrl: shareUrl(hash),
+                shareText: title + " — NetThud"
+              });
             }
           })
         );
@@ -743,6 +832,9 @@
         const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
         const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
         const hash = `d=final-${i}`;
+
+        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(m), true);
+
         finalList.appendChild(
           rowClickable({
             title,
@@ -750,9 +842,14 @@
             tagText: "FT",
             tagClass: "",
             hash,
+            extraButtons:[highlightsBtn],
             onOpenDetails: () => {
               const payload = buildMatchDetails({ kind:"final", item: m });
-              openModal({ ...payload, shareUrl: shareUrl(hash), shareText: title + " — NetThud" });
+              openModal({
+                ...payload,
+                shareUrl: shareUrl(hash),
+                shareText: title + " — NetThud"
+              });
             }
           })
         );
@@ -791,6 +888,8 @@
         const meta = `${g.league} • ${g.kickoffLocal || g.kickoffUTC || g.when || ""}${channels ? " • " + channels : ""}`;
         const hash = `d=upcoming-${i}`;
 
+        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(g), true);
+
         list.appendChild(
           rowClickable({
             title,
@@ -798,9 +897,14 @@
             tagText: "UP",
             tagClass: "",
             hash,
+            extraButtons:[highlightsBtn],
             onOpenDetails: () => {
               const payload = buildMatchDetails({ kind:"upcoming", item: g });
-              openModal({ ...payload, shareUrl: shareUrl(hash), shareText: title + " — NetThud" });
+              openModal({
+                ...payload,
+                shareUrl: shareUrl(hash),
+                shareText: title + " — NetThud"
+              });
             }
           })
         );
@@ -813,7 +917,7 @@
     }
   }
 
-  // ✅ Transfer Signals
+  /* Transfer Signals */
   const DEFAULT_SIGNALS = [
     { stage:"advanced", title:"Midfielder: fee agreed in principle — medical pending", confidence:0.74, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
     { stage:"contact",  title:"Forward: agent contact reported — shortlist narrowing", confidence:0.52, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
@@ -918,8 +1022,8 @@
       const metaLine = `${t.source || "NetThud Signals"}${dateShort ? " • " + dateShort : ""}`;
 
       const hash = `d=signal-${idx}`;
+      const u = shareUrl(hash);
 
-      // custom tag right: stage + confidence
       const wrap = document.createElement("div");
       wrap.className = "item";
       wrap.style.cursor = "pointer";
@@ -933,7 +1037,6 @@
       `;
 
       const actions = left.querySelector(".rowActions");
-      const u = shareUrl(hash);
       actions.appendChild(makeBtn("Details", ()=>{
         history.replaceState(null,"",u);
         const payload = buildSignalDetails({ item: t });
@@ -972,7 +1075,7 @@
     });
   }
 
-  // ✅ AI News (kept + shareable)
+  /* AI News */
   function buildFallbackArticle(n){
     const title = n.title || "News";
     const summary = n.summary || "";
@@ -1097,7 +1200,7 @@
     }
   }
 
-  // Sound toggle
+  /* Sound toggle */
   const SOUND_KEY = "netthud_sound";
   function setSoundUI(on){
     const st = $("soundState");
@@ -1116,11 +1219,13 @@
     }catch{}
   }
 
-  const yearEl = $("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
   document.addEventListener("DOMContentLoaded", async () => {
+    const yearEl = $("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
     try{
+      wireTabs();
+
       setSoundUI(getSound());
       const sp = $("soundPill");
       if (sp) {
@@ -1137,10 +1242,14 @@
       await loadNews();
       await loadLeagues();
 
-      // ✅ open details if someone arrives via shared hash
-      tryOpenFromHash();
-      window.addEventListener("hashchange", tryOpenFromHash);
+      // default tab if none: keep Live active
+      if (!window.location.hash || window.location.hash === "#"){
+        showTab("liveScores", { push:false });
+      } else {
+        tryOpenFromHash();
+      }
 
+      window.addEventListener("hashchange", tryOpenFromHash);
     }catch(e){
       console.error("NetThud boot failed:", e);
       safeSetText("liveMeta","error");
