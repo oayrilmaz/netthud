@@ -2,8 +2,8 @@
 // Generates: assets/data/transfers.json
 //
 // Modes:
-//   - signals-demo   (default) : no external calls, but schema is "signals" (not news/rumors)
-//   - (future) signals-rss     : parse RSS feeds (needs URLs + parsing rules)
+//   - demo         => legacy transfer news/rumor titles (type/title)
+//   - signals-demo => transfer signals (stage/confidence)
 //
 // Env (optional):
 //   NETTHUD_TRANSFERS_MODE=signals-demo
@@ -42,71 +42,57 @@ function minutesAgo(mins) {
   return isoNow(d);
 }
 
-function pickTagFromConfidence(conf) {
-  const c = String(conf || "").toUpperCase();
-  if (c === "HIGH" || c === "MED" || c === "LOW") return c;
-  return "MED";
-}
-
-function buildSignalsDemoItems(count, siteUrl) {
-  // Demo signals (schema is already what the UI will use)
-  // You can later replace these with real extracted signals + evidence links.
+// -------- DEMO (legacy) --------
+function buildDemoItems(count, siteUrl) {
   const pool = [
-    {
-      confidence: "HIGH",
-      signal: "Bid/terms agreed; waiting on medical + contract signing.",
-      entities: { player: "Midfielder Y", from: "Club C", to: "Club D", fee: "€18m" },
-      evidence: [
-        { source: "NetThud Desk", title: "Agreement advanced; medical expected next", url: siteUrl, publishedAt: minutesAgo(35) },
-      ],
-    },
-    {
-      confidence: "MED",
-      signal: "Agent contact reported; loan structure being discussed.",
-      entities: { player: "Forward X", from: "Club A", to: "Club B", fee: "loan" },
-      evidence: [
-        { source: "NetThud Desk", title: "Agent talks opened; shortlist forming", url: siteUrl, publishedAt: minutesAgo(65) },
-      ],
-    },
-    {
-      confidence: "MED",
-      signal: "Club-to-club talks opened; valuation range narrowing.",
-      entities: { player: "Winger Z", from: "Club F", to: "Club G", fee: "" },
-      evidence: [
-        { source: "NetThud Desk", title: "Initial talks; fee framework discussed", url: siteUrl, publishedAt: minutesAgo(95) },
-      ],
-    },
-    {
-      confidence: "LOW",
-      signal: "Multiple clubs monitoring; no formal offer confirmed yet.",
-      entities: { player: "Striker Q", from: "Club H", to: "Club I", fee: "" },
-      evidence: [
-        { source: "NetThud Desk", title: "Links only; monitoring phase", url: siteUrl, publishedAt: minutesAgo(130) },
-      ],
-    },
-    {
-      confidence: "LOW",
-      signal: "Loan option explored; decision window ~72 hours mentioned.",
-      entities: { player: "Young Defender P", from: "Club J", to: "Club K", fee: "loan" },
-      evidence: [
-        { source: "NetThud Desk", title: "Loan discussed; timeline referenced", url: siteUrl, publishedAt: minutesAgo(160) },
-      ],
-    },
+    { type: "news",  title: "Midfielder Y: Club C → Club D (€18m) — agreement advanced" },
+    { type: "news",  title: "Winger Z: medical scheduled after fee agreed in principle" },
+    { type: "news",  title: "Club E open talks for defender — discussions moving quickly" },
+    { type: "news",  title: "Goalkeeper Q: contract extension close — final details pending" },
+
+    { type: "rumor", title: "Forward X: Club A → Club B (loan) — agent contact reported" },
+    { type: "rumor", title: "Striker linked with two clubs as January shortlist narrows" },
+    { type: "rumor", title: "Young defender loan discussed — decision expected within 72 hours" },
+    { type: "rumor", title: "Playmaker monitored by multiple sides — price tag debated" },
   ];
 
-  // Rotate so it “moves” each run
   const rot = new Date().getUTCMinutes() % pool.length;
   const rotated = pool.slice(rot).concat(pool.slice(0, rot));
-
   const take = rotated.slice(0, Math.max(2, Math.min(count, rotated.length)));
 
   return take.map((x, i) => ({
-    type: "signal",
-    confidence: pickTagFromConfidence(x.confidence),
-    signal: x.signal,
-    entities: x.entities,
-    evidence: Array.isArray(x.evidence) ? x.evidence : [],
-    publishedAt: minutesAgo(25 + i * 18),
+    type: x.type,
+    title: x.title,
+    source: "NetThud Desk",
+    publishedAt: minutesAgo(30 + i * 25),
+    url: siteUrl || "https://netthud.com/",
+  }));
+}
+
+// -------- SIGNALS DEMO (new) --------
+// Schema: { title, stage, confidence, source, publishedAt, url }
+function buildSignalItems(count, siteUrl) {
+  const pool = [
+    { stage: "advanced",  confidence: 0.78, title: "Midfielder: fee agreed in principle — medical expected soon" },
+    { stage: "advanced",  confidence: 0.71, title: "Winger: personal terms aligned — paperwork stage" },
+    { stage: "contact",   confidence: 0.56, title: "Forward: agent contact reported — shortlist narrowing" },
+    { stage: "contact",   confidence: 0.51, title: "Striker: two clubs requesting availability — intermediaries active" },
+    { stage: "watch",     confidence: 0.44, title: "Young defender: loan pathway discussed — minutes-driven move" },
+    { stage: "watch",     confidence: 0.39, title: "Playmaker: monitored by multiple sides — valuation gap remains" },
+    { stage: "watch",     confidence: 0.42, title: "Goalkeeper: situation developing — internal decision pending" },
+    { stage: "contact",   confidence: 0.53, title: "Fullback: talks opened — timeline accelerated by injuries" },
+  ];
+
+  const rot = new Date().getUTCMinutes() % pool.length;
+  const rotated = pool.slice(rot).concat(pool.slice(0, rot));
+  const take = rotated.slice(0, Math.max(2, Math.min(count, rotated.length)));
+
+  return take.map((x, i) => ({
+    title: x.title,
+    stage: x.stage,
+    confidence: x.confidence,
+    source: "NetThud Signals",
+    publishedAt: minutesAgo(30 + i * 25),
     url: siteUrl || "https://netthud.com/",
   }));
 }
@@ -120,10 +106,12 @@ async function main() {
 
   let items = [];
 
-  if (mode === "signals-demo") {
-    items = buildSignalsDemoItems(itemsCount, siteUrl);
+  if (mode === "demo") {
+    items = buildDemoItems(itemsCount, siteUrl);
+  } else if (mode === "signals-demo") {
+    items = buildSignalItems(itemsCount, siteUrl);
   } else {
-    throw new Error(`Unsupported NETTHUD_TRANSFERS_MODE="${mode}". Use "signals-demo" for now.`);
+    throw new Error(`Unsupported NETTHUD_TRANSFERS_MODE="${mode}". Use "signals-demo" or "demo".`);
   }
 
   const payload = {
@@ -133,7 +121,7 @@ async function main() {
   };
 
   writeJson(outFile, payload);
-  console.log(`Wrote ${outFile} (${items.length} items)`);
+  console.log(`Wrote ${outFile} (${items.length} items) mode=${mode}`);
 }
 
 main().catch((err) => {
