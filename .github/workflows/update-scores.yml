@@ -47,11 +47,11 @@ jobs:
           node scripts/generate-upcoming.mjs
 
       # -----------------------------
-      # TRANSFERS
+      # TRANSFER SIGNALS (demo schema for now)
       # -----------------------------
       - name: Generate transfers.json
         env:
-          NETTHUD_TRANSFERS_MODE: "demo"
+          NETTHUD_TRANSFERS_MODE: "signals-demo"
           NETTHUD_SITE_URL: "https://netthud.com/"
           NETTHUD_TRANSFERS_ITEMS: "8"
         run: |
