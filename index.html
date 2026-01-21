@@ -789,7 +789,7 @@
         const emoji = (l && typeof l === "object") ? (l.emoji || "") : "";
         const country = (l && typeof l === "object") ? (l.country || "") : "";
 
-        el.innerHTML = `<span class="dot"></span>${esc(emoji ? emoji + " " : "")}${esc(name)}${esc(country ? " • " + country : "")}`;
+        el.innerHTML = `<span class="dot"></span>${esc(emoji ? " " + emoji : "")}${esc(name)}${esc(country ? " • " + country : "")}`;
         container.appendChild(el);
       });
     } catch (e) {
