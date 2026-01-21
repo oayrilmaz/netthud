@@ -26,13 +26,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          # ✅ Only enable cache if you have package-lock.json
+          # cache: npm
+
+      # ✅ Install deps (choose ONE of the two blocks below)
+      - name: Install dependencies (npm ci if lockfile exists, else npm install)
+        shell: bash
+        run: |
+          set -e
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       # -----------------------------
       # FINAL + LIVE SCORES
       # -----------------------------
       - name: Generate scores.json
         env:
+          NETTHUD_SCORES_API_PROVIDER: "football-data"
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
+          NETTHUD_SCORES_FINAL_DAYS: "3"
+          NETTHUD_SCORES_LIMIT: "160"
+          # Optional allowlist:
+          # NETTHUD_SCORES_COMP_CODES: "PL,PD,SA,BL1,FL1,CL,EL"
         run: |
           node scripts/generate-scores.mjs
 
@@ -43,6 +61,9 @@ jobs:
         env:
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
           NETTHUD_UPCOMING_DAYS: "7"
+          NETTHUD_UPCOMING_LIMIT: "120"
+          # Optional override:
+          # NETTHUD_UPCOMING_COMP_CODES: "PL,PD,SA,BL1,FL1,CL,EL,EC"
         run: |
           node scripts/generate-upcoming.mjs
 
@@ -53,21 +74,17 @@ jobs:
         env:
           NETTHUD_TRANSFERS_MODE: "live"
           NETTHUD_SITE_URL: "https://netthud.com/"
-          NETTHUD_TRANSFERS_ITEMS: "60"
-          NETTHUD_TRANSFERS_LOOKBACK_HOURS: "72"
-          # RSS sources (pipe-separated). Add/remove as you like.
-          NETTHUD_TRANSFERS_RSS: >-
-            https://www.theguardian.com/football/rss|
-            https://feeds.bbci.co.uk/sport/football/rss.xml|
-            https://www.skysports.com/rss/12040|
-            https://www.espn.com/espn/rss/soccer/news|
-            https://www.football-italia.net/feed|
-            https://www.90min.com/posts.rss|
-            https://www.goal.com/feeds/news?fmt=rss
-          # Optional AI enrichment (recommended). Add this secret in repo settings:
-          # Settings → Secrets and variables → Actions → New repository secret
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NETTHUD_TRANSFERS_ITEMS: "120"
+          NETTHUD_TRANSFERS_LOOKBACK_HOURS: "96"
+
+          # ✅ Best practice: store the big RSS list in a GitHub Secret
+          # Secret name: NETTHUD_TRANSFERS_RSS
+          # Value format: url1|url2|url3|...
+          NETTHUD_TRANSFERS_RSS: ${{ secrets.NETTHUD_TRANSFERS_RSS }}
+
+          # ✅ Optional AI enrichment
           NETTHUD_USE_OPENAI: "1"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           node scripts/generate-transfers.mjs
 
