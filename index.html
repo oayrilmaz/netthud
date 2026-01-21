@@ -19,7 +19,14 @@
       --container:1100px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text)}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--bg);
+      color:var(--text);
+      overflow:hidden; /* ✅ page itself doesn't scroll */
+    }
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--container);margin:0 auto;padding:24px}
     header{border-bottom:1px solid var(--border);background:#0f1218;position:sticky;top:0;z-index:10}
@@ -27,21 +34,69 @@
     .brand{font-weight:900;letter-spacing:.14em;font-size:13px}
     .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
     .right{display:flex;align-items:center;gap:10px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:12px;color:var(--muted);cursor:pointer}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;border:1px solid var(--border);
+      background:#0f131b;font-size:12px;color:var(--muted);cursor:pointer
+    }
     .pill a{cursor:pointer}
     .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 12px rgba(120,255,106,.35)}
-    main{padding:28px 0 40px}
+
+    main{
+      padding:18px 0 18px;
+      height:calc(100vh - 64px); /* header height */
+      overflow:hidden; /* ✅ main area doesn't scroll */
+    }
+
     h1{font-size:42px;margin:0 0 12px}
-    p.lead{color:var(--muted);max-width:70ch;line-height:1.7;margin:0 0 26px}
+    p.lead{color:var(--muted);max-width:70ch;line-height:1.7;margin:0 0 14px}
 
-    section{margin:18px 0}
-    .sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:12px}
-    .sectionTitle h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0}
-    .hint{font-size:12px;color:var(--muted);white-space:nowrap}
+    .btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:12px;border:1px solid var(--border);
+      background:#0f131b;font-weight:800;font-size:13px
+    }
+    .btn.primary{border-color:rgba(120,255,106,.25);box-shadow:0 0 0 1px rgba(120,255,106,.08) inset}
+    .btn:active{transform:translateY(1px)}
 
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
-    .list{display:grid;gap:12px}
-    .item{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:14px 14px;border-radius:12px;background:#0f131b;border:1px solid var(--border)}
+    /* ✅ Layout */
+    .layoutGrid{display:grid;gap:18px;align-items:start;height:calc(100% - 110px)} /* hero approx height */
+    .colStack{display:grid;gap:18px;min-height:0}
+    @media(min-width:980px){.layoutGrid{grid-template-columns:1fr 1fr}}
+
+    section{margin:0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;min-height:0}
+
+    /* ✅ Boxed header inside each card */
+    .boxHead{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      padding:10px 12px;border-radius:12px;
+      border:1px solid var(--border);
+      background:#0f1218;
+      margin-bottom:12px;
+    }
+    .boxHead .title{
+      font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0;font-weight:900
+    }
+    .boxHead .hint{font-size:12px;color:var(--muted);white-space:nowrap}
+
+    /* ✅ Scrollable lists (not page) */
+    .list{
+      display:grid;gap:12px;
+      overflow:auto;
+      max-height:320px;         /* desktop default */
+      padding-right:6px;        /* space for scrollbar */
+    }
+    /* Make lists taller on large screens */
+    @media(min-width:980px){
+      .list{max-height:380px}
+    }
+
+    .item{
+      display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+      padding:14px 14px;border-radius:12px;background:#0f131b;border:1px solid var(--border)
+    }
     .item strong{font-size:15px;display:block}
     .item p{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.35}
     .tag{font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;border:1px solid rgba(120,255,106,.3);color:var(--accent);white-space:nowrap}
@@ -50,21 +105,11 @@
     .tag.signal{border-color:rgba(120,255,106,.25);color:var(--text);background:rgba(120,255,106,.06)}
     .tag.conf{border-color:rgba(255,255,255,.12);color:var(--muted);background:rgba(255,255,255,.04)}
 
-    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;overflow:auto;max-height:150px;padding-right:6px}
     .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:13px;color:var(--text)}
     .chip .dot{width:10px;height:10px}
 
-    footer{border-top:1px solid var(--border);padding:20px 0;font-size:12px;color:var(--muted);text-align:center;margin-top:28px}
-
-    .btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:#0f131b;font-weight:800;font-size:13px}
-    .btn.primary{border-color:rgba(120,255,106,.25);box-shadow:0 0 0 1px rgba(120,255,106,.08) inset}
-    .btn:active{transform:translateY(1px)}
-
-    .layoutGrid{display:grid;gap:18px;align-items:start}
-    .colStack{display:grid;gap:18px}
-    @media(min-width:980px){.layoutGrid{grid-template-columns:1fr 1fr}}
-
+    /* ✅ Share mini-buttons */
     .rowActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .mini{
       display:inline-flex;align-items:center;gap:8px;
@@ -77,6 +122,21 @@
     .mini.secondary{color:var(--muted)}
     .mini:active{transform:translateY(1px)}
 
+    /* ✅ Footer note (legal) */
+    .disclaimer{
+      margin-top:12px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.5;
+      border:1px solid var(--border);
+      background:#0f1218;
+      padding:10px 12px;
+      border-radius:12px;
+    }
+
+    footer{border-top:1px solid var(--border);padding:14px 0;font-size:12px;color:var(--muted);text-align:center}
+
+    /* ✅ Modal (used for AI News + NEW Details view) */
     .modalOverlay{
       position:fixed;inset:0;
       background:rgba(0,0,0,.68);
@@ -85,7 +145,7 @@
     }
     .modalOverlay.open{display:flex;align-items:flex-start;justify-content:center}
     .modal{
-      width:min(860px,100%);
+      width:min(920px,100%);
       background:var(--card);
       border:1px solid var(--border);
       border-radius:18px;
@@ -110,6 +170,27 @@
       margin-top:14px;line-height:1.7;color:var(--text);
       font-size:14px;white-space:pre-wrap;
     }
+    .subBox{
+      border:1px solid var(--border);
+      background:#0f131b;
+      border-radius:14px;
+      padding:12px;
+      margin-top:12px;
+    }
+    .subBoxTitle{
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 8px;
+    }
+    .kv{display:grid;grid-template-columns:140px 1fr;gap:8px 12px;font-size:13px}
+    .kv div{color:var(--muted)}
+    .kv strong{color:var(--text);font-weight:900}
+
+    /* ✅ small helper */
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
   </style>
 </head>
 
@@ -145,6 +226,11 @@
       <a class="btn" href="#aiNews">AI news</a>
       <a class="btn" href="#leagues">Leagues</a>
     </div>
+
+    <div class="disclaimer" role="note">
+      <strong>Note:</strong> NetThud uses automated pipelines (including AI) to summarize public data.
+      Items may be incomplete, delayed, or incorrect. Always verify with primary sources before acting.
+    </div>
   </section>
 
   <div class="layoutGrid">
@@ -153,31 +239,31 @@
     <div class="colStack">
 
       <section id="liveScores">
-        <div class="sectionTitle">
-          <h2>Live Scores</h2>
-          <span class="hint" id="liveMeta">Loading…</span>
-        </div>
         <div class="card">
+          <div class="boxHead">
+            <div class="title">Live Scores</div>
+            <div class="hint" id="liveMeta">Loading…</div>
+          </div>
           <div id="liveList" class="list"></div>
         </div>
       </section>
 
       <section id="upcoming">
-        <div class="sectionTitle">
-          <h2>Upcoming + TV</h2>
-          <span class="hint" id="upcomingMeta">Loading…</span>
-        </div>
         <div class="card">
+          <div class="boxHead">
+            <div class="title">Upcoming + TV</div>
+            <div class="hint" id="upcomingMeta">Loading…</div>
+          </div>
           <div id="upcomingList" class="list"></div>
         </div>
       </section>
 
       <section id="finalScores">
-        <div class="sectionTitle">
-          <h2>Final Scores</h2>
-          <span class="hint" id="scoresMeta">Loading…</span>
-        </div>
         <div class="card">
+          <div class="boxHead">
+            <div class="title">Final Scores</div>
+            <div class="hint" id="scoresMeta">Loading…</div>
+          </div>
           <div id="scoresList" class="list"></div>
         </div>
       </section>
@@ -188,39 +274,37 @@
     <div class="colStack">
 
       <section id="transferSignals">
-        <div class="sectionTitle">
-          <h2>Transfer Signals</h2>
-          <span class="hint" id="transfersMeta">Loading…</span>
-        </div>
-
         <div class="card">
+          <div class="boxHead">
+            <div class="title">Transfer Signals</div>
+            <div class="hint" id="transfersMeta">Loading…</div>
+          </div>
           <div id="transfersList" class="list"></div>
         </div>
       </section>
 
       <section id="aiNews">
-        <div class="sectionTitle">
-          <h2>AI News</h2>
-          <span class="hint" id="newsMeta">Loading…</span>
-        </div>
         <div class="card">
+          <div class="boxHead">
+            <div class="title">AI News</div>
+            <div class="hint" id="newsMeta">Loading…</div>
+          </div>
           <div id="newsList" class="list"></div>
         </div>
       </section>
 
-    </div>
+      <section id="leagues">
+        <div class="card">
+          <div class="boxHead">
+            <div class="title">Leagues</div>
+            <div class="hint" id="leaguesMeta">Loading…</div>
+          </div>
+          <div id="leagueChips" class="chips"></div>
+        </div>
+      </section>
 
+    </div>
   </div>
-
-  <section id="leagues">
-    <div class="sectionTitle">
-      <h2>Leagues</h2>
-      <span class="hint" id="leaguesMeta">Loading…</span>
-    </div>
-    <div class="card">
-      <div id="leagueChips" class="chips"></div>
-    </div>
-  </section>
 
 </main>
 
@@ -228,12 +312,12 @@
   © <span id="year"></span> Net Thud • Goal Intelligence
 </footer>
 
-<!-- AI News modal -->
+<!-- ✅ Unified modal for: (1) AI News articles (2) NEW details pages for scores/upcoming/signals -->
 <div class="modalOverlay" id="modalOverlay" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modalHeader">
       <div>
-        <div class="modalTitle" id="modalTitle">Article</div>
+        <div class="modalTitle" id="modalTitle">Details</div>
         <div class="modalMeta" id="modalMeta"></div>
       </div>
       <button class="closeBtn" id="modalClose">Close</button>
@@ -241,11 +325,26 @@
     <div class="modalBody">
       <div class="modalActions" id="modalActions"></div>
       <div class="modalContent" id="modalContent"></div>
+
+      <!-- extra structured info (optional) -->
+      <div class="subBox" id="modalKVBox" style="display:none">
+        <div class="subBoxTitle">Snapshot</div>
+        <div class="kv" id="modalKV"></div>
+      </div>
+
+      <div class="subBox" id="modalLegalBox">
+        <div class="subBoxTitle">Disclosure</div>
+        <div class="modalContent" style="margin-top:0;color:var(--muted)">
+          This view is generated automatically and may contain errors. It is not official match or transfer confirmation.
+          Verify with primary sources (club statements, league data, official competition feeds).
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
+  // ✅ IMPORTANT: absolute paths prevent baseURI/subpath issues on GitHub Pages & caching edge cases
   const PATHS = {
     scores:   "/assets/data/scores.json",
     upcoming: "/assets/data/upcoming.json",
@@ -256,6 +355,7 @@
 
   const $ = (id) => document.getElementById(id);
 
+  // Guards
   function safeEl(id){ return document.getElementById(id); }
   function safeSetText(id, text){
     const el = safeEl(id);
@@ -275,7 +375,7 @@
 
   function emptyState(container, title, meta) {
     container.innerHTML = "";
-    container.appendChild(simpleRow(title, meta, "EMPTY", "warn"));
+    container.appendChild(rowBasic(title, meta, "EMPTY", "warn"));
   }
 
   async function readJson(url) {
@@ -295,6 +395,7 @@
     return st === "FT" || st === "FINISHED";
   }
 
+  // Share helpers
   function makeBtn(label, onClick, secondary=false){
     const b = document.createElement("div");
     b.className = "mini" + (secondary ? " secondary" : "");
@@ -302,7 +403,6 @@
     b.addEventListener("click", (e)=>{ e.stopPropagation(); onClick(); });
     return b;
   }
-
   function pageUrlNoHash(){
     const u = new URL(window.location.href);
     u.hash = "";
@@ -330,8 +430,8 @@
     }
   }
 
-  // ---------- NEW: reusable UI row with actions ----------
-  function simpleRow(title, meta, tagText, tagClass="") {
+  // ✅ Basic row renderer (used for empty/error states too)
+  function rowBasic(title, meta, tagText, tagClass="") {
     const d = document.createElement("div");
     d.className = "item";
     d.innerHTML = `
@@ -344,108 +444,260 @@
     return d;
   }
 
-  function rowWithActions(opts){
-    const {
-      title, meta, tagText, tagClass="",
-      hash="", shareText="NetThud", urlToOpen=""
-    } = opts || {};
-
+  // ✅ Clickable row with actions + hash-based “details view”
+  function rowClickable({ title, meta, tagText, tagClass="", hash, onOpenDetails }) {
     const wrap = document.createElement("div");
     wrap.className = "item";
+    wrap.style.cursor = "pointer";
 
     const left = document.createElement("div");
     left.style.minWidth = "0";
     left.innerHTML = `
-      <strong>${esc(title || "")}</strong>
+      <strong>${esc(title)}</strong>
       <p>${esc(meta || "")}</p>
       <div class="rowActions"></div>
     `;
 
     const actions = left.querySelector(".rowActions");
-    const u = shareUrl(hash || "");
-    actions.appendChild(makeBtn("Share X", ()=>shareToX(shareText, u)));
+    const u = shareUrl(hash);
+    actions.appendChild(makeBtn("Details", ()=>{
+      history.replaceState(null,"",u);
+      onOpenDetails();
+    }));
+    actions.appendChild(makeBtn("Share X", ()=>shareToX(title + " — NetThud", u)));
     actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
 
-    const rightTag = document.createElement("span");
-    rightTag.className = "tag " + esc(tagClass || "");
-    rightTag.textContent = tagText || "";
+    const right = document.createElement("span");
+    right.className = "tag " + (tagClass || "");
+    right.textContent = tagText || "";
 
     wrap.appendChild(left);
-    wrap.appendChild(rightTag);
+    wrap.appendChild(right);
 
-    if (urlToOpen){
-      wrap.style.cursor = "pointer";
-      wrap.addEventListener("click", (e)=>{
-        if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
-        window.open(urlToOpen, "_blank", "noopener");
-      });
-    }
+    // Whole row opens details (except button clicks)
+    wrap.addEventListener("click", (e)=>{
+      if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
+      history.replaceState(null,"",u);
+      onOpenDetails();
+    });
 
     return wrap;
   }
 
-  // ---------- NEW: minute extraction (live) ----------
-  function extractMinute(m){
-    if (!m || typeof m !== "object") return "";
-    const cand = m.minute ?? m.min ?? m.elapsed ?? m.clock ?? m.time ?? m.matchMinute;
-    if (typeof cand === "number" && Number.isFinite(cand)) return `${Math.max(0, Math.trunc(cand))}'`;
-    if (typeof cand === "string" && cand.trim()){
-      // accept formats like "57", "57'", "57:30"
-      const s = cand.trim();
-      const mm = s.match(/(\d{1,3})/);
-      if (mm) return `${mm[1]}'`;
+  // ✅ Modal (unified)
+  function openModal(payload){
+    const overlay = $("modalOverlay");
+    const titleEl = $("modalTitle");
+    const metaEl = $("modalMeta");
+    const contentEl = $("modalContent");
+    const actionsEl = $("modalActions");
+    const closeBtn = $("modalClose");
+
+    const kvBox = $("modalKVBox");
+    const kv = $("modalKV");
+
+    titleEl.textContent = payload.title || "Details";
+    metaEl.textContent = payload.meta || "";
+    contentEl.textContent = payload.article || "";
+
+    // KV snapshot
+    if (payload.kv && typeof payload.kv === "object") {
+      kvBox.style.display = "";
+      kv.innerHTML = "";
+      Object.entries(payload.kv).forEach(([k,v])=>{
+        const kEl = document.createElement("div");
+        kEl.textContent = k;
+        const vEl = document.createElement("div");
+        vEl.innerHTML = "<strong>" + esc(String(v ?? "")) + "</strong>";
+        kv.appendChild(kEl);
+        kv.appendChild(vEl);
+      });
+    } else {
+      kvBox.style.display = "none";
+      kv.innerHTML = "";
     }
-    // if "when" includes something like "57'" we reuse it
-    const when = String(m.when || "");
-    const w = when.match(/(\d{1,3})\s*'?/);
-    if (w && when.includes("'")) return `${w[1]}'`;
-    return "";
+
+    actionsEl.innerHTML = "";
+    if (payload.shareUrl) {
+      actionsEl.appendChild(makeBtn("Share X", ()=>shareToX(payload.shareText || payload.title || "NetThud", payload.shareUrl)));
+      actionsEl.appendChild(makeBtn("Copy link", ()=>copyLink(payload.shareUrl), true));
+    }
+    actionsEl.appendChild(makeBtn("Home", ()=>{
+      history.replaceState(null,"",pageUrlNoHash());
+      close();
+    }, true));
+
+    overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden","false");
+
+    function close(){
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden","true");
+      window.removeEventListener("keydown", onKey);
+      overlay.removeEventListener("click", onBg);
+      closeBtn.removeEventListener("click", close);
+    }
+    function onKey(e){ if(e.key==="Escape") close(); }
+    function onBg(e){ if(e.target===overlay) close(); }
+
+    window.addEventListener("keydown", onKey);
+    overlay.addEventListener("click", onBg);
+    closeBtn.addEventListener("click", close);
   }
 
-  // ---------- NEW: Upcoming probabilities (H/D/A) ----------
-  function extractHDA(g){
-    if (!g || typeof g !== "object") return null;
+  // ✅ Build AI-ish details (no external scraping; this is your own text)
+  function buildMatchDetails({ kind, item }) {
+    // kind: live | final | upcoming
+    const league = item.league || "";
+    const when = item.when || item.kickoffLocal || item.kickoffUTC || "";
+    const home = item.home || "";
+    const away = item.away || "";
+    const score = item.score || "";
+    const status = (item.status || "").toUpperCase();
 
-    // preferred shapes we’ll write later from generate-upcoming.mjs:
-    // g.hda = { home:0.42, draw:0.28, away:0.30 }
-    // OR g.probabilities = { home:..., draw:..., away:... }
-    // OR g.pHome / g.pDraw / g.pAway (0..1)
-    const obj = g.hda || g.probabilities || null;
+    const title =
+      kind === "upcoming"
+        ? `${home} vs ${away}`
+        : `${home} ${score ? score : ""} ${away}`.trim();
 
-    let ph = null, pd = null, pa = null;
-
-    if (obj && typeof obj === "object"){
-      ph = obj.home ?? obj.h ?? null;
-      pd = obj.draw ?? obj.d ?? null;
-      pa = obj.away ?? obj.a ?? null;
+    const lines = [];
+    lines.push(title);
+    lines.push("");
+    lines.push("AI Match Notes");
+    lines.push("- Context is auto-generated from public match data + lightweight heuristics.");
+    lines.push("- Treat as guidance, not official reporting.");
+    lines.push("");
+    lines.push("What to watch");
+    if (kind === "upcoming") {
+      lines.push("- Likely tactical focus: early tempo control, set-piece efficiency, transition defense.");
+      lines.push("- Check official lineups 60 minutes before kickoff.");
+    } else if (kind === "live") {
+      lines.push("- Live state can lag: confirm time, red cards, and xG from primary feeds.");
+      lines.push("- Momentum: watch next 10 minutes after a goal / halftime.");
     } else {
-      ph = g.pHome ?? g.p_home ?? g.homeWin ?? null;
-      pd = g.pDraw ?? g.p_draw ?? g.draw ?? null;
-      pa = g.pAway ?? g.p_away ?? g.awayWin ?? null;
+      lines.push("- Review key turning points: first goal timing, cards, substitutions, set pieces.");
+      lines.push("- Watch for fixture congestion and minutes management.");
     }
+    lines.push("");
+    lines.push("Disclaimer");
+    lines.push("This content is AI-generated and may contain errors or omissions.");
 
-    const toPct = (x)=>{
-      const n = Number(x);
-      if (!Number.isFinite(n)) return null;
-      // allow 0..1 or 0..100
-      const v = (n <= 1) ? n * 100 : n;
-      if (v < 0 || v > 100) return null;
-      return Math.round(v);
+    const meta = [league, when].filter(Boolean).join(" • ");
+
+    const kv = {
+      League: league || "—",
+      When: when || "—",
+      Status: status || "—",
+      Score: score || "—"
     };
 
-    const H = toPct(ph), D = toPct(pd), A = toPct(pa);
-    if (H==null || D==null || A==null) return null;
-    return { H, D, A };
+    return { title, meta, article: lines.join("\n"), kv };
   }
 
-  function youtubeHighlightsUrl(home, away){
-    const q = `${home || ""} vs ${away || ""} highlights`.trim();
-    const u = new URL("https://www.youtube.com/results");
-    u.searchParams.set("search_query", q);
-    return u.toString();
+  function buildSignalDetails({ item }) {
+    const title = item.title || "Transfer signal";
+    const stage = String(item.stage || "watch").toUpperCase();
+    const conf = (item.confidence == null) ? "—" : Math.round(Number(item.confidence)*100) + "%";
+    const source = item.source || "NetThud Signals";
+    const publishedAt = item.publishedAt ? String(item.publishedAt).slice(0,19) : "";
+
+    const lines = [];
+    lines.push(title);
+    lines.push("");
+    lines.push("AI Signal Summary");
+    lines.push(`- Stage: ${stage}`);
+    lines.push(`- Confidence: ${conf}`);
+    lines.push("");
+    lines.push("How this confidence is interpreted");
+    lines.push("- ADV: multiple compatible signals (fee terms, medical window, club need fit)");
+    lines.push("- CONTACT: agent/club contact + credible reporting indicators");
+    lines.push("- WATCH: weak/early indicators (monitor only)");
+    lines.push("");
+    lines.push("Disclaimer");
+    lines.push("Signals are probabilistic, AI-generated, and not confirmation of a transfer.");
+
+    const meta = [source, publishedAt].filter(Boolean).join(" • ");
+
+    const kv = {
+      Stage: stage,
+      Confidence: conf,
+      Source: source,
+      Time: publishedAt || "—"
+    };
+
+    return { title, meta, article: lines.join("\n"), kv };
   }
 
-  // ---------- SCORES: Live + Final (updated left column behavior) ----------
+  // ✅ Hash routing: open details view from shared link
+  // Format:
+  //  #d=live-<i>
+  //  #d=final-<i>
+  //  #d=upcoming-<i>
+  //  #d=signal-<i>
+  //  #news=<slug>  (existing behavior preserved)
+  let LIVE_INDEX = [];
+  let FINAL_INDEX = [];
+  let UPCOMING_INDEX = [];
+  let SIGNALS_INDEX = [];
+  let NEWS_INDEX = [];
+
+  function slugify(s){
+    return String(s||"")
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g,"")
+      .replace(/\s+/g,"-")
+      .replace(/-+/g,"-")
+      .slice(0,60) || ("id-"+Math.random().toString(16).slice(2));
+  }
+
+  function tryOpenFromHash(){
+    const h = window.location.hash || "";
+
+    // News modal
+    if (h.startsWith("#news=")){
+      const slug = decodeURIComponent(h.slice("#news=".length));
+      const found = NEWS_INDEX.find(x => x.slug === slug);
+      if (!found) return;
+
+      const u = shareUrl("news=" + found.slug);
+      openModal({
+        title: found.title,
+        meta: found.meta,
+        article: found.article,
+        shareUrl: u,
+        shareText: found.title + " — NetThud AI"
+      });
+      return;
+    }
+
+    // Details modal
+    if (!h.startsWith("#d=")) return;
+    const key = decodeURIComponent(h.slice("#d=".length)); // like live-3
+    const [kind, idxStr] = key.split("-");
+    const idx = Number(idxStr);
+    if (!Number.isFinite(idx) || idx < 0) return;
+
+    let payload = null;
+    if (kind === "live" && LIVE_INDEX[idx]) payload = buildMatchDetails({ kind:"live", item: LIVE_INDEX[idx] });
+    if (kind === "final" && FINAL_INDEX[idx]) payload = buildMatchDetails({ kind:"final", item: FINAL_INDEX[idx] });
+    if (kind === "upcoming" && UPCOMING_INDEX[idx]) payload = buildMatchDetails({ kind:"upcoming", item: UPCOMING_INDEX[idx] });
+    if (kind === "signal" && SIGNALS_INDEX[idx]) payload = buildSignalDetails({ item: SIGNALS_INDEX[idx] });
+
+    if (!payload) return;
+
+    const u = shareUrl("d=" + kind + "-" + idx);
+    openModal({
+      title: payload.title,
+      meta: payload.meta,
+      article: payload.article,
+      kv: payload.kv,
+      shareUrl: u,
+      shareText: payload.title + " — NetThud"
+    });
+  }
+
+  // ✅ Scores: split into Live + Final (from same scores.json)
   async function loadScores() {
     const finalList = $("scoresList");
     const liveList  = $("liveList");
@@ -457,78 +709,53 @@
       const live = items.filter(m => isLiveStatus(m.status));
       const finals = items.filter(m => isFinalStatus(m.status));
 
+      LIVE_INDEX = live;
+      FINAL_INDEX = finals;
+
       safeSetText("liveMeta",  `${live.length} • updated ${data.generatedAt || data.updated || "—"}`);
       safeSetText("scoresMeta",`${finals.length} • updated ${data.generatedAt || data.updated || "—"}`);
 
-      // LIVE
       liveList.innerHTML = "";
       if (!live.length) emptyState(liveList, "No live matches right now", "Live matches will appear here.");
-      else live.slice(0,20).forEach((m, idx) => {
-        const minute = extractMinute(m);
+      else live.slice(0,40).forEach((m, i) => {
         const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-        const metaBits = [];
-        if (m.league) metaBits.push(m.league);
-        if (m.when) metaBits.push(m.when);
-        if (minute) metaBits.push(`Minute ${minute}`);
-        const metaLine = metaBits.join(" • ");
-
+        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
         const tag = (String(m.status||"").toUpperCase()==="HT") ? "HT" : "LIVE";
-        const hash = `live=${idx}`;
-        const shareText = `${title}${minute ? " • " + minute : ""} — NetThud Live`;
-
+        const hash = `d=live-${i}`;
         liveList.appendChild(
-          rowWithActions({
+          rowClickable({
             title,
             meta: metaLine,
             tagText: tag,
             tagClass: "live",
             hash,
-            shareText,
-            urlToOpen: m.url || ""
+            onOpenDetails: () => {
+              const payload = buildMatchDetails({ kind:"live", item: m });
+              openModal({ ...payload, shareUrl: shareUrl(hash), shareText: title + " — NetThud" });
+            }
           })
         );
       });
 
-      // FINALS (with Highlights + Share)
       finalList.innerHTML = "";
       if (!finals.length) emptyState(finalList, "No final scores yet", "Finished matches will appear here.");
-      else finals.slice(0,40).forEach((m, idx) => {
+      else finals.slice(0,60).forEach((m, i) => {
         const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-        const metaBits = [];
-        if (m.league) metaBits.push(m.league);
-        if (m.when) metaBits.push(m.when);
-        const metaLine = metaBits.join(" • ");
-
-        const wrap = document.createElement("div");
-        wrap.className = "item";
-
-        const left = document.createElement("div");
-        left.style.minWidth = "0";
-        left.innerHTML = `
-          <strong>${esc(title)}</strong>
-          <p>${esc(metaLine)}</p>
-          <div class="rowActions"></div>
-        `;
-
-        const actions = left.querySelector(".rowActions");
-        const hash = `final=${idx}`;
-        const u = shareUrl(hash);
-        const shareText = `${title} — NetThud Final`;
-
-        // Highlights button: prefer explicit URL, else YouTube search
-        const highlights = m.highlightsUrl || youtubeHighlightsUrl(m.home, m.away);
-        actions.appendChild(makeBtn("Highlights", ()=>window.open(highlights, "_blank", "noopener")));
-        actions.appendChild(makeBtn("Share X", ()=>shareToX(shareText, u)));
-        actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
-
-        const right = document.createElement("span");
-        right.className = "tag";
-        right.textContent = "FT";
-
-        wrap.appendChild(left);
-        wrap.appendChild(right);
-
-        finalList.appendChild(wrap);
+        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
+        const hash = `d=final-${i}`;
+        finalList.appendChild(
+          rowClickable({
+            title,
+            meta: metaLine,
+            tagText: "FT",
+            tagClass: "",
+            hash,
+            onOpenDetails: () => {
+              const payload = buildMatchDetails({ kind:"final", item: m });
+              openModal({ ...payload, shareUrl: shareUrl(hash), shareText: title + " — NetThud" });
+            }
+          })
+        );
       });
 
     } catch (e) {
@@ -536,72 +763,57 @@
       safeSetText("scoresMeta","error");
       if (liveList) {
         liveList.innerHTML = "";
-        liveList.appendChild(simpleRow("Live scores not loading", e.message, "ERR", "warn"));
+        liveList.appendChild(rowBasic("Live scores not loading", e.message, "ERR", "warn"));
       }
       if (finalList) {
         finalList.innerHTML = "";
-        finalList.appendChild(simpleRow("Final scores not loading", e.message, "ERR", "warn"));
+        finalList.appendChild(rowBasic("Final scores not loading", e.message, "ERR", "warn"));
       }
       console.error(e);
     }
   }
 
-  // ---------- UPCOMING (with H/D/A and share) ----------
   async function loadUpcoming() {
     const list = $("upcomingList");
     try {
       const data = await readJson(PATHS.upcoming);
       const items = Array.isArray(data.items) ? data.items : [];
+      UPCOMING_INDEX = items;
+
       safeSetText("upcomingMeta", `${items.length} • updated ${data.generatedAt || data.updated || "—"}`);
 
       list.innerHTML = "";
       if (!items.length) return emptyState(list, "No upcoming games yet", "Populate /assets/data/upcoming.json");
 
-      items.slice(0,25).forEach((g, idx) => {
+      items.slice(0,60).forEach((g, i) => {
         const channels = Array.isArray(g.tv) ? g.tv.join(", ") : "";
-        const when = g.kickoffLocal || g.kickoffUTC || g.when || "";
-        const hda = extractHDA(g);
-
-        const metaBits = [];
-        if (g.league) metaBits.push(g.league);
-        if (when) metaBits.push(when);
-        if (channels) metaBits.push(channels);
-
-        // show probabilities if present
-        if (hda){
-          metaBits.push(`H/D/A: ${hda.H}% / ${hda.D}% / ${hda.A}%`);
-        } else {
-          // UI placeholder until generator writes probabilities
-          metaBits.push(`H/D/A: — / — / —`);
-        }
-
-        const title = `${g.home || "Home"} vs ${g.away || "Away"}`;
-        const metaLine = metaBits.join(" • ");
-
-        const hash = `up=${idx}`;
-        const shareText = `${title}${hda ? ` • H/D/A ${hda.H}/${hda.D}/${hda.A}` : ""} — NetThud Upcoming`;
+        const title = `${g.home} vs ${g.away}`;
+        const meta = `${g.league} • ${g.kickoffLocal || g.kickoffUTC || g.when || ""}${channels ? " • " + channels : ""}`;
+        const hash = `d=upcoming-${i}`;
 
         list.appendChild(
-          rowWithActions({
+          rowClickable({
             title,
-            meta: metaLine,
+            meta,
             tagText: "UP",
             tagClass: "",
             hash,
-            shareText,
-            urlToOpen: g.url || ""
+            onOpenDetails: () => {
+              const payload = buildMatchDetails({ kind:"upcoming", item: g });
+              openModal({ ...payload, shareUrl: shareUrl(hash), shareText: title + " — NetThud" });
+            }
           })
         );
       });
     } catch (e) {
       safeSetText("upcomingMeta","error");
       list.innerHTML = "";
-      list.appendChild(simpleRow("Upcoming not loading", e.message, "ERR", "warn"));
+      list.appendChild(rowBasic("Upcoming not loading", e.message, "ERR", "warn"));
       console.error(e);
     }
   }
 
-  // ---------- TRANSFER SIGNALS (unchanged) ----------
+  // ✅ Transfer Signals
   const DEFAULT_SIGNALS = [
     { stage:"advanced", title:"Midfielder: fee agreed in principle — medical pending", confidence:0.74, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
     { stage:"contact",  title:"Forward: agent contact reported — shortlist narrowing", confidence:0.52, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
@@ -662,7 +874,6 @@
           url: x.url || ""
         };
       }
-
       return null;
     }).filter(Boolean);
   }
@@ -672,7 +883,6 @@
     if (n == null) return "—";
     return Math.round(n * 100) + "%";
   }
-
   function stageLabel(stage){
     const s = String(stage || "").toLowerCase();
     if (s === "advanced") return "ADV";
@@ -696,22 +906,26 @@
     }
 
     if (!items.length) items = DEFAULT_SIGNALS;
+    SIGNALS_INDEX = items;
 
     safeSetText("transfersMeta", `${items.length} • updated ${stamp}`);
 
     list.innerHTML = "";
     if (!items.length) return emptyState(list, "No transfer signals yet", "Populate /assets/data/transfers.json");
 
-    items.slice(0, 16).forEach((t, idx) => {
-      const wrap = document.createElement("div");
-      wrap.className = "item";
-
-      const left = document.createElement("div");
-      left.style.minWidth = "0";
-
+    items.slice(0, 80).forEach((t, idx) => {
       const dateShort = t.publishedAt ? String(t.publishedAt).slice(0,19) : "";
       const metaLine = `${t.source || "NetThud Signals"}${dateShort ? " • " + dateShort : ""}`;
 
+      const hash = `d=signal-${idx}`;
+
+      // custom tag right: stage + confidence
+      const wrap = document.createElement("div");
+      wrap.className = "item";
+      wrap.style.cursor = "pointer";
+
+      const left = document.createElement("div");
+      left.style.minWidth = "0";
       left.innerHTML = `
         <strong>${esc(t.title || "Transfer signal")}</strong>
         <p>${esc(metaLine)}</p>
@@ -719,8 +933,12 @@
       `;
 
       const actions = left.querySelector(".rowActions");
-      const h = `signal=${idx}`;
-      const u = shareUrl(h);
+      const u = shareUrl(hash);
+      actions.appendChild(makeBtn("Details", ()=>{
+        history.replaceState(null,"",u);
+        const payload = buildSignalDetails({ item: t });
+        openModal({ ...payload, shareUrl: u, shareText: (t.title||"Transfer signal")+" — NetThud" });
+      }));
       actions.appendChild(makeBtn("Share X", ()=>shareToX((t.title||"Transfer signal")+" — NetThud", u)));
       actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
 
@@ -743,21 +961,18 @@
       wrap.appendChild(left);
       wrap.appendChild(right);
 
-      if (t.url) {
-        wrap.style.cursor = "pointer";
-        wrap.addEventListener("click", (e)=>{
-          if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
-          window.open(t.url, "_blank", "noopener");
-        });
-      }
+      wrap.addEventListener("click", (e)=>{
+        if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
+        history.replaceState(null,"",u);
+        const payload = buildSignalDetails({ item: t });
+        openModal({ ...payload, shareUrl: u, shareText: (t.title||"Transfer signal")+" — NetThud" });
+      });
 
       list.appendChild(wrap);
     });
   }
 
-  // ---------- AI NEWS (unchanged) ----------
-  let NEWS_INDEX = [];
-
+  // ✅ AI News (kept + shareable)
   function buildFallbackArticle(n){
     const title = n.title || "News";
     const summary = n.summary || "";
@@ -774,72 +989,11 @@
       "This can influence match prep, tactics, availability, and short-term attention around fixtures.",
       "",
       "What to watch next",
-      "Look for primary-source confirmation and follow-on signals over the next 24–72 hours."
+      "Look for primary-source confirmation and follow-on signals over the next 24–72 hours.",
+      "",
+      "Disclaimer",
+      "AI-generated summary; may contain errors."
     ].join("\n");
-  }
-
-  function openModal(payload){
-    const overlay = $("modalOverlay");
-    const titleEl = $("modalTitle");
-    const metaEl = $("modalMeta");
-    const contentEl = $("modalContent");
-    const actionsEl = $("modalActions");
-    const closeBtn = $("modalClose");
-
-    titleEl.textContent = payload.title || "Article";
-    metaEl.textContent = payload.meta || "";
-    contentEl.textContent = payload.article || "";
-
-    actionsEl.innerHTML = "";
-    actionsEl.appendChild(makeBtn("Share X", ()=>shareToX(payload.shareText || payload.title || "NetThud", payload.shareUrl)));
-    actionsEl.appendChild(makeBtn("Copy link", ()=>copyLink(payload.shareUrl), true));
-
-    overlay.classList.add("open");
-    overlay.setAttribute("aria-hidden","false");
-
-    function close(){
-      overlay.classList.remove("open");
-      overlay.setAttribute("aria-hidden","true");
-      if (window.location.hash.startsWith("#news=")){
-        history.replaceState(null,"",pageUrlNoHash());
-      }
-      window.removeEventListener("keydown", onKey);
-      overlay.removeEventListener("click", onBg);
-      closeBtn.removeEventListener("click", close);
-    }
-    function onKey(e){ if(e.key==="Escape") close(); }
-    function onBg(e){ if(e.target===overlay) close(); }
-
-    window.addEventListener("keydown", onKey);
-    overlay.addEventListener("click", onBg);
-    closeBtn.addEventListener("click", close);
-  }
-
-  function slugify(s){
-    return String(s||"")
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g,"")
-      .replace(/\s+/g,"-")
-      .replace(/-+/g,"-")
-      .slice(0,60) || ("news-"+Math.random().toString(16).slice(2));
-  }
-
-  function tryOpenFromHash(){
-    const h = window.location.hash || "";
-    if (!h.startsWith("#news=")) return;
-    const slug = decodeURIComponent(h.slice("#news=".length));
-    const found = NEWS_INDEX.find(x => x.slug === slug);
-    if (!found) return;
-
-    const u = shareUrl("news=" + found.slug);
-    openModal({
-      title: found.title,
-      meta: found.meta,
-      article: found.article,
-      shareUrl: u,
-      shareText: found.title + " — NetThud AI"
-    });
   }
 
   async function loadNews() {
@@ -861,63 +1015,40 @@
         const metaLine = [source, createdAt ? String(createdAt).slice(0,19) : ""].filter(Boolean).join(" • ");
         const article = (n.article && String(n.article).trim().length > 60) ? String(n.article) : buildFallbackArticle({title, summary:n.summary});
 
-        return {
-          slug, title,
-          meta: metaLine,
-          summary: n.summary || n.short || "",
-          article
-        };
+        return { slug, title, meta: metaLine, summary: n.summary || n.short || "", article };
       });
 
-      NEWS_INDEX.slice(0, 12).forEach((n, idx) => {
+      NEWS_INDEX.slice(0, 60).forEach((n, idx) => {
         const label = "News-" + (idx+1);
+        const title = `${label} • ${n.title}`;
+        const meta = n.summary || "Click to open the AI article.";
+        const hash = `news=${n.slug}`;
 
-        const wrap = document.createElement("div");
-        wrap.className = "item";
-        wrap.style.cursor = "pointer";
-
-        const left = document.createElement("div");
-        left.style.minWidth = "0";
-        left.innerHTML = `
-          <strong>${esc(label)} • ${esc(n.title)}</strong>
-          <p>${esc(n.summary || "Click to open the full AI article.")}</p>
-          <div class="rowActions"></div>
-        `;
-
-        const actions = left.querySelector(".rowActions");
-        const u = shareUrl("news=" + n.slug);
-        actions.appendChild(makeBtn("Share X", ()=>shareToX(n.title + " — NetThud AI", u)));
-        actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
-
-        const right = document.createElement("span");
-        right.className = "tag";
-        right.textContent = "OPEN";
-
-        wrap.appendChild(left);
-        wrap.appendChild(right);
-
-        wrap.addEventListener("click", (e)=>{
-          if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
-          history.replaceState(null,"",u);
-          openModal({
-            title: n.title,
-            meta: n.meta,
-            article: n.article,
-            shareUrl: u,
-            shareText: n.title + " — NetThud AI"
-          });
-        });
-
-        list.appendChild(wrap);
+        list.appendChild(
+          rowClickable({
+            title,
+            meta,
+            tagText: "OPEN",
+            tagClass: "",
+            hash,
+            onOpenDetails: () => {
+              const u = shareUrl(hash);
+              openModal({
+                title: n.title,
+                meta: n.meta,
+                article: n.article,
+                shareUrl: u,
+                shareText: n.title + " — NetThud AI"
+              });
+            }
+          })
+        );
       });
-
-      tryOpenFromHash();
-      window.addEventListener("hashchange", tryOpenFromHash);
 
     } catch (e) {
       safeSetText("newsMeta","error");
       list.innerHTML = "";
-      list.appendChild(simpleRow("AI News not loading", e.message, "ERR", "warn"));
+      list.appendChild(rowBasic("AI News not loading", e.message, "ERR", "warn"));
       console.error(e);
     }
   }
@@ -926,12 +1057,10 @@
     const container = $("leagueChips");
     try {
       const data = await readJson(PATHS.leagues);
-
       const leagues = Array.isArray(data) ? data
                     : Array.isArray(data.items) ? data.items
                     : Array.isArray(data.leagues) ? data.leagues
                     : [];
-
       safeSetText("leaguesMeta", `${leagues.length} • updated ${data.updated || data.generatedAt || "—"}`);
 
       container.innerHTML = "";
@@ -957,13 +1086,13 @@
         const emoji = (l && typeof l === "object") ? (l.emoji || "") : "";
         const country = (l && typeof l === "object") ? (l.country || "") : "";
 
-        el.innerHTML = `<span class="dot"></span>${esc(emoji ? " " + emoji : "")}${esc(name)}${esc(country ? " • " + country : "")}`;
+        el.innerHTML = `<span class="dot"></span>${esc(emoji ? emoji + " " : "")}${esc(name)}${esc(country ? " • " + country : "")}`;
         container.appendChild(el);
       });
     } catch (e) {
       safeSetText("leaguesMeta","error");
       container.innerHTML = "";
-      container.appendChild(simpleRow("Leagues not loading", e.message, "ERR", "warn"));
+      container.appendChild(rowBasic("Leagues not loading", e.message, "ERR", "warn"));
       console.error(e);
     }
   }
@@ -1007,6 +1136,11 @@
       await loadTransferSignals();
       await loadNews();
       await loadLeagues();
+
+      // ✅ open details if someone arrives via shared hash
+      tryOpenFromHash();
+      window.addEventListener("hashchange", tryOpenFromHash);
+
     }catch(e){
       console.error("NetThud boot failed:", e);
       safeSetText("liveMeta","error");
