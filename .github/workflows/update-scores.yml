@@ -26,10 +26,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
 
       # -----------------------------
       # FINAL + LIVE SCORES
@@ -51,15 +47,13 @@ jobs:
           node scripts/generate-upcoming.mjs
 
       # -----------------------------
-      # TRANSFER SIGNALS (LIVE)
+      # TRANSFER SIGNALS
       # -----------------------------
-      - name: Generate transfers.json (live signals)
+      - name: Generate transfers.json
         env:
-          NETTHUD_TRANSFERS_MODE: "live"
+          NETTHUD_TRANSFERS_MODE: "demo"
           NETTHUD_SITE_URL: "https://netthud.com/"
           NETTHUD_TRANSFERS_ITEMS: "16"
-          NETTHUD_TRANSFERS_LANG: "en"
-          NETTHUD_TRANSFERS_REGION: "US"
         run: |
           node scripts/generate-transfers.mjs
 
