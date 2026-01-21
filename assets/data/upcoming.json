@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-21T05:54:50.698Z",
+  "generatedAt": "2026-01-21T06:38:54.064Z",
   "days": 7,
   "limit": 80,
   "competitions": [
@@ -46,8 +46,8 @@
     },
     {
       "league": "UEFA Champions League",
-      "home": "Chelsea",
-      "away": "Paphos FC",
+      "home": "Marseille",
+      "away": "Liverpool",
       "kickoffUTC": "2026-01-21T20:00:00Z",
       "kickoffLocal": "Jan 21 • 3:00 PM ET",
       "tv": []
@@ -56,6 +56,14 @@
       "league": "UEFA Champions League",
       "home": "Atalanta",
       "away": "Athletic",
+      "kickoffUTC": "2026-01-21T20:00:00Z",
+      "kickoffLocal": "Jan 21 • 3:00 PM ET",
+      "tv": []
+    },
+    {
+      "league": "UEFA Champions League",
+      "home": "Slavia Praha",
+      "away": "Barça",
       "kickoffUTC": "2026-01-21T20:00:00Z",
       "kickoffLocal": "Jan 21 • 3:00 PM ET",
       "tv": []
@@ -78,8 +86,8 @@
     },
     {
       "league": "UEFA Champions League",
-      "home": "Slavia Praha",
-      "away": "Barça",
+      "home": "Chelsea",
+      "away": "Paphos FC",
       "kickoffUTC": "2026-01-21T20:00:00Z",
       "kickoffLocal": "Jan 21 • 3:00 PM ET",
       "tv": []
@@ -88,14 +96,6 @@
       "league": "UEFA Champions League",
       "home": "Newcastle",
       "away": "PSV",
-      "kickoffUTC": "2026-01-21T20:00:00Z",
-      "kickoffLocal": "Jan 21 • 3:00 PM ET",
-      "tv": []
-    },
-    {
-      "league": "UEFA Champions League",
-      "home": "Marseille",
-      "away": "Liverpool",
       "kickoffUTC": "2026-01-21T20:00:00Z",
       "kickoffLocal": "Jan 21 • 3:00 PM ET",
       "tv": []
@@ -166,6 +166,14 @@
     },
     {
       "league": "Bundesliga",
+      "home": "Leverkusen",
+      "away": "Bremen",
+      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "kickoffLocal": "Jan 24 • 9:30 AM ET",
+      "tv": []
+    },
+    {
+      "league": "Bundesliga",
       "home": "Mainz",
       "away": "Wolfsburg",
       "kickoffUTC": "2026-01-24T14:30:00Z",
@@ -176,14 +184,6 @@
       "league": "Bundesliga",
       "home": "Frankfurt",
       "away": "Hoffenheim",
-      "kickoffUTC": "2026-01-24T14:30:00Z",
-      "kickoffLocal": "Jan 24 • 9:30 AM ET",
-      "tv": []
-    },
-    {
-      "league": "Bundesliga",
-      "home": "Leverkusen",
-      "away": "Bremen",
       "kickoffUTC": "2026-01-24T14:30:00Z",
       "kickoffLocal": "Jan 24 • 9:30 AM ET",
       "tv": []
@@ -269,14 +269,6 @@
       "tv": []
     },
     {
-      "league": "Primera Division",
-      "home": "Sevilla FC",
-      "away": "Athletic",
-      "kickoffUTC": "2026-01-24T17:30:00Z",
-      "kickoffLocal": "Jan 24 • 12:30 PM ET",
-      "tv": []
-    },
-    {
       "league": "Premier League",
       "home": "Bournemouth",
       "away": "Liverpool",
@@ -288,6 +280,14 @@
       "league": "Bundesliga",
       "home": "Union Berlin",
       "away": "Dortmund",
+      "kickoffUTC": "2026-01-24T17:30:00Z",
+      "kickoffLocal": "Jan 24 • 12:30 PM ET",
+      "tv": []
+    },
+    {
+      "league": "Primera Division",
+      "home": "Sevilla FC",
+      "away": "Athletic",
       "kickoffUTC": "2026-01-24T17:30:00Z",
       "kickoffLocal": "Jan 24 • 12:30 PM ET",
       "tv": []
@@ -333,17 +333,17 @@
       "tv": []
     },
     {
-      "league": "Primera Division",
-      "home": "Villarreal",
-      "away": "Real Madrid",
+      "league": "Eredivisie",
+      "home": "Twente",
+      "away": "Excelsior",
       "kickoffUTC": "2026-01-24T20:00:00Z",
       "kickoffLocal": "Jan 24 • 3:00 PM ET",
       "tv": []
     },
     {
-      "league": "Eredivisie",
-      "home": "Twente",
-      "away": "Excelsior",
+      "league": "Primera Division",
+      "home": "Villarreal",
+      "away": "Real Madrid",
       "kickoffUTC": "2026-01-24T20:00:00Z",
       "kickoffLocal": "Jan 24 • 3:00 PM ET",
       "tv": []
@@ -397,22 +397,6 @@
       "tv": []
     },
     {
-      "league": "Premier League",
-      "home": "Newcastle",
-      "away": "Aston Villa",
-      "kickoffUTC": "2026-01-25T14:00:00Z",
-      "kickoffLocal": "Jan 25 • 9:00 AM ET",
-      "tv": []
-    },
-    {
-      "league": "Ligue 1",
-      "home": "Nantes",
-      "away": "Nice",
-      "kickoffUTC": "2026-01-25T14:00:00Z",
-      "kickoffLocal": "Jan 25 • 9:00 AM ET",
-      "tv": []
-    },
-    {
       "league": "Serie A",
       "home": "Atalanta",
       "away": "Parma",
@@ -422,8 +406,8 @@
     },
     {
       "league": "Premier League",
-      "home": "Crystal Palace",
-      "away": "Chelsea",
+      "home": "Newcastle",
+      "away": "Aston Villa",
       "kickoffUTC": "2026-01-25T14:00:00Z",
       "kickoffLocal": "Jan 25 • 9:00 AM ET",
       "tv": []
@@ -440,6 +424,22 @@
       "league": "Premier League",
       "home": "Brentford",
       "away": "Nottingham",
+      "kickoffUTC": "2026-01-25T14:00:00Z",
+      "kickoffLocal": "Jan 25 • 9:00 AM ET",
+      "tv": []
+    },
+    {
+      "league": "Premier League",
+      "home": "Crystal Palace",
+      "away": "Chelsea",
+      "kickoffUTC": "2026-01-25T14:00:00Z",
+      "kickoffLocal": "Jan 25 • 9:00 AM ET",
+      "tv": []
+    },
+    {
+      "league": "Ligue 1",
+      "home": "Nantes",
+      "away": "Nice",
       "kickoffUTC": "2026-01-25T14:00:00Z",
       "kickoffLocal": "Jan 25 • 9:00 AM ET",
       "tv": []
@@ -486,8 +486,8 @@
     },
     {
       "league": "Ligue 1",
-      "home": "Brest",
-      "away": "Toulouse",
+      "home": "FC Metz",
+      "away": "Olympique Lyon",
       "kickoffUTC": "2026-01-25T16:15:00Z",
       "kickoffLocal": "Jan 25 • 11:15 AM ET",
       "tv": []
@@ -502,8 +502,8 @@
     },
     {
       "league": "Ligue 1",
-      "home": "FC Metz",
-      "away": "Olympique Lyon",
+      "home": "Brest",
+      "away": "Toulouse",
       "kickoffUTC": "2026-01-25T16:15:00Z",
       "kickoffLocal": "Jan 25 • 11:15 AM ET",
       "tv": []
@@ -557,17 +557,17 @@
       "tv": []
     },
     {
-      "league": "Serie A",
-      "home": "Roma",
-      "away": "Milan",
+      "league": "Ligue 1",
+      "home": "Lille",
+      "away": "Strasbourg",
       "kickoffUTC": "2026-01-25T19:45:00Z",
       "kickoffLocal": "Jan 25 • 2:45 PM ET",
       "tv": []
     },
     {
-      "league": "Ligue 1",
-      "home": "Lille",
-      "away": "Strasbourg",
+      "league": "Serie A",
+      "home": "Roma",
+      "away": "Milan",
       "kickoffUTC": "2026-01-25T19:45:00Z",
       "kickoffLocal": "Jan 25 • 2:45 PM ET",
       "tv": []
@@ -597,17 +597,17 @@
       "tv": []
     },
     {
-      "league": "Primera Division",
-      "home": "Girona",
-      "away": "Getafe",
+      "league": "Premier League",
+      "home": "Everton",
+      "away": "Leeds United",
       "kickoffUTC": "2026-01-26T20:00:00Z",
       "kickoffLocal": "Jan 26 • 3:00 PM ET",
       "tv": []
     },
     {
-      "league": "Premier League",
-      "home": "Everton",
-      "away": "Leeds United",
+      "league": "Primera Division",
+      "home": "Girona",
+      "away": "Getafe",
       "kickoffUTC": "2026-01-26T20:00:00Z",
       "kickoffLocal": "Jan 26 • 3:00 PM ET",
       "tv": []
@@ -638,8 +638,16 @@
     },
     {
       "league": "UEFA Champions League",
-      "home": "Liverpool",
-      "away": "Qarabağ Ağdam",
+      "home": "PSV",
+      "away": "Bayern",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": []
+    },
+    {
+      "league": "UEFA Champions League",
+      "home": "Leverkusen",
+      "away": "Villarreal",
       "kickoffUTC": "2026-01-28T20:00:00Z",
       "kickoffLocal": "Jan 28 • 3:00 PM ET",
       "tv": []
@@ -648,14 +656,6 @@
       "league": "UEFA Champions League",
       "home": "Frankfurt",
       "away": "Tottenham",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": []
-    },
-    {
-      "league": "UEFA Champions League",
-      "home": "Ajax",
-      "away": "Olympiakos",
       "kickoffUTC": "2026-01-28T20:00:00Z",
       "kickoffLocal": "Jan 28 • 3:00 PM ET",
       "tv": []
