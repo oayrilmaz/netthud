@@ -1,12 +1,12 @@
 // scripts/generate-transfers.mjs
 // Generates: assets/data/transfers.json
 //
-// Default mode: "demo" (no external API needed).
-// Output schema matches your UI loader (type/news/rumor + title/source/publishedAt/url).
+// Modes:
+//   - signals-demo   (default) : no external calls, but schema is "signals" (not news/rumors)
+//   - (future) signals-rss     : parse RSS feeds (needs URLs + parsing rules)
 //
 // Env (optional):
-//   NETTHUD_TRANSFERS_MODE=demo
-//   NETTHUD_TRANSFERS_URL=https://...   (future use)
+//   NETTHUD_TRANSFERS_MODE=signals-demo
 //   NETTHUD_TRANSFERS_ITEMS=8
 //   NETTHUD_SITE_URL=https://netthud.com/
 
@@ -42,38 +42,77 @@ function minutesAgo(mins) {
   return isoNow(d);
 }
 
-function buildDemoItems(count, siteUrl) {
-  // A small pool so output changes naturally by timestamp/order
-  const pool = [
-    { type: "news",  title: "Midfielder Y: Club C → Club D (€18m) — agreement advanced" },
-    { type: "news",  title: "Winger Z: medical scheduled after fee agreed in principle" },
-    { type: "news",  title: "Club E open talks for defender — discussions moving quickly" },
-    { type: "news",  title: "Goalkeeper Q: contract extension close — final details pending" },
+function pickTagFromConfidence(conf) {
+  const c = String(conf || "").toUpperCase();
+  if (c === "HIGH" || c === "MED" || c === "LOW") return c;
+  return "MED";
+}
 
-    { type: "rumor", title: "Forward X: Club A → Club B (loan) — agent contact reported" },
-    { type: "rumor", title: "Striker linked with two clubs as January shortlist narrows" },
-    { type: "rumor", title: "Young defender loan discussed — decision expected within 72 hours" },
-    { type: "rumor", title: "Playmaker monitored by multiple sides — price tag debated" },
+function buildSignalsDemoItems(count, siteUrl) {
+  // Demo signals (schema is already what the UI will use)
+  // You can later replace these with real extracted signals + evidence links.
+  const pool = [
+    {
+      confidence: "HIGH",
+      signal: "Bid/terms agreed; waiting on medical + contract signing.",
+      entities: { player: "Midfielder Y", from: "Club C", to: "Club D", fee: "€18m" },
+      evidence: [
+        { source: "NetThud Desk", title: "Agreement advanced; medical expected next", url: siteUrl, publishedAt: minutesAgo(35) },
+      ],
+    },
+    {
+      confidence: "MED",
+      signal: "Agent contact reported; loan structure being discussed.",
+      entities: { player: "Forward X", from: "Club A", to: "Club B", fee: "loan" },
+      evidence: [
+        { source: "NetThud Desk", title: "Agent talks opened; shortlist forming", url: siteUrl, publishedAt: minutesAgo(65) },
+      ],
+    },
+    {
+      confidence: "MED",
+      signal: "Club-to-club talks opened; valuation range narrowing.",
+      entities: { player: "Winger Z", from: "Club F", to: "Club G", fee: "" },
+      evidence: [
+        { source: "NetThud Desk", title: "Initial talks; fee framework discussed", url: siteUrl, publishedAt: minutesAgo(95) },
+      ],
+    },
+    {
+      confidence: "LOW",
+      signal: "Multiple clubs monitoring; no formal offer confirmed yet.",
+      entities: { player: "Striker Q", from: "Club H", to: "Club I", fee: "" },
+      evidence: [
+        { source: "NetThud Desk", title: "Links only; monitoring phase", url: siteUrl, publishedAt: minutesAgo(130) },
+      ],
+    },
+    {
+      confidence: "LOW",
+      signal: "Loan option explored; decision window ~72 hours mentioned.",
+      entities: { player: "Young Defender P", from: "Club J", to: "Club K", fee: "loan" },
+      evidence: [
+        { source: "NetThud Desk", title: "Loan discussed; timeline referenced", url: siteUrl, publishedAt: minutesAgo(160) },
+      ],
+    },
   ];
 
-  // Pick first N, but rotate by current minute so it “moves” each run
+  // Rotate so it “moves” each run
   const rot = new Date().getUTCMinutes() % pool.length;
   const rotated = pool.slice(rot).concat(pool.slice(0, rot));
 
   const take = rotated.slice(0, Math.max(2, Math.min(count, rotated.length)));
 
-  // Stagger timestamps so it looks like a feed
   return take.map((x, i) => ({
-    type: x.type,
-    title: x.title,
-    source: "NetThud Desk",
-    publishedAt: minutesAgo(30 + i * 25),
+    type: "signal",
+    confidence: pickTagFromConfidence(x.confidence),
+    signal: x.signal,
+    entities: x.entities,
+    evidence: Array.isArray(x.evidence) ? x.evidence : [],
+    publishedAt: minutesAgo(25 + i * 18),
     url: siteUrl || "https://netthud.com/",
   }));
 }
 
 async function main() {
-  const mode = env("NETTHUD_TRANSFERS_MODE", "demo").toLowerCase();
+  const mode = env("NETTHUD_TRANSFERS_MODE", "signals-demo").toLowerCase();
   const siteUrl = env("NETTHUD_SITE_URL", "https://netthud.com/");
   const itemsCount = clampInt(env("NETTHUD_TRANSFERS_ITEMS", "8"), 2, 20);
 
@@ -81,16 +120,12 @@ async function main() {
 
   let items = [];
 
-  if (mode === "demo") {
-    items = buildDemoItems(itemsCount, siteUrl);
+  if (mode === "signals-demo") {
+    items = buildSignalsDemoItems(itemsCount, siteUrl);
   } else {
-    // Future extension: fetch + parse a real source
-    // Example: const url = env("NETTHUD_TRANSFERS_URL");
-    // Throw for now so it’s explicit.
-    throw new Error(`Unsupported NETTHUD_TRANSFERS_MODE="${mode}". Use "demo" for now.`);
+    throw new Error(`Unsupported NETTHUD_TRANSFERS_MODE="${mode}". Use "signals-demo" for now.`);
   }
 
-  // Always write with a consistent top-level shape
   const payload = {
     generatedAt: isoNow(),
     mode,
