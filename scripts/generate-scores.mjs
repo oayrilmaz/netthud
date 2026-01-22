@@ -6,10 +6,9 @@
 //   NETTHUD_SCORES_API_PROVIDER=football-data
 //   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
 // Optional:
-//   NETTHUD_SCORES_FINAL_DAYS=3        (default 3)
-//   NETTHUD_SCORES_LIMIT=120          (default 120)
+//   NETTHUD_SCORES_FINAL_DAYS=3        (default 3, calendar days including today)
+//   NETTHUD_SCORES_LIMIT=120          (default 120; set 0 for "no limit")
 //   NETTHUD_SCORES_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL (optional allowlist)
-//     - If set, we only keep those competition codes (helps keep feed “big leagues only”)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -45,8 +44,9 @@ function utcMidnight(dateObj) {
 }
 
 function mapFootballDataStatus(status) {
+  const s = safeStr(status || "").toUpperCase();
   // normalize for your index.html logic
-  switch (status) {
+  switch (s) {
     case "FINISHED":
       return "FT";
     case "IN_PLAY":
@@ -54,7 +54,7 @@ function mapFootballDataStatus(status) {
     case "PAUSED":
       return "HT";
     default:
-      return safeStr(status || "");
+      return s;
   }
 }
 
@@ -65,7 +65,6 @@ function calcScore(fdMatch) {
 
   const homeFT = ft?.home;
   const awayFT = ft?.away;
-
   if (Number.isFinite(homeFT) && Number.isFinite(awayFT)) return `${homeFT}–${awayFT}`;
 
   const homeHT = ht?.home;
@@ -80,7 +79,7 @@ function leagueNameFromCompetition(comp) {
 }
 
 function competitionCode(comp) {
-  return safeStr(comp?.code || "");
+  return safeStr(comp?.code || "").toUpperCase();
 }
 
 function parseAllowlist() {
@@ -89,7 +88,7 @@ function parseAllowlist() {
   const set = new Set(
     raw
       .split(",")
-      .map((x) => x.trim())
+      .map((x) => x.trim().toUpperCase())
       .filter(Boolean)
   );
   return set.size ? set : null;
@@ -111,26 +110,24 @@ function clampInt(n, lo, hi) {
 }
 
 function computeMinuteFromKickoffUTC(kickoffUTC, statusNorm) {
-  // football-data doesn't reliably provide "minute", so we compute it from kickoff time.
-  // This stays legal (public timestamp) and robust.
   const kick = new Date(kickoffUTC);
   if (!kickoffUTC || Number.isNaN(kick.getTime())) return null;
 
   const now = new Date();
   const diffMin = Math.floor((now.getTime() - kick.getTime()) / 60000);
 
-  // Basic caps for sanity
   let m = clampInt(diffMin, 0, 130);
   if (m == null) return null;
 
-  // If HT, cap around 45 (still useful/clean UI)
-  if (String(statusNorm).toUpperCase() === "HT") {
+  const st = String(statusNorm || "").toUpperCase();
+
+  if (st === "HT") {
+    // cap around 45' for a clean UI
     if (m > 60) m = 45;
-    if (m < 35) m = 45; // many feeds mark HT slightly late/early; show 45'
+    if (m < 35) m = 45;
   }
 
-  // If LIVE but extremely small/negative due to schedule shifts, clean it
-  if (String(statusNorm).toUpperCase() === "LIVE" && m < 0) m = 0;
+  if (st === "LIVE" && m < 0) m = 0;
 
   return m;
 }
@@ -142,16 +139,27 @@ function youtubeHighlightsUrl(home, away) {
   return u.toString();
 }
 
+function stableMatchId(m) {
+  // Prefer football-data numeric id. Fallback to a deterministic composite.
+  const id = m?.id;
+  if (id != null && id !== "") return `fd:${id}`;
+  const code = competitionCode(m?.competition);
+  const utc = safeStr(m?.utcDate || "");
+  const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name || "");
+  const away = safeStr(m?.awayTeam?.shortName || m?.awayTeam?.name || "");
+  return `${code}|${utc}|${home}|${away}`.toLowerCase();
+}
+
 function mapMatch(m) {
   const league = leagueNameFromCompetition(m?.competition);
   const code = competitionCode(m?.competition);
+
   const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name);
   const away = safeStr(m?.awayTeam?.shortName || m?.awayTeam?.name);
 
   const score = calcScore(m);
   const status = mapFootballDataStatus(m?.status);
 
-  // Keep "when" as date for existing UI, but ALSO provide kickoffUTC for minute/highlights logic
   const kickoffUTC = safeStr(m?.utcDate || "");
   const when = kickoffUTC ? kickoffUTC.slice(0, 10) : "";
 
@@ -160,24 +168,33 @@ function mapMatch(m) {
       ? computeMinuteFromKickoffUTC(kickoffUTC, status)
       : null;
 
+  // highlight link only for FT; for LIVE/HT your index.html already falls back to YT search
   const highlightsUrl = status === "FT" ? youtubeHighlightsUrl(home, away) : "";
 
-  // Optional: you can wire a match detail url later if you have a route; keep empty for now
   const url = "";
 
   return {
+    id: stableMatchId(m),
     league,
     code,
     home,
     away,
     score,
-    status,       // LIVE / HT / FT
-    when,         // YYYY-MM-DD
-    kickoffUTC,   // full timestamp ISO
-    minute,       // integer (or null)
+    status,     // LIVE / HT / FT (plus any other passthroughs)
+    when,       // YYYY-MM-DD
+    kickoffUTC, // ISO timestamp
+    minute,     // integer (or null)
     highlightsUrl,
-    url
+    url,
   };
+}
+
+function parseLimit() {
+  const raw = env("NETTHUD_SCORES_LIMIT", "120");
+  const n = Number(raw);
+  if (Number.isFinite(n) && n === 0) return Infinity;
+  const v = Number.isFinite(n) ? n : 120;
+  return Math.max(20, Math.min(500, v));
 }
 
 async function fetchFootballDataScores() {
@@ -185,31 +202,29 @@ async function fetchFootballDataScores() {
   if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
 
   const allow = parseAllowlist();
-  const limit = Math.max(20, Math.min(400, Number(env("NETTHUD_SCORES_LIMIT", "120")) || 120));
+  const limit = parseLimit();
   const finalDays = Math.max(1, Math.min(14, Number(env("NETTHUD_SCORES_FINAL_DAYS", "3")) || 3));
 
-  // ✅ 1) LIVE matches (IN_PLAY + PAUSED) fetched directly via status filter
-  const liveJson1 = await fetchFootballData(
-    "https://api.football-data.org/v4/matches?status=IN_PLAY",
-    token
-  );
-  const liveJson2 = await fetchFootballData(
-    "https://api.football-data.org/v4/matches?status=PAUSED",
-    token
-  );
+  // 1) LIVE/HT via status
+  const [liveJson1, liveJson2] = await Promise.all([
+    fetchFootballData("https://api.football-data.org/v4/matches?status=IN_PLAY", token),
+    fetchFootballData("https://api.football-data.org/v4/matches?status=PAUSED", token),
+  ]);
 
   const liveMatches = [
     ...(Array.isArray(liveJson1?.matches) ? liveJson1.matches : []),
     ...(Array.isArray(liveJson2?.matches) ? liveJson2.matches : []),
   ];
 
-  // ✅ 2) Recent FINISHED matches (last N days) for "Final scores"
+  // 2) FINISHED for last N calendar days including today
   const now = new Date();
   const today = utcMidnight(now);
-  const fromD = new Date(today);
-  fromD.setUTCDate(today.getUTCDate() - finalDays);
 
-  // +1 day safety so today’s finished games are not missed
+  // If finalDays=3, we want: today, yesterday, day-2
+  const fromD = new Date(today);
+  fromD.setUTCDate(today.getUTCDate() - (finalDays - 1));
+
+  // +1 day safety so today’s late finished games aren’t missed
   const toPlusOne = new Date(today);
   toPlusOne.setUTCDate(today.getUTCDate() + 1);
 
@@ -222,47 +237,68 @@ async function fetchFootballDataScores() {
   );
 
   const finishedMatches = (Array.isArray(finishedJson?.matches) ? finishedJson.matches : []).filter(
-    (m) => safeStr(m?.status) === "FINISHED"
+    (m) => safeStr(m?.status).toUpperCase() === "FINISHED"
   );
 
-  // Map + merge
+  // Map
   const mapped = [...liveMatches, ...finishedMatches].map(mapMatch);
 
-  // Optional allowlist filter
-  const filtered = allow
-    ? mapped.filter((x) => !x.code || allow.has(x.code))
-    : mapped;
+  // Allowlist filter
+  const filtered = allow ? mapped.filter((x) => !x.code || allow.has(x.code)) : mapped;
 
-  // Deduplicate (same match can appear twice across queries)
-  const seen = new Set();
-  const unique = [];
+  // Deduplicate by stable id; keep the “best” version if duplicates exist
+  // Priority: LIVE/HT over FT; more recent kickoff over older; non-empty score over empty
+  const rank = (s) => (s === "LIVE" ? 0 : s === "HT" ? 1 : s === "FT" ? 2 : 3);
+
+  const byId = new Map();
   for (const it of filtered) {
-    const k = [
-      it.code,
-      it.home,
-      it.away,
-      it.kickoffUTC || it.when,
-      it.status,
-      it.score
-    ].join("|");
-    if (seen.has(k)) continue;
-    seen.add(k);
-    unique.push(it);
+    const prev = byId.get(it.id);
+    if (!prev) {
+      byId.set(it.id, it);
+      continue;
+    }
+
+    const a = prev;
+    const b = it;
+
+    const ra = rank(a.status);
+    const rb = rank(b.status);
+
+    if (rb < ra) {
+      byId.set(it.id, it);
+      continue;
+    }
+    if (rb > ra) continue;
+
+    // same rank: prefer newer kickoffUTC
+    const ak = safeStr(a.kickoffUTC || "");
+    const bk = safeStr(b.kickoffUTC || "");
+    if (bk > ak) {
+      byId.set(it.id, it);
+      continue;
+    }
+
+    // prefer non-empty score
+    if (!a.score && b.score) byId.set(it.id, it);
   }
 
-  // Sort: LIVE first, then HT, then FT (most recent kickoff first)
-  const rank = (s) => (s === "LIVE" ? 0 : s === "HT" ? 1 : 2);
+  const unique = Array.from(byId.values());
+
+  // Sort: LIVE, HT, FT; then most recent kickoff first
   unique.sort((a, b) => {
     const r = rank(a.status) - rank(b.status);
     if (r !== 0) return r;
     return safeStr(b.kickoffUTC || b.when).localeCompare(safeStr(a.kickoffUTC || a.when));
   });
 
-  // Trim & remove internal "code" before writing
-  const items = unique.slice(0, limit).map(({ code, ...rest }) => rest);
+  const trimmed = Number.isFinite(limit) ? unique.slice(0, limit) : unique;
+
+  // Remove internal "code" before writing (keep output compatible with your index.html)
+  const items = trimmed.map(({ code, ...rest }) => rest);
 
   return {
     updated: isoNow(),
+    generatedAt: isoNow(),
     items,
   };
 }
