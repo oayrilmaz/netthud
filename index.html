@@ -27,7 +27,7 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       background:var(--bg);
       color:var(--text);
-      overflow:hidden; /* page itself doesn't scroll; main scrolls */
+      overflow:hidden;
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--container);margin:0 auto;padding:24px}
@@ -38,32 +38,32 @@
       background:#0f1218;
       position:sticky;top:0;z-index:30;
     }
-    .nav{display:flex;justify-content:space-between;align-items:center;height:var(--headerH);gap:12px}
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;
+      height:var(--headerH);gap:12px
+    }
     .brandWrap{display:flex;flex-direction:column;gap:2px}
     .brand{
-      font-weight:950;
-      letter-spacing:.06em;
-      font-size:15px;
-      display:flex;align-items:center;gap:10px;
-      text-transform:uppercase;
+      font-weight:950;letter-spacing:.06em;font-size:15px;
+      display:flex;align-items:center;gap:10px;text-transform:uppercase;
     }
     .brandMark{
       width:10px;height:10px;border-radius:999px;
       background:var(--accent);
       box-shadow:0 0 18px rgba(120,255,106,.35);
-      flex:0 0 auto;
     }
     .subtitle{font-size:12px;color:var(--muted)}
     .right{display:flex;align-items:center;gap:10px}
     .pill{
       display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border-radius:999px;border:1px solid var(--border);
-      background:#0f131b;font-size:12px;color:var(--muted);cursor:pointer
+      padding:8px 12px;border-radius:999px;
+      border:1px solid var(--border);
+      background:#0f131b;font-size:12px;color:var(--muted);
+      cursor:pointer
     }
-    .pill a{cursor:pointer}
-    .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 12px rgba(120,255,106,.35)}
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--accent)}
 
-    /* Main scroll area */
+    /* Main */
     main{
       height:calc(100vh - var(--headerH));
       overflow:auto;
@@ -71,171 +71,91 @@
     }
 
     h1{font-size:42px;margin:0 0 12px}
-    p.lead{color:var(--muted);max-width:70ch;line-height:1.7;margin:0 0 14px}
+    p.lead{color:var(--muted);max-width:70ch;line-height:1.7}
 
-    /* Sticky Tabs row (always available) */
+    .disclaimer{
+      margin-top:12px;font-size:12px;color:var(--muted);
+      line-height:1.5;border:1px solid var(--border);
+      background:#0f1218;padding:10px 12px;border-radius:12px;
+    }
+
+    /* Tabs */
     .tabsBar{
-      position:sticky;
-      top:var(--headerH);
+      position:sticky;top:var(--headerH);
       z-index:25;
-      background:linear-gradient(to bottom, rgba(11,13,16,.96), rgba(11,13,16,.70));
-      backdrop-filter: blur(6px);
+      background:rgba(11,13,16,.92);
       border-bottom:1px solid var(--border);
-      margin-top:14px;
       padding:12px 0;
     }
     .tabsRow{
       display:flex;gap:10px;flex-wrap:wrap;
-      padding:0 24px;
-      max-width:var(--container);
-      margin:0 auto;
+      padding:0 24px;max-width:var(--container);margin:0 auto;
     }
     .tabBtn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 14px;border-radius:12px;border:1px solid var(--border);
+      padding:10px 14px;border-radius:12px;
+      border:1px solid var(--border);
       background:#0f131b;font-weight:900;font-size:13px;
-      cursor:pointer;user-select:none;
-      color:var(--text);
-    }
-    .tabBtn.primary{
-      border-color:rgba(120,255,106,.25);
-      box-shadow:0 0 0 1px rgba(120,255,106,.08) inset;
+      cursor:pointer;
     }
     .tabBtn.active{
       border-color:rgba(120,255,106,.55);
-      box-shadow:0 0 0 1px rgba(120,255,106,.14) inset, 0 0 18px rgba(120,255,106,.08);
-    }
-    .tabBtn:active{transform:translateY(1px)}
-
-    .disclaimer{
-      margin-top:12px;
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.5;
-      border:1px solid var(--border);
-      background:#0f1218;
-      padding:10px 12px;
-      border-radius:12px;
+      box-shadow:0 0 12px rgba(120,255,106,.15);
     }
 
-    /* One-column content */
+    /* Sections */
     .stack{
-      display:grid;
-      gap:18px;
+      display:grid;gap:18px;
       padding:18px 24px 0;
-      max-width:var(--container);
-      margin:0 auto;
+      max-width:var(--container);margin:0 auto;
     }
-
-    section{margin:0}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;min-height:0}
-
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:14px;
+    }
     .boxHead{
-      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      display:flex;justify-content:space-between;align-items:center;
       padding:10px 12px;border-radius:12px;
       border:1px solid var(--border);
-      background:#0f1218;
-      margin-bottom:12px;
+      background:#0f1218;margin-bottom:12px;
     }
     .boxHead .title{
-      font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0;font-weight:900
+      font-size:12px;letter-spacing:.14em;
+      text-transform:uppercase;font-weight:900
     }
-    .boxHead .hint{font-size:12px;color:var(--muted);white-space:nowrap}
+    .boxHead .hint{font-size:12px;color:var(--muted)}
 
-    /* Lists scroll inside card */
     .list{
       display:grid;gap:12px;
-      overflow:auto;
-      max-height:min(62vh, 560px);
-      padding-right:6px;
+      max-height:min(62vh,560px);
+      overflow:auto;padding-right:6px;
     }
 
     .item{
-      display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
-      padding:14px 14px;border-radius:12px;background:#0f131b;border:1px solid var(--border)
+      display:flex;justify-content:space-between;gap:16px;
+      padding:14px;border-radius:12px;
+      background:#0f131b;border:1px solid var(--border)
     }
-    .item strong{font-size:15px;display:block}
-    .item p{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.35}
-    .tag{font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;border:1px solid rgba(120,255,106,.3);color:var(--accent);white-space:nowrap}
-    .tag.warn{border-color:rgba(255,209,102,.35);color:var(--warn)}
-    .tag.live{border-color:rgba(120,255,106,.55);box-shadow:0 0 0 1px rgba(120,255,106,.12) inset}
-    .tag.signal{border-color:rgba(120,255,106,.25);color:var(--text);background:rgba(120,255,106,.06)}
-    .tag.conf{border-color:rgba(255,255,255,.12);color:var(--muted);background:rgba(255,255,255,.04)}
-
-    .chips{display:flex;flex-wrap:wrap;gap:10px;overflow:auto;max-height:220px;padding-right:6px}
-    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#0f131b;font-size:13px;color:var(--text)}
-    .chip .dot{width:10px;height:10px}
-
-    .rowActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .mini{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 10px;border-radius:999px;
-      border:1px solid var(--border);
-      background:#0b0f16;
-      font-size:12px;font-weight:900;color:var(--text);
-      cursor:pointer;user-select:none;
+    .item strong{font-size:15px}
+    .item p{margin:6px 0 0;font-size:13px;color:var(--muted)}
+    .tag{
+      font-size:11px;font-weight:900;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(120,255,106,.3);
+      color:var(--accent);
+      white-space:nowrap
     }
-    .mini.secondary{color:var(--muted)}
-    .mini:active{transform:translateY(1px)}
 
-    footer{border-top:1px solid var(--border);padding:14px 0;font-size:12px;color:var(--muted);text-align:center}
+    footer{
+      border-top:1px solid var(--border);
+      padding:14px 0;
+      font-size:12px;color:var(--muted);
+      text-align:center
+    }
 
-    /* Tabs content visibility */
     .tabSection{display:none}
     .tabSection.active{display:block}
-
-    /* Modal */
-    .modalOverlay{
-      position:fixed;inset:0;
-      background:rgba(0,0,0,.68);
-      display:none;z-index:60;
-      padding:18px;
-    }
-    .modalOverlay.open{display:flex;align-items:flex-start;justify-content:center}
-    .modal{
-      width:min(920px,100%);
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
-      overflow:hidden;
-    }
-    .modalHeader{
-      display:flex;justify-content:space-between;gap:12px;
-      padding:14px 16px;border-bottom:1px solid var(--border);
-      background:#0f1218;position:sticky;top:0;
-    }
-    .modalTitle{font-weight:900}
-    .modalMeta{font-size:12px;color:var(--muted);margin-top:4px}
-    .closeBtn{
-      padding:8px 12px;border-radius:12px;
-      border:1px solid var(--border);
-      background:#0f131b;font-weight:900;
-      cursor:pointer;color:var(--text)
-    }
-    .modalBody{padding:16px}
-    .modalActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .modalContent{
-      margin-top:14px;line-height:1.7;color:var(--text);
-      font-size:14px;white-space:pre-wrap;
-    }
-    .subBox{
-      border:1px solid var(--border);
-      background:#0f131b;
-      border-radius:14px;
-      padding:12px;
-      margin-top:12px;
-    }
-    .subBoxTitle{
-      font-weight:900;
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 8px;
-    }
-    .kv{display:grid;grid-template-columns:140px 1fr;gap:8px 12px;font-size:13px}
-    .kv div{color:var(--muted)}
-    .kv strong{color:var(--text);font-weight:900}
   </style>
 </head>
 
@@ -248,8 +168,8 @@
       <div class="subtitle">Goal Intelligence</div>
     </div>
     <div class="right">
-      <div class="pill" id="soundPill"><span class="dot"></span>Sound: <strong id="soundState">ON</strong></div>
-      <a class="pill" href="https://x.com/netthudpro" target="_blank" rel="noopener">@netthudpro</a>
+      <div class="pill"><span class="dot"></span>Sound: ON</div>
+      <a class="pill" href="https://x.com/netthudpro" target="_blank">@netthudpro</a>
     </div>
   </div>
 </header>
@@ -260,30 +180,28 @@
     <section>
       <h1>At the moment it matters.</h1>
       <p class="lead">
-        Net Thud focuses on decisive outcomes and match context — with a clean pipeline.
-        Scores & schedules are data-driven. Signals come next.
+        Net Thud focuses on decisive outcomes and match context.
+        Scores, upcoming fixtures + TV, transfers and AI-driven signals.
       </p>
 
-      <div class="disclaimer" role="note">
-        <strong>Note:</strong> NetThud uses automated pipelines (including AI) to summarize public data.
-        Items may be incomplete, delayed, or incorrect. Always verify with primary sources before acting.
+      <div class="disclaimer">
+        <strong>Note:</strong> NetThud uses automated pipelines (including AI).
+        Data may be delayed or incomplete. Always verify with official sources.
       </div>
     </section>
   </div>
 
-  <!-- Sticky tabs (always clickable) -->
-  <div class="tabsBar" role="navigation" aria-label="Sections">
-    <div class="tabsRow" id="tabsRow">
-      <div class="tabBtn primary active" data-tab="liveScores" id="tab_liveScores">Live scores</div>
-      <div class="tabBtn" data-tab="upcoming" id="tab_upcoming">Upcoming + TV</div>
-      <div class="tabBtn" data-tab="finalScores" id="tab_finalScores">Final scores</div>
-      <div class="tabBtn" data-tab="transferSignals" id="tab_transferSignals">Transfer signals</div>
-      <div class="tabBtn" data-tab="aiNews" id="tab_aiNews">AI news</div>
-      <div class="tabBtn" data-tab="leagues" id="tab_leagues">Leagues</div>
+  <div class="tabsBar">
+    <div class="tabsRow">
+      <div class="tabBtn active" data-tab="liveScores">Live scores</div>
+      <div class="tabBtn" data-tab="upcoming">Upcoming + TV</div>
+      <div class="tabBtn" data-tab="finalScores">Final scores</div>
+      <div class="tabBtn" data-tab="transferSignals">Transfer signals</div>
+      <div class="tabBtn" data-tab="aiNews">AI news</div>
+      <div class="tabBtn" data-tab="leagues">Leagues</div>
     </div>
   </div>
 
-  <!-- One column content -->
   <div class="stack">
 
     <section id="liveScores" class="tabSection active">
@@ -342,7 +260,7 @@
           <div class="title">Leagues</div>
           <div class="hint" id="leaguesMeta">Loading…</div>
         </div>
-        <div id="leagueChips" class="chips"></div>
+        <div id="leagueChips"></div>
       </div>
     </section>
 
@@ -354,28 +272,34 @@
 
 </main>
 
-<!-- Modal -->
-<div class="modalOverlay" id="modalOverlay" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modalHeader">
+<!-- ===== END OF PART 1 / 3 ===== -->
+<!-- =========================
+     INDEX.HTML — PART 2 / 3
+     Append this directly after PART 1
+========================= -->
+
+<!-- Modal (kept here so JS in Part 3 can bind to it reliably) -->
+<div class="modalOverlay" id="modalOverlay" aria-hidden="true" style="position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;z-index:60;padding:18px;">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="width:min(920px,100%);background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;">
+    <div class="modalHeader" style="display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);background:#0f1218;position:sticky;top:0;">
       <div>
-        <div class="modalTitle" id="modalTitle">Details</div>
-        <div class="modalMeta" id="modalMeta"></div>
+        <div class="modalTitle" id="modalTitle" style="font-weight:900">Details</div>
+        <div class="modalMeta" id="modalMeta" style="font-size:12px;color:var(--muted);margin-top:4px"></div>
       </div>
-      <button class="closeBtn" id="modalClose">Close</button>
+      <button class="closeBtn" id="modalClose" style="padding:8px 12px;border-radius:12px;border:1px solid var(--border);background:#0f131b;font-weight:900;cursor:pointer;color:var(--text)">Close</button>
     </div>
-    <div class="modalBody">
-      <div class="modalActions" id="modalActions"></div>
-      <div class="modalContent" id="modalContent"></div>
+    <div class="modalBody" style="padding:16px">
+      <div class="modalActions" id="modalActions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"></div>
+      <div class="modalContent" id="modalContent" style="margin-top:14px;line-height:1.7;color:var(--text);font-size:14px;white-space:pre-wrap"></div>
 
-      <div class="subBox" id="modalKVBox" style="display:none">
-        <div class="subBoxTitle">Snapshot</div>
-        <div class="kv" id="modalKV"></div>
+      <div class="subBox" id="modalKVBox" style="display:none;border:1px solid var(--border);background:#0f131b;border-radius:14px;padding:12px;margin-top:12px;">
+        <div class="subBoxTitle" style="font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Snapshot</div>
+        <div class="kv" id="modalKV" style="display:grid;grid-template-columns:140px 1fr;gap:8px 12px;font-size:13px"></div>
       </div>
 
-      <div class="subBox" id="modalLegalBox">
-        <div class="subBoxTitle">Disclosure</div>
-        <div class="modalContent" style="margin-top:0;color:var(--muted)">
+      <div class="subBox" id="modalLegalBox" style="border:1px solid var(--border);background:#0f131b;border-radius:14px;padding:12px;margin-top:12px;">
+        <div class="subBoxTitle" style="font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Disclosure</div>
+        <div class="modalContent" style="margin-top:0;color:var(--muted);white-space:pre-wrap">
           This view is generated automatically and may contain errors. It is not official match or transfer confirmation.
           Verify with primary sources (club statements, league data, official competition feeds).
         </div>
@@ -384,16 +308,25 @@
   </div>
 </div>
 
-<!-- ===== END PART 1. APPEND PART 2 BELOW THIS LINE ===== -->
 <script>
+  /* ---------------------------
+     PATHS
+  --------------------------- */
   const PATHS = {
     scores:   "/assets/data/scores.json",
     upcoming: "/assets/data/upcoming.json",
     transfers:"/assets/data/transfers.json",
     news:     "/assets/data/ai-news.json",
-    leagues:  "/assets/data/leagues.json"
+    leagues:  "/assets/data/leagues.json",
+
+    // NEW: optional TV directory you can generate later (recommended)
+    // Shape: { updated:"...", items:[ { matchId:123, tv:["Paramount+","CBS Sports Network"] } ] }
+    tv:       "/assets/data/tv.json"
   };
 
+  /* ---------------------------
+     Small helpers
+  --------------------------- */
   const $ = (id) => document.getElementById(id);
   function safeEl(id){ return document.getElementById(id); }
   function safeSetText(id, text){ const el = safeEl(id); if (el) el.textContent = text; }
@@ -409,6 +342,7 @@
       .replaceAll('"',"&quot;");
   }
 
+  // Cache-bust hard so GitHub Pages updates show quickly
   async function readJson(url) {
     const u = new URL(url, window.location.origin);
     u.searchParams.set("v", Date.now());
@@ -478,7 +412,9 @@
     container.appendChild(rowBasic(title, meta, "EMPTY", "warn"));
   }
 
-  /* Highlights helpers */
+  /* ---------------------------
+     Highlights helpers
+  --------------------------- */
   function ytHighlightsUrl(home, away){
     const q = encodeURIComponent(`${home} vs ${away} highlights`);
     return `https://www.youtube.com/results?search_query=${q}`;
@@ -489,6 +425,9 @@
     window.open(url, "_blank", "noopener");
   }
 
+  /* ---------------------------
+     Clickable row w/ actions
+  --------------------------- */
   function rowClickable({ title, meta, tagText, tagClass="", hash, onOpenDetails, extraButtons=[] }) {
     const wrap = document.createElement("div");
     wrap.className = "item";
@@ -531,7 +470,9 @@
     return wrap;
   }
 
-  /* Modal */
+  /* ---------------------------
+     Modal
+  --------------------------- */
   function openModal(payload){
     const overlay = $("modalOverlay");
     const titleEl = $("modalTitle");
@@ -552,9 +493,12 @@
       kv.innerHTML = "";
       Object.entries(payload.kv).forEach(([k,v])=>{
         const kEl = document.createElement("div");
+        kEl.style.color = "var(--muted)";
         kEl.textContent = k;
+
         const vEl = document.createElement("div");
-        vEl.innerHTML = "<strong>" + esc(String(v ?? "")) + "</strong>";
+        vEl.innerHTML = "<strong style='color:var(--text)'>" + esc(String(v ?? "")) + "</strong>";
+
         kv.appendChild(kEl);
         kv.appendChild(vEl);
       });
@@ -576,12 +520,14 @@
       close();
     }, true));
 
+    overlay.style.display = "flex";
     overlay.classList.add("open");
     overlay.setAttribute("aria-hidden","false");
 
     function close(){
       overlay.classList.remove("open");
       overlay.setAttribute("aria-hidden","true");
+      overlay.style.display = "none";
       window.removeEventListener("keydown", onKey);
       overlay.removeEventListener("click", onBg);
       closeBtn.removeEventListener("click", close);
@@ -616,14 +562,12 @@
     lines.push("");
     lines.push("What to watch");
     if (kind === "upcoming") {
-      lines.push("- Likely tactical focus: early tempo control, set-piece efficiency, transition defense.");
-      lines.push("- Check official lineups 60 minutes before kickoff.");
+      lines.push("- Check official lineups ~60 minutes before kickoff.");
+      lines.push("- Confirm broadcast locally (it can vary by country/provider).");
     } else if (kind === "live") {
-      lines.push("- Live state can lag: confirm time, red cards, and xG from primary feeds.");
-      lines.push("- Momentum: watch next 10 minutes after a goal / halftime.");
+      lines.push("- Live state can lag: confirm time, cards, xG via primary feeds.");
     } else {
-      lines.push("- Review key turning points: first goal timing, cards, substitutions, set pieces.");
-      lines.push("- Watch for fixture congestion and minutes management.");
+      lines.push("- Review key turning points: first goal timing, cards, substitutions.");
     }
     lines.push("");
     lines.push("Disclaimer");
@@ -657,117 +601,77 @@
     lines.push(`- Stage: ${stage}`);
     lines.push(`- Confidence: ${conf}`);
     lines.push("");
-    lines.push("How this confidence is interpreted");
-    lines.push("- ADV: multiple compatible signals (fee terms, medical window, club need fit)");
-    lines.push("- CONTACT: agent/club contact + credible reporting indicators");
-    lines.push("- WATCH: weak/early indicators (monitor only)");
-    lines.push("");
     lines.push("Disclaimer");
     lines.push("Signals are probabilistic, AI-generated, and not confirmation of a transfer.");
 
     const meta = [source, publishedAt].filter(Boolean).join(" • ");
-
     const kv = { Stage: stage, Confidence: conf, Source: source, Time: publishedAt || "—" };
     return { title, meta, article: lines.join("\n"), kv };
   }
 
-  /* Hash routing for modal + tabs */
+  /* ---------------------------
+     TV MAPPING (Upcoming + TV fix)
+     Goal:
+      - Show local channels if g.tv exists
+      - If g.tv empty, try tv.json keyed by matchId
+      - If still empty: show “TV: TBA”
+  --------------------------- */
+  function normalizeTvList(tv){
+    if (!tv) return [];
+    if (Array.isArray(tv)) return tv.map(x=>String(x||"").trim()).filter(Boolean);
+    if (typeof tv === "string") return tv.split(",").map(x=>x.trim()).filter(Boolean);
+    return [];
+  }
+
+  function buildTvIndex(tvPayload){
+    // tvPayload shape: { items:[ { matchId, tv:[...] } ] } OR { [matchId]: [...] }
+    const idx = new Map();
+    if (!tvPayload) return idx;
+
+    if (Array.isArray(tvPayload.items)) {
+      for (const it of tvPayload.items) {
+        const id = it && (it.matchId ?? it.id);
+        if (id == null) continue;
+        const list = normalizeTvList(it.tv);
+        if (list.length) idx.set(String(id), list);
+      }
+      return idx;
+    }
+
+    if (typeof tvPayload === "object") {
+      for (const [k,v] of Object.entries(tvPayload)) {
+        const list = normalizeTvList(v);
+        if (list.length) idx.set(String(k), list);
+      }
+    }
+    return idx;
+  }
+
+  function tvLineForMatch(match, tvIndex){
+    const direct = normalizeTvList(match.tv);
+    if (direct.length) return direct;
+
+    const id = match.matchId ?? match.id;
+    if (id != null) {
+      const hit = tvIndex.get(String(id));
+      if (hit && hit.length) return hit;
+    }
+    return [];
+  }
+
+  /* ---------------------------
+     Index arrays (used for modal routing in Part 3)
+  --------------------------- */
   let LIVE_INDEX = [];
   let FINAL_INDEX = [];
   let UPCOMING_INDEX = [];
   let SIGNALS_INDEX = [];
   let NEWS_INDEX = [];
 
-  function slugify(s){
-    return String(s||"")
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g,"")
-      .replace(/\s+/g,"-")
-      .replace(/-+/g,"-")
-      .slice(0,60) || ("id-"+Math.random().toString(16).slice(2));
-  }
-
-  function tryOpenFromHash(){
-    const h = window.location.hash || "";
-
-    if (h.startsWith("#t=")){
-      const tabId = decodeURIComponent(h.slice(3));
-      if (tabId) showTab(tabId, { push:false });
-      return;
-    }
-
-    if (h.startsWith("#news=")){
-      const slug = decodeURIComponent(h.slice("#news=".length));
-      const found = NEWS_INDEX.find(x => x.slug === slug);
-      if (!found) return;
-      const u = shareUrl("news=" + found.slug);
-      openModal({
-        title: found.title,
-        meta: found.meta,
-        article: found.article,
-        shareUrl: u,
-        shareText: found.title + " — NetThud AI"
-      });
-      return;
-    }
-
-    if (!h.startsWith("#d=")) return;
-    const key = decodeURIComponent(h.slice("#d=".length));
-    const [kind, idxStr] = key.split("-");
-    const idx = Number(idxStr);
-    if (!Number.isFinite(idx) || idx < 0) return;
-
-    let payload = null;
-    if (kind === "live" && LIVE_INDEX[idx]) payload = buildMatchDetails({ kind:"live", item: LIVE_INDEX[idx] });
-    if (kind === "final" && FINAL_INDEX[idx]) payload = buildMatchDetails({ kind:"final", item: FINAL_INDEX[idx] });
-    if (kind === "upcoming" && UPCOMING_INDEX[idx]) payload = buildMatchDetails({ kind:"upcoming", item: UPCOMING_INDEX[idx] });
-    if (kind === "signal" && SIGNALS_INDEX[idx]) payload = buildSignalDetails({ item: SIGNALS_INDEX[idx] });
-
-    if (!payload) return;
-
-    const u = shareUrl("d=" + kind + "-" + idx);
-    openModal({
-      title: payload.title,
-      meta: payload.meta,
-      article: payload.article,
-      kv: payload.kv,
-      highlightsUrl: payload.highlightsUrl,
-      shareUrl: u,
-      shareText: payload.title + " — NetThud"
-    });
-  }
-
-  /* Tabs logic */
-  function showTab(tabId, { push=true } = {}){
-    document.querySelectorAll(".tabSection").forEach(s => s.classList.remove("active"));
-    const target = document.getElementById(tabId);
-    if (target) target.classList.add("active");
-
-    document.querySelectorAll(".tabBtn").forEach(b => b.classList.remove("active"));
-    const btn = document.querySelector(`.tabBtn[data-tab="${CSS.escape(tabId)}"]`);
-    if (btn) btn.classList.add("active");
-
-    const main = document.querySelector("main");
-    if (main) main.scrollTo({ top: 0, behavior: "smooth" });
-
-    if (push){
-      history.replaceState(null, "", "#t=" + encodeURIComponent(tabId));
-    }
-  }
-
-  function wireTabs(){
-    const row = document.getElementById("tabsRow");
-    if (!row) return;
-    row.querySelectorAll(".tabBtn").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const tabId = btn.getAttribute("data-tab");
-        if (tabId) showTab(tabId, { push:true });
-      });
-    });
-  }
-
-  /* Loaders */
+  /* ---------------------------
+     Loaders (Scores + Upcoming only in Part 2)
+     - Transfers/News/Leagues + routing + tabs wiring in Part 3
+  --------------------------- */
   async function loadScores() {
     const finalList = $("scoresList");
     const liveList  = $("liveList");
@@ -782,6 +686,7 @@
       LIVE_INDEX = live;
       FINAL_INDEX = finals;
 
+      // IMPORTANT: your generator uses "updated"
       safeSetText("liveMeta",  `${live.length} • updated ${data.updated || data.generatedAt || "—"}`);
       safeSetText("scoresMeta",`${finals.length} • updated ${data.updated || data.generatedAt || "—"}`);
 
@@ -861,6 +766,16 @@
 
   async function loadUpcoming() {
     const list = $("upcomingList");
+
+    // TV fallback index (tv.json)
+    let tvIndex = new Map();
+    try{
+      const tvPayload = await readJson(PATHS.tv);
+      tvIndex = buildTvIndex(tvPayload);
+    }catch{
+      tvIndex = new Map(); // ok if missing
+    }
+
     try {
       const data = await readJson(PATHS.upcoming);
       const items = Array.isArray(data.items) ? data.items : [];
@@ -872,9 +787,13 @@
       if (!items.length) return emptyState(list, "No upcoming games yet", "Populate /assets/data/upcoming.json");
 
       items.slice(0,60).forEach((g, i) => {
-        const channels = Array.isArray(g.tv) ? g.tv.join(", ") : "";
+        // ✅ TV line fix:
+        const tvList = tvLineForMatch(g, tvIndex);
+        const tvText = tvList.length ? ("TV: " + tvList.join(", ")) : "TV: TBA";
+
         const title = `${g.home} vs ${g.away}`;
-        const meta = `${g.league} • ${g.kickoffLocal || g.kickoffUTC || g.when || ""}${channels ? " • " + channels : ""}`;
+        const when = (g.kickoffLocal || g.kickoffUTC || g.when || "").trim();
+        const meta = `${g.league} • ${when}${tvText ? " • " + tvText : ""}`;
         const hash = `d=upcoming-${i}`;
 
         const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(g), true);
@@ -889,6 +808,11 @@
             extraButtons:[highlightsBtn],
             onOpenDetails: () => {
               const payload = buildMatchDetails({ kind:"upcoming", item: g });
+              // Include TV in modal snapshot
+              const tvForModal = tvList.length ? tvList.join(", ") : "TBA";
+              payload.kv = payload.kv || {};
+              payload.kv.TV = tvForModal;
+
               openModal({
                 ...payload,
                 shareUrl: shareUrl(hash),
@@ -898,6 +822,7 @@
           })
         );
       });
+
     } catch (e) {
       safeSetText("upcomingMeta","error");
       list.innerHTML = "";
@@ -906,7 +831,17 @@
     }
   }
 
-  /* Transfer Signals */
+  /* ===== END OF PART 2 / 3 ===== */
+</script>
+<!-- =========================
+     INDEX.HTML — PART 3 / 3
+     Append this directly after PART 2
+========================= -->
+
+<script>
+  /* ---------------------------
+     Transfer Signals (kept as-is but hardened)
+  --------------------------- */
   const DEFAULT_SIGNALS = [
     { stage:"advanced", title:"Midfielder: fee agreed in principle — medical pending", confidence:0.74, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
     { stage:"contact",  title:"Forward: agent contact reported — shortlist narrowing", confidence:0.52, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
@@ -923,6 +858,7 @@
     return (items || []).map(x => {
       if (!x || typeof x !== "object") return null;
 
+      // Native signal format
       if (x.title && (x.stage || x.confidence != null)) {
         return {
           title: String(x.title || ""),
@@ -933,6 +869,8 @@
           url: x.url || ""
         };
       }
+
+      // Alternate formats
       if (x.player || x.from || x.to) {
         const title =
           `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}` +
@@ -944,24 +882,29 @@
         const confidence = (stage === "advanced") ? 0.72 : (stage === "contact") ? 0.50 : 0.40;
 
         return {
-          title, stage, confidence,
+          title,
+          stage,
+          confidence,
           source: "NetThud Signals",
           publishedAt: x.publishedAt || "",
           url: x.url || ""
         };
       }
+
       if (x.title) {
         const st = String(x.type || x.status || "").toLowerCase();
         const stage = (st === "news") ? "advanced" : (st === "rumor") ? "contact" : "watch";
         const confidence = (stage === "advanced") ? 0.70 : (stage === "contact") ? 0.52 : 0.42;
         return {
           title: String(x.title || ""),
-          stage, confidence,
+          stage,
+          confidence,
           source: x.source || "NetThud Signals",
           publishedAt: x.publishedAt || "",
           url: x.url || ""
         };
       }
+
       return null;
     }).filter(Boolean);
   }
@@ -988,7 +931,7 @@
       const data = await readJson(PATHS.transfers);
       stamp = data.generatedAt || data.updated || data.updatedAt || "—";
       items = normalizeSignals(Array.isArray(data.items) ? data.items : []);
-    }catch{
+    }catch(e){
       items = [];
       stamp = "—";
     }
@@ -1059,7 +1002,19 @@
     });
   }
 
-  /* AI News */
+  /* ---------------------------
+     AI News
+  --------------------------- */
+  function slugify(s){
+    return String(s||"")
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g,"")
+      .replace(/\s+/g,"-")
+      .replace(/-+/g,"-")
+      .slice(0,60) || ("id-"+Math.random().toString(16).slice(2));
+  }
+
   function buildFallbackArticle(n){
     const title = n.title || "News";
     const summary = n.summary || "";
@@ -1101,7 +1056,6 @@
         const createdAt = n.createdAt || n.publishedAt || n.date || "";
         const metaLine = [source, createdAt ? String(createdAt).slice(0,19) : ""].filter(Boolean).join(" • ");
         const article = (n.article && String(n.article).trim().length > 60) ? String(n.article) : buildFallbackArticle({title, summary:n.summary});
-
         return { slug, title, meta: metaLine, summary: n.summary || n.short || "", article };
       });
 
@@ -1140,6 +1094,9 @@
     }
   }
 
+  /* ---------------------------
+     Leagues
+  --------------------------- */
   async function loadLeagues() {
     const container = $("leagueChips");
     try {
@@ -1184,7 +1141,100 @@
     }
   }
 
-  /* Sound toggle */
+  /* ---------------------------
+     Hash routing
+       #t=tabId
+       #news=slug
+       #d=kind-index  (live/final/upcoming/signal)
+  --------------------------- */
+  function tryOpenFromHash(){
+    const h = window.location.hash || "";
+
+    // Tabs
+    if (h.startsWith("#t=")){
+      const tabId = decodeURIComponent(h.slice(3));
+      if (tabId) showTab(tabId, { push:false });
+      return;
+    }
+
+    // News modal
+    if (h.startsWith("#news=")){
+      const slug = decodeURIComponent(h.slice("#news=".length));
+      const found = NEWS_INDEX.find(x => x.slug === slug);
+      if (!found) return;
+      const u = shareUrl("news=" + found.slug);
+      openModal({
+        title: found.title,
+        meta: found.meta,
+        article: found.article,
+        shareUrl: u,
+        shareText: found.title + " — NetThud AI"
+      });
+      return;
+    }
+
+    // Details modal
+    if (!h.startsWith("#d=")) return;
+    const key = decodeURIComponent(h.slice("#d=".length)); // live-3
+    const [kind, idxStr] = key.split("-");
+    const idx = Number(idxStr);
+    if (!Number.isFinite(idx) || idx < 0) return;
+
+    let payload = null;
+
+    if (kind === "live" && LIVE_INDEX[idx]) payload = buildMatchDetails({ kind:"live", item: LIVE_INDEX[idx] });
+    if (kind === "final" && FINAL_INDEX[idx]) payload = buildMatchDetails({ kind:"final", item: FINAL_INDEX[idx] });
+    if (kind === "upcoming" && UPCOMING_INDEX[idx]) payload = buildMatchDetails({ kind:"upcoming", item: UPCOMING_INDEX[idx] });
+    if (kind === "signal" && SIGNALS_INDEX[idx]) payload = buildSignalDetails({ item: SIGNALS_INDEX[idx] });
+
+    if (!payload) return;
+
+    const u = shareUrl("d=" + kind + "-" + idx);
+    openModal({
+      title: payload.title,
+      meta: payload.meta,
+      article: payload.article,
+      kv: payload.kv,
+      highlightsUrl: payload.highlightsUrl,
+      shareUrl: u,
+      shareText: payload.title + " — NetThud"
+    });
+  }
+
+  /* ---------------------------
+     Tabs logic (no scrolling to anchors)
+  --------------------------- */
+  function showTab(tabId, { push=true } = {}){
+    document.querySelectorAll(".tabSection").forEach(s => s.classList.remove("active"));
+    const target = document.getElementById(tabId);
+    if (target) target.classList.add("active");
+
+    document.querySelectorAll(".tabBtn").forEach(b => b.classList.remove("active"));
+    const btn = document.querySelector(`.tabBtn[data-tab="${CSS.escape(tabId)}"]`);
+    if (btn) btn.classList.add("active");
+
+    const main = document.querySelector("main");
+    if (main) main.scrollTo({ top: 0, behavior: "smooth" });
+
+    if (push){
+      history.replaceState(null, "", "#t=" + encodeURIComponent(tabId));
+    }
+  }
+
+  function wireTabs(){
+    const row = document.getElementById("tabsRow");
+    if (!row) return;
+    row.querySelectorAll(".tabBtn").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const tabId = btn.getAttribute("data-tab");
+        if (tabId) showTab(tabId, { push:true });
+      });
+    });
+  }
+
+  /* ---------------------------
+     Sound toggle
+  --------------------------- */
   const SOUND_KEY = "netthud_sound";
   function setSoundUI(on){
     const st = $("soundState");
@@ -1203,6 +1253,9 @@
     }catch{}
   }
 
+  /* ---------------------------
+     Boot
+  --------------------------- */
   document.addEventListener("DOMContentLoaded", async () => {
     const yearEl = $("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -1220,12 +1273,14 @@
         });
       }
 
+      // Loaders
       await loadScores();
       await loadUpcoming();
       await loadTransferSignals();
       await loadNews();
       await loadLeagues();
 
+      // Default tab if none
       if (!window.location.hash || window.location.hash === "#"){
         showTab("liveScores", { push:false });
       } else {
