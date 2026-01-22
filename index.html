@@ -384,6 +384,7 @@
   </div>
 </div>
 
+<!-- ===== END PART 1. APPEND PART 2 BELOW THIS LINE ===== -->
 <script>
   const PATHS = {
     scores:   "/assets/data/scores.json",
@@ -509,7 +510,6 @@
       onOpenDetails();
     }));
 
-    // optional extra buttons like Highlights
     extraButtons.forEach(btn => actions.appendChild(btn));
 
     actions.appendChild(makeBtn("Share X", ()=>shareToX(title + " — NetThud", u)));
@@ -671,11 +671,7 @@
     return { title, meta, article: lines.join("\n"), kv };
   }
 
-  /* Hash routing for modal + tabs
-     - #d=...   details modal
-     - #news=... news modal
-     - #t=...   tab selection (no scrolling)
-  */
+  /* Hash routing for modal + tabs */
   let LIVE_INDEX = [];
   let FINAL_INDEX = [];
   let UPCOMING_INDEX = [];
@@ -695,14 +691,12 @@
   function tryOpenFromHash(){
     const h = window.location.hash || "";
 
-    // Tabs
     if (h.startsWith("#t=")){
       const tabId = decodeURIComponent(h.slice(3));
       if (tabId) showTab(tabId, { push:false });
       return;
     }
 
-    // News modal
     if (h.startsWith("#news=")){
       const slug = decodeURIComponent(h.slice("#news=".length));
       const found = NEWS_INDEX.find(x => x.slug === slug);
@@ -718,9 +712,8 @@
       return;
     }
 
-    // Details modal
     if (!h.startsWith("#d=")) return;
-    const key = decodeURIComponent(h.slice("#d=".length)); // live-3
+    const key = decodeURIComponent(h.slice("#d=".length));
     const [kind, idxStr] = key.split("-");
     const idx = Number(idxStr);
     if (!Number.isFinite(idx) || idx < 0) return;
@@ -745,23 +738,19 @@
     });
   }
 
-  /* Tabs logic (no anchor scrolling) */
+  /* Tabs logic */
   function showTab(tabId, { push=true } = {}){
-    const sections = document.querySelectorAll(".tabSection");
-    sections.forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".tabSection").forEach(s => s.classList.remove("active"));
     const target = document.getElementById(tabId);
     if (target) target.classList.add("active");
 
-    const btns = document.querySelectorAll(".tabBtn");
-    btns.forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tabBtn").forEach(b => b.classList.remove("active"));
     const btn = document.querySelector(`.tabBtn[data-tab="${CSS.escape(tabId)}"]`);
     if (btn) btn.classList.add("active");
 
-    // ensure content is at top of scroll area
     const main = document.querySelector("main");
     if (main) main.scrollTo({ top: 0, behavior: "smooth" });
 
-    // update hash without breaking #d / #news behavior
     if (push){
       history.replaceState(null, "", "#t=" + encodeURIComponent(tabId));
     }
@@ -793,8 +782,8 @@
       LIVE_INDEX = live;
       FINAL_INDEX = finals;
 
-      safeSetText("liveMeta",  `${live.length} • updated ${data.generatedAt || data.updated || "—"}`);
-      safeSetText("scoresMeta",`${finals.length} • updated ${data.generatedAt || data.updated || "—"}`);
+      safeSetText("liveMeta",  `${live.length} • updated ${data.updated || data.generatedAt || "—"}`);
+      safeSetText("scoresMeta",`${finals.length} • updated ${data.updated || data.generatedAt || "—"}`);
 
       liveList.innerHTML = "";
       if (!live.length) emptyState(liveList, "No live matches right now", "Live matches will appear here.");
@@ -944,7 +933,6 @@
           url: x.url || ""
         };
       }
-
       if (x.player || x.from || x.to) {
         const title =
           `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}` +
@@ -956,23 +944,19 @@
         const confidence = (stage === "advanced") ? 0.72 : (stage === "contact") ? 0.50 : 0.40;
 
         return {
-          title,
-          stage,
-          confidence,
+          title, stage, confidence,
           source: "NetThud Signals",
           publishedAt: x.publishedAt || "",
           url: x.url || ""
         };
       }
-
       if (x.title) {
         const st = String(x.type || x.status || "").toLowerCase();
         const stage = (st === "news") ? "advanced" : (st === "rumor") ? "contact" : "watch";
         const confidence = (stage === "advanced") ? 0.70 : (stage === "contact") ? 0.52 : 0.42;
         return {
           title: String(x.title || ""),
-          stage,
-          confidence,
+          stage, confidence,
           source: x.source || "NetThud Signals",
           publishedAt: x.publishedAt || "",
           url: x.url || ""
@@ -1004,7 +988,7 @@
       const data = await readJson(PATHS.transfers);
       stamp = data.generatedAt || data.updated || data.updatedAt || "—";
       items = normalizeSignals(Array.isArray(data.items) ? data.items : []);
-    }catch(e){
+    }catch{
       items = [];
       stamp = "—";
     }
@@ -1242,7 +1226,6 @@
       await loadNews();
       await loadLeagues();
 
-      // default tab if none: keep Live active
       if (!window.location.hash || window.location.hash === "#"){
         showTab("liveScores", { push:false });
       } else {
