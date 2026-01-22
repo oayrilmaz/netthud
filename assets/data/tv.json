@@ -1,62 +1,13 @@
 {
   "updated": "2026-01-22T21:00:00.000Z",
-  "default": "TBA",
-  "leagues": {
-    "PL": {
-      "name": "Premier League",
-      "tv": ["NBC", "USA Network", "Peacock"]
-    },
-    "PD": {
-      "name": "La Liga",
-      "tv": ["ESPN+", "ESPN Deportes"]
-    },
-    "SA": {
-      "name": "Serie A",
-      "tv": ["Paramount+", "CBS Sports"]
-    },
-    "BL1": {
-      "name": "Bundesliga",
-      "tv": ["ESPN+", "ESPN Deportes"]
-    },
-    "FL1": {
-      "name": "Ligue 1",
-      "tv": ["beIN SPORTS", "beIN SPORTS XTRA"]
-    },
-    "DED": {
-      "name": "Eredivisie",
-      "tv": ["ESPN+"]
-    },
-    "PPL": {
-      "name": "Primeira Liga",
-      "tv": ["GolTV"]
-    },
-    "CL": {
-      "name": "UEFA Champions League",
-      "tv": ["CBS", "CBS Sports Network", "Paramount+"]
-    },
-    "EL": {
-      "name": "UEFA Europa League",
-      "tv": ["CBS Sports Network", "Paramount+"]
-    },
-    "EC": {
-      "name": "UEFA Conference League",
-      "tv": ["Paramount+"]
-    },
-    "FAC": {
-      "name": "FA Cup",
-      "tv": ["ESPN+", "ESPN"]
-    },
-    "CDR": {
-      "name": "Copa del Rey",
-      "tv": ["ESPN+"]
-    },
-    "DFB": {
-      "name": "DFB Pokal",
-      "tv": ["ESPN+"]
-    },
-    "CIT": {
-      "name": "Coppa Italia",
-      "tv": ["Paramount+"]
-    }
-  }
+  "items": [
+    { "matchId": 542569, "tv": ["beIN Sports", "Fubo", "Fanatiz"] },
+    { "matchId": 540576, "tv": ["Sky Sport", "DAZN"] },
+    { "matchId": 537031, "tv": ["Paramount+", "CBS Sports Network"] },
+    { "matchId": 544416, "tv": ["ESPN+", "ESPN Deportes"] },
+    { "matchId": 545862, "tv": ["GolTV", "RTP (local)"] },
+    { "matchId": 538014, "tv": ["Peacock", "USA Network"] },
+    { "matchId": 538009, "tv": ["Peacock"] },
+    { "matchId": 538012, "tv": ["Peacock", "USA Network"] }
+  ]
 }
