@@ -1222,16 +1222,17 @@
   }
 
   function wireTabs(){
-    const row = document.getElementById("tabsRow");
-    if (!row) return;
-    row.querySelectorAll(".tabBtn").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const tabId = btn.getAttribute("data-tab");
-        if (tabId) showTab(tabId, { push:true });
-      });
-    });
-  }
+  const row = document.getElementById("tabsRow");
+  if (!row) return;
 
+  // One handler for all tabs (more robust than per-button listeners)
+  row.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tabBtn");
+    if (!btn) return;
+    const tabId = btn.getAttribute("data-tab");
+    if (tabId) showTab(tabId, { push: true });
+  });
+}
   /* ---------------------------
      Sound toggle
   --------------------------- */
