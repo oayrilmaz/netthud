@@ -19,25 +19,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      # ✅ Always sync first to avoid push/rebase conflicts
-      - name: Sync with latest main
-        shell: bash
-        run: |
-          set -e
-          git fetch origin main
-          git checkout main
-          git reset --hard origin/main
-
       # -----------------------------
-      # FINAL + LIVE SCORES
+      # SCORES (LIVE + FINAL)
       # -----------------------------
       - name: Generate scores.json
         env:
@@ -45,58 +34,49 @@ jobs:
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
           NETTHUD_SCORES_FINAL_DAYS: "3"
           NETTHUD_SCORES_LIMIT: "160"
-          # Optional allowlist:
-          # NETTHUD_SCORES_COMP_CODES: "PL,PD,SA,BL1,FL1,CL,EL"
         run: |
           node scripts/generate-scores.mjs
 
       # -----------------------------
-      # UPCOMING MATCHES (NEXT 7 DAYS)
+      # UPCOMING MATCHES
       # -----------------------------
-      - name: Generate upcoming.json (next 7 days)
+      - name: Generate upcoming.json
         env:
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
           NETTHUD_UPCOMING_DAYS: "7"
           NETTHUD_UPCOMING_LIMIT: "120"
-          # Optional override:
-          # NETTHUD_UPCOMING_COMP_CODES: "PL,PD,SA,BL1,FL1,CL,EL,EC"
         run: |
           node scripts/generate-upcoming.mjs
 
       # -----------------------------
-      # TRANSFER SIGNALS (LIVE via RSS + optional AI)
+      # TRANSFER SIGNALS
       # -----------------------------
-      - name: Generate transfers.json (live signals)
+      - name: Generate transfers.json
         env:
           NETTHUD_TRANSFERS_MODE: "live"
           NETTHUD_SITE_URL: "https://netthud.com/"
           NETTHUD_TRANSFERS_ITEMS: "120"
           NETTHUD_TRANSFERS_LOOKBACK_HOURS: "96"
           NETTHUD_TRANSFERS_RSS: ${{ secrets.NETTHUD_TRANSFERS_RSS }}
-
-          # Optional AI enrichment (only if your script actually uses it)
           NETTHUD_USE_OPENAI: "1"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           node scripts/generate-transfers.mjs
 
       # -----------------------------
-      # COMMIT IF DATA CHANGED
+      # COMMIT IF CHANGED
       # -----------------------------
       - name: Commit & push if changed
-        shell: bash
         run: |
-          set -e
-
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add assets/data/scores.json assets/data/upcoming.json assets/data/transfers.json
+          git add assets/data/*.json
 
           if git diff --cached --quiet; then
             echo "No changes detected."
             exit 0
           fi
 
-          git commit -m "Update scores, upcoming & transfer signals"
-          git push origin main
+          git commit -m "Update NetThud data feeds"
+          git push
