@@ -18,7 +18,6 @@
       --radius:16px;
       --container:1100px;
       --headerH:64px;
-      --tabsH:66px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -27,7 +26,7 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       background:var(--bg);
       color:var(--text);
-      overflow:hidden;
+      overflow:hidden; /* page itself doesn't scroll; main scrolls */
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--container);margin:0 auto;padding:24px}
@@ -61,7 +60,8 @@
       background:#0f131b;font-size:12px;color:var(--muted);
       cursor:pointer
     }
-    .dot{width:8px;height:8px;border-radius:99px;background:var(--accent)}
+    .pill a{cursor:pointer}
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 12px rgba(120,255,106,.35)}
 
     /* Main */
     main{
@@ -71,7 +71,7 @@
     }
 
     h1{font-size:42px;margin:0 0 12px}
-    p.lead{color:var(--muted);max-width:70ch;line-height:1.7}
+    p.lead{color:var(--muted);max-width:70ch;line-height:1.7;margin:0}
 
     .disclaimer{
       margin-top:12px;font-size:12px;color:var(--muted);
@@ -83,8 +83,10 @@
     .tabsBar{
       position:sticky;top:var(--headerH);
       z-index:25;
-      background:rgba(11,13,16,.92);
+      background:linear-gradient(to bottom, rgba(11,13,16,.96), rgba(11,13,16,.70));
+      backdrop-filter: blur(6px);
       border-bottom:1px solid var(--border);
+      margin-top:14px;
       padding:12px 0;
     }
     .tabsRow{
@@ -92,15 +94,17 @@
       padding:0 24px;max-width:var(--container);margin:0 auto;
     }
     .tabBtn{
+      display:inline-flex;align-items:center;gap:10px;
       padding:10px 14px;border-radius:12px;
       border:1px solid var(--border);
       background:#0f131b;font-weight:900;font-size:13px;
-      cursor:pointer;
+      cursor:pointer;user-select:none;
     }
     .tabBtn.active{
       border-color:rgba(120,255,106,.55);
-      box-shadow:0 0 12px rgba(120,255,106,.15);
+      box-shadow:0 0 0 1px rgba(120,255,106,.14) inset, 0 0 18px rgba(120,255,106,.08);
     }
+    .tabBtn:active{transform:translateY(1px)}
 
     /* Sections */
     .stack{
@@ -113,9 +117,10 @@
       border:1px solid var(--border);
       border-radius:var(--radius);
       padding:14px;
+      min-height:0;
     }
     .boxHead{
-      display:flex;justify-content:space-between;align-items:center;
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
       padding:10px 12px;border-radius:12px;
       border:1px solid var(--border);
       background:#0f1218;margin-bottom:12px;
@@ -124,7 +129,7 @@
       font-size:12px;letter-spacing:.14em;
       text-transform:uppercase;font-weight:900
     }
-    .boxHead .hint{font-size:12px;color:var(--muted)}
+    .boxHead .hint{font-size:12px;color:var(--muted);white-space:nowrap}
 
     .list{
       display:grid;gap:12px;
@@ -133,12 +138,13 @@
     }
 
     .item{
-      display:flex;justify-content:space-between;gap:16px;
+      display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
       padding:14px;border-radius:12px;
       background:#0f131b;border:1px solid var(--border)
     }
-    .item strong{font-size:15px}
-    .item p{margin:6px 0 0;font-size:13px;color:var(--muted)}
+    .item strong{font-size:15px;display:block}
+    .item p{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.35}
+
     .tag{
       font-size:11px;font-weight:900;
       padding:6px 10px;border-radius:999px;
@@ -146,6 +152,32 @@
       color:var(--accent);
       white-space:nowrap
     }
+    .tag.warn{border-color:rgba(255,209,102,.35);color:var(--warn)}
+    .tag.live{border-color:rgba(120,255,106,.55);box-shadow:0 0 0 1px rgba(120,255,106,.12) inset}
+    .tag.signal{border-color:rgba(120,255,106,.25);color:var(--text);background:rgba(120,255,106,.06)}
+    .tag.conf{border-color:rgba(255,255,255,.12);color:var(--muted);background:rgba(255,255,255,.04)}
+
+    .rowActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .mini{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      background:#0b0f16;
+      font-size:12px;font-weight:900;color:var(--text);
+      cursor:pointer;user-select:none;
+    }
+    .mini.secondary{color:var(--muted)}
+    .mini:active{transform:translateY(1px)}
+
+    /* Leagues chips */
+    .chips{display:flex;flex-wrap:wrap;gap:10px;overflow:auto;max-height:220px;padding-right:6px}
+    .chip{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid var(--border);
+      background:#0f131b;font-size:13px;color:var(--text)
+    }
+    .chip .dot{width:10px;height:10px}
 
     footer{
       border-top:1px solid var(--border);
@@ -168,8 +200,8 @@
       <div class="subtitle">Goal Intelligence</div>
     </div>
     <div class="right">
-      <div class="pill"><span class="dot"></span>Sound: ON</div>
-      <a class="pill" href="https://x.com/netthudpro" target="_blank">@netthudpro</a>
+      <div class="pill" id="soundPill"><span class="dot"></span>Sound: <strong id="soundState">ON</strong></div>
+      <a class="pill" href="https://x.com/netthudpro" target="_blank" rel="noopener">@netthudpro</a>
     </div>
   </div>
 </header>
@@ -184,21 +216,21 @@
         Scores, upcoming fixtures + TV, transfers and AI-driven signals.
       </p>
 
-      <div class="disclaimer">
+      <div class="disclaimer" role="note">
         <strong>Note:</strong> NetThud uses automated pipelines (including AI).
         Data may be delayed or incomplete. Always verify with official sources.
       </div>
     </section>
   </div>
 
-  <div class="tabsBar">
-    <div class="tabsRow">
-      <div class="tabBtn active" data-tab="liveScores">Live scores</div>
-      <div class="tabBtn" data-tab="upcoming">Upcoming + TV</div>
-      <div class="tabBtn" data-tab="finalScores">Final scores</div>
-      <div class="tabBtn" data-tab="transferSignals">Transfer signals</div>
-      <div class="tabBtn" data-tab="aiNews">AI news</div>
-      <div class="tabBtn" data-tab="leagues">Leagues</div>
+  <div class="tabsBar" role="navigation" aria-label="Sections">
+    <div class="tabsRow" id="tabsRow">
+      <div class="tabBtn active" data-tab="liveScores" id="tab_liveScores">Live scores</div>
+      <div class="tabBtn" data-tab="upcoming" id="tab_upcoming">Upcoming + TV</div>
+      <div class="tabBtn" data-tab="finalScores" id="tab_finalScores">Final scores</div>
+      <div class="tabBtn" data-tab="transferSignals" id="tab_transferSignals">Transfer signals</div>
+      <div class="tabBtn" data-tab="aiNews" id="tab_aiNews">AI news</div>
+      <div class="tabBtn" data-tab="leagues" id="tab_leagues">Leagues</div>
     </div>
   </div>
 
@@ -260,7 +292,7 @@
           <div class="title">Leagues</div>
           <div class="hint" id="leaguesMeta">Loading…</div>
         </div>
-        <div id="leagueChips"></div>
+        <div id="leagueChips" class="chips"></div>
       </div>
     </section>
 
@@ -272,13 +304,8 @@
 
 </main>
 
-<!-- ===== END OF PART 1 / 3 ===== -->
-<!-- =========================
-     INDEX.HTML — PART 2 / 3
-     Append this directly after PART 1
-========================= -->
-
-<!-- Modal (kept here so JS in Part 3 can bind to it reliably) -->
+<!-- ===== END PART 1 / 4. APPEND PART 2 BELOW ===== -->
+<!-- Modal -->
 <div class="modalOverlay" id="modalOverlay" aria-hidden="true" style="position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;z-index:60;padding:18px;">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="width:min(920px,100%);background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;">
     <div class="modalHeader" style="display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);background:#0f1218;position:sticky;top:0;">
@@ -300,8 +327,8 @@
       <div class="subBox" id="modalLegalBox" style="border:1px solid var(--border);background:#0f131b;border-radius:14px;padding:12px;margin-top:12px;">
         <div class="subBoxTitle" style="font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Disclosure</div>
         <div class="modalContent" style="margin-top:0;color:var(--muted);white-space:pre-wrap">
-          This view is generated automatically and may contain errors. It is not official match or transfer confirmation.
-          Verify with primary sources (club statements, league data, official competition feeds).
+This view is generated automatically and may contain errors. It is not official match or transfer confirmation.
+Verify with primary sources (club statements, league data, official competition feeds).
         </div>
       </div>
     </div>
@@ -313,20 +340,15 @@
      PATHS
   --------------------------- */
   const PATHS = {
-    scores:   "/assets/data/scores.json",
-    upcoming: "/assets/data/upcoming.json",
-    transfers:"/assets/data/transfers.json",
-    news:     "/assets/data/ai-news.json",
-    leagues:  "/assets/data/leagues.json",
-
-    // NEW: optional TV directory you can generate later (recommended)
-    // Shape: { updated:"...", items:[ { matchId:123, tv:["Paramount+","CBS Sports Network"] } ] }
-    tv:       "/assets/data/tv.json"
+    scores:    "/assets/data/scores.json",
+    upcoming:  "/assets/data/upcoming.json",
+    transfers: "/assets/data/transfers.json",
+    news:      "/assets/data/ai-news.json",
+    leagues:   "/assets/data/leagues.json",
+    // Optional. If it doesn't exist, we silently ignore it (no console spam).
+    tv:        "/assets/data/tv.json"
   };
 
-  /* ---------------------------
-     Small helpers
-  --------------------------- */
   const $ = (id) => document.getElementById(id);
   function safeEl(id){ return document.getElementById(id); }
   function safeSetText(id, text){ const el = safeEl(id); if (el) el.textContent = text; }
@@ -342,7 +364,6 @@
       .replaceAll('"',"&quot;");
   }
 
-  // Cache-bust hard so GitHub Pages updates show quickly
   async function readJson(url) {
     const u = new URL(url, window.location.origin);
     u.searchParams.set("v", Date.now());
@@ -367,6 +388,7 @@
     b.addEventListener("click", (e)=>{ e.stopPropagation(); onClick(); });
     return b;
   }
+
   function pageUrlNoHash(){
     const u = new URL(window.location.href);
     u.hash = "";
@@ -412,9 +434,7 @@
     container.appendChild(rowBasic(title, meta, "EMPTY", "warn"));
   }
 
-  /* ---------------------------
-     Highlights helpers
-  --------------------------- */
+  /* Highlights helpers */
   function ytHighlightsUrl(home, away){
     const q = encodeURIComponent(`${home} vs ${away} highlights`);
     return `https://www.youtube.com/results?search_query=${q}`;
@@ -425,9 +445,6 @@
     window.open(url, "_blank", "noopener");
   }
 
-  /* ---------------------------
-     Clickable row w/ actions
-  --------------------------- */
   function rowClickable({ title, meta, tagText, tagClass="", hash, onOpenDetails, extraButtons=[] }) {
     const wrap = document.createElement("div");
     wrap.className = "item";
@@ -470,9 +487,7 @@
     return wrap;
   }
 
-  /* ---------------------------
-     Modal
-  --------------------------- */
+  /* Modal */
   function openModal(payload){
     const overlay = $("modalOverlay");
     const titleEl = $("modalTitle");
@@ -521,11 +536,9 @@
     }, true));
 
     overlay.style.display = "flex";
-    overlay.classList.add("open");
     overlay.setAttribute("aria-hidden","false");
 
     function close(){
-      overlay.classList.remove("open");
       overlay.setAttribute("aria-hidden","true");
       overlay.style.display = "none";
       window.removeEventListener("keydown", onKey);
@@ -542,9 +555,9 @@
 
   function buildMatchDetails({ kind, item }) {
     const league = item.league || "";
-    const when = item.when || item.kickoffLocal || item.kickoffUTC || "";
-    const home = item.home || "";
-    const away = item.away || "";
+    const when = item.when || item.kickoffLocal || item.kickoffUTC || item.utcDate || "";
+    const home = item.home || item.homeTeam || item.home_name || "";
+    const away = item.away || item.awayTeam || item.away_name || "";
     const score = item.score || "";
     const status = (item.status || "").toUpperCase();
 
@@ -587,34 +600,11 @@
     return { title, meta, article: lines.join("\n"), kv, highlightsUrl };
   }
 
-  function buildSignalDetails({ item }) {
-    const title = item.title || "Transfer signal";
-    const stage = String(item.stage || "watch").toUpperCase();
-    const conf = (item.confidence == null) ? "—" : Math.round(Number(item.confidence)*100) + "%";
-    const source = item.source || "NetThud Signals";
-    const publishedAt = item.publishedAt ? String(item.publishedAt).slice(0,19) : "";
-
-    const lines = [];
-    lines.push(title);
-    lines.push("");
-    lines.push("AI Signal Summary");
-    lines.push(`- Stage: ${stage}`);
-    lines.push(`- Confidence: ${conf}`);
-    lines.push("");
-    lines.push("Disclaimer");
-    lines.push("Signals are probabilistic, AI-generated, and not confirmation of a transfer.");
-
-    const meta = [source, publishedAt].filter(Boolean).join(" • ");
-    const kv = { Stage: stage, Confidence: conf, Source: source, Time: publishedAt || "—" };
-    return { title, meta, article: lines.join("\n"), kv };
-  }
-
   /* ---------------------------
-     TV MAPPING (Upcoming + TV fix)
-     Goal:
-      - Show local channels if g.tv exists
-      - If g.tv empty, try tv.json keyed by matchId
-      - If still empty: show “TV: TBA”
+     TV (Upcoming + TV)
+     - Uses g.tv if exists
+     - Else tries tv.json keyed by matchId
+     - Else uses a league fallback map (best-effort)
   --------------------------- */
   function normalizeTvList(tv){
     if (!tv) return [];
@@ -624,7 +614,6 @@
   }
 
   function buildTvIndex(tvPayload){
-    // tvPayload shape: { items:[ { matchId, tv:[...] } ] } OR { [matchId]: [...] }
     const idx = new Map();
     if (!tvPayload) return idx;
 
@@ -647,6 +636,15 @@
     return idx;
   }
 
+  // Best-effort fallback (you can tune these later)
+  const TV_BY_LEAGUE = {
+    "UEFA Europa League": ["Local broadcasters vary"],
+    "Süper Lig": ["beIN Sports (TR)"],
+    "Turkish Süper Lig": ["beIN Sports (TR)"],
+    "Premier League": ["Local broadcasters vary"],
+    "UEFA Champions League": ["Local broadcasters vary"]
+  };
+
   function tvLineForMatch(match, tvIndex){
     const direct = normalizeTvList(match.tv);
     if (direct.length) return direct;
@@ -656,22 +654,19 @@
       const hit = tvIndex.get(String(id));
       if (hit && hit.length) return hit;
     }
-    return [];
+
+    const leagueName = String(match.league || "").trim();
+    const fallback = TV_BY_LEAGUE[leagueName] || [];
+    return normalizeTvList(fallback);
   }
 
-  /* ---------------------------
-     Index arrays (used for modal routing in Part 3)
-  --------------------------- */
+  /* Index arrays for modal routing */
   let LIVE_INDEX = [];
   let FINAL_INDEX = [];
   let UPCOMING_INDEX = [];
   let SIGNALS_INDEX = [];
   let NEWS_INDEX = [];
 
-  /* ---------------------------
-     Loaders (Scores + Upcoming only in Part 2)
-     - Transfers/News/Leagues + routing + tabs wiring in Part 3
-  --------------------------- */
   async function loadScores() {
     const finalList = $("scoresList");
     const liveList  = $("liveList");
@@ -686,7 +681,6 @@
       LIVE_INDEX = live;
       FINAL_INDEX = finals;
 
-      // IMPORTANT: your generator uses "updated"
       safeSetText("liveMeta",  `${live.length} • updated ${data.updated || data.generatedAt || "—"}`);
       safeSetText("scoresMeta",`${finals.length} • updated ${data.updated || data.generatedAt || "—"}`);
 
@@ -767,13 +761,13 @@
   async function loadUpcoming() {
     const list = $("upcomingList");
 
-    // TV fallback index (tv.json)
+    // Optional TV index (silently ignore if missing)
     let tvIndex = new Map();
     try{
       const tvPayload = await readJson(PATHS.tv);
       tvIndex = buildTvIndex(tvPayload);
     }catch{
-      tvIndex = new Map(); // ok if missing
+      tvIndex = new Map();
     }
 
     try {
@@ -787,16 +781,19 @@
       if (!items.length) return emptyState(list, "No upcoming games yet", "Populate /assets/data/upcoming.json");
 
       items.slice(0,60).forEach((g, i) => {
-        // ✅ TV line fix:
+        // Defensive field mapping (handles your current upcoming.json format)
+        const home = g.home || g.homeTeam || g.home_name || "TBD";
+        const away = g.away || g.awayTeam || g.away_name || "TBD";
+        const when = String(g.kickoffLocal || g.kickoffUTC || g.utcDate || g.when || "").trim();
+
         const tvList = tvLineForMatch(g, tvIndex);
         const tvText = tvList.length ? ("TV: " + tvList.join(", ")) : "TV: TBA";
 
-        const title = `${g.home} vs ${g.away}`;
-        const when = (g.kickoffLocal || g.kickoffUTC || g.when || "").trim();
-        const meta = `${g.league} • ${when}${tvText ? " • " + tvText : ""}`;
+        const title = `${home} vs ${away}`;
+        const meta = `${g.league || "—"} • ${when || "—"} • ${tvText}`;
         const hash = `d=upcoming-${i}`;
 
-        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(g), true);
+        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights({ home, away, highlightsUrl: g.highlightsUrl }), true);
 
         list.appendChild(
           rowClickable({
@@ -807,11 +804,10 @@
             hash,
             extraButtons:[highlightsBtn],
             onOpenDetails: () => {
-              const payload = buildMatchDetails({ kind:"upcoming", item: g });
-              // Include TV in modal snapshot
-              const tvForModal = tvList.length ? tvList.join(", ") : "TBA";
+              const itemForDetails = { ...g, home, away, when, kickoffLocal: g.kickoffLocal, kickoffUTC: g.kickoffUTC };
+              const payload = buildMatchDetails({ kind:"upcoming", item: itemForDetails });
               payload.kv = payload.kv || {};
-              payload.kv.TV = tvForModal;
+              payload.kv.TV = tvList.length ? tvList.join(", ") : "TBA";
 
               openModal({
                 ...payload,
@@ -831,16 +827,11 @@
     }
   }
 
-  /* ===== END OF PART 2 / 3 ===== */
+  /* ===== END PART 2 / 4. APPEND PART 3 BELOW ===== */
 </script>
-<!-- =========================
-     INDEX.HTML — PART 3 / 3
-     Append this directly after PART 2
-========================= -->
-
 <script>
   /* ---------------------------
-     Transfer Signals (kept as-is but hardened)
+     Transfer Signals
   --------------------------- */
   const DEFAULT_SIGNALS = [
     { stage:"advanced", title:"Midfielder: fee agreed in principle — medical pending", confidence:0.74, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
@@ -858,7 +849,6 @@
     return (items || []).map(x => {
       if (!x || typeof x !== "object") return null;
 
-      // Native signal format
       if (x.title && (x.stage || x.confidence != null)) {
         return {
           title: String(x.title || ""),
@@ -870,7 +860,6 @@
         };
       }
 
-      // Alternate formats
       if (x.player || x.from || x.to) {
         const title =
           `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}` +
@@ -881,28 +870,14 @@
                     : "watch";
         const confidence = (stage === "advanced") ? 0.72 : (stage === "contact") ? 0.50 : 0.40;
 
-        return {
-          title,
-          stage,
-          confidence,
-          source: "NetThud Signals",
-          publishedAt: x.publishedAt || "",
-          url: x.url || ""
-        };
+        return { title, stage, confidence, source:"NetThud Signals", publishedAt:x.publishedAt || "", url:x.url || "" };
       }
 
       if (x.title) {
         const st = String(x.type || x.status || "").toLowerCase();
         const stage = (st === "news") ? "advanced" : (st === "rumor") ? "contact" : "watch";
         const confidence = (stage === "advanced") ? 0.70 : (stage === "contact") ? 0.52 : 0.42;
-        return {
-          title: String(x.title || ""),
-          stage,
-          confidence,
-          source: x.source || "NetThud Signals",
-          publishedAt: x.publishedAt || "",
-          url: x.url || ""
-        };
+        return { title:String(x.title||""), stage, confidence, source:x.source || "NetThud Signals", publishedAt:x.publishedAt || "", url:x.url || "" };
       }
 
       return null;
@@ -922,6 +897,28 @@
     return s.toUpperCase() || "SIG";
   }
 
+  function buildSignalDetails({ item }) {
+    const title = item.title || "Transfer signal";
+    const stage = String(item.stage || "watch").toUpperCase();
+    const conf = (item.confidence == null) ? "—" : Math.round(Number(item.confidence)*100) + "%";
+    const source = item.source || "NetThud Signals";
+    const publishedAt = item.publishedAt ? String(item.publishedAt).slice(0,19) : "";
+
+    const lines = [];
+    lines.push(title);
+    lines.push("");
+    lines.push("AI Signal Summary");
+    lines.push(`- Stage: ${stage}`);
+    lines.push(`- Confidence: ${conf}`);
+    lines.push("");
+    lines.push("Disclaimer");
+    lines.push("Signals are probabilistic, AI-generated, and not confirmation of a transfer.");
+
+    const meta = [source, publishedAt].filter(Boolean).join(" • ");
+    const kv = { Stage: stage, Confidence: conf, Source: source, Time: publishedAt || "—" };
+    return { title, meta, article: lines.join("\n"), kv };
+  }
+
   async function loadTransferSignals(){
     const list = $("transfersList");
     let stamp = "—";
@@ -931,7 +928,7 @@
       const data = await readJson(PATHS.transfers);
       stamp = data.generatedAt || data.updated || data.updatedAt || "—";
       items = normalizeSignals(Array.isArray(data.items) ? data.items : []);
-    }catch(e){
+    }catch{
       items = [];
       stamp = "—";
     }
@@ -1141,6 +1138,9 @@
     }
   }
 
+  /* ===== END PART 3 / 4. APPEND PART 4 BELOW ===== */
+</script>
+<script>
   /* ---------------------------
      Hash routing
        #t=tabId
@@ -1150,17 +1150,15 @@
   function tryOpenFromHash(){
     const h = window.location.hash || "";
 
-    // Tabs
     if (h.startsWith("#t=")){
       const tabId = decodeURIComponent(h.slice(3));
       if (tabId) showTab(tabId, { push:false });
       return;
     }
 
-    // News modal
     if (h.startsWith("#news=")){
       const slug = decodeURIComponent(h.slice("#news=".length));
-      const found = NEWS_INDEX.find(x => x.slug === slug);
+      const found = (NEWS_INDEX || []).find(x => x.slug === slug);
       if (!found) return;
       const u = shareUrl("news=" + found.slug);
       openModal({
@@ -1173,15 +1171,13 @@
       return;
     }
 
-    // Details modal
     if (!h.startsWith("#d=")) return;
-    const key = decodeURIComponent(h.slice("#d=".length)); // live-3
+    const key = decodeURIComponent(h.slice("#d=".length));
     const [kind, idxStr] = key.split("-");
     const idx = Number(idxStr);
     if (!Number.isFinite(idx) || idx < 0) return;
 
     let payload = null;
-
     if (kind === "live" && LIVE_INDEX[idx]) payload = buildMatchDetails({ kind:"live", item: LIVE_INDEX[idx] });
     if (kind === "final" && FINAL_INDEX[idx]) payload = buildMatchDetails({ kind:"final", item: FINAL_INDEX[idx] });
     if (kind === "upcoming" && UPCOMING_INDEX[idx]) payload = buildMatchDetails({ kind:"upcoming", item: UPCOMING_INDEX[idx] });
@@ -1202,7 +1198,7 @@
   }
 
   /* ---------------------------
-     Tabs logic (no scrolling to anchors)
+     Tabs
   --------------------------- */
   function showTab(tabId, { push=true } = {}){
     document.querySelectorAll(".tabSection").forEach(s => s.classList.remove("active"));
@@ -1221,31 +1217,17 @@
     }
   }
 
-  function wireTabs() {
-  document.querySelectorAll(".tabBtn").forEach(btn => {
-    btn.style.cursor = "pointer";
-
-    btn.addEventListener("click", () => {
-      const tabId = btn.dataset.tab;
-      if (!tabId) return;
-
-      // deactivate all
-      document.querySelectorAll(".tabSection").forEach(s =>
-        s.classList.remove("active")
-      );
-      document.querySelectorAll(".tabBtn").forEach(b =>
-        b.classList.remove("active")
-      );
-
-      // activate target
-      document.getElementById(tabId)?.classList.add("active");
-      btn.classList.add("active");
-
-      // update URL
-      history.replaceState(null, "", "#t=" + tabId);
+  function wireTabs(){
+    const row = document.getElementById("tabsRow");
+    if (!row) return;
+    row.querySelectorAll(".tabBtn").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const tabId = btn.getAttribute("data-tab");
+        if (tabId) showTab(tabId, { push:true });
+      });
     });
-  });
-}
+  }
+
   /* ---------------------------
      Sound toggle
   --------------------------- */
@@ -1287,14 +1269,12 @@
         });
       }
 
-      // Loaders
       await loadScores();
-      // await loadUpcoming();   // TEMP disable
+      await loadUpcoming();
       await loadTransferSignals();
       await loadNews();
       await loadLeagues();
 
-      // Default tab if none
       if (!window.location.hash || window.location.hash === "#"){
         showTab("liveScores", { push:false });
       } else {
