@@ -106,28 +106,6 @@
     }
     .tabBtn:active{transform:translateY(1px)}
 
-    /* Quick league filters (adds Europa + Turkey) */
-    .filtersRow{
-      display:flex;gap:10px;flex-wrap:wrap;
-      padding:10px 24px 0;max-width:var(--container);margin:0 auto;
-    }
-    .filterBtn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:9px 12px;border-radius:999px;
-      border:1px solid var(--border);
-      background:#0f131b;font-weight:900;font-size:12px;
-      cursor:pointer;user-select:none;color:var(--text);
-    }
-    .filterBtn .dot{width:9px;height:9px}
-    .filterBtn.active{
-      border-color:rgba(120,255,106,.55);
-      box-shadow:0 0 0 1px rgba(120,255,106,.14) inset, 0 0 18px rgba(120,255,106,.08);
-    }
-    .filterHint{
-      font-size:12px;color:var(--muted);
-      padding:10px 24px 0;max-width:var(--container);margin:0 auto;
-    }
-
     /* Sections */
     .stack{
       display:grid;gap:18px;
@@ -254,15 +232,6 @@
       <div class="tabBtn" data-tab="aiNews" id="tab_aiNews">AI news</div>
       <div class="tabBtn" data-tab="leagues" id="tab_leagues">Leagues</div>
     </div>
-
-    <!-- Quick filters: includes EUROPA + TURKEY -->
-    <div class="filtersRow" id="filtersRow" aria-label="League filters">
-      <div class="filterBtn active" data-filter="all"><span class="dot"></span>All</div>
-      <div class="filterBtn" data-filter="top5">Top 5</div>
-      <div class="filterBtn" data-filter="europe">Europe (CL/EL)</div>
-      <div class="filterBtn" data-filter="turkey">Turkey</div>
-    </div>
-    <div class="filterHint" id="filterHint">Filter applies to Live / Upcoming / Final lists.</div>
   </div>
 
   <div class="stack">
@@ -375,9 +344,8 @@ Verify with primary sources (club statements, league data, official competition 
     upcoming:  "/assets/data/upcoming.json",
     transfers: "/assets/data/transfers.json",
     news:      "/assets/data/ai-news.json",
-    leagues:   "/assets/data/leagues.json",
-    // Optional. If it doesn't exist, we silently ignore it (no console spam).
-    tv:        "/assets/data/tv.json"
+    leagues:   "/assets/data/leagues.json"
+    // NOTE: tv.json intentionally NOT used.
   };
 
   const $ = (id) => document.getElementById(id);
@@ -463,69 +431,6 @@ Verify with primary sources (club statements, league data, official competition 
   function emptyState(container, title, meta) {
     container.innerHTML = "";
     container.appendChild(rowBasic(title, meta, "EMPTY", "warn"));
-  }
-
-  /* ---------------------------
-     Filters (adds Europa + Turkey)
-  --------------------------- */
-  let ACTIVE_FILTER = "all";
-
-  // match object can be from scores.json or upcoming.json
-  function getLeagueName(m){
-    return String(m?.league || m?.competition || m?.competitionName || "").trim();
-  }
-  function getCompCode(m){
-    return String(m?.competitionCode || m?.competition_code || m?.comp || m?.code || "").trim().toUpperCase();
-  }
-
-  const TOP5_CODES = new Set(["PL","PD","SA","BL1","FL1"]);
-  const EUROPE_CODES = new Set(["CL","EL","EC","CLI"]); // CL/Europa + any extra Europe codes you feed
-  const TURKEY_CODES = new Set(["TR1","TSL","TS"]); // best-effort if your pipeline uses these
-
-  function passesFilter(m){
-    if (ACTIVE_FILTER === "all") return true;
-
-    const league = getLeagueName(m).toLowerCase();
-    const code = getCompCode(m);
-
-    if (ACTIVE_FILTER === "top5"){
-      return TOP5_CODES.has(code) ||
-        ["premier league","primera division","la liga","serie a","bundesliga","ligue 1"].some(x => league.includes(x));
-    }
-
-    if (ACTIVE_FILTER === "europe"){
-      return EUROPE_CODES.has(code) || league.includes("uefa") || league.includes("europa") || league.includes("champions");
-    }
-
-    if (ACTIVE_FILTER === "turkey"){
-      return TURKEY_CODES.has(code) ||
-        league.includes("süper lig") || league.includes("super lig") ||
-        league.includes("turkish") || league.includes("türkiye") || league.includes("turkiye");
-    }
-
-    return true;
-  }
-
-  function wireFilters(){
-    const row = $("filtersRow");
-    if (!row) return;
-
-    const btns = Array.from(row.querySelectorAll(".filterBtn"));
-    function setActive(filter){
-      ACTIVE_FILTER = filter || "all";
-      btns.forEach(b => b.classList.toggle("active", b.getAttribute("data-filter") === ACTIVE_FILTER));
-      safeSetText("filterHint", `Filter: ${ACTIVE_FILTER.toUpperCase()} • applies to Live / Upcoming / Final`);
-
-      // re-render (no refetch)
-      renderScores();
-      renderUpcoming();
-    }
-
-    btns.forEach(b=>{
-      b.addEventListener("click", ()=>{
-        setActive(b.getAttribute("data-filter"));
-      });
-    });
   }
 
   /* Highlights helpers */
@@ -696,8 +601,7 @@ Verify with primary sources (club statements, league data, official competition 
 
   /* ---------------------------
      TV (Upcoming + TV)
-     - Uses g.tv if exists
-     - Else tries tv.json keyed by matchId
+     - Uses upcoming.json "tv" field only
      - Else uses a league fallback map (best-effort)
   --------------------------- */
   function normalizeTvList(tv){
@@ -707,48 +611,18 @@ Verify with primary sources (club statements, league data, official competition 
     return [];
   }
 
-  function buildTvIndex(tvPayload){
-    const idx = new Map();
-    if (!tvPayload) return idx;
-
-    if (Array.isArray(tvPayload.items)) {
-      for (const it of tvPayload.items) {
-        const id = it && (it.matchId ?? it.id);
-        if (id == null) continue;
-        const list = normalizeTvList(it.tv);
-        if (list.length) idx.set(String(id), list);
-      }
-      return idx;
-    }
-
-    if (typeof tvPayload === "object") {
-      for (const [k,v] of Object.entries(tvPayload)) {
-        const list = normalizeTvList(v);
-        if (list.length) idx.set(String(k), list);
-      }
-    }
-    return idx;
-  }
-
-  // Best-effort fallback (tuned for EUROPA + TURKEY)
+  // Best-effort fallback (you can tune these later)
   const TV_BY_LEAGUE = {
-    "UEFA Champions League": ["Local broadcasters vary"],
     "UEFA Europa League": ["Local broadcasters vary"],
-    "UEFA Europa Conference League": ["Local broadcasters vary"],
     "Süper Lig": ["beIN Sports (TR)"],
     "Turkish Süper Lig": ["beIN Sports (TR)"],
-    "Premier League": ["Local broadcasters vary"]
+    "Premier League": ["Local broadcasters vary"],
+    "UEFA Champions League": ["Local broadcasters vary"]
   };
 
-  function tvLineForMatch(match, tvIndex){
+  function tvLineForMatch(match){
     const direct = normalizeTvList(match.tv);
     if (direct.length) return direct;
-
-    const id = match.matchId ?? match.id;
-    if (id != null) {
-      const hit = tvIndex.get(String(id));
-      if (hit && hit.length) return hit;
-    }
 
     const leagueName = String(match.league || "").trim();
     const fallback = TV_BY_LEAGUE[leagueName] || [];
@@ -762,107 +636,85 @@ Verify with primary sources (club statements, league data, official competition 
   let SIGNALS_INDEX = [];
   let NEWS_INDEX = [];
 
-  /* Raw caches so filters can re-render without refetch */
-  let RAW_SCORES = [];
-  let RAW_UPCOMING = [];
-
-  function renderScores(){
+  async function loadScores() {
     const finalList = $("scoresList");
     const liveList  = $("liveList");
 
-    if (!finalList || !liveList) return;
-
-    const items = Array.isArray(RAW_SCORES) ? RAW_SCORES : [];
-
-    const live = items.filter(m => isLiveStatus(m.status)).filter(passesFilter);
-    const finals = items.filter(m => isFinalStatus(m.status)).filter(passesFilter);
-
-    LIVE_INDEX = live;
-    FINAL_INDEX = finals;
-
-    liveList.innerHTML = "";
-    if (!live.length) emptyState(liveList, "No live matches for this filter", "Try switching filter to ALL.");
-    else live.slice(0,40).forEach((m, i) => {
-      const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-      const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
-      const tag = (String(m.status||"").toUpperCase()==="HT") ? "HT" : "LIVE";
-      const hash = `d=live-${i}`;
-
-      const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(m), true);
-
-      liveList.appendChild(
-        rowClickable({
-          title,
-          meta: metaLine,
-          tagText: tag,
-          tagClass: "live",
-          hash,
-          extraButtons:[highlightsBtn],
-          onOpenDetails: () => {
-            const payload = buildMatchDetails({ kind:"live", item: m });
-            openModal({
-              ...payload,
-              shareUrl: shareUrl(hash),
-              shareText: title + " — NetThud"
-            });
-          }
-        })
-      );
-    });
-
-    finalList.innerHTML = "";
-    if (!finals.length) emptyState(finalList, "No final scores for this filter", "Try switching filter to ALL.");
-    else finals.slice(0,60).forEach((m, i) => {
-      const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-      const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
-      const hash = `d=final-${i}`;
-
-      const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(m), true);
-
-      finalList.appendChild(
-        rowClickable({
-          title,
-          meta: metaLine,
-          tagText: "FT",
-          tagClass: "",
-          hash,
-          extraButtons:[highlightsBtn],
-          onOpenDetails: () => {
-            const payload = buildMatchDetails({ kind:"final", item: m });
-            openModal({
-              ...payload,
-              shareUrl: shareUrl(hash),
-              shareText: title + " — NetThud"
-            });
-          }
-        })
-      );
-    });
-  }
-
-  /* ===== END PART 2 / 4. APPEND PART 3 BELOW ===== */
-</script>
-<script>
-  async function loadScores() {
     try {
       const data = await readJson(PATHS.scores);
-      RAW_SCORES = Array.isArray(data.items) ? data.items : [];
+      const items = Array.isArray(data.items) ? data.items : [];
 
-      // meta reflects raw counts (unfiltered), UI lists reflect filter
-      const liveRaw = RAW_SCORES.filter(m => isLiveStatus(m.status)).length;
-      const finalRaw = RAW_SCORES.filter(m => isFinalStatus(m.status)).length;
+      const live = items.filter(m => isLiveStatus(m.status));
+      const finals = items.filter(m => isFinalStatus(m.status));
 
-      safeSetText("liveMeta",  `${liveRaw} • updated ${data.updated || data.generatedAt || "—"}`);
-      safeSetText("scoresMeta",`${finalRaw} • updated ${data.updated || data.generatedAt || "—"}`);
+      LIVE_INDEX = live;
+      FINAL_INDEX = finals;
 
-      renderScores();
+      safeSetText("liveMeta",  `${live.length} • updated ${data.updated || data.generatedAt || "—"}`);
+      safeSetText("scoresMeta",`${finals.length} • updated ${data.updated || data.generatedAt || "—"}`);
+
+      liveList.innerHTML = "";
+      if (!live.length) emptyState(liveList, "No live matches right now", "Live matches will appear here.");
+      else live.slice(0,40).forEach((m, i) => {
+        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
+        const tag = (String(m.status||"").toUpperCase()==="HT") ? "HT" : "LIVE";
+        const hash = `d=live-${i}`;
+
+        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(m), true);
+
+        liveList.appendChild(
+          rowClickable({
+            title,
+            meta: metaLine,
+            tagText: tag,
+            tagClass: "live",
+            hash,
+            extraButtons:[highlightsBtn],
+            onOpenDetails: () => {
+              const payload = buildMatchDetails({ kind:"live", item: m });
+              openModal({
+                ...payload,
+                shareUrl: shareUrl(hash),
+                shareText: title + " — NetThud"
+              });
+            }
+          })
+        );
+      });
+
+      finalList.innerHTML = "";
+      if (!finals.length) emptyState(finalList, "No final scores yet", "Finished matches will appear here.");
+      else finals.slice(0,60).forEach((m, i) => {
+        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
+        const hash = `d=final-${i}`;
+
+        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(m), true);
+
+        finalList.appendChild(
+          rowClickable({
+            title,
+            meta: metaLine,
+            tagText: "FT",
+            tagClass: "",
+            hash,
+            extraButtons:[highlightsBtn],
+            onOpenDetails: () => {
+              const payload = buildMatchDetails({ kind:"final", item: m });
+              openModal({
+                ...payload,
+                shareUrl: shareUrl(hash),
+                shareText: title + " — NetThud"
+              });
+            }
+          })
+        );
+      });
+
     } catch (e) {
       safeSetText("liveMeta","error");
       safeSetText("scoresMeta","error");
-
-      const liveList  = $("liveList");
-      const finalList = $("scoresList");
-
       if (liveList) {
         liveList.innerHTML = "";
         liveList.appendChild(rowBasic("Live scores not loading", e.message, "ERR", "warn"));
@@ -875,88 +727,69 @@ Verify with primary sources (club statements, league data, official competition 
     }
   }
 
-  let TV_INDEX = new Map();
-
-  function renderUpcoming(){
-    const list = $("upcomingList");
-    if (!list) return;
-
-    const items = Array.isArray(RAW_UPCOMING) ? RAW_UPCOMING : [];
-    const filtered = items.filter(passesFilter);
-
-    UPCOMING_INDEX = filtered;
-
-    list.innerHTML = "";
-    if (!filtered.length) return emptyState(list, "No upcoming games for this filter", "Try switching filter to ALL.");
-
-    filtered.slice(0,60).forEach((g, i) => {
-      // Defensive field mapping (handles your current upcoming.json format)
-      const home = g.home || g.homeTeam || g.home_name || "TBD";
-      const away = g.away || g.awayTeam || g.away_name || "TBD";
-      const when = String(g.kickoffLocal || g.kickoffUTC || g.utcDate || g.when || "").trim();
-
-      const tvList = tvLineForMatch(g, TV_INDEX);
-      const tvText = tvList.length ? ("TV: " + tvList.join(", ")) : "TV: TBA";
-
-      const title = `${home} vs ${away}`;
-      const meta = `${g.league || "—"} • ${when || "—"} • ${tvText}`;
-      const hash = `d=upcoming-${i}`;
-
-      const highlightsBtn = makeBtn("Highlights", ()=>openHighlights({ home, away, highlightsUrl: g.highlightsUrl }), true);
-
-      list.appendChild(
-        rowClickable({
-          title,
-          meta,
-          tagText: "UP",
-          tagClass: "",
-          hash,
-          extraButtons:[highlightsBtn],
-          onOpenDetails: () => {
-            const itemForDetails = { ...g, home, away, when, kickoffLocal: g.kickoffLocal, kickoffUTC: g.kickoffUTC };
-            const payload = buildMatchDetails({ kind:"upcoming", item: itemForDetails });
-            payload.kv = payload.kv || {};
-            payload.kv.TV = tvList.length ? tvList.join(", ") : "TBA";
-
-            openModal({
-              ...payload,
-              shareUrl: shareUrl(hash),
-              shareText: title + " — NetThud"
-            });
-          }
-        })
-      );
-    });
-  }
-
   async function loadUpcoming() {
     const list = $("upcomingList");
 
-    // Optional TV index (silently ignore if missing)
-    try{
-      const tvPayload = await readJson(PATHS.tv);
-      TV_INDEX = buildTvIndex(tvPayload);
-    }catch{
-      TV_INDEX = new Map();
-    }
-
     try {
       const data = await readJson(PATHS.upcoming);
-      RAW_UPCOMING = Array.isArray(data.items) ? data.items : [];
+      const items = Array.isArray(data.items) ? data.items : [];
+      UPCOMING_INDEX = items;
 
-      safeSetText("upcomingMeta", `${RAW_UPCOMING.length} • updated ${data.generatedAt || data.updated || "—"}`);
+      safeSetText("upcomingMeta", `${items.length} • updated ${data.generatedAt || data.updated || "—"}`);
 
-      if (list) renderUpcoming();
+      list.innerHTML = "";
+      if (!items.length) return emptyState(list, "No upcoming games yet", "Populate /assets/data/upcoming.json");
+
+      items.slice(0,60).forEach((g, i) => {
+        // Defensive field mapping (handles your current upcoming.json format)
+        const home = g.home || g.homeTeam || g.home_name || "TBD";
+        const away = g.away || g.awayTeam || g.away_name || "TBD";
+        const when = String(g.kickoffLocal || g.kickoffUTC || g.utcDate || g.when || "").trim();
+
+        const tvList = tvLineForMatch(g);
+        const tvText = tvList.length ? ("TV: " + tvList.join(", ")) : "TV: TBA";
+
+        const title = `${home} vs ${away}`;
+        const meta = `${g.league || "—"} • ${when || "—"} • ${tvText}`;
+        const hash = `d=upcoming-${i}`;
+
+        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights({ home, away, highlightsUrl: g.highlightsUrl }), true);
+
+        list.appendChild(
+          rowClickable({
+            title,
+            meta,
+            tagText: "UP",
+            tagClass: "",
+            hash,
+            extraButtons:[highlightsBtn],
+            onOpenDetails: () => {
+              const itemForDetails = { ...g, home, away, when, kickoffLocal: g.kickoffLocal, kickoffUTC: g.kickoffUTC };
+              const payload = buildMatchDetails({ kind:"upcoming", item: itemForDetails });
+              payload.kv = payload.kv || {};
+              payload.kv.TV = tvList.length ? tvList.join(", ") : "TBA";
+
+              openModal({
+                ...payload,
+                shareUrl: shareUrl(hash),
+                shareText: title + " — NetThud"
+              });
+            }
+          })
+        );
+      });
+
     } catch (e) {
       safeSetText("upcomingMeta","error");
-      if (list) {
-        list.innerHTML = "";
-        list.appendChild(rowBasic("Upcoming not loading", e.message, "ERR", "warn"));
-      }
+      list.innerHTML = "";
+      list.appendChild(rowBasic("Upcoming not loading", e.message, "ERR", "warn"));
       console.error(e);
     }
   }
 
+  /* ===== END PART 2 / 4. APPEND PART 3 BELOW ===== */
+</script>
+<script>
   /* ---------------------------
      Transfer Signals
   --------------------------- */
@@ -1126,9 +959,6 @@ Verify with primary sources (club statements, league data, official competition 
     });
   }
 
-  /* ===== END PART 3 / 4. APPEND PART 4 BELOW ===== */
-</script>
-<script>
   /* ---------------------------
      AI News
   --------------------------- */
@@ -1268,6 +1098,9 @@ Verify with primary sources (club statements, league data, official competition 
     }
   }
 
+  /* ===== END PART 3 / 4. APPEND PART 4 BELOW ===== */
+</script>
+<script>
   /* ---------------------------
      Hash routing
        #t=tabId
@@ -1385,7 +1218,6 @@ Verify with primary sources (club statements, league data, official competition 
 
     try{
       wireTabs();
-      wireFilters(); // NEW
 
       setSoundUI(getSound());
       const sp = $("soundPill");
