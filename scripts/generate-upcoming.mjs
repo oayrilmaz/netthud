@@ -5,11 +5,12 @@
 // Env:
 //   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
 //   NETTHUD_UPCOMING_DAYS=7            (optional, 1..14)
-//   NETTHUD_UPCOMING_LIMIT=80          (optional)
+//   NETTHUD_UPCOMING_LIMIT=80          (optional; set 0 for "no limit")
 //   NETTHUD_UPCOMING_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL,EC (optional override)
 //
 // Adds H/D/A probabilities based on PUBLIC signals (standings strength + home advantage + closeness).
 // Output includes: hda {home, draw, away} + model label.
+// Also includes stable fields used by index.html: id, highlightsUrl
 
 import fs from "node:fs";
 import path from "node:path";
@@ -50,7 +51,9 @@ function yyyyMmDdUTC(d) {
 }
 
 function utcMidnight(dateObj) {
-  return new Date(Date.UTC(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate()));
+  return new Date(
+    Date.UTC(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate())
+  );
 }
 
 function formatET(utcDateISO) {
@@ -79,18 +82,22 @@ function formatET(utcDateISO) {
   }
 }
 
-function parseCompAllowlist() {
+/**
+ * IMPORTANT:
+ * - We must preserve competition order for the output (for UI/debug predictability)
+ * - If NETTHUD_UPCOMING_COMP_CODES is provided, we preserve that exact order.
+ */
+function parseCompAllowlistWithOrder() {
   const raw = env("NETTHUD_UPCOMING_COMP_CODES", "").trim();
   if (raw) {
-    return new Set(
-      raw
-        .split(",")
-        .map((x) => x.trim())
-        .filter(Boolean)
-    );
+    const ordered = raw
+      .split(",")
+      .map((x) => x.trim())
+      .filter(Boolean);
+    return { set: new Set(ordered), ordered };
   }
 
-  return new Set([
+  const ordered = [
     "PL",
     "PD",
     "SA",
@@ -106,7 +113,8 @@ function parseCompAllowlist() {
     "CDR",
     "DFB",
     "CIT",
-  ]);
+  ];
+  return { set: new Set(ordered), ordered };
 }
 
 async function fetchFD(url, token) {
@@ -123,19 +131,18 @@ async function fetchFD(url, token) {
  * We fetch once per competition present in the upcoming window.
  */
 async function fetchStandingsRatingsByCompetitionId(competitionId, token) {
-  // football-data v4: /competitions/{id}/standings
-  const json = await fetchFD(`https://api.football-data.org/v4/competitions/${competitionId}/standings`, token);
+  const json = await fetchFD(
+    `https://api.football-data.org/v4/competitions/${competitionId}/standings`,
+    token
+  );
 
-  // We try to find the main "TOTAL" table first
   const tables = Array.isArray(json?.standings) ? json.standings : [];
   const total = tables.find((s) => safeStr(s?.type).toUpperCase() === "TOTAL") || tables[0];
   const rows = Array.isArray(total?.table) ? total.table : [];
 
   const map = new Map();
 
-  // Build a simple public-signal rating:
   // rating = PPG + (GD per game)*0.35 + (GF per game)*0.10
-  // (lightweight, stable, and works on partial seasons too)
   for (const r of rows) {
     const teamId = r?.team?.id;
     if (!teamId) continue;
@@ -150,7 +157,7 @@ async function fetchStandingsRatingsByCompetitionId(competitionId, token) {
     const gdpg = gd / played;
     const gFpg = gf / played;
 
-    const rating = ppg + (gdpg * 0.35) + (gFpg * 0.10);
+    const rating = ppg + gdpg * 0.35 + gFpg * 0.10;
 
     map.set(teamId, {
       rating,
@@ -169,31 +176,22 @@ async function fetchStandingsRatingsByCompetitionId(competitionId, token) {
 
 /**
  * Convert (homeRating - awayRating) into H/D/A.
- * We purposely keep it conservative:
- * - Base draw around 0.26
- * - Draw increases when teams are close
- * - Home advantage adds a small bump to home side
  */
 function computeHDA(homeRating, awayRating) {
-  // If we have no signal, fallback to neutral
   if (!Number.isFinite(homeRating) || !Number.isFinite(awayRating)) {
     return { home: 0.34, draw: 0.32, away: 0.34 };
   }
 
   const diff = homeRating - awayRating;
 
-  // Home advantage: small constant uplift on diff scale
   const homeAdv = 0.18;
   const x = diff + homeAdv;
 
-  // Logistic for win vs loss (before draw)
-  const k = 1.65; // steepness
-  const winNoDraw = 1 / (1 + Math.exp(-k * x)); // 0..1
+  const k = 1.65;
+  const winNoDraw = 1 / (1 + Math.exp(-k * x));
 
-  // Draw component:
-  // base draw ~0.26; increase when teams are close; reduce when mismatch large
-  const closeness = Math.exp(-Math.abs(diff) * 1.25); // 1 when equal, decays with mismatch
-  let draw = 0.22 + 0.12 * closeness; // ~0.34 max when equal, ~0.22 when far
+  const closeness = Math.exp(-Math.abs(diff) * 1.25);
+  let draw = 0.22 + 0.12 * closeness;
   draw = clamp(draw, 0.18, 0.36);
 
   const remaining = 1 - draw;
@@ -201,33 +199,48 @@ function computeHDA(homeRating, awayRating) {
   let home = remaining * winNoDraw;
   let away = remaining * (1 - winNoDraw);
 
-  // Normalize safety
   const s = home + draw + away;
   home /= s;
   draw /= s;
   away /= s;
 
-  // Round to 4 decimals for stable diffs in git
   const r4 = (n) => Math.round(n * 10000) / 10000;
 
   return { home: r4(home), draw: r4(draw), away: r4(away) };
+}
+
+function parseLimit() {
+  // NETTHUD_UPCOMING_LIMIT:
+  // - "0" or 0 means "no limit"
+  // - otherwise clamp to a sane range
+  const raw = env("NETTHUD_UPCOMING_LIMIT", "80");
+  const n = Number(raw);
+  if (Number.isFinite(n) && n === 0) return Infinity;
+
+  const v = Number.isFinite(n) ? n : 80;
+  return Math.max(10, Math.min(500, v));
 }
 
 async function fetchFootballDataUpcoming(days) {
   const token = env("NETTHUD_SCORES_API_TOKEN");
   if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
 
-  const limit = Math.max(10, Math.min(200, Number(env("NETTHUD_UPCOMING_LIMIT", "80")) || 80));
-  const allowedCompCodes = parseCompAllowlist();
+  const limit = parseLimit();
+  const { set: allowedCompCodes, ordered: orderedCodes } = parseCompAllowlistWithOrder();
 
-  // Window: today..(today+days), with +1 day safety
+  // Safer window:
+  // If this runs near UTC midnight (or user timezone shifts), we can miss same-day matches.
+  // So we start from "UTC midnight of (now - 12h)".
   const now = new Date();
-  const start = utcMidnight(now);
+  const startAnchor = new Date(now.getTime() - 12 * 60 * 60 * 1000);
+  const start = utcMidnight(startAnchor);
+
   const end = new Date(start);
   end.setUTCDate(start.getUTCDate() + days);
 
   const dateFrom = yyyyMmDdUTC(start);
 
+  // +1 day safety on the end (matches can be late/shifted)
   const endPlusOne = new Date(end);
   endPlusOne.setUTCDate(end.getUTCDate() + 1);
   const dateTo = yyyyMmDdUTC(endPlusOne);
@@ -237,14 +250,22 @@ async function fetchFootballDataUpcoming(days) {
   const matches = Array.isArray(json?.matches) ? json.matches : [];
 
   const keepStatuses = new Set(["SCHEDULED", "TIMED", "POSTPONED"]);
-  const excludeStatuses = new Set(["IN_PLAY", "PAUSED", "FINISHED", "SUSPENDED", "LIVE"]);
+  const excludeStatuses = new Set([
+    "IN_PLAY",
+    "PAUSED",
+    "FINISHED",
+    "SUSPENDED",
+    "LIVE",
+    "CANCELED",
+    "AWARDED",
+  ]);
 
   const keep = matches.filter((m) => {
-    const st = safeStr(m?.status);
+    const st = safeStr(m?.status).toUpperCase();
     if (excludeStatuses.has(st)) return false;
     if (!keepStatuses.has(st)) return false;
 
-    const code = safeStr(m?.competition?.code);
+    const code = safeStr(m?.competition?.code).toUpperCase();
     if (!code) return true;
     return allowedCompCodes.has(code);
   });
@@ -262,15 +283,14 @@ async function fetchFootballDataUpcoming(days) {
     try {
       const m = await fetchStandingsRatingsByCompetitionId(compId, token);
       standingsCache.set(compId, m);
-    } catch (e) {
-      // If standings not available for a competition on your plan, we just skip
+    } catch {
       standingsCache.set(compId, new Map());
     }
   }
 
   const items = keep.map((m) => {
     const league = safeStr(m?.competition?.name || "");
-    const competitionCode = safeStr(m?.competition?.code || "");
+    const competitionCode = safeStr(m?.competition?.code || "").toUpperCase();
     const competitionId = m?.competition?.id;
 
     const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name || "");
@@ -290,8 +310,11 @@ async function fetchFootballDataUpcoming(days) {
       Number.isFinite(awayRating) ? awayRating : NaN
     );
 
+    const matchId = m?.id || null;
+
     return {
-      matchId: m?.id || null,
+      matchId,
+      id: matchId ? `upcoming:${matchId}` : "",
       league,
       competitionCode,
       home,
@@ -300,6 +323,7 @@ async function fetchFootballDataUpcoming(days) {
       kickoffLocal,
       tv: [],
       hda,
+      highlightsUrl: "",
       model: "NetThud Table Model v1",
     };
   });
@@ -307,13 +331,13 @@ async function fetchFootballDataUpcoming(days) {
   // Sort by kickoffUTC
   items.sort((a, b) => safeStr(a.kickoffUTC).localeCompare(safeStr(b.kickoffUTC)));
 
-  const trimmed = items.slice(0, limit);
+  const trimmed = Number.isFinite(limit) ? items.slice(0, limit) : items;
 
   return {
     generatedAt: isoNow(),
     days,
-    limit,
-    competitions: Array.from(allowedCompCodes),
+    limit: Number.isFinite(limit) ? limit : 0, // keep your "0 means no limit" convention in output
+    competitions: orderedCodes,
     model: "NetThud Table Model v1",
     items: trimmed,
   };
