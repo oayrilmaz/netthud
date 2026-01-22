@@ -26,19 +26,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          # ✅ Only enable cache if you have package-lock.json
-          # cache: npm
 
-      # ✅ Install deps (choose ONE of the two blocks below)
-      - name: Install dependencies (npm ci if lockfile exists, else npm install)
+      # ✅ Always sync first to avoid push/rebase conflicts
+      - name: Sync with latest main
         shell: bash
         run: |
           set -e
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
 
       # -----------------------------
       # FINAL + LIVE SCORES
@@ -76,13 +72,9 @@ jobs:
           NETTHUD_SITE_URL: "https://netthud.com/"
           NETTHUD_TRANSFERS_ITEMS: "120"
           NETTHUD_TRANSFERS_LOOKBACK_HOURS: "96"
-
-          # ✅ Best practice: store the big RSS list in a GitHub Secret
-          # Secret name: NETTHUD_TRANSFERS_RSS
-          # Value format: url1|url2|url3|...
           NETTHUD_TRANSFERS_RSS: ${{ secrets.NETTHUD_TRANSFERS_RSS }}
 
-          # ✅ Optional AI enrichment
+          # Optional AI enrichment (only if your script actually uses it)
           NETTHUD_USE_OPENAI: "1"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
@@ -107,5 +99,4 @@ jobs:
           fi
 
           git commit -m "Update scores, upcoming & transfer signals"
-          git pull --rebase origin main
           git push origin main
