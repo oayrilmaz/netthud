@@ -1221,16 +1221,29 @@
     }
   }
 
-  function wireTabs(){
-  const row = document.getElementById("tabsRow");
-  if (!row) return;
+  function wireTabs() {
+  document.querySelectorAll(".tabBtn").forEach(btn => {
+    btn.style.cursor = "pointer";
 
-  // One handler for all tabs (more robust than per-button listeners)
-  row.addEventListener("click", (e) => {
-    const btn = e.target.closest(".tabBtn");
-    if (!btn) return;
-    const tabId = btn.getAttribute("data-tab");
-    if (tabId) showTab(tabId, { push: true });
+    btn.addEventListener("click", () => {
+      const tabId = btn.dataset.tab;
+      if (!tabId) return;
+
+      // deactivate all
+      document.querySelectorAll(".tabSection").forEach(s =>
+        s.classList.remove("active")
+      );
+      document.querySelectorAll(".tabBtn").forEach(b =>
+        b.classList.remove("active")
+      );
+
+      // activate target
+      document.getElementById(tabId)?.classList.add("active");
+      btn.classList.add("active");
+
+      // update URL
+      history.replaceState(null, "", "#t=" + tabId);
+    });
   });
 }
   /* ---------------------------
