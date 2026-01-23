@@ -1,17 +1,30 @@
 {
-  "updated": "2026-01-23T21:22:42.403Z",
-  "generatedAt": "2026-01-23T21:22:42.403Z",
+  "updated": "2026-01-23T21:43:30.493Z",
+  "generatedAt": "2026-01-23T21:43:30.493Z",
   "items": [
+    {
+      "id": "fd:545862",
+      "league": "Primeira Liga",
+      "home": "Casa Pia",
+      "away": "AVS",
+      "score": "2–0",
+      "status": "LIVE",
+      "when": "2026-01-23",
+      "kickoffUTC": "2026-01-23T20:15:00Z",
+      "minute": 88,
+      "highlightsUrl": "",
+      "url": ""
+    },
     {
       "id": "fd:544416",
       "league": "Primera Division",
       "home": "Levante",
       "away": "Elche",
-      "score": "1–1",
+      "score": "2–1",
       "status": "LIVE",
       "when": "2026-01-23",
       "kickoffUTC": "2026-01-23T20:00:00Z",
-      "minute": 82,
+      "minute": 103,
       "highlightsUrl": "",
       "url": ""
     },
@@ -24,7 +37,7 @@
       "status": "LIVE",
       "when": "2026-01-23",
       "kickoffUTC": "2026-01-23T20:00:00Z",
-      "minute": 82,
+      "minute": 103,
       "highlightsUrl": "",
       "url": ""
     },
@@ -33,11 +46,11 @@
       "league": "Serie A",
       "home": "Inter",
       "away": "AC Pisa",
-      "score": "3–2",
+      "score": "5–2",
       "status": "LIVE",
       "when": "2026-01-23",
       "kickoffUTC": "2026-01-23T19:45:00Z",
-      "minute": 97,
+      "minute": 118,
       "highlightsUrl": "",
       "url": ""
     },
@@ -47,24 +60,11 @@
       "home": "St. Pauli",
       "away": "HSV",
       "score": "0–0",
-      "status": "LIVE",
+      "status": "FT",
       "when": "2026-01-23",
       "kickoffUTC": "2026-01-23T19:30:00Z",
-      "minute": 112,
-      "highlightsUrl": "",
-      "url": ""
-    },
-    {
-      "id": "fd:545862",
-      "league": "Primeira Liga",
-      "home": "Casa Pia",
-      "away": "AVS",
-      "score": "1–0",
-      "status": "HT",
-      "when": "2026-01-23",
-      "kickoffUTC": "2026-01-23T20:15:00Z",
-      "minute": 45,
-      "highlightsUrl": "",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=St.+Pauli+vs+HSV+highlights",
       "url": ""
     },
     {
@@ -78,32 +78,6 @@
       "kickoffUTC": "2026-01-23T19:00:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Auxerre+vs+PSG+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:541046",
-      "league": "Championship",
-      "home": "Stoke",
-      "away": "Middlesbrough",
-      "score": "1–2",
-      "status": "FT",
-      "when": "2026-01-21",
-      "kickoffUTC": "2026-01-21T20:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Stoke+vs+Middlesbrough+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:551914",
-      "league": "UEFA Champions League",
-      "home": "Bayern",
-      "away": "Union SG",
-      "score": "2–0",
-      "status": "FT",
-      "when": "2026-01-21",
-      "kickoffUTC": "2026-01-21T20:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Union+SG+highlights",
       "url": ""
     },
     {
@@ -146,29 +120,16 @@
       "url": ""
     },
     {
-      "id": "fd:551988",
+      "id": "fd:551914",
       "league": "UEFA Champions League",
-      "home": "Juventus",
-      "away": "SL Benfica",
+      "home": "Bayern",
+      "away": "Union SG",
       "score": "2–0",
       "status": "FT",
       "when": "2026-01-21",
       "kickoffUTC": "2026-01-21T20:00:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Juventus+vs+SL+Benfica+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:551921",
-      "league": "UEFA Champions League",
-      "home": "Chelsea",
-      "away": "Paphos FC",
-      "score": "1–0",
-      "status": "FT",
-      "when": "2026-01-21",
-      "kickoffUTC": "2026-01-21T20:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Chelsea+vs+Paphos+FC+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Union+SG+highlights",
       "url": ""
     },
     {
@@ -185,16 +146,42 @@
       "url": ""
     },
     {
-      "id": "fd:541045",
+      "id": "fd:551988",
+      "league": "UEFA Champions League",
+      "home": "Juventus",
+      "away": "SL Benfica",
+      "score": "2–0",
+      "status": "FT",
+      "when": "2026-01-21",
+      "kickoffUTC": "2026-01-21T20:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Juventus+vs+SL+Benfica+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:541046",
       "league": "Championship",
-      "home": "Southampton",
-      "away": "Sheffield Utd",
+      "home": "Stoke",
+      "away": "Middlesbrough",
+      "score": "1–2",
+      "status": "FT",
+      "when": "2026-01-21",
+      "kickoffUTC": "2026-01-21T20:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Stoke+vs+Middlesbrough+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:551921",
+      "league": "UEFA Champions League",
+      "home": "Chelsea",
+      "away": "Paphos FC",
       "score": "1–0",
       "status": "FT",
       "when": "2026-01-21",
-      "kickoffUTC": "2026-01-21T19:45:00Z",
+      "kickoffUTC": "2026-01-21T20:00:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Southampton+vs+Sheffield+Utd+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Chelsea+vs+Paphos+FC+highlights",
       "url": ""
     },
     {
@@ -211,16 +198,16 @@
       "url": ""
     },
     {
-      "id": "fd:552001",
-      "league": "UEFA Champions League",
-      "home": "Qarabağ Ağdam",
-      "away": "Frankfurt",
-      "score": "3–2",
+      "id": "fd:541045",
+      "league": "Championship",
+      "home": "Southampton",
+      "away": "Sheffield Utd",
+      "score": "1–0",
       "status": "FT",
       "when": "2026-01-21",
-      "kickoffUTC": "2026-01-21T17:45:00Z",
+      "kickoffUTC": "2026-01-21T19:45:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Qaraba%C4%9F+A%C4%9Fdam+vs+Frankfurt+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Southampton+vs+Sheffield+Utd+highlights",
       "url": ""
     },
     {
@@ -234,6 +221,19 @@
       "kickoffUTC": "2026-01-21T17:45:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=AZ+vs+Excelsior+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:552001",
+      "league": "UEFA Champions League",
+      "home": "Qarabağ Ağdam",
+      "away": "Frankfurt",
+      "score": "3–2",
+      "status": "FT",
+      "when": "2026-01-21",
+      "kickoffUTC": "2026-01-21T17:45:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Qaraba%C4%9F+A%C4%9Fdam+vs+Frankfurt+highlights",
       "url": ""
     },
     {
