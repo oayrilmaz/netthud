@@ -1,17 +1,30 @@
 {
-  "updated": "2026-01-24T21:40:17.578Z",
-  "generatedAt": "2026-01-24T21:40:17.578Z",
+  "updated": "2026-01-24T21:51:20.548Z",
+  "generatedAt": "2026-01-24T21:51:20.548Z",
   "items": [
+    {
+      "id": "fd:545867",
+      "league": "Primeira Liga",
+      "home": "Estoril Praia",
+      "away": "Vitória SC",
+      "score": "1–2",
+      "status": "LIVE",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T20:30:00Z",
+      "minute": 81,
+      "highlightsUrl": "",
+      "url": ""
+    },
     {
       "id": "fd:542573",
       "league": "Ligue 1",
       "home": "Marseille",
       "away": "RC Lens",
-      "score": "2–0",
+      "score": "3–0",
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T20:05:00Z",
-      "minute": 95,
+      "minute": 106,
       "highlightsUrl": "",
       "url": ""
     },
@@ -24,7 +37,7 @@
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T20:00:00Z",
-      "minute": 100,
+      "minute": 111,
       "highlightsUrl": "",
       "url": ""
     },
@@ -37,7 +50,7 @@
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T20:00:00Z",
-      "minute": 100,
+      "minute": 111,
       "highlightsUrl": "",
       "url": ""
     },
@@ -47,24 +60,11 @@
       "home": "Lecce",
       "away": "Lazio",
       "score": "0–0",
-      "status": "LIVE",
+      "status": "FT",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T19:45:00Z",
-      "minute": 115,
-      "highlightsUrl": "",
-      "url": ""
-    },
-    {
-      "id": "fd:545867",
-      "league": "Primeira Liga",
-      "home": "Estoril Praia",
-      "away": "Vitória SC",
-      "score": "1–2",
-      "status": "HT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T20:30:00Z",
-      "minute": 45,
-      "highlightsUrl": "",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Lecce+vs+Lazio+highlights",
       "url": ""
     },
     {
@@ -81,19 +81,6 @@
       "url": ""
     },
     {
-      "id": "fd:545868",
-      "league": "Primeira Liga",
-      "home": "Arouca",
-      "away": "Sporting CP",
-      "score": "1–2",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T18:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Arouca+vs+Sporting+CP+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:542568",
       "league": "Ligue 1",
       "home": "Le Havre",
@@ -107,6 +94,19 @@
       "url": ""
     },
     {
+      "id": "fd:545868",
+      "league": "Primeira Liga",
+      "home": "Arouca",
+      "away": "Sporting CP",
+      "score": "1–2",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T18:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Arouca+vs+Sporting+CP+highlights",
+      "url": ""
+    },
+    {
       "id": "fd:537617",
       "league": "Eredivisie",
       "home": "NEC",
@@ -117,6 +117,19 @@
       "kickoffUTC": "2026-01-24T17:45:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=NEC+vs+Zwolle+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:538005",
+      "league": "Premier League",
+      "home": "Bournemouth",
+      "away": "Liverpool",
+      "score": "3–2",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T17:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Bournemouth+vs+Liverpool+highlights",
       "url": ""
     },
     {
@@ -146,19 +159,6 @@
       "url": ""
     },
     {
-      "id": "fd:538005",
-      "league": "Premier League",
-      "home": "Bournemouth",
-      "away": "Liverpool",
-      "score": "3–2",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T17:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Bournemouth+vs+Liverpool+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:537025",
       "league": "Serie A",
       "home": "Fiorentina",
@@ -185,19 +185,6 @@
       "url": ""
     },
     {
-      "id": "fd:545865",
-      "league": "Primeira Liga",
-      "home": "Moreirense",
-      "away": "Santa Clara",
-      "score": "1–0",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Moreirense+vs+Santa+Clara+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:537612",
       "league": "Eredivisie",
       "home": "Ajax",
@@ -211,6 +198,19 @@
       "url": ""
     },
     {
+      "id": "fd:545865",
+      "league": "Primeira Liga",
+      "home": "Moreirense",
+      "away": "Santa Clara",
+      "score": "1–0",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T15:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Moreirense+vs+Santa+Clara+highlights",
+      "url": ""
+    },
+    {
       "id": "fd:544417",
       "league": "Primera Division",
       "home": "Valencia",
@@ -221,71 +221,6 @@
       "kickoffUTC": "2026-01-24T15:15:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Valencia+vs+Espanyol+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:541053",
-      "league": "Championship",
-      "home": "Leicester City",
-      "away": "Oxford United",
-      "score": "1–2",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Leicester+City+vs+Oxford+United+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:541049",
-      "league": "Championship",
-      "home": "Blackburn",
-      "away": "Watford",
-      "score": "1–1",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Blackburn+vs+Watford+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:538012",
-      "league": "Premier League",
-      "home": "Man City",
-      "away": "Wolverhampton",
-      "score": "2–0",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Man+City+vs+Wolverhampton+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:541059",
-      "league": "Championship",
-      "home": "Sheffield Utd",
-      "away": "Ipswich Town",
-      "score": "3–1",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Sheffield+Utd+vs+Ipswich+Town+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:538009",
-      "league": "Premier League",
-      "home": "Burnley",
-      "away": "Tottenham",
-      "score": "2–2",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Burnley+vs+Tottenham+highlights",
       "url": ""
     },
     {
@@ -328,19 +263,6 @@
       "url": ""
     },
     {
-      "id": "fd:538011",
-      "league": "Premier League",
-      "home": "Fulham",
-      "away": "Brighton Hove",
-      "score": "2–1",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Fulham+vs+Brighton+Hove+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:541058",
       "league": "Championship",
       "home": "QPR",
@@ -354,42 +276,81 @@
       "url": ""
     },
     {
-      "id": "fd:540573",
-      "league": "Bundesliga",
-      "home": "Bayern",
-      "away": "Augsburg",
+      "id": "fd:538011",
+      "league": "Premier League",
+      "home": "Fulham",
+      "away": "Brighton Hove",
+      "score": "2–1",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Fulham+vs+Brighton+Hove+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:541053",
+      "league": "Championship",
+      "home": "Leicester City",
+      "away": "Oxford United",
       "score": "1–2",
       "status": "FT",
       "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Augsburg+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Leicester+City+vs+Oxford+United+highlights",
       "url": ""
     },
     {
-      "id": "fd:540570",
-      "league": "Bundesliga",
-      "home": "Leverkusen",
-      "away": "Bremen",
-      "score": "1–0",
+      "id": "fd:541049",
+      "league": "Championship",
+      "home": "Blackburn",
+      "away": "Watford",
+      "score": "1–1",
       "status": "FT",
       "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Leverkusen+vs+Bremen+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Blackburn+vs+Watford+highlights",
       "url": ""
     },
     {
-      "id": "fd:540572",
-      "league": "Bundesliga",
-      "home": "Mainz",
-      "away": "Wolfsburg",
+      "id": "fd:541059",
+      "league": "Championship",
+      "home": "Sheffield Utd",
+      "away": "Ipswich Town",
       "score": "3–1",
       "status": "FT",
       "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Mainz+vs+Wolfsburg+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Sheffield+Utd+vs+Ipswich+Town+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:538012",
+      "league": "Premier League",
+      "home": "Man City",
+      "away": "Wolverhampton",
+      "score": "2–0",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Man+City+vs+Wolverhampton+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:538009",
+      "league": "Premier League",
+      "home": "Burnley",
+      "away": "Tottenham",
+      "score": "2–2",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Burnley+vs+Tottenham+highlights",
       "url": ""
     },
     {
@@ -419,6 +380,45 @@
       "url": ""
     },
     {
+      "id": "fd:540572",
+      "league": "Bundesliga",
+      "home": "Mainz",
+      "away": "Wolfsburg",
+      "score": "3–1",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Mainz+vs+Wolfsburg+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:540570",
+      "league": "Bundesliga",
+      "home": "Leverkusen",
+      "away": "Bremen",
+      "score": "1–0",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Leverkusen+vs+Bremen+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:540573",
+      "league": "Bundesliga",
+      "home": "Bayern",
+      "away": "Augsburg",
+      "score": "1–2",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Augsburg+highlights",
+      "url": ""
+    },
+    {
       "id": "fd:537029",
       "league": "Serie A",
       "home": "Como 1907",
@@ -442,19 +442,6 @@
       "kickoffUTC": "2026-01-24T13:00:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Rayo+Vallecano+vs+Osasuna+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:541055",
-      "league": "Championship",
-      "home": "Millwall",
-      "away": "Charlton",
-      "score": "4–0",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T12:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Millwall+vs+Charlton+highlights",
       "url": ""
     },
     {
@@ -484,6 +471,19 @@
       "url": ""
     },
     {
+      "id": "fd:541055",
+      "league": "Championship",
+      "home": "Millwall",
+      "away": "Charlton",
+      "score": "4–0",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T12:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Millwall+vs+Charlton+highlights",
+      "url": ""
+    },
+    {
       "id": "fd:545862",
       "league": "Primeira Liga",
       "home": "Casa Pia",
@@ -497,19 +497,6 @@
       "url": ""
     },
     {
-      "id": "fd:541051",
-      "league": "Championship",
-      "home": "Derby County",
-      "away": "West Brom",
-      "score": "1–1",
-      "status": "FT",
-      "when": "2026-01-23",
-      "kickoffUTC": "2026-01-23T20:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Derby+County+vs+West+Brom+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:544416",
       "league": "Primera Division",
       "home": "Levante",
@@ -520,6 +507,19 @@
       "kickoffUTC": "2026-01-23T20:00:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Levante+vs+Elche+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:541051",
+      "league": "Championship",
+      "home": "Derby County",
+      "away": "West Brom",
+      "score": "1–1",
+      "status": "FT",
+      "when": "2026-01-23",
+      "kickoffUTC": "2026-01-23T20:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Derby+County+vs+West+Brom+highlights",
       "url": ""
     },
     {
