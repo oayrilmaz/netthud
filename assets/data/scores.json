@@ -1,17 +1,17 @@
 {
-  "updated": "2026-01-24T20:54:31.229Z",
-  "generatedAt": "2026-01-24T20:54:31.229Z",
+  "updated": "2026-01-24T21:19:16.336Z",
+  "generatedAt": "2026-01-24T21:19:16.336Z",
   "items": [
     {
       "id": "fd:545867",
       "league": "Primeira Liga",
       "home": "Estoril Praia",
       "away": "Vitória SC",
-      "score": "0–0",
+      "score": "1–2",
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T20:30:00Z",
-      "minute": 24,
+      "minute": 49,
       "highlightsUrl": "",
       "url": ""
     },
@@ -24,20 +24,20 @@
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T20:05:00Z",
-      "minute": 49,
+      "minute": 74,
       "highlightsUrl": "",
       "url": ""
     },
     {
-      "id": "fd:537618",
-      "league": "Eredivisie",
-      "home": "PSV",
-      "away": "NAC",
-      "score": "1–2",
+      "id": "fd:544420",
+      "league": "Primera Division",
+      "home": "Villarreal",
+      "away": "Real Madrid",
+      "score": "0–1",
       "status": "LIVE",
       "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T19:00:00Z",
-      "minute": 114,
+      "kickoffUTC": "2026-01-24T20:00:00Z",
+      "minute": 79,
       "highlightsUrl": "",
       "url": ""
     },
@@ -47,23 +47,10 @@
       "home": "Twente",
       "away": "Excelsior",
       "score": "0–0",
-      "status": "HT",
+      "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T20:00:00Z",
-      "minute": 54,
-      "highlightsUrl": "",
-      "url": ""
-    },
-    {
-      "id": "fd:544420",
-      "league": "Primera Division",
-      "home": "Villarreal",
-      "away": "Real Madrid",
-      "score": "0–0",
-      "status": "HT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T20:00:00Z",
-      "minute": 54,
+      "minute": 79,
       "highlightsUrl": "",
       "url": ""
     },
@@ -73,11 +60,24 @@
       "home": "Lecce",
       "away": "Lazio",
       "score": "0–0",
-      "status": "HT",
+      "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T19:45:00Z",
-      "minute": 45,
+      "minute": 94,
       "highlightsUrl": "",
+      "url": ""
+    },
+    {
+      "id": "fd:537618",
+      "league": "Eredivisie",
+      "home": "PSV",
+      "away": "NAC",
+      "score": "2–2",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T19:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=PSV+vs+NAC+highlights",
       "url": ""
     },
     {
@@ -315,19 +315,6 @@
       "url": ""
     },
     {
-      "id": "fd:541049",
-      "league": "Championship",
-      "home": "Blackburn",
-      "away": "Watford",
-      "score": "1–1",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Blackburn+vs+Watford+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:541053",
       "league": "Championship",
       "home": "Leicester City",
@@ -341,6 +328,19 @@
       "url": ""
     },
     {
+      "id": "fd:541049",
+      "league": "Championship",
+      "home": "Blackburn",
+      "away": "Watford",
+      "score": "1–1",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Blackburn+vs+Watford+highlights",
+      "url": ""
+    },
+    {
       "id": "fd:541059",
       "league": "Championship",
       "home": "Sheffield Utd",
@@ -351,6 +351,19 @@
       "kickoffUTC": "2026-01-24T15:00:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Sheffield+Utd+vs+Ipswich+Town+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:540572",
+      "league": "Bundesliga",
+      "home": "Mainz",
+      "away": "Wolfsburg",
+      "score": "3–1",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Mainz+vs+Wolfsburg+highlights",
       "url": ""
     },
     {
@@ -380,16 +393,16 @@
       "url": ""
     },
     {
-      "id": "fd:540572",
+      "id": "fd:540573",
       "league": "Bundesliga",
-      "home": "Mainz",
-      "away": "Wolfsburg",
-      "score": "3–1",
+      "home": "Bayern",
+      "away": "Augsburg",
+      "score": "1–2",
       "status": "FT",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T14:30:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Mainz+vs+Wolfsburg+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Augsburg+highlights",
       "url": ""
     },
     {
@@ -403,19 +416,6 @@
       "kickoffUTC": "2026-01-24T14:30:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Leverkusen+vs+Bremen+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:540573",
-      "league": "Bundesliga",
-      "home": "Bayern",
-      "away": "Augsburg",
-      "score": "1–2",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T14:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Augsburg+highlights",
       "url": ""
     },
     {
