@@ -1,20 +1,7 @@
 {
-  "updated": "2026-01-24T14:43:56.960Z",
-  "generatedAt": "2026-01-24T14:43:56.960Z",
+  "updated": "2026-01-24T14:54:55.704Z",
+  "generatedAt": "2026-01-24T14:54:55.704Z",
   "items": [
-    {
-      "id": "fd:540569",
-      "league": "Bundesliga",
-      "home": "Heidenheim",
-      "away": "RB Leipzig",
-      "score": "0–0",
-      "status": "LIVE",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T14:30:00Z",
-      "minute": 13,
-      "highlightsUrl": "",
-      "url": ""
-    },
     {
       "id": "fd:540572",
       "league": "Bundesliga",
@@ -24,7 +11,7 @@
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T14:30:00Z",
-      "minute": 13,
+      "minute": 24,
       "highlightsUrl": "",
       "url": ""
     },
@@ -33,24 +20,24 @@
       "league": "Bundesliga",
       "home": "Frankfurt",
       "away": "Hoffenheim",
-      "score": "0–0",
+      "score": "1–0",
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T14:30:00Z",
-      "minute": 13,
+      "minute": 24,
       "highlightsUrl": "",
       "url": ""
     },
     {
-      "id": "fd:540570",
+      "id": "fd:540569",
       "league": "Bundesliga",
-      "home": "Leverkusen",
-      "away": "Bremen",
+      "home": "Heidenheim",
+      "away": "RB Leipzig",
       "score": "0–0",
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T14:30:00Z",
-      "minute": 13,
+      "minute": 24,
       "highlightsUrl": "",
       "url": ""
     },
@@ -63,20 +50,20 @@
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T14:30:00Z",
-      "minute": 13,
+      "minute": 24,
       "highlightsUrl": "",
       "url": ""
     },
     {
-      "id": "fd:537029",
-      "league": "Serie A",
-      "home": "Como 1907",
-      "away": "Torino",
-      "score": "2–0",
+      "id": "fd:540570",
+      "league": "Bundesliga",
+      "home": "Leverkusen",
+      "away": "Bremen",
+      "score": "1–0",
       "status": "LIVE",
       "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T14:00:00Z",
-      "minute": 43,
+      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "minute": 24,
       "highlightsUrl": "",
       "url": ""
     },
@@ -89,8 +76,34 @@
       "status": "LIVE",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T13:00:00Z",
-      "minute": 103,
+      "minute": 114,
       "highlightsUrl": "",
+      "url": ""
+    },
+    {
+      "id": "fd:537029",
+      "league": "Serie A",
+      "home": "Como 1907",
+      "away": "Torino",
+      "score": "2–0",
+      "status": "HT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T14:00:00Z",
+      "minute": 54,
+      "highlightsUrl": "",
+      "url": ""
+    },
+    {
+      "id": "fd:541055",
+      "league": "Championship",
+      "home": "Millwall",
+      "away": "Charlton",
+      "score": "4–0",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T12:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Millwall+vs+Charlton+highlights",
       "url": ""
     },
     {
@@ -120,19 +133,6 @@
       "url": ""
     },
     {
-      "id": "fd:541055",
-      "league": "Championship",
-      "home": "Millwall",
-      "away": "Charlton",
-      "score": "4–0",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T12:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Millwall+vs+Charlton+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:545862",
       "league": "Primeira Liga",
       "home": "Casa Pia",
@@ -146,19 +146,6 @@
       "url": ""
     },
     {
-      "id": "fd:544416",
-      "league": "Primera Division",
-      "home": "Levante",
-      "away": "Elche",
-      "score": "3–2",
-      "status": "FT",
-      "when": "2026-01-23",
-      "kickoffUTC": "2026-01-23T20:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Levante+vs+Elche+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:541051",
       "league": "Championship",
       "home": "Derby County",
@@ -169,6 +156,19 @@
       "kickoffUTC": "2026-01-23T20:00:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Derby+County+vs+West+Brom+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:544416",
+      "league": "Primera Division",
+      "home": "Levante",
+      "away": "Elche",
+      "score": "3–2",
+      "status": "FT",
+      "when": "2026-01-23",
+      "kickoffUTC": "2026-01-23T20:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Levante+vs+Elche+highlights",
       "url": ""
     },
     {
