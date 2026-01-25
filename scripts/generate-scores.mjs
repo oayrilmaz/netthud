@@ -8,7 +8,10 @@
 // Optional:
 //   NETTHUD_SCORES_FINAL_DAYS=3        (default 3, calendar days including today)
 //   NETTHUD_SCORES_LIMIT=120          (default 120; set 0 for "no limit")
-//   NETTHUD_SCORES_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL (optional allowlist)
+//   NETTHUD_SCORES_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL (optional allowlist override)
+//
+// Notes:
+// - Turkish Süper Lig = TSL (football-data code)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -82,16 +85,40 @@ function competitionCode(comp) {
   return safeStr(comp?.code || "").toUpperCase();
 }
 
-function parseAllowlist() {
+/**
+ * Default competition allowlist used by the site (ordered for predictability).
+ * Can be overridden with NETTHUD_SCORES_COMP_CODES
+ */
+function parseAllowlistWithOrder() {
   const raw = env("NETTHUD_SCORES_COMP_CODES", "").trim();
-  if (!raw) return null; // no filtering
-  const set = new Set(
-    raw
+  if (raw) {
+    const ordered = raw
       .split(",")
       .map((x) => x.trim().toUpperCase())
-      .filter(Boolean)
-  );
-  return set.size ? set : null;
+      .filter(Boolean);
+    return { set: ordered.length ? new Set(ordered) : null, ordered };
+  }
+
+  const ordered = [
+    "PL",
+    "PD",
+    "SA",
+    "BL1",
+    "FL1",
+    "DED",
+    "PPL",
+    "TSL", // ✅ Turkey Süper Lig
+    "CL",
+    "EL",
+    "EC",
+    "CLI",
+    "FAC",
+    "CDR",
+    "DFB",
+    "CIT",
+  ];
+
+  return { set: new Set(ordered), ordered };
 }
 
 async function fetchFootballData(url, token) {
@@ -201,7 +228,7 @@ async function fetchFootballDataScores() {
   const token = env("NETTHUD_SCORES_API_TOKEN");
   if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
 
-  const allow = parseAllowlist();
+  const { set: allow } = parseAllowlistWithOrder();
   const limit = parseLimit();
   const finalDays = Math.max(1, Math.min(14, Number(env("NETTHUD_SCORES_FINAL_DAYS", "3")) || 3));
 
@@ -243,7 +270,7 @@ async function fetchFootballDataScores() {
   // Map
   const mapped = [...liveMatches, ...finishedMatches].map(mapMatch);
 
-  // Allowlist filter
+  // Allowlist filter (now always active, and includes TSL by default)
   const filtered = allow ? mapped.filter((x) => !x.code || allow.has(x.code)) : mapped;
 
   // Deduplicate by stable id; keep the “best” version if duplicates exist
