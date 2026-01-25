@@ -1,8 +1,34 @@
-import fs from "fs/promises";
+// scripts/generate-live.mjs
+// DEMO generator for assets/data/scores.json (UI-compatible)
+// Safe for when football-data.org is rate-limited.
+//
+// Output shape matches what index.html expects:
+// {
+//   updated: ISO,
+//   items: [{ home, away, league, status, when, kickoffUTC, score, highlightsUrl }]
+// }
 
-function demoLive() {
+import fs from "node:fs/promises";
+
+function isoNow() {
+  return new Date().toISOString();
+}
+
+function fmtWhen(utcISO) {
+  // keep it simple for UI: YYYY-MM-DD or ISO slice
+  return utcISO ? utcISO.slice(0, 10) : "";
+}
+
+function demoScores() {
   const now = new Date();
   const minute = (now.getUTCMinutes() % 90) + 1;
+
+  // Fake kickoff times so sorting works nicely
+  const t0 = new Date(now.getTime() - 20 * 60 * 1000).toISOString();
+  const t1 = new Date(now.getTime() - 35 * 60 * 1000).toISOString();
+  const t2 = new Date(now.getTime() - 60 * 60 * 1000).toISOString();
+  const t3 = new Date(now.getTime() - 90 * 60 * 1000).toISOString();
+  const t4 = new Date(now.getTime() - 4 * 60 * 60 * 1000).toISOString();
 
   return [
     {
@@ -10,69 +36,70 @@ function demoLive() {
       home: "Arsenal",
       away: "Liverpool",
       status: "LIVE",
-      minute,
-      score: "1-0",
-      url: "https://netthud.com/"
+      score: "1–0",
+      kickoffUTC: t0,
+      when: `LIVE • ${minute}'`,
+      highlightsUrl: ""
     },
     {
       league: "La Liga",
       home: "Real Madrid",
       away: "Barcelona",
       status: "LIVE",
-      minute: Math.max(1, minute - 7),
-      score: "0-0",
-      url: "https://netthud.com/"
+      score: "0–0",
+      kickoffUTC: t1,
+      when: `LIVE • ${Math.max(1, minute - 7)}'`,
+      highlightsUrl: ""
     },
     {
-      league: "Serie A",
-      home: "Inter",
-      away: "Juventus",
+      league: "Süper Lig",
+      home: "Fenerbahçe",
+      away: "Galatasaray",
       status: "HT",
-      minute: 45,
-      score: "2-1",
-      url: "https://netthud.com/"
+      score: "1–1",
+      kickoffUTC: t2,
+      when: "HT",
+      highlightsUrl: ""
     },
     {
       league: "Bundesliga",
       home: "Bayern Munich",
       away: "Borussia Dortmund",
       status: "LIVE",
-      minute: Math.max(1, minute - 33),
-      score: "1-1",
-      url: "https://netthud.com/"
+      score: "1–1",
+      kickoffUTC: t3,
+      when: `LIVE • ${Math.max(1, minute - 33)}'`,
+      highlightsUrl: ""
     },
     {
       league: "Ligue 1",
       home: "PSG",
       away: "Marseille",
       status: "FT",
-      minute: 90,
-      score: "3-2",
-      url: "https://netthud.com/"
+      score: "3–2",
+      kickoffUTC: t4,
+      when: fmtWhen(t4),
+      highlightsUrl: ""
     }
   ];
 }
 
 async function main() {
-  const items = demoLive();
+  const items = demoScores();
 
   const out = {
-    generatedAt: new Date().toISOString(),
+    updated: isoNow(),
     mode: "demo",
     items
   };
 
   await fs.mkdir("assets/data", { recursive: true });
-  await fs.writeFile(
-    "assets/data/scores.json",
-    JSON.stringify(out, null, 2),
-    "utf8"
-  );
+  await fs.writeFile("assets/data/scores.json", JSON.stringify(out, null, 2) + "\n", "utf8");
 
   console.log(`✔ wrote assets/data/scores.json (${items.length} matches)`);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
