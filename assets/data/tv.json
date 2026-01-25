@@ -1,13 +1,17 @@
 {
-  "updated": "2026-01-22T21:00:00.000Z",
-  "items": [
-    { "matchId": 542569, "tv": ["beIN Sports", "Fubo", "Fanatiz"] },
-    { "matchId": 540576, "tv": ["Sky Sport", "DAZN"] },
-    { "matchId": 537031, "tv": ["Paramount+", "CBS Sports Network"] },
-    { "matchId": 544416, "tv": ["ESPN+", "ESPN Deportes"] },
-    { "matchId": 545862, "tv": ["GolTV", "RTP (local)"] },
-    { "matchId": 538014, "tv": ["Peacock", "USA Network"] },
-    { "matchId": 538009, "tv": ["Peacock"] },
-    { "matchId": 538012, "tv": ["Peacock", "USA Network"] }
-  ]
+  "PL": ["NBC", "Peacock"],
+  "PD": ["ESPN+", "ESPN"],
+  "SA": ["Paramount+"],
+  "BL1": ["ESPN+"],
+  "FL1": ["beIN SPORTS"],
+  "DED": ["ESPN+"],
+  "PPL": ["GolTV", "Fanatiz"],
+  "CL": ["Paramount+"],
+  "EL": ["Paramount+"],
+  "EC": ["ESPN+"],
+  "CLI": ["Paramount+"],
+  "FAC": ["ESPN+"],
+  "CDR": ["ESPN+"],
+  "DFB": ["ESPN+"],
+  "CIT": ["CBS Sports", "Paramount+"]
 }
