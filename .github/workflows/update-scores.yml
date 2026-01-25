@@ -33,32 +33,22 @@ jobs:
           NETTHUD_SCORES_API_PROVIDER: "football-data"
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
           NETTHUD_SCORES_FINAL_DAYS: "3"
-          NETTHUD_SCORES_LIMIT: "160"
-
-          # 👇 EXPLICIT allowlist (includes Turkish Süper Lig + Europa)
-          NETTHUD_SCORES_COMP_CODES: >
-            PL,PD,SA,BL1,FL1,DED,PPL,
-            CL,EL,EC,CLI,
-            TSL
-
+          NETTHUD_SCORES_LIMIT: "200"
+          # IMPORTANT: include Turkey + Europa explicitly
+          NETTHUD_SCORES_COMP_CODES: "PL,PD,SA,BL1,FL1,DED,PPL,CL,EL,EC,TSL"
         run: |
           node scripts/generate-scores.mjs
 
       # -----------------------------
-      # UPCOMING MATCHES (+ TV)
+      # UPCOMING MATCHES
       # -----------------------------
       - name: Generate upcoming.json
         env:
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
           NETTHUD_UPCOMING_DAYS: "7"
-          NETTHUD_UPCOMING_LIMIT: "120"
-
-          # 👇 SAME competitions for consistency
-          NETTHUD_UPCOMING_COMP_CODES: >
-            PL,PD,SA,BL1,FL1,DED,PPL,
-            CL,EL,EC,CLI,
-            TSL
-
+          NETTHUD_UPCOMING_LIMIT: "160"
+          # IMPORTANT: include Turkey + Europa explicitly
+          NETTHUD_UPCOMING_COMP_CODES: "PL,PD,SA,BL1,FL1,DED,PPL,CL,EL,EC,TSL"
         run: |
           node scripts/generate-upcoming.mjs
 
