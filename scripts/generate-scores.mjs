@@ -10,7 +10,8 @@
 //
 // Fail-safe behavior:
 // - On 429/temporary errors: reuse existing assets/data/scores.json and exit 0
-// - Only hard-fail if no cache exists at all.
+// - If NO cache exists: write demo-compatible scores.json and exit 0
+// - Only hard-fail on non-retryable errors AND no cache/demo fallback possible.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -71,10 +72,26 @@ function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
-async function fetchFD(url, token, { retries = 2 } = {}) {
-  // Retry for 429/5xx with exponential backoff
+function parseRetryAfterMs(res) {
+  // Retry-After can be seconds or HTTP date
+  const ra = res.headers.get("retry-after");
+  if (!ra) return 0;
+
+  const asNum = Number(ra);
+  if (Number.isFinite(asNum) && asNum >= 0) return asNum * 1000;
+
+  const asDate = Date.parse(ra);
+  if (Number.isFinite(asDate)) {
+    const delta = asDate - Date.now();
+    return delta > 0 ? delta : 0;
+  }
+  return 0;
+}
+
+async function fetchFD(url, token, { retries = 3 } = {}) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     const res = await fetch(url, { headers: { "X-Auth-Token": token } });
+
     if (res.ok) return res.json();
 
     const status = res.status;
@@ -88,11 +105,34 @@ async function fetchFD(url, token, { retries = 2 } = {}) {
       throw err;
     }
 
-    const backoff = 800 * Math.pow(2, attempt); // 800ms, 1600ms, 3200ms...
+    // Respect Retry-After when present (esp. 429)
+    const raMs = parseRetryAfterMs(res);
+    const backoff = Math.max(raMs, 900 * Math.pow(2, attempt)); // 900ms, 1800ms, 3600ms...
     console.warn(`⚠️ ${msg}`);
     console.warn(`↻ retrying in ${backoff}ms (attempt ${attempt + 1}/${retries})`);
     await sleep(backoff);
   }
+}
+
+function scoreFromMatch(m) {
+  // football-data can expose different score fields depending on status
+  const score = m?.score || {};
+  const pick = (...objs) => {
+    for (const o of objs) {
+      const h = o?.home;
+      const a = o?.away;
+      if (Number.isFinite(h) && Number.isFinite(a)) return `${h}–${a}`;
+    }
+    return "";
+  };
+
+  return pick(
+    score?.fullTime,
+    score?.regularTime,
+    score?.halfTime,
+    score?.extraTime,
+    score?.penalties
+  );
 }
 
 function normalizeMatch(m) {
@@ -103,15 +143,9 @@ function normalizeMatch(m) {
 
   const home = safeStr(m?.homeTeam?.shortName || m?.homeTeam?.name || "");
   const away = safeStr(m?.awayTeam?.shortName || m?.awayTeam?.name || "");
+  const score = scoreFromMatch(m);
 
-  const fullTime = m?.score?.fullTime || {};
-  const h = fullTime?.home;
-  const a = fullTime?.away;
-
-  const score =
-    (Number.isFinite(h) && Number.isFinite(a)) ? `${h}–${a}` : "";
-
-  // Simple "when": date only (you can replace with your ET formatter if you want)
+  // Simple "when" used by your UI (index.html prints m.when)
   const when = utcDate ? utcDate.slice(0, 10) : "";
 
   return {
@@ -125,6 +159,59 @@ function normalizeMatch(m) {
     away,
     score,
     highlightsUrl: ""
+  };
+}
+
+function demoPayload({ dateFrom, dateTo, competitions }) {
+  const now = new Date();
+  const t0 = new Date(now.getTime() - 20 * 60 * 1000).toISOString();
+  const t1 = new Date(now.getTime() - 55 * 60 * 1000).toISOString();
+  const t2 = new Date(now.getTime() - 3 * 60 * 60 * 1000).toISOString();
+
+  return {
+    updated: isoNow(),
+    dateFrom,
+    dateTo,
+    competitions,
+    mode: "demo",
+    items: [
+      {
+        matchId: null,
+        league: "Süper Lig",
+        competitionCode: "TSL",
+        when: t0.slice(0, 10),
+        kickoffUTC: t0,
+        status: "LIVE",
+        home: "Fenerbahçe",
+        away: "Galatasaray",
+        score: "1–1",
+        highlightsUrl: ""
+      },
+      {
+        matchId: null,
+        league: "Premier League",
+        competitionCode: "PL",
+        when: t1.slice(0, 10),
+        kickoffUTC: t1,
+        status: "HT",
+        home: "Arsenal",
+        away: "Liverpool",
+        score: "1–0",
+        highlightsUrl: ""
+      },
+      {
+        matchId: null,
+        league: "La Liga",
+        competitionCode: "PD",
+        when: t2.slice(0, 10),
+        kickoffUTC: t2,
+        status: "FINISHED",
+        home: "Real Madrid",
+        away: "Barcelona",
+        score: "2–2",
+        highlightsUrl: ""
+      }
+    ]
   };
 }
 
@@ -146,16 +233,16 @@ async function fetchFootballDataScores({ daysBack, daysForward }) {
   const dateTo = yyyyMmDdUTC(endPlus);
 
   const url = `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`;
-  const json = await fetchFD(url, token, { retries: 2 });
+  const json = await fetchFD(url, token, { retries: 3 });
   const matches = Array.isArray(json?.matches) ? json.matches : [];
+
+  const liveOrFinal = new Set(["LIVE", "IN_PLAY", "PAUSED", "HT", "FINISHED", "FT"]);
 
   const items = matches
     .map(normalizeMatch)
-    .filter(m => {
-      // Keep LIVE + FINISHED (your index.html splits these)
+    .filter((m) => {
       const st = safeStr(m.status).toUpperCase();
-      const okStatus = ["LIVE", "IN_PLAY", "PAUSED", "HT", "FINISHED", "FT"].includes(st);
-      if (!okStatus) return false;
+      if (!liveOrFinal.has(st)) return false;
 
       const code = safeStr(m.competitionCode).toUpperCase();
       if (!code) return true;
@@ -178,23 +265,43 @@ async function main() {
   const daysBack = Math.max(0, Math.min(3, Number(env("NETTHUD_SCORES_DAYS_BACK", "1")) || 1));
   const daysForward = Math.max(0, Math.min(3, Number(env("NETTHUD_SCORES_DAYS_FORWARD", "1")) || 1));
 
+  const { ordered } = parseCompAllowlistWithOrder();
+
   try {
     const payload = await fetchFootballDataScores({ daysBack, daysForward });
     writeJson(outFile, payload);
     console.log(`Wrote ${outFile} (${payload.items.length} items)`);
   } catch (err) {
-    // Fail-safe: if 429 or temporary, keep cache and exit 0
     const status = err?.status;
     const cached = readJsonIfExists(outFile);
 
-    if (cached && (status === 429 || (status >= 500 && status <= 599))) {
+    const isTemporary = status === 429 || (status >= 500 && status <= 599);
+
+    if (cached && isTemporary) {
       console.warn("⚠️ Scores generation failed, reusing cached scores.json and exiting 0");
       console.warn(String(err?.message || err));
       process.exit(0);
     }
 
-    // If no cache exists, hard fail (so you notice)
-    console.error("❌ Scores generation failed and no cache exists.");
+    if (!cached && isTemporary) {
+      console.warn("⚠️ Scores generation failed and no cache exists. Writing demo scores.json and exiting 0");
+      console.warn(String(err?.message || err));
+
+      const now = new Date();
+      const start = utcMidnight(new Date(now.getTime() - daysBack * 24 * 60 * 60 * 1000));
+      const end = utcMidnight(new Date(now.getTime() + daysForward * 24 * 60 * 60 * 1000));
+      const endPlus = new Date(end);
+      endPlus.setUTCDate(end.getUTCDate() + 1);
+
+      const dateFrom = yyyyMmDdUTC(start);
+      const dateTo = yyyyMmDdUTC(endPlus);
+
+      const demo = demoPayload({ dateFrom, dateTo, competitions: ordered });
+      writeJson(outFile, demo);
+      process.exit(0);
+    }
+
+    console.error("❌ Scores generation failed (non-retryable) and no safe fallback was used.");
     console.error(String(err?.message || err));
     process.exit(1);
   }
