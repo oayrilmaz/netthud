@@ -1,17 +1,30 @@
 {
-  "updated": "2026-01-25T13:23:40.288Z",
-  "generatedAt": "2026-01-25T13:23:40.288Z",
+  "updated": "2026-01-25T13:49:56.196Z",
+  "generatedAt": "2026-01-25T13:49:56.196Z",
   "items": [
+    {
+      "id": "fd:537613",
+      "league": "Eredivisie",
+      "home": "Groningen",
+      "away": "Sittard",
+      "score": "1–1",
+      "status": "LIVE",
+      "when": "2026-01-25",
+      "kickoffUTC": "2026-01-25T13:30:00Z",
+      "minute": 19,
+      "highlightsUrl": "",
+      "url": ""
+    },
     {
       "id": "fd:544412",
       "league": "Primera Division",
       "home": "Atleti",
       "away": "Mallorca",
-      "score": "0–0",
+      "score": "1–0",
       "status": "LIVE",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T13:00:00Z",
-      "minute": 23,
+      "minute": 49,
       "highlightsUrl": "",
       "url": ""
     },
@@ -21,11 +34,11 @@
       "home": "Sassuolo",
       "away": "Cremonese",
       "score": "1–0",
-      "status": "LIVE",
+      "status": "FT",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T11:30:00Z",
-      "minute": 113,
-      "highlightsUrl": "",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Sassuolo+vs+Cremonese+highlights",
       "url": ""
     },
     {
@@ -172,19 +185,6 @@
       "url": ""
     },
     {
-      "id": "fd:540568",
-      "league": "Bundesliga",
-      "home": "Union Berlin",
-      "away": "Dortmund",
-      "score": "0–3",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T17:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Union+Berlin+vs+Dortmund+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:544414",
       "league": "Primera Division",
       "home": "Sevilla FC",
@@ -195,6 +195,19 @@
       "kickoffUTC": "2026-01-24T17:30:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Sevilla+FC+vs+Athletic+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:540568",
+      "league": "Bundesliga",
+      "home": "Union Berlin",
+      "away": "Dortmund",
+      "score": "0–3",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T17:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Union+Berlin+vs+Dortmund+highlights",
       "url": ""
     },
     {
@@ -263,19 +276,6 @@
       "url": ""
     },
     {
-      "id": "fd:538009",
-      "league": "Premier League",
-      "home": "Burnley",
-      "away": "Tottenham",
-      "score": "2–2",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Burnley+vs+Tottenham+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:538012",
       "league": "Premier League",
       "home": "Man City",
@@ -286,6 +286,19 @@
       "kickoffUTC": "2026-01-24T15:00:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Man+City+vs+Wolverhampton+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:538009",
+      "league": "Premier League",
+      "home": "Burnley",
+      "away": "Tottenham",
+      "score": "2–2",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Burnley+vs+Tottenham+highlights",
       "url": ""
     },
     {
@@ -302,19 +315,6 @@
       "url": ""
     },
     {
-      "id": "fd:540573",
-      "league": "Bundesliga",
-      "home": "Bayern",
-      "away": "Augsburg",
-      "score": "1–2",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T14:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Augsburg+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:540569",
       "league": "Bundesliga",
       "home": "Heidenheim",
@@ -328,16 +328,16 @@
       "url": ""
     },
     {
-      "id": "fd:540572",
+      "id": "fd:540573",
       "league": "Bundesliga",
-      "home": "Mainz",
-      "away": "Wolfsburg",
-      "score": "3–1",
+      "home": "Bayern",
+      "away": "Augsburg",
+      "score": "1–2",
       "status": "FT",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T14:30:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Mainz+vs+Wolfsburg+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Augsburg+highlights",
       "url": ""
     },
     {
@@ -364,6 +364,19 @@
       "kickoffUTC": "2026-01-24T14:30:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Leverkusen+vs+Bremen+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:540572",
+      "league": "Bundesliga",
+      "home": "Mainz",
+      "away": "Wolfsburg",
+      "score": "3–1",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Mainz+vs+Wolfsburg+highlights",
       "url": ""
     },
     {
