@@ -31,7 +31,6 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--container);margin:0 auto;padding:24px}
 
-    /* Header */
     header{
       border-bottom:1px solid var(--border);
       background:#0f1218;
@@ -63,7 +62,6 @@
     .pill a{cursor:pointer}
     .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 12px rgba(120,255,106,.35)}
 
-    /* Main */
     main{
       height:calc(100vh - var(--headerH));
       overflow:auto;
@@ -79,7 +77,6 @@
       background:#0f1218;padding:10px 12px;border-radius:12px;
     }
 
-    /* Tabs */
     .tabsBar{
       position:sticky;top:var(--headerH);
       z-index:25;
@@ -106,7 +103,6 @@
     }
     .tabBtn:active{transform:translateY(1px)}
 
-    /* Sections */
     .stack{
       display:grid;gap:18px;
       padding:18px 24px 0;
@@ -169,7 +165,6 @@
     .mini.secondary{color:var(--muted)}
     .mini:active{transform:translateY(1px)}
 
-    /* Leagues chips */
     .chips{display:flex;flex-wrap:wrap;gap:10px;overflow:auto;max-height:220px;padding-right:6px}
     .chip{
       display:inline-flex;align-items:center;gap:10px;
@@ -304,7 +299,7 @@
 
 </main>
 
-<!-- ===== END PART 1 / 4. PART 2 COMING NEXT MESSAGE ===== -->
+<!-- ===== END PART 1 / 4. APPEND PART 2 BELOW ===== -->
 <!-- Modal -->
 <div class="modalOverlay" id="modalOverlay" aria-hidden="true"
   style="position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;z-index:60;padding:18px;">
@@ -420,12 +415,115 @@ function rowBasic(title, meta, tag, cls=""){
   `;
   return d;
 }
+
+/* ---------------------------
+   Share helpers (RESTORED)
+--------------------------- */
+function pageUrlNoHash(){
+  const u = new URL(window.location.href);
+  u.hash = "";
+  return u.toString();
+}
+function shareUrl(hash){
+  return pageUrlNoHash() + "#" + hash;
+}
+function shareToX(text, url){
+  const u = new URL("https://twitter.com/intent/tweet");
+  u.searchParams.set("text", text);
+  u.searchParams.set("url", url);
+  window.open(u.toString(), "_blank", "noopener");
+}
+async function copyLink(text){
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch{
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand("copy"); }catch{}
+    document.body.removeChild(ta);
+  }
+}
+
+/* ---------------------------
+   Modal (FULL, with actions)
+--------------------------- */
+function openModal(payload){
+  const overlay = $("modalOverlay");
+  const titleEl = $("modalTitle");
+  const metaEl = $("modalMeta");
+  const contentEl = $("modalContent");
+  const actionsEl = $("modalActions");
+  const closeBtn = $("modalClose");
+
+  const kvBox = $("modalKVBox");
+  const kv = $("modalKV");
+
+  titleEl.textContent = payload.title || "Details";
+  metaEl.textContent = payload.meta || "";
+  contentEl.textContent = payload.article || "";
+
+  if (payload.kv && typeof payload.kv === "object") {
+    kvBox.style.display = "";
+    kv.innerHTML = "";
+    Object.entries(payload.kv).forEach(([k,v])=>{
+      const kEl = document.createElement("div");
+      kEl.style.color = "var(--muted)";
+      kEl.textContent = k;
+
+      const vEl = document.createElement("div");
+      vEl.innerHTML = "<strong style='color:var(--text)'>" + esc(String(v ?? "")) + "</strong>";
+
+      kv.appendChild(kEl);
+      kv.appendChild(vEl);
+    });
+  } else {
+    kvBox.style.display = "none";
+    kv.innerHTML = "";
+  }
+
+  actionsEl.innerHTML = "";
+
+  // Share buttons restored (per-row uses these + hash routes)
+  if (payload.shareUrl) {
+    actionsEl.appendChild(makeBtn("Share X", ()=>shareToX(payload.shareText || payload.title || "NetThud", payload.shareUrl)));
+    actionsEl.appendChild(makeBtn("Copy link", ()=>copyLink(payload.shareUrl), true));
+  }
+  if (payload.highlightsUrl) {
+    actionsEl.appendChild(makeBtn("Highlights", ()=>window.open(payload.highlightsUrl, "_blank", "noopener")));
+  }
+
+  actionsEl.appendChild(makeBtn("Home", ()=>{
+    history.replaceState(null,"",pageUrlNoHash());
+    close();
+  }, true));
+
+  overlay.style.display = "flex";
+  overlay.setAttribute("aria-hidden","false");
+
+  function close(){
+    overlay.setAttribute("aria-hidden","true");
+    overlay.style.display = "none";
+    window.removeEventListener("keydown", onKey);
+    overlay.removeEventListener("click", onBg);
+    closeBtn.removeEventListener("click", close);
+  }
+  function onKey(e){ if(e.key==="Escape") close(); }
+  function onBg(e){ if(e.target===overlay) close(); }
+
+  window.addEventListener("keydown", onKey);
+  overlay.addEventListener("click", onBg);
+  closeBtn.addEventListener("click", close);
+}
 </script>
 
-<!-- ===== END PART 2 / 4. PART 3 COMING NEXT MESSAGE ===== -->
+<!-- ===== END PART 2 / 4. APPEND PART 3 BELOW ===== -->
 <script>
 /* ---------------------------
    SCORE + UPCOMING LOADERS
+   + RESTORED per-row Share X / Copy link buttons
+   + RESTORED hash routing ids (d=live-i / d=final-i / d=upcoming-i)
 --------------------------- */
 
 let LIVE_INDEX = [];
@@ -440,21 +538,38 @@ function ytHighlightsUrl(home, away){
   return `https://www.youtube.com/results?search_query=${q}`;
 }
 function openHighlights(item){
-  const u = item.highlightsUrl || ytHighlightsUrl(item.home, item.away);
+  const direct = String(item.highlightsUrl || "").trim();
+  const u = direct || ytHighlightsUrl(item.home || "Home", item.away || "Away");
   window.open(u, "_blank", "noopener");
 }
 
-/* Clickable row */
-function rowClickable({ title, meta, tag, cls="", onClick, buttons=[] }){
+/* Clickable row (WITH share + copy actions) */
+function rowClickable({ title, meta, tag, cls="", hash, onOpenDetails, buttons=[] }){
   const wrap = document.createElement("div");
   wrap.className = "item";
   wrap.style.cursor = "pointer";
 
   const left = document.createElement("div");
-  left.innerHTML = `<strong>${esc(title)}</strong><p>${esc(meta||"")}</p><div class="rowActions"></div>`;
+  left.style.minWidth = "0";
+  left.innerHTML = `
+    <strong>${esc(title)}</strong>
+    <p>${esc(meta||"")}</p>
+    <div class="rowActions"></div>
+  `;
 
   const acts = left.querySelector(".rowActions");
+
+  // Custom buttons first (e.g., Highlights)
   buttons.forEach(b => acts.appendChild(b));
+
+  // Always include row-level share controls
+  const u = shareUrl(hash);
+  acts.appendChild(makeBtn("Details", ()=>{
+    history.replaceState(null,"",u);
+    onOpenDetails();
+  }));
+  acts.appendChild(makeBtn("Share X", ()=>shareToX(title + " — NetThud", u)));
+  acts.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
 
   const right = document.createElement("span");
   right.className = "tag " + cls;
@@ -462,10 +577,53 @@ function rowClickable({ title, meta, tag, cls="", onClick, buttons=[] }){
 
   wrap.append(left, right);
   wrap.onclick = e => {
-    if(e.target.classList.contains("mini")) return;
-    onClick();
+    if(e.target && e.target.classList && e.target.classList.contains("mini")) return;
+    history.replaceState(null,"",u);
+    onOpenDetails();
   };
   return wrap;
+}
+
+/* Match details builder (keeps modal consistent) */
+function buildMatchDetails(kind, item){
+  const league = item.league || "—";
+  const when = item.when || item.kickoffLocal || item.kickoffUTC || item.utcDate || "—";
+  const home = item.home || item.homeTeam || item.home_name || "Home";
+  const away = item.away || item.awayTeam || item.away_name || "Away";
+  const score = item.score || "";
+
+  const title = (kind === "upcoming")
+    ? `${home} vs ${away}`
+    : `${home} ${score ? score : ""} ${away}`.trim();
+
+  const kv = {
+    League: league,
+    When: when,
+    Status: String(item.status || (kind === "upcoming" ? "UP" : "—")).toUpperCase(),
+    Score: score || "—"
+  };
+
+  const article = [
+    title,
+    "",
+    "AI Match Notes",
+    "- This is auto-generated from public match data + lightweight heuristics.",
+    "- Treat as guidance, not official reporting.",
+    "",
+    "What to watch",
+    kind === "upcoming"
+      ? "- Confirm lineups ~60 minutes before kickoff.\n- Verify broadcaster by region."
+      : (kind === "live"
+          ? "- Live state can lag: verify time/cards via primary feeds."
+          : "- Review turning points: first goal timing, cards, substitutions."),
+    "",
+    "Disclaimer",
+    "AI-generated; may contain errors or omissions."
+  ].join("\n");
+
+  const highlightsUrl = String(item.highlightsUrl || "").trim() || ytHighlightsUrl(home, away);
+
+  return { title, meta: league + " • " + when, article, kv, highlightsUrl };
 }
 
 /* -------- SCORES -------- */
@@ -480,53 +638,74 @@ async function loadScores(){
     LIVE_INDEX = items.filter(m => isLiveStatus(m.status));
     FINAL_INDEX = items.filter(m => isFinalStatus(m.status));
 
-    safeSetText("liveMeta", `${LIVE_INDEX.length} • updated ${data.updated||"—"}`);
-    safeSetText("scoresMeta", `${FINAL_INDEX.length} • updated ${data.updated||"—"}`);
+    safeSetText("liveMeta", `${LIVE_INDEX.length} • updated ${data.updated || data.generatedAt || "—"}`);
+    safeSetText("scoresMeta", `${FINAL_INDEX.length} • updated ${data.updated || data.generatedAt || "—"}`);
 
+    // LIVE
     liveList.innerHTML = "";
-    FINAL_INDEX.sort((a,b)=>String(b.kickoffUTC||"").localeCompare(a.kickoffUTC||""));
-
-    if(!LIVE_INDEX.length)
+    if(!LIVE_INDEX.length){
       liveList.appendChild(rowBasic("No live matches", "Check back soon", "—"));
-    else
-      LIVE_INDEX.slice(0,40).forEach(m=>{
+    } else {
+      LIVE_INDEX.slice(0,40).forEach((m, i)=>{
+        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+        const meta  = `${m.league || "—"}${m.when ? " • " + m.when : ""}`;
+        const hash  = `d=live-${i}`;
+
         liveList.appendChild(
           rowClickable({
-            title:`${m.home} ${m.score||""} ${m.away}`,
-            meta:`${m.league} • ${m.when||""}`,
-            tag:"LIVE",
-            cls:"live",
+            title,
+            meta,
+            tag: (String(m.status||"").toUpperCase()==="HT") ? "HT" : "LIVE",
+            cls: "live",
+            hash,
             buttons:[ makeBtn("Highlights", ()=>openHighlights(m), true) ],
-            onClick:()=>openModal({
-              title:`${m.home} vs ${m.away}`,
-              meta:m.league,
-              article:"Live match details",
-              highlightsUrl:m.highlightsUrl
-            })
+            onOpenDetails: ()=>{
+              const payload = buildMatchDetails("live", m);
+              openModal({
+                ...payload,
+                shareUrl: shareUrl(hash),
+                shareText: title + " — NetThud"
+              });
+            }
           })
         );
       });
+    }
 
+    // FINAL
     finalList.innerHTML = "";
-    if(!FINAL_INDEX.length)
+    if(!FINAL_INDEX.length){
       finalList.appendChild(rowBasic("No final scores yet", "", "—"));
-    else
-      FINAL_INDEX.slice(0,60).forEach(m=>{
-        finalList.appendChild(
-          rowClickable({
-            title:`${m.home} ${m.score} ${m.away}`,
-            meta:`${m.league} • ${m.when}`,
-            tag:"FT",
-            buttons:[ makeBtn("Highlights", ()=>openHighlights(m), true) ],
-            onClick:()=>openModal({
-              title:`${m.home} ${m.score} ${m.away}`,
-              meta:m.league,
-              article:"Final match summary",
-              highlightsUrl:m.highlightsUrl
+    } else {
+      FINAL_INDEX
+        .slice()
+        .sort((a,b)=>String(b.kickoffUTC||b.when||"").localeCompare(String(a.kickoffUTC||a.when||"")))
+        .slice(0,60)
+        .forEach((m, i)=>{
+          const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
+          const meta  = `${m.league || "—"}${m.when ? " • " + m.when : ""}`;
+          const hash  = `d=final-${i}`;
+
+          finalList.appendChild(
+            rowClickable({
+              title,
+              meta,
+              tag: "FT",
+              cls: "",
+              hash,
+              buttons:[ makeBtn("Highlights", ()=>openHighlights(m), true) ],
+              onOpenDetails: ()=>{
+                const payload = buildMatchDetails("final", m);
+                openModal({
+                  ...payload,
+                  shareUrl: shareUrl(hash),
+                  shareText: title + " — NetThud"
+                });
+              }
             })
-          })
-        );
-      });
+          );
+        });
+    }
 
   }catch(e){
     liveList.innerHTML="";
@@ -544,7 +723,7 @@ async function loadUpcoming(){
     const data = await readJson(PATHS.upcoming);
     UPCOMING_INDEX = Array.isArray(data.items) ? data.items : [];
 
-    safeSetText("upcomingMeta", `${UPCOMING_INDEX.length} • updated ${data.generatedAt||"—"}`);
+    safeSetText("upcomingMeta", `${UPCOMING_INDEX.length} • updated ${data.generatedAt || data.updated || "—"}`);
     list.innerHTML = "";
 
     if(!UPCOMING_INDEX.length){
@@ -552,18 +731,37 @@ async function loadUpcoming(){
       return;
     }
 
-    UPCOMING_INDEX.slice(0,60).forEach(g=>{
-      const tv = (g.tv && g.tv.length) ? g.tv.join(", ") : "TBA";
+    UPCOMING_INDEX.slice(0,60).forEach((g, i)=>{
+      const home = g.home || g.homeTeam || g.home_name || "TBD";
+      const away = g.away || g.awayTeam || g.away_name || "TBD";
+      const when = g.kickoffLocal || g.kickoffUTC || g.utcDate || g.when || "";
+      const tvArr = Array.isArray(g.tv) ? g.tv : (typeof g.tv === "string" ? g.tv.split(",").map(x=>x.trim()).filter(Boolean) : []);
+      const tv = tvArr.length ? tvArr.join(", ") : "TBA";
+
+      const title = `${home} vs ${away}`;
+      const meta  = `${g.league || "—"} • ${when || "—"} • TV: ${tv}`;
+      const hash  = `d=upcoming-${i}`;
+
       list.appendChild(
         rowClickable({
-          title:`${g.home} vs ${g.away}`,
-          meta:`${g.league} • ${g.kickoffLocal||""} • TV: ${tv}`,
+          title,
+          meta,
           tag:"UP",
-          onClick:()=>openModal({
-            title:`${g.home} vs ${g.away}`,
-            meta:g.league,
-            article:"Upcoming match preview"
-          })
+          cls:"",
+          hash,
+          buttons:[ makeBtn("Highlights", ()=>openHighlights({ home, away, highlightsUrl: g.highlightsUrl }), true) ],
+          onOpenDetails: ()=>{
+            const itemForDetails = { ...g, home, away, when };
+            const payload = buildMatchDetails("upcoming", itemForDetails);
+            payload.kv = payload.kv || {};
+            payload.kv.TV = tv;
+
+            openModal({
+              ...payload,
+              shareUrl: shareUrl(hash),
+              shareText: title + " — NetThud"
+            });
+          }
         })
       );
     });
@@ -575,11 +773,52 @@ async function loadUpcoming(){
 }
 </script>
 
-<!-- ===== END PART 3 / 4. PART 4 COMING NEXT MESSAGE ===== -->
+<!-- ===== END PART 3 / 4. APPEND PART 4 BELOW ===== -->
 <script>
 /* ---------------------------
    TRANSFER SIGNALS
 --------------------------- */
+
+function clamp01(n){
+  const x = Number(n);
+  if (!Number.isFinite(x)) return null;
+  return Math.max(0, Math.min(1, x));
+}
+function confidenceLabel(c){
+  const n = clamp01(c);
+  if (n == null) return "—";
+  return Math.round(n * 100) + "%";
+}
+function stageLabel(stage){
+  const s = String(stage || "").toLowerCase();
+  if (s === "advanced") return "ADV";
+  if (s === "contact") return "CONTACT";
+  if (s === "watch") return "WATCH";
+  return (s || "SIG").toUpperCase();
+}
+
+function buildSignalDetails(item){
+  const title = item.title || "Transfer signal";
+  const stage = stageLabel(item.stage);
+  const conf  = confidenceLabel(item.confidence);
+  const source = item.source || "NetThud Signals";
+  const when = item.publishedAt ? String(item.publishedAt).slice(0,19) : "";
+
+  const article = [
+    title,
+    "",
+    "AI Signal Summary",
+    `- Stage: ${stage}`,
+    `- Confidence: ${conf}`,
+    "",
+    "Disclaimer",
+    "Signals are probabilistic, AI-generated, and not confirmation of a transfer."
+  ].join("\n");
+
+  const meta = [source, when].filter(Boolean).join(" • ");
+  const kv = { Stage: stage, Confidence: conf, Source: source, Time: when || "—" };
+  return { title, meta, article, kv };
+}
 
 async function loadTransferSignals(){
   const list = $("transfersList");
@@ -587,7 +826,7 @@ async function loadTransferSignals(){
     const data = await readJson(PATHS.transfers);
     SIGNALS_INDEX = Array.isArray(data.items) ? data.items : [];
 
-    safeSetText("transfersMeta", `${SIGNALS_INDEX.length} • updated ${data.generatedAt||"—"}`);
+    safeSetText("transfersMeta", `${SIGNALS_INDEX.length} • updated ${data.generatedAt||data.updated||"—"}`);
     list.innerHTML = "";
 
     if(!SIGNALS_INDEX.length){
@@ -595,18 +834,26 @@ async function loadTransferSignals(){
       return;
     }
 
-    SIGNALS_INDEX.slice(0,80).forEach(s=>{
+    SIGNALS_INDEX.slice(0,80).forEach((s, i)=>{
+      const title = s.title || "Transfer signal";
+      const meta = `${s.source||"NetThud"}${s.publishedAt ? " • " + String(s.publishedAt).slice(0,19) : ""}`;
+      const hash = `d=signal-${i}`;
+
       list.appendChild(
         rowClickable({
-          title:s.title || "Transfer signal",
-          meta:`${s.source||"NetThud"} • ${String(s.publishedAt||"").slice(0,19)}`,
-          tag:(s.stage||"SIG").toUpperCase(),
-          cls:"signal",
-          onClick:()=>openModal({
-            title:s.title,
-            meta:s.source,
-            article:"AI-generated transfer signal"
-          })
+          title,
+          meta,
+          tag: stageLabel(s.stage),
+          cls: "signal",
+          hash,
+          onOpenDetails: ()=>{
+            const payload = buildSignalDetails(s);
+            openModal({
+              ...payload,
+              shareUrl: shareUrl(hash),
+              shareText: title + " — NetThud"
+            });
+          }
         })
       );
     });
@@ -621,31 +868,90 @@ async function loadTransferSignals(){
    AI NEWS
 --------------------------- */
 
+function slugify(s){
+  return String(s||"")
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g,"")
+    .replace(/\s+/g,"-")
+    .replace(/-+/g,"-")
+    .slice(0,60) || ("id-"+Math.random().toString(16).slice(2));
+}
+
+function buildFallbackArticle(n){
+  const title = n.title || "News";
+  const summary = n.summary || "";
+  return [
+    title,
+    "",
+    "Context",
+    "This item is generated by NetThud AI as a fast brief + a longer read format.",
+    "",
+    "What happened",
+    summary || "No summary provided yet.",
+    "",
+    "Why it matters",
+    "This can influence prep, tactics, availability, and short-term attention around fixtures.",
+    "",
+    "What to watch next",
+    "Look for primary-source confirmation and follow-on signals over the next 24–72 hours.",
+    "",
+    "Disclaimer",
+    "AI-generated summary; may contain errors."
+  ].join("\n");
+}
+
 async function loadNews(){
   const list = $("newsList");
   try{
     const data = await readJson(PATHS.news);
-    NEWS_INDEX = Array.isArray(data.items) ? data.items : [];
+    const items = Array.isArray(data.items) ? data.items : [];
 
-    safeSetText("newsMeta", `${NEWS_INDEX.length} • updated ${data.generatedAt||"—"}`);
+    safeSetText("newsMeta", `${items.length} • updated ${data.generatedAt||data.updated||data.updatedAt||"—"}`);
     list.innerHTML = "";
 
-    if(!NEWS_INDEX.length){
+    if(!items.length){
       list.appendChild(rowBasic("No AI news yet", "", "—"));
+      NEWS_INDEX = [];
       return;
     }
 
-    NEWS_INDEX.slice(0,60).forEach(n=>{
+    NEWS_INDEX = items.map((n,i)=>{
+      const id = n.id || ("news-"+(i+1));
+      const slug = slugify(id);
+      const title = n.title || ("News-"+(i+1));
+      const source = n.source || "NetThud AI";
+      const createdAt = n.createdAt || n.publishedAt || n.date || "";
+      const metaLine = [source, createdAt ? String(createdAt).slice(0,19) : ""].filter(Boolean).join(" • ");
+      const article = (n.article && String(n.article).trim().length > 60)
+        ? String(n.article)
+        : buildFallbackArticle({title, summary:n.summary});
+      return { slug, title, meta: metaLine, summary: n.summary || n.short || "", article };
+    });
+
+    NEWS_INDEX.slice(0,60).forEach((n, i)=>{
+      const label = "News-" + (i+1);
+      const rowTitle = `${label} • ${n.title}`;
+      const rowMeta = n.summary || "Click to open the AI article.";
+      const hash = `news=${n.slug}`;
+
       list.appendChild(
         rowClickable({
-          title:n.title || "AI News",
-          meta:n.summary || "",
-          tag:"OPEN",
-          onClick:()=>openModal({
-            title:n.title,
-            meta:n.source || "NetThud AI",
-            article:n.article || n.summary || ""
-          })
+          title: rowTitle,
+          meta: rowMeta,
+          tag: "OPEN",
+          cls: "",
+          hash,
+          onOpenDetails: ()=>{
+            const u = shareUrl(hash);
+            openModal({
+              title: n.title,
+              meta: n.meta,
+              article: n.article,
+              shareUrl: u,
+              shareText: n.title + " — NetThud AI"
+            });
+          }
         })
       );
     });
@@ -653,66 +959,155 @@ async function loadNews(){
   }catch(e){
     list.innerHTML="";
     list.appendChild(rowBasic("AI news not loading", e.message, "ERR","warn"));
+    safeSetText("newsMeta", "error");
   }
 }
 
 /* ---------------------------
-   LEAGUES (STATIC JSON)
+   LEAGUES
 --------------------------- */
-
 async function loadLeagues(){
   const box = $("leagueChips");
   try{
     const data = await readJson(PATHS.leagues);
-    const leagues = Array.isArray(data.items) ? data.items : [];
+    const leagues = Array.isArray(data) ? data
+                  : Array.isArray(data.items) ? data.items
+                  : Array.isArray(data.leagues) ? data.leagues
+                  : [];
 
-    safeSetText("leaguesMeta", `${leagues.length} • updated ${data.updated||"—"}`);
+    safeSetText("leaguesMeta", `${leagues.length} • updated ${data.updated||data.generatedAt||"—"}`);
     box.innerHTML = "";
+
+    if(!leagues.length){
+      box.appendChild(rowBasic("No leagues yet", "/assets/data/leagues.json items[] is empty.", "EMPTY", "warn"));
+      return;
+    }
 
     leagues.forEach(l=>{
       const el = document.createElement("div");
       el.className = "chip";
-      el.innerHTML = `
-        <span class="dot"></span>
-        ${esc(l.emoji||"")} ${esc(l.name)} • ${esc(l.country)}
-      `;
+      const name = (l && typeof l === "object") ? (l.name || l.key || "League") : String(l);
+      const emoji = (l && typeof l === "object") ? (l.emoji || "") : "";
+      const country = (l && typeof l === "object") ? (l.country || "") : "";
+
+      el.innerHTML = `<span class="dot"></span>${esc(emoji ? emoji + " " : "")}${esc(name)}${esc(country ? " • " + country : "")}`;
       box.appendChild(el);
     });
 
   }catch(e){
     box.innerHTML="";
     box.appendChild(rowBasic("Leagues not loading", e.message, "ERR","warn"));
+    safeSetText("leaguesMeta","error");
   }
+}
+
+/* ---------------------------
+   HASH ROUTING
+     #t=tabId
+     #news=slug
+     #d=kind-index  (live/final/upcoming/signal)
+--------------------------- */
+function tryOpenFromHash(){
+  const h = window.location.hash || "";
+
+  if (h.startsWith("#t=")){
+    const tabId = decodeURIComponent(h.slice(3));
+    if (tabId) showTab(tabId, { push:false });
+    return;
+  }
+
+  if (h.startsWith("#news=")){
+    const slug = decodeURIComponent(h.slice("#news=".length));
+    const found = (NEWS_INDEX || []).find(x => x.slug === slug);
+    if (!found) return;
+    const u = shareUrl("news=" + found.slug);
+    openModal({
+      title: found.title,
+      meta: found.meta,
+      article: found.article,
+      shareUrl: u,
+      shareText: found.title + " — NetThud AI"
+    });
+    return;
+  }
+
+  if (!h.startsWith("#d=")) return;
+  const key = decodeURIComponent(h.slice("#d=".length));
+  const [kind, idxStr] = key.split("-");
+  const idx = Number(idxStr);
+  if (!Number.isFinite(idx) || idx < 0) return;
+
+  let payload = null;
+  if (kind === "live" && LIVE_INDEX[idx]) payload = buildMatchDetails("live", LIVE_INDEX[idx]);
+  if (kind === "final" && FINAL_INDEX[idx]) payload = buildMatchDetails("final", FINAL_INDEX[idx]);
+  if (kind === "upcoming" && UPCOMING_INDEX[idx]) payload = buildMatchDetails("upcoming", UPCOMING_INDEX[idx]);
+  if (kind === "signal" && SIGNALS_INDEX[idx]) payload = buildSignalDetails(SIGNALS_INDEX[idx]);
+
+  if (!payload) return;
+
+  const u = shareUrl("d=" + kind + "-" + idx);
+  openModal({
+    ...payload,
+    shareUrl: u,
+    shareText: payload.title + " — NetThud"
+  });
 }
 
 /* ---------------------------
    TABS
 --------------------------- */
+function showTab(tabId, { push=true } = {}){
+  document.querySelectorAll(".tabSection").forEach(s => s.classList.remove("active"));
+  document.getElementById(tabId)?.classList.add("active");
 
-function showTab(id){
-  document.querySelectorAll(".tabSection").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id)?.classList.add("active");
+  document.querySelectorAll(".tabBtn").forEach(b => b.classList.remove("active"));
+  document.querySelector(`.tabBtn[data-tab="${CSS.escape(tabId)}"]`)?.classList.add("active");
 
-  document.querySelectorAll(".tabBtn").forEach(b=>b.classList.remove("active"));
-  document.querySelector(`.tabBtn[data-tab="${id}"]`)?.classList.add("active");
+  document.querySelector("main")?.scrollTo({ top: 0, behavior: "smooth" });
 
-  history.replaceState(null,"","#t="+id);
+  if (push) history.replaceState(null, "", "#t=" + encodeURIComponent(tabId));
 }
-
 function wireTabs(){
   document.querySelectorAll(".tabBtn").forEach(btn=>{
-    btn.onclick = ()=>showTab(btn.dataset.tab);
+    btn.onclick = ()=> showTab(btn.dataset.tab, { push:true });
   });
+}
+
+/* ---------------------------
+   SOUND TOGGLE
+--------------------------- */
+const SOUND_KEY = "netthud_sound";
+function setSoundUI(on){
+  const st = $("soundState");
+  if (st) st.textContent = on ? "ON" : "OFF";
+}
+function getSound(){ return localStorage.getItem(SOUND_KEY) !== "0"; }
+function setSound(on){ localStorage.setItem(SOUND_KEY, on ? "1" : "0"); setSoundUI(on); }
+function beep(){
+  if (!getSound()) return;
+  try{
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator(); const g = ctx.createGain();
+    o.type="sine"; o.frequency.value=440; g.gain.value=0.02;
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); setTimeout(()=>{o.stop(); ctx.close();}, 80);
+  }catch{}
 }
 
 /* ---------------------------
    BOOT
 --------------------------- */
-
 document.addEventListener("DOMContentLoaded", async ()=>{
   $("year").textContent = new Date().getFullYear();
 
   wireTabs();
+
+  setSoundUI(getSound());
+  $("soundPill")?.addEventListener("click", ()=>{
+    const on = !getSound();
+    setSound(on);
+    beep();
+  });
 
   await loadScores();
   await loadUpcoming();
@@ -720,9 +1115,12 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   await loadNews();
   await loadLeagues();
 
-  if(location.hash.startsWith("#t=")){
-    showTab(location.hash.replace("#t=",""));
+  if (!location.hash || location.hash === "#"){
+    showTab("liveScores", { push:false });
+  } else {
+    tryOpenFromHash();
   }
+  window.addEventListener("hashchange", tryOpenFromHash);
 });
 </script>
 
