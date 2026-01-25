@@ -8,6 +8,10 @@
 //   NETTHUD_UPCOMING_LIMIT=80          (optional; set 0 for "no limit")
 //   NETTHUD_UPCOMING_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL,EC (optional override)
 //
+// TV mapping (optional):
+//   NETTHUD_TV_MAP_PATH=assets/data/tv.json  (optional; default shown)
+//   If tv.json is missing, tv will remain [] (UI will show "TV: TBA").
+//
 // Adds H/D/A probabilities based on PUBLIC signals (standings strength + home advantage + closeness).
 // Output includes: hda {home, draw, away} + model label.
 // Also includes stable fields used by index.html: id, highlightsUrl
@@ -221,12 +225,83 @@ function parseLimit() {
   return Math.max(10, Math.min(500, v));
 }
 
+/**
+ * TV map loader (optional).
+ * Default file: assets/data/tv.json
+ *
+ * Supported shapes:
+ * 1) Simple by competition code:
+ *    { "PL": ["NBC","Peacock"], "CL": ["Paramount+"] }
+ *
+ * 2) Optional overrides:
+ *    {
+ *      "byCompetition": { "PL": ["NBC","Peacock"] },
+ *      "byMatchId": { "537619": ["ESPN+"] }
+ *    }
+ */
+function loadTvMap() {
+  const rel = env("NETTHUD_TV_MAP_PATH", "assets/data/tv.json");
+  const filePath = path.isAbsolute(rel) ? rel : path.join(process.cwd(), rel);
+
+  try {
+    if (!fs.existsSync(filePath)) return { byCompetition: {}, byMatchId: {} };
+    const raw = fs.readFileSync(filePath, "utf8");
+    const json = JSON.parse(raw);
+
+    // If it looks like a simple map (keys are league codes), accept it.
+    const hasByCompetition = json && typeof json === "object" && json.byCompetition;
+    const hasByMatchId = json && typeof json === "object" && json.byMatchId;
+
+    if (hasByCompetition || hasByMatchId) {
+      return {
+        byCompetition: (json.byCompetition && typeof json.byCompetition === "object") ? json.byCompetition : {},
+        byMatchId: (json.byMatchId && typeof json.byMatchId === "object") ? json.byMatchId : {},
+      };
+    }
+
+    // Otherwise treat root as byCompetition
+    if (json && typeof json === "object" && !Array.isArray(json)) {
+      return { byCompetition: json, byMatchId: {} };
+    }
+
+    return { byCompetition: {}, byMatchId: {} };
+  } catch {
+    return { byCompetition: {}, byMatchId: {} };
+  }
+}
+
+function normalizeTvList(x) {
+  if (!x) return [];
+  if (Array.isArray(x)) {
+    return x.map((s) => safeStr(s).trim()).filter(Boolean);
+  }
+  // allow single string
+  const s = safeStr(x).trim();
+  return s ? [s] : [];
+}
+
 async function fetchFootballDataUpcoming(days) {
   const token = env("NETTHUD_SCORES_API_TOKEN");
   if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
 
   const limit = parseLimit();
   const { set: allowedCompCodes, ordered: orderedCodes } = parseCompAllowlistWithOrder();
+
+  // Load tv map once
+  const tvMap = loadTvMap();
+
+  const resolveTv = (competitionCode, matchId) => {
+    // Match-level override wins
+    if (matchId != null) {
+      const direct = tvMap.byMatchId?.[String(matchId)];
+      const list = normalizeTvList(direct);
+      if (list.length) return list;
+    }
+
+    // Competition-level fallback
+    const byComp = tvMap.byCompetition?.[String(competitionCode || "").toUpperCase()];
+    return normalizeTvList(byComp);
+  };
 
   // Safer window:
   // If this runs near UTC midnight (or user timezone shifts), we can miss same-day matches.
@@ -321,7 +396,7 @@ async function fetchFootballDataUpcoming(days) {
       away,
       kickoffUTC,
       kickoffLocal,
-      tv: [],
+      tv: resolveTv(competitionCode, matchId),
       hda,
       highlightsUrl: "",
       model: "NetThud Table Model v1",
