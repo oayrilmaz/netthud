@@ -6,11 +6,7 @@
 //   NETTHUD_SCORES_API_TOKEN=xxxxxxxx
 //   NETTHUD_UPCOMING_DAYS=7            (optional, 1..14)
 //   NETTHUD_UPCOMING_LIMIT=80          (optional; set 0 for "no limit")
-//   NETTHUD_UPCOMING_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL,EC (optional override)
-//
-// TV mapping (optional):
-//   NETTHUD_TV_MAP_PATH=assets/data/tv.json  (optional; default shown)
-//   If tv.json is missing, tv will remain [] (UI will show "TV: TBA").
+//   NETTHUD_UPCOMING_COMP_CODES=PL,PD,SA,BL1,FL1,CL,EL,EC,TSL (optional override)
 //
 // Adds H/D/A probabilities based on PUBLIC signals (standings strength + home advantage + closeness).
 // Output includes: hda {home, draw, away} + model label.
@@ -96,11 +92,12 @@ function parseCompAllowlistWithOrder() {
   if (raw) {
     const ordered = raw
       .split(",")
-      .map((x) => x.trim())
+      .map((x) => x.trim().toUpperCase())
       .filter(Boolean);
     return { set: new Set(ordered), ordered };
   }
 
+  // DEFAULTS (include Turkey + Europa)
   const ordered = [
     "PL",
     "PD",
@@ -109,14 +106,10 @@ function parseCompAllowlistWithOrder() {
     "FL1",
     "DED",
     "PPL",
+    "TSL", // ✅ Turkey
     "CL",
-    "EL",
-    "EC",
-    "CLI",
-    "FAC",
-    "CDR",
-    "DFB",
-    "CIT",
+    "EL",  // ✅ Europa
+    "EC"
   ];
   return { set: new Set(ordered), ordered };
 }
@@ -225,61 +218,6 @@ function parseLimit() {
   return Math.max(10, Math.min(500, v));
 }
 
-/**
- * TV map loader (optional).
- * Default file: assets/data/tv.json
- *
- * Supported shapes:
- * 1) Simple by competition code:
- *    { "PL": ["NBC","Peacock"], "CL": ["Paramount+"] }
- *
- * 2) Optional overrides:
- *    {
- *      "byCompetition": { "PL": ["NBC","Peacock"] },
- *      "byMatchId": { "537619": ["ESPN+"] }
- *    }
- */
-function loadTvMap() {
-  const rel = env("NETTHUD_TV_MAP_PATH", "assets/data/tv.json");
-  const filePath = path.isAbsolute(rel) ? rel : path.join(process.cwd(), rel);
-
-  try {
-    if (!fs.existsSync(filePath)) return { byCompetition: {}, byMatchId: {} };
-    const raw = fs.readFileSync(filePath, "utf8");
-    const json = JSON.parse(raw);
-
-    // If it looks like a simple map (keys are league codes), accept it.
-    const hasByCompetition = json && typeof json === "object" && json.byCompetition;
-    const hasByMatchId = json && typeof json === "object" && json.byMatchId;
-
-    if (hasByCompetition || hasByMatchId) {
-      return {
-        byCompetition: (json.byCompetition && typeof json.byCompetition === "object") ? json.byCompetition : {},
-        byMatchId: (json.byMatchId && typeof json.byMatchId === "object") ? json.byMatchId : {},
-      };
-    }
-
-    // Otherwise treat root as byCompetition
-    if (json && typeof json === "object" && !Array.isArray(json)) {
-      return { byCompetition: json, byMatchId: {} };
-    }
-
-    return { byCompetition: {}, byMatchId: {} };
-  } catch {
-    return { byCompetition: {}, byMatchId: {} };
-  }
-}
-
-function normalizeTvList(x) {
-  if (!x) return [];
-  if (Array.isArray(x)) {
-    return x.map((s) => safeStr(s).trim()).filter(Boolean);
-  }
-  // allow single string
-  const s = safeStr(x).trim();
-  return s ? [s] : [];
-}
-
 async function fetchFootballDataUpcoming(days) {
   const token = env("NETTHUD_SCORES_API_TOKEN");
   if (!token) throw new Error("Missing env: NETTHUD_SCORES_API_TOKEN");
@@ -287,25 +225,7 @@ async function fetchFootballDataUpcoming(days) {
   const limit = parseLimit();
   const { set: allowedCompCodes, ordered: orderedCodes } = parseCompAllowlistWithOrder();
 
-  // Load tv map once
-  const tvMap = loadTvMap();
-
-  const resolveTv = (competitionCode, matchId) => {
-    // Match-level override wins
-    if (matchId != null) {
-      const direct = tvMap.byMatchId?.[String(matchId)];
-      const list = normalizeTvList(direct);
-      if (list.length) return list;
-    }
-
-    // Competition-level fallback
-    const byComp = tvMap.byCompetition?.[String(competitionCode || "").toUpperCase()];
-    return normalizeTvList(byComp);
-  };
-
   // Safer window:
-  // If this runs near UTC midnight (or user timezone shifts), we can miss same-day matches.
-  // So we start from "UTC midnight of (now - 12h)".
   const now = new Date();
   const startAnchor = new Date(now.getTime() - 12 * 60 * 60 * 1000);
   const start = utcMidnight(startAnchor);
@@ -315,7 +235,7 @@ async function fetchFootballDataUpcoming(days) {
 
   const dateFrom = yyyyMmDdUTC(start);
 
-  // +1 day safety on the end (matches can be late/shifted)
+  // +1 day safety on the end
   const endPlusOne = new Date(end);
   endPlusOne.setUTCDate(end.getUTCDate() + 1);
   const dateTo = yyyyMmDdUTC(endPlusOne);
@@ -326,13 +246,7 @@ async function fetchFootballDataUpcoming(days) {
 
   const keepStatuses = new Set(["SCHEDULED", "TIMED", "POSTPONED"]);
   const excludeStatuses = new Set([
-    "IN_PLAY",
-    "PAUSED",
-    "FINISHED",
-    "SUSPENDED",
-    "LIVE",
-    "CANCELED",
-    "AWARDED",
+    "IN_PLAY","PAUSED","FINISHED","SUSPENDED","LIVE","CANCELED","AWARDED",
   ]);
 
   const keep = matches.filter((m) => {
@@ -396,7 +310,7 @@ async function fetchFootballDataUpcoming(days) {
       away,
       kickoffUTC,
       kickoffLocal,
-      tv: resolveTv(competitionCode, matchId),
+      tv: [],
       hda,
       highlightsUrl: "",
       model: "NetThud Table Model v1",
@@ -411,7 +325,7 @@ async function fetchFootballDataUpcoming(days) {
   return {
     generatedAt: isoNow(),
     days,
-    limit: Number.isFinite(limit) ? limit : 0, // keep your "0 means no limit" convention in output
+    limit: Number.isFinite(limit) ? limit : 0,
     competitions: orderedCodes,
     model: "NetThud Table Model v1",
     items: trimmed,
