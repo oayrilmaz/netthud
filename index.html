@@ -304,31 +304,52 @@
 
 </main>
 
-<!-- ===== END PART 1 / 4. APPEND PART 2 BELOW ===== -->
+<!-- ===== END PART 1 / 4. PART 2 COMING NEXT MESSAGE ===== -->
 <!-- Modal -->
-<div class="modalOverlay" id="modalOverlay" aria-hidden="true" style="position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;z-index:60;padding:18px;">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="width:min(920px,100%);background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;">
-    <div class="modalHeader" style="display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);background:#0f1218;position:sticky;top:0;">
+<div class="modalOverlay" id="modalOverlay" aria-hidden="true"
+  style="position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;z-index:60;padding:18px;">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"
+    style="width:min(920px,100%);background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;">
+    <div class="modalHeader"
+      style="display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);background:#0f1218;position:sticky;top:0;">
       <div>
         <div class="modalTitle" id="modalTitle" style="font-weight:900">Details</div>
-        <div class="modalMeta" id="modalMeta" style="font-size:12px;color:var(--muted);margin-top:4px"></div>
+        <div class="modalMeta" id="modalMeta"
+          style="font-size:12px;color:var(--muted);margin-top:4px"></div>
       </div>
-      <button class="closeBtn" id="modalClose" style="padding:8px 12px;border-radius:12px;border:1px solid var(--border);background:#0f131b;font-weight:900;cursor:pointer;color:var(--text)">Close</button>
+      <button class="closeBtn" id="modalClose"
+        style="padding:8px 12px;border-radius:12px;border:1px solid var(--border);background:#0f131b;font-weight:900;cursor:pointer;color:var(--text)">
+        Close
+      </button>
     </div>
-    <div class="modalBody" style="padding:16px">
-      <div class="modalActions" id="modalActions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"></div>
-      <div class="modalContent" id="modalContent" style="margin-top:14px;line-height:1.7;color:var(--text);font-size:14px;white-space:pre-wrap"></div>
 
-      <div class="subBox" id="modalKVBox" style="display:none;border:1px solid var(--border);background:#0f131b;border-radius:14px;padding:12px;margin-top:12px;">
-        <div class="subBoxTitle" style="font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Snapshot</div>
-        <div class="kv" id="modalKV" style="display:grid;grid-template-columns:140px 1fr;gap:8px 12px;font-size:13px"></div>
+    <div class="modalBody" style="padding:16px">
+      <div class="modalActions" id="modalActions"
+        style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"></div>
+
+      <div class="modalContent" id="modalContent"
+        style="margin-top:14px;line-height:1.7;color:var(--text);font-size:14px;white-space:pre-wrap"></div>
+
+      <div class="subBox" id="modalKVBox"
+        style="display:none;border:1px solid var(--border);background:#0f131b;border-radius:14px;padding:12px;margin-top:12px;">
+        <div class="subBoxTitle"
+          style="font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">
+          Snapshot
+        </div>
+        <div class="kv" id="modalKV"
+          style="display:grid;grid-template-columns:140px 1fr;gap:8px 12px;font-size:13px"></div>
       </div>
 
-      <div class="subBox" id="modalLegalBox" style="border:1px solid var(--border);background:#0f131b;border-radius:14px;padding:12px;margin-top:12px;">
-        <div class="subBoxTitle" style="font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Disclosure</div>
-        <div class="modalContent" style="margin-top:0;color:var(--muted);white-space:pre-wrap">
-This view is generated automatically and may contain errors. It is not official match or transfer confirmation.
-Verify with primary sources (club statements, league data, official competition feeds).
+      <div class="subBox"
+        style="border:1px solid var(--border);background:#0f131b;border-radius:14px;padding:12px;margin-top:12px;">
+        <div class="subBoxTitle"
+          style="font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">
+          Disclosure
+        </div>
+        <div style="font-size:12px;color:var(--muted);white-space:pre-wrap">
+This view is generated automatically and may contain errors.
+It is not official match or transfer confirmation.
+Always verify with primary sources.
         </div>
       </div>
     </div>
@@ -336,922 +357,373 @@ Verify with primary sources (club statements, league data, official competition 
 </div>
 
 <script>
-  /* ---------------------------
-     PATHS
-  --------------------------- */
-  const PATHS = {
-    scores:    "/assets/data/scores.json",
-    upcoming:  "/assets/data/upcoming.json",
-    transfers: "/assets/data/transfers.json",
-    news:      "/assets/data/ai-news.json",
-    leagues:   "/assets/data/leagues.json"
-    // NOTE: tv.json intentionally NOT used.
-  };
+/* ---------------------------
+   PATHS
+--------------------------- */
+const PATHS = {
+  scores:    "/assets/data/scores.json",
+  upcoming:  "/assets/data/upcoming.json",
+  transfers: "/assets/data/transfers.json",
+  news:      "/assets/data/ai-news.json",
+  leagues:   "/assets/data/leagues.json"
+};
 
-  const $ = (id) => document.getElementById(id);
-  function safeEl(id){ return document.getElementById(id); }
-  function safeSetText(id, text){ const el = safeEl(id); if (el) el.textContent = text; }
+const $ = (id) => document.getElementById(id);
+const safeEl = (id) => document.getElementById(id);
+const safeSetText = (id, txt) => { const el = safeEl(id); if(el) el.textContent = txt; };
 
-  window.addEventListener("error", (e)=>console.error("NetThud JS Error:", e.message, e.filename, e.lineno));
-  window.addEventListener("unhandledrejection", (e)=>console.error("NetThud Promise Error:", e.reason));
+window.addEventListener("error", e =>
+  console.error("NetThud JS Error:", e.message, e.filename, e.lineno)
+);
+window.addEventListener("unhandledrejection", e =>
+  console.error("NetThud Promise Error:", e.reason)
+);
 
-  function esc(s){
-    return String(s ?? "")
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;");
-  }
+function esc(s){
+  return String(s ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;");
+}
 
-  async function readJson(url) {
-    const u = new URL(url, window.location.origin);
-    u.searchParams.set("v", Date.now());
-    const res = await fetch(u.toString(), { cache:"no-store" });
-    if (!res.ok) throw new Error(`Missing: ${url} (HTTP ${res.status})`);
-    return res.json();
-  }
+async function readJson(url){
+  const u = new URL(url, window.location.origin);
+  u.searchParams.set("v", Date.now());
+  const res = await fetch(u.toString(), { cache:"no-store" });
+  if(!res.ok) throw new Error(`Missing ${url}`);
+  return res.json();
+}
 
-  function isLiveStatus(s){
-    const st = String(s || "").toUpperCase();
-    return st === "LIVE" || st === "HT" || st === "IN_PLAY" || st === "PAUSED";
-  }
-  function isFinalStatus(s){
-    const st = String(s || "").toUpperCase();
-    return st === "FT" || st === "FINISHED";
-  }
+/* Status helpers */
+const isLiveStatus = s => ["LIVE","HT","IN_PLAY","PAUSED"].includes(String(s||"").toUpperCase());
+const isFinalStatus = s => ["FT","FINISHED"].includes(String(s||"").toUpperCase());
 
-  function makeBtn(label, onClick, secondary=false){
-    const b = document.createElement("div");
-    b.className = "mini" + (secondary ? " secondary" : "");
-    b.textContent = label;
-    b.addEventListener("click", (e)=>{ e.stopPropagation(); onClick(); });
-    return b;
-  }
+function makeBtn(label, onClick, secondary=false){
+  const b = document.createElement("div");
+  b.className = "mini" + (secondary ? " secondary" : "");
+  b.textContent = label;
+  b.onclick = e => { e.stopPropagation(); onClick(); };
+  return b;
+}
 
-  function pageUrlNoHash(){
-    const u = new URL(window.location.href);
-    u.hash = "";
-    return u.toString();
-  }
-  function shareUrl(hash){
-    return pageUrlNoHash() + "#" + hash;
-  }
-  function shareToX(text, url){
-    const u = new URL("https://twitter.com/intent/tweet");
-    u.searchParams.set("text", text);
-    u.searchParams.set("url", url);
-    window.open(u.toString(), "_blank", "noopener");
-  }
-  async function copyLink(text){
-    try{
-      await navigator.clipboard.writeText(text);
-    }catch{
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      try{ document.execCommand("copy"); }catch{}
-      document.body.removeChild(ta);
-    }
-  }
-
-  function rowBasic(title, meta, tagText, tagClass="") {
-    const d = document.createElement("div");
-    d.className = "item";
-    d.innerHTML = `
-      <div style="min-width:0">
-        <strong>${esc(title)}</strong>
-        <p>${esc(meta || "")}</p>
-      </div>
-      <span class="tag ${esc(tagClass)}">${esc(tagText || "")}</span>
-    `;
-    return d;
-  }
-
-  function emptyState(container, title, meta) {
-    container.innerHTML = "";
-    container.appendChild(rowBasic(title, meta, "EMPTY", "warn"));
-  }
-
-  /* Highlights helpers */
-  function ytHighlightsUrl(home, away){
-    const q = encodeURIComponent(`${home} vs ${away} highlights`);
-    return `https://www.youtube.com/results?search_query=${q}`;
-  }
-  function openHighlights(item){
-    const direct = String(item.highlightsUrl || "").trim();
-    const url = direct || ytHighlightsUrl(item.home || "Home", item.away || "Away");
-    window.open(url, "_blank", "noopener");
-  }
-
-  function rowClickable({ title, meta, tagText, tagClass="", hash, onOpenDetails, extraButtons=[] }) {
-    const wrap = document.createElement("div");
-    wrap.className = "item";
-    wrap.style.cursor = "pointer";
-
-    const left = document.createElement("div");
-    left.style.minWidth = "0";
-    left.innerHTML = `
+/* Basic row */
+function rowBasic(title, meta, tag, cls=""){
+  const d = document.createElement("div");
+  d.className = "item";
+  d.innerHTML = `
+    <div>
       <strong>${esc(title)}</strong>
-      <p>${esc(meta || "")}</p>
-      <div class="rowActions"></div>
-    `;
+      <p>${esc(meta||"")}</p>
+    </div>
+    <span class="tag ${cls}">${esc(tag)}</span>
+  `;
+  return d;
+}
+</script>
 
-    const actions = left.querySelector(".rowActions");
-    const u = shareUrl(hash);
+<!-- ===== END PART 2 / 4. PART 3 COMING NEXT MESSAGE ===== -->
+<script>
+/* ---------------------------
+   SCORE + UPCOMING LOADERS
+--------------------------- */
 
-    actions.appendChild(makeBtn("Details", ()=>{
-      history.replaceState(null,"",u);
-      onOpenDetails();
-    }));
+let LIVE_INDEX = [];
+let FINAL_INDEX = [];
+let UPCOMING_INDEX = [];
+let SIGNALS_INDEX = [];
+let NEWS_INDEX = [];
 
-    extraButtons.forEach(btn => actions.appendChild(btn));
+/* Highlights */
+function ytHighlightsUrl(home, away){
+  const q = encodeURIComponent(`${home} vs ${away} highlights`);
+  return `https://www.youtube.com/results?search_query=${q}`;
+}
+function openHighlights(item){
+  const u = item.highlightsUrl || ytHighlightsUrl(item.home, item.away);
+  window.open(u, "_blank", "noopener");
+}
 
-    actions.appendChild(makeBtn("Share X", ()=>shareToX(title + " — NetThud", u)));
-    actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
+/* Clickable row */
+function rowClickable({ title, meta, tag, cls="", onClick, buttons=[] }){
+  const wrap = document.createElement("div");
+  wrap.className = "item";
+  wrap.style.cursor = "pointer";
 
-    const right = document.createElement("span");
-    right.className = "tag " + (tagClass || "");
-    right.textContent = tagText || "";
+  const left = document.createElement("div");
+  left.innerHTML = `<strong>${esc(title)}</strong><p>${esc(meta||"")}</p><div class="rowActions"></div>`;
 
-    wrap.appendChild(left);
-    wrap.appendChild(right);
+  const acts = left.querySelector(".rowActions");
+  buttons.forEach(b => acts.appendChild(b));
 
-    wrap.addEventListener("click", (e)=>{
-      if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
-      history.replaceState(null,"",u);
-      onOpenDetails();
-    });
+  const right = document.createElement("span");
+  right.className = "tag " + cls;
+  right.textContent = tag;
 
-    return wrap;
-  }
-
-  /* Modal */
-  function openModal(payload){
-    const overlay = $("modalOverlay");
-    const titleEl = $("modalTitle");
-    const metaEl = $("modalMeta");
-    const contentEl = $("modalContent");
-    const actionsEl = $("modalActions");
-    const closeBtn = $("modalClose");
-
-    const kvBox = $("modalKVBox");
-    const kv = $("modalKV");
-
-    titleEl.textContent = payload.title || "Details";
-    metaEl.textContent = payload.meta || "";
-    contentEl.textContent = payload.article || "";
-
-    if (payload.kv && typeof payload.kv === "object") {
-      kvBox.style.display = "";
-      kv.innerHTML = "";
-      Object.entries(payload.kv).forEach(([k,v])=>{
-        const kEl = document.createElement("div");
-        kEl.style.color = "var(--muted)";
-        kEl.textContent = k;
-
-        const vEl = document.createElement("div");
-        vEl.innerHTML = "<strong style='color:var(--text)'>" + esc(String(v ?? "")) + "</strong>";
-
-        kv.appendChild(kEl);
-        kv.appendChild(vEl);
-      });
-    } else {
-      kvBox.style.display = "none";
-      kv.innerHTML = "";
-    }
-
-    actionsEl.innerHTML = "";
-    if (payload.shareUrl) {
-      actionsEl.appendChild(makeBtn("Share X", ()=>shareToX(payload.shareText || payload.title || "NetThud", payload.shareUrl)));
-      actionsEl.appendChild(makeBtn("Copy link", ()=>copyLink(payload.shareUrl), true));
-    }
-    if (payload.highlightsUrl) {
-      actionsEl.appendChild(makeBtn("Highlights", ()=>window.open(payload.highlightsUrl, "_blank", "noopener")));
-    }
-    actionsEl.appendChild(makeBtn("Home", ()=>{
-      history.replaceState(null,"",pageUrlNoHash());
-      close();
-    }, true));
-
-    overlay.style.display = "flex";
-    overlay.setAttribute("aria-hidden","false");
-
-    function close(){
-      overlay.setAttribute("aria-hidden","true");
-      overlay.style.display = "none";
-      window.removeEventListener("keydown", onKey);
-      overlay.removeEventListener("click", onBg);
-      closeBtn.removeEventListener("click", close);
-    }
-    function onKey(e){ if(e.key==="Escape") close(); }
-    function onBg(e){ if(e.target===overlay) close(); }
-
-    window.addEventListener("keydown", onKey);
-    overlay.addEventListener("click", onBg);
-    closeBtn.addEventListener("click", close);
-  }
-
-  function buildMatchDetails({ kind, item }) {
-    const league = item.league || "";
-    const when = item.when || item.kickoffLocal || item.kickoffUTC || item.utcDate || "";
-    const home = item.home || item.homeTeam || item.home_name || "";
-    const away = item.away || item.awayTeam || item.away_name || "";
-    const score = item.score || "";
-    const status = (item.status || "").toUpperCase();
-
-    const title =
-      kind === "upcoming"
-        ? `${home} vs ${away}`
-        : `${home} ${score ? score : ""} ${away}`.trim();
-
-    const lines = [];
-    lines.push(title);
-    lines.push("");
-    lines.push("AI Match Notes");
-    lines.push("- Context is auto-generated from public match data + lightweight heuristics.");
-    lines.push("- Treat as guidance, not official reporting.");
-    lines.push("");
-    lines.push("What to watch");
-    if (kind === "upcoming") {
-      lines.push("- Check official lineups ~60 minutes before kickoff.");
-      lines.push("- Confirm broadcast locally (it can vary by country/provider).");
-    } else if (kind === "live") {
-      lines.push("- Live state can lag: confirm time, cards, xG via primary feeds.");
-    } else {
-      lines.push("- Review key turning points: first goal timing, cards, substitutions.");
-    }
-    lines.push("");
-    lines.push("Disclaimer");
-    lines.push("This content is AI-generated and may contain errors or omissions.");
-
-    const meta = [league, when].filter(Boolean).join(" • ");
-
-    const kv = {
-      League: league || "—",
-      When: when || "—",
-      Status: status || "—",
-      Score: score || "—"
-    };
-
-    const highlightsUrl = String(item.highlightsUrl || "").trim() || ytHighlightsUrl(home, away);
-
-    return { title, meta, article: lines.join("\n"), kv, highlightsUrl };
-  }
-
-  /* ---------------------------
-     TV (Upcoming + TV)
-     - Uses upcoming.json "tv" field only
-     - Else uses a league fallback map (best-effort)
-  --------------------------- */
-  function normalizeTvList(tv){
-    if (!tv) return [];
-    if (Array.isArray(tv)) return tv.map(x=>String(x||"").trim()).filter(Boolean);
-    if (typeof tv === "string") return tv.split(",").map(x=>x.trim()).filter(Boolean);
-    return [];
-  }
-
-  // Best-effort fallback (you can tune these later)
-  const TV_BY_LEAGUE = {
-    "UEFA Europa League": ["Local broadcasters vary"],
-    "Süper Lig": ["beIN Sports (TR)"],
-    "Turkish Süper Lig": ["beIN Sports (TR)"],
-    "Premier League": ["Local broadcasters vary"],
-    "UEFA Champions League": ["Local broadcasters vary"]
+  wrap.append(left, right);
+  wrap.onclick = e => {
+    if(e.target.classList.contains("mini")) return;
+    onClick();
   };
+  return wrap;
+}
 
-  function tvLineForMatch(match){
-    const direct = normalizeTvList(match.tv);
-    if (direct.length) return direct;
+/* -------- SCORES -------- */
+async function loadScores(){
+  const liveList = $("liveList");
+  const finalList = $("scoresList");
 
-    const leagueName = String(match.league || "").trim();
-    const fallback = TV_BY_LEAGUE[leagueName] || [];
-    return normalizeTvList(fallback);
-  }
+  try{
+    const data = await readJson(PATHS.scores);
+    const items = Array.isArray(data.items) ? data.items : [];
 
-  /* Index arrays for modal routing */
-  let LIVE_INDEX = [];
-  let FINAL_INDEX = [];
-  let UPCOMING_INDEX = [];
-  let SIGNALS_INDEX = [];
-  let NEWS_INDEX = [];
+    LIVE_INDEX = items.filter(m => isLiveStatus(m.status));
+    FINAL_INDEX = items.filter(m => isFinalStatus(m.status));
 
-  async function loadScores() {
-    const finalList = $("scoresList");
-    const liveList  = $("liveList");
+    safeSetText("liveMeta", `${LIVE_INDEX.length} • updated ${data.updated||"—"}`);
+    safeSetText("scoresMeta", `${FINAL_INDEX.length} • updated ${data.updated||"—"}`);
 
-    try {
-      const data = await readJson(PATHS.scores);
-      const items = Array.isArray(data.items) ? data.items : [];
+    liveList.innerHTML = "";
+    FINAL_INDEX.sort((a,b)=>String(b.kickoffUTC||"").localeCompare(a.kickoffUTC||""));
 
-      const live = items.filter(m => isLiveStatus(m.status));
-      const finals = items.filter(m => isFinalStatus(m.status));
-
-      LIVE_INDEX = live;
-      FINAL_INDEX = finals;
-
-      safeSetText("liveMeta",  `${live.length} • updated ${data.updated || data.generatedAt || "—"}`);
-      safeSetText("scoresMeta",`${finals.length} • updated ${data.updated || data.generatedAt || "—"}`);
-
-      liveList.innerHTML = "";
-      if (!live.length) emptyState(liveList, "No live matches right now", "Live matches will appear here.");
-      else live.slice(0,40).forEach((m, i) => {
-        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
-        const tag = (String(m.status||"").toUpperCase()==="HT") ? "HT" : "LIVE";
-        const hash = `d=live-${i}`;
-
-        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(m), true);
-
+    if(!LIVE_INDEX.length)
+      liveList.appendChild(rowBasic("No live matches", "Check back soon", "—"));
+    else
+      LIVE_INDEX.slice(0,40).forEach(m=>{
         liveList.appendChild(
           rowClickable({
-            title,
-            meta: metaLine,
-            tagText: tag,
-            tagClass: "live",
-            hash,
-            extraButtons:[highlightsBtn],
-            onOpenDetails: () => {
-              const payload = buildMatchDetails({ kind:"live", item: m });
-              openModal({
-                ...payload,
-                shareUrl: shareUrl(hash),
-                shareText: title + " — NetThud"
-              });
-            }
+            title:`${m.home} ${m.score||""} ${m.away}`,
+            meta:`${m.league} • ${m.when||""}`,
+            tag:"LIVE",
+            cls:"live",
+            buttons:[ makeBtn("Highlights", ()=>openHighlights(m), true) ],
+            onClick:()=>openModal({
+              title:`${m.home} vs ${m.away}`,
+              meta:m.league,
+              article:"Live match details",
+              highlightsUrl:m.highlightsUrl
+            })
           })
         );
       });
 
-      finalList.innerHTML = "";
-      if (!finals.length) emptyState(finalList, "No final scores yet", "Finished matches will appear here.");
-      else finals.slice(0,60).forEach((m, i) => {
-        const title = `${m.home || ""} ${m.score || ""} ${m.away || ""}`.trim();
-        const metaLine = `${m.league || ""}${m.when ? " • " + m.when : ""}`;
-        const hash = `d=final-${i}`;
-
-        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights(m), true);
-
+    finalList.innerHTML = "";
+    if(!FINAL_INDEX.length)
+      finalList.appendChild(rowBasic("No final scores yet", "", "—"));
+    else
+      FINAL_INDEX.slice(0,60).forEach(m=>{
         finalList.appendChild(
           rowClickable({
-            title,
-            meta: metaLine,
-            tagText: "FT",
-            tagClass: "",
-            hash,
-            extraButtons:[highlightsBtn],
-            onOpenDetails: () => {
-              const payload = buildMatchDetails({ kind:"final", item: m });
-              openModal({
-                ...payload,
-                shareUrl: shareUrl(hash),
-                shareText: title + " — NetThud"
-              });
-            }
+            title:`${m.home} ${m.score} ${m.away}`,
+            meta:`${m.league} • ${m.when}`,
+            tag:"FT",
+            buttons:[ makeBtn("Highlights", ()=>openHighlights(m), true) ],
+            onClick:()=>openModal({
+              title:`${m.home} ${m.score} ${m.away}`,
+              meta:m.league,
+              article:"Final match summary",
+              highlightsUrl:m.highlightsUrl
+            })
           })
         );
       });
 
-    } catch (e) {
-      safeSetText("liveMeta","error");
-      safeSetText("scoresMeta","error");
-      if (liveList) {
-        liveList.innerHTML = "";
-        liveList.appendChild(rowBasic("Live scores not loading", e.message, "ERR", "warn"));
-      }
-      if (finalList) {
-        finalList.innerHTML = "";
-        finalList.appendChild(rowBasic("Final scores not loading", e.message, "ERR", "warn"));
-      }
-      console.error(e);
-    }
+  }catch(e){
+    liveList.innerHTML="";
+    finalList.innerHTML="";
+    liveList.appendChild(rowBasic("Scores not loading", e.message, "ERR","warn"));
+    finalList.appendChild(rowBasic("Scores not loading", e.message, "ERR","warn"));
   }
+}
 
-  async function loadUpcoming() {
-    const list = $("upcomingList");
+/* -------- UPCOMING -------- */
+async function loadUpcoming(){
+  const list = $("upcomingList");
 
-    try {
-      const data = await readJson(PATHS.upcoming);
-      const items = Array.isArray(data.items) ? data.items : [];
-      UPCOMING_INDEX = items;
+  try{
+    const data = await readJson(PATHS.upcoming);
+    UPCOMING_INDEX = Array.isArray(data.items) ? data.items : [];
 
-      safeSetText("upcomingMeta", `${items.length} • updated ${data.generatedAt || data.updated || "—"}`);
-
-      list.innerHTML = "";
-      if (!items.length) return emptyState(list, "No upcoming games yet", "Populate /assets/data/upcoming.json");
-
-      items.slice(0,60).forEach((g, i) => {
-        // Defensive field mapping (handles your current upcoming.json format)
-        const home = g.home || g.homeTeam || g.home_name || "TBD";
-        const away = g.away || g.awayTeam || g.away_name || "TBD";
-        const when = String(g.kickoffLocal || g.kickoffUTC || g.utcDate || g.when || "").trim();
-
-        const tvList = tvLineForMatch(g);
-        const tvText = tvList.length ? ("TV: " + tvList.join(", ")) : "TV: TBA";
-
-        const title = `${home} vs ${away}`;
-        const meta = `${g.league || "—"} • ${when || "—"} • ${tvText}`;
-        const hash = `d=upcoming-${i}`;
-
-        const highlightsBtn = makeBtn("Highlights", ()=>openHighlights({ home, away, highlightsUrl: g.highlightsUrl }), true);
-
-        list.appendChild(
-          rowClickable({
-            title,
-            meta,
-            tagText: "UP",
-            tagClass: "",
-            hash,
-            extraButtons:[highlightsBtn],
-            onOpenDetails: () => {
-              const itemForDetails = { ...g, home, away, when, kickoffLocal: g.kickoffLocal, kickoffUTC: g.kickoffUTC };
-              const payload = buildMatchDetails({ kind:"upcoming", item: itemForDetails });
-              payload.kv = payload.kv || {};
-              payload.kv.TV = tvList.length ? tvList.join(", ") : "TBA";
-
-              openModal({
-                ...payload,
-                shareUrl: shareUrl(hash),
-                shareText: title + " — NetThud"
-              });
-            }
-          })
-        );
-      });
-
-    } catch (e) {
-      safeSetText("upcomingMeta","error");
-      list.innerHTML = "";
-      list.appendChild(rowBasic("Upcoming not loading", e.message, "ERR", "warn"));
-      console.error(e);
-    }
-  }
-
-  /* ===== END PART 2 / 4. APPEND PART 3 BELOW ===== */
-</script>
-<script>
-  /* ---------------------------
-     Transfer Signals
-  --------------------------- */
-  const DEFAULT_SIGNALS = [
-    { stage:"advanced", title:"Midfielder: fee agreed in principle — medical pending", confidence:0.74, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
-    { stage:"contact",  title:"Forward: agent contact reported — shortlist narrowing", confidence:0.52, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" },
-    { stage:"watch",    title:"Young defender: loan discussions open — minutes pathway", confidence:0.46, source:"NetThud Signals", publishedAt:new Date().toISOString(), url:"https://netthud.com/" }
-  ];
-
-  function clamp01(n){
-    const x = Number(n);
-    if (!Number.isFinite(x)) return null;
-    return Math.max(0, Math.min(1, x));
-  }
-
-  function normalizeSignals(items){
-    return (items || []).map(x => {
-      if (!x || typeof x !== "object") return null;
-
-      if (x.title && (x.stage || x.confidence != null)) {
-        return {
-          title: String(x.title || ""),
-          stage: String(x.stage || "watch"),
-          confidence: clamp01(x.confidence),
-          source: x.source || "NetThud Signals",
-          publishedAt: x.publishedAt || x.createdAt || x.date || "",
-          url: x.url || ""
-        };
-      }
-
-      if (x.player || x.from || x.to) {
-        const title =
-          `${x.player || "Player"}: ${x.from || "?"} → ${x.to || "?"}${x.fee ? " ("+x.fee+")" : ""}` +
-          (x.status ? ` — ${x.status}` : "");
-        const st = String(x.status || "").toLowerCase();
-        const stage = (st === "advanced" || st === "agreement") ? "advanced"
-                    : (st === "rumor" || st === "contact") ? "contact"
-                    : "watch";
-        const confidence = (stage === "advanced") ? 0.72 : (stage === "contact") ? 0.50 : 0.40;
-
-        return { title, stage, confidence, source:"NetThud Signals", publishedAt:x.publishedAt || "", url:x.url || "" };
-      }
-
-      if (x.title) {
-        const st = String(x.type || x.status || "").toLowerCase();
-        const stage = (st === "news") ? "advanced" : (st === "rumor") ? "contact" : "watch";
-        const confidence = (stage === "advanced") ? 0.70 : (stage === "contact") ? 0.52 : 0.42;
-        return { title:String(x.title||""), stage, confidence, source:x.source || "NetThud Signals", publishedAt:x.publishedAt || "", url:x.url || "" };
-      }
-
-      return null;
-    }).filter(Boolean);
-  }
-
-  function confidenceLabel(c){
-    const n = clamp01(c);
-    if (n == null) return "—";
-    return Math.round(n * 100) + "%";
-  }
-  function stageLabel(stage){
-    const s = String(stage || "").toLowerCase();
-    if (s === "advanced") return "ADV";
-    if (s === "contact") return "CONTACT";
-    if (s === "watch") return "WATCH";
-    return s.toUpperCase() || "SIG";
-  }
-
-  function buildSignalDetails({ item }) {
-    const title = item.title || "Transfer signal";
-    const stage = String(item.stage || "watch").toUpperCase();
-    const conf = (item.confidence == null) ? "—" : Math.round(Number(item.confidence)*100) + "%";
-    const source = item.source || "NetThud Signals";
-    const publishedAt = item.publishedAt ? String(item.publishedAt).slice(0,19) : "";
-
-    const lines = [];
-    lines.push(title);
-    lines.push("");
-    lines.push("AI Signal Summary");
-    lines.push(`- Stage: ${stage}`);
-    lines.push(`- Confidence: ${conf}`);
-    lines.push("");
-    lines.push("Disclaimer");
-    lines.push("Signals are probabilistic, AI-generated, and not confirmation of a transfer.");
-
-    const meta = [source, publishedAt].filter(Boolean).join(" • ");
-    const kv = { Stage: stage, Confidence: conf, Source: source, Time: publishedAt || "—" };
-    return { title, meta, article: lines.join("\n"), kv };
-  }
-
-  async function loadTransferSignals(){
-    const list = $("transfersList");
-    let stamp = "—";
-    let items = [];
-
-    try{
-      const data = await readJson(PATHS.transfers);
-      stamp = data.generatedAt || data.updated || data.updatedAt || "—";
-      items = normalizeSignals(Array.isArray(data.items) ? data.items : []);
-    }catch{
-      items = [];
-      stamp = "—";
-    }
-
-    if (!items.length) items = DEFAULT_SIGNALS;
-    SIGNALS_INDEX = items;
-
-    safeSetText("transfersMeta", `${items.length} • updated ${stamp}`);
-
+    safeSetText("upcomingMeta", `${UPCOMING_INDEX.length} • updated ${data.generatedAt||"—"}`);
     list.innerHTML = "";
-    if (!items.length) return emptyState(list, "No transfer signals yet", "Populate /assets/data/transfers.json");
 
-    items.slice(0, 80).forEach((t, idx) => {
-      const dateShort = t.publishedAt ? String(t.publishedAt).slice(0,19) : "";
-      const metaLine = `${t.source || "NetThud Signals"}${dateShort ? " • " + dateShort : ""}`;
+    if(!UPCOMING_INDEX.length){
+      list.appendChild(rowBasic("No upcoming fixtures", "", "—"));
+      return;
+    }
 
-      const hash = `d=signal-${idx}`;
-      const u = shareUrl(hash);
-
-      const wrap = document.createElement("div");
-      wrap.className = "item";
-      wrap.style.cursor = "pointer";
-
-      const left = document.createElement("div");
-      left.style.minWidth = "0";
-      left.innerHTML = `
-        <strong>${esc(t.title || "Transfer signal")}</strong>
-        <p>${esc(metaLine)}</p>
-        <div class="rowActions"></div>
-      `;
-
-      const actions = left.querySelector(".rowActions");
-      actions.appendChild(makeBtn("Details", ()=>{
-        history.replaceState(null,"",u);
-        const payload = buildSignalDetails({ item: t });
-        openModal({ ...payload, shareUrl: u, shareText: (t.title||"Transfer signal")+" — NetThud" });
-      }));
-      actions.appendChild(makeBtn("Share X", ()=>shareToX((t.title||"Transfer signal")+" — NetThud", u)));
-      actions.appendChild(makeBtn("Copy link", ()=>copyLink(u), true));
-
-      const right = document.createElement("div");
-      right.style.display = "grid";
-      right.style.gap = "8px";
-      right.style.justifyItems = "end";
-
-      const tagStage = document.createElement("span");
-      tagStage.className = "tag signal";
-      tagStage.textContent = stageLabel(t.stage);
-
-      const tagConf = document.createElement("span");
-      tagConf.className = "tag conf";
-      tagConf.textContent = confidenceLabel(t.confidence);
-
-      right.appendChild(tagStage);
-      right.appendChild(tagConf);
-
-      wrap.appendChild(left);
-      wrap.appendChild(right);
-
-      wrap.addEventListener("click", (e)=>{
-        if (e.target && e.target.classList && e.target.classList.contains("mini")) return;
-        history.replaceState(null,"",u);
-        const payload = buildSignalDetails({ item: t });
-        openModal({ ...payload, shareUrl: u, shareText: (t.title||"Transfer signal")+" — NetThud" });
-      });
-
-      list.appendChild(wrap);
-    });
-  }
-
-  /* ---------------------------
-     AI News
-  --------------------------- */
-  function slugify(s){
-    return String(s||"")
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g,"")
-      .replace(/\s+/g,"-")
-      .replace(/-+/g,"-")
-      .slice(0,60) || ("id-"+Math.random().toString(16).slice(2));
-  }
-
-  function buildFallbackArticle(n){
-    const title = n.title || "News";
-    const summary = n.summary || "";
-    return [
-      title,
-      "",
-      "Context",
-      "This item is generated by NetThud AI as a fast brief + a longer read format.",
-      "",
-      "What happened",
-      summary || "No summary provided yet.",
-      "",
-      "Why it matters",
-      "This can influence match prep, tactics, availability, and short-term attention around fixtures.",
-      "",
-      "What to watch next",
-      "Look for primary-source confirmation and follow-on signals over the next 24–72 hours.",
-      "",
-      "Disclaimer",
-      "AI-generated summary; may contain errors."
-    ].join("\n");
-  }
-
-  async function loadNews() {
-    const list = $("newsList");
-    try {
-      const data = await readJson(PATHS.news);
-      const items = Array.isArray(data.items) ? data.items : [];
-      safeSetText("newsMeta", `${items.length} • updated ${data.generatedAt || data.updated || data.updatedAt || "—"}`);
-
-      list.innerHTML = "";
-      if (!items.length) return emptyState(list, "No news items yet", "Populate /assets/data/ai-news.json");
-
-      NEWS_INDEX = items.map((n,i)=>{
-        const id = n.id || ("news-"+(i+1));
-        const slug = slugify(id);
-        const title = n.title || ("News-"+(i+1));
-        const source = n.source || "NetThud AI";
-        const createdAt = n.createdAt || n.publishedAt || n.date || "";
-        const metaLine = [source, createdAt ? String(createdAt).slice(0,19) : ""].filter(Boolean).join(" • ");
-        const article = (n.article && String(n.article).trim().length > 60) ? String(n.article) : buildFallbackArticle({title, summary:n.summary});
-        return { slug, title, meta: metaLine, summary: n.summary || n.short || "", article };
-      });
-
-      NEWS_INDEX.slice(0, 60).forEach((n, idx) => {
-        const label = "News-" + (idx+1);
-        const title = `${label} • ${n.title}`;
-        const meta = n.summary || "Click to open the AI article.";
-        const hash = `news=${n.slug}`;
-
-        list.appendChild(
-          rowClickable({
-            title,
-            meta,
-            tagText: "OPEN",
-            tagClass: "",
-            hash,
-            onOpenDetails: () => {
-              const u = shareUrl(hash);
-              openModal({
-                title: n.title,
-                meta: n.meta,
-                article: n.article,
-                shareUrl: u,
-                shareText: n.title + " — NetThud AI"
-              });
-            }
+    UPCOMING_INDEX.slice(0,60).forEach(g=>{
+      const tv = (g.tv && g.tv.length) ? g.tv.join(", ") : "TBA";
+      list.appendChild(
+        rowClickable({
+          title:`${g.home} vs ${g.away}`,
+          meta:`${g.league} • ${g.kickoffLocal||""} • TV: ${tv}`,
+          tag:"UP",
+          onClick:()=>openModal({
+            title:`${g.home} vs ${g.away}`,
+            meta:g.league,
+            article:"Upcoming match preview"
           })
-        );
-      });
+        })
+      );
+    });
 
-    } catch (e) {
-      safeSetText("newsMeta","error");
-      list.innerHTML = "";
-      list.appendChild(rowBasic("AI News not loading", e.message, "ERR", "warn"));
-      console.error(e);
-    }
+  }catch(e){
+    list.innerHTML="";
+    list.appendChild(rowBasic("Upcoming not loading", e.message, "ERR","warn"));
   }
-
-  /* ---------------------------
-     Leagues
-  --------------------------- */
-  async function loadLeagues() {
-    const container = $("leagueChips");
-    try {
-      const data = await readJson(PATHS.leagues);
-      const leagues = Array.isArray(data) ? data
-                    : Array.isArray(data.items) ? data.items
-                    : Array.isArray(data.leagues) ? data.leagues
-                    : [];
-      safeSetText("leaguesMeta", `${leagues.length} • updated ${data.updated || data.generatedAt || "—"}`);
-
-      container.innerHTML = "";
-      if (!leagues.length) {
-        const empty = document.createElement("div");
-        empty.className = "item";
-        empty.innerHTML = `
-          <div>
-            <strong>No leagues yet</strong>
-            <p>/assets/data/leagues.json loaded, but items[] is empty.</p>
-          </div>
-          <span class="tag warn">EMPTY</span>
-        `;
-        container.appendChild(empty);
-        return;
-      }
-
-      leagues.forEach(l => {
-        const el = document.createElement("div");
-        el.className = "chip";
-
-        const name = (l && typeof l === "object") ? (l.name || l.key || "League") : String(l);
-        const emoji = (l && typeof l === "object") ? (l.emoji || "") : "";
-        const country = (l && typeof l === "object") ? (l.country || "") : "";
-
-        el.innerHTML = `<span class="dot"></span>${esc(emoji ? emoji + " " : "")}${esc(name)}${esc(country ? " • " + country : "")}`;
-        container.appendChild(el);
-      });
-    } catch (e) {
-      safeSetText("leaguesMeta","error");
-      container.innerHTML = "";
-      container.appendChild(rowBasic("Leagues not loading", e.message, "ERR", "warn"));
-      console.error(e);
-    }
-  }
-
-  /* ===== END PART 3 / 4. APPEND PART 4 BELOW ===== */
+}
 </script>
+
+<!-- ===== END PART 3 / 4. PART 4 COMING NEXT MESSAGE ===== -->
 <script>
-  /* ---------------------------
-     Hash routing
-       #t=tabId
-       #news=slug
-       #d=kind-index  (live/final/upcoming/signal)
-  --------------------------- */
-  function tryOpenFromHash(){
-    const h = window.location.hash || "";
+/* ---------------------------
+   TRANSFER SIGNALS
+--------------------------- */
 
-    if (h.startsWith("#t=")){
-      const tabId = decodeURIComponent(h.slice(3));
-      if (tabId) showTab(tabId, { push:false });
+async function loadTransferSignals(){
+  const list = $("transfersList");
+  try{
+    const data = await readJson(PATHS.transfers);
+    SIGNALS_INDEX = Array.isArray(data.items) ? data.items : [];
+
+    safeSetText("transfersMeta", `${SIGNALS_INDEX.length} • updated ${data.generatedAt||"—"}`);
+    list.innerHTML = "";
+
+    if(!SIGNALS_INDEX.length){
+      list.appendChild(rowBasic("No transfer signals yet", "", "—"));
       return;
     }
 
-    if (h.startsWith("#news=")){
-      const slug = decodeURIComponent(h.slice("#news=".length));
-      const found = (NEWS_INDEX || []).find(x => x.slug === slug);
-      if (!found) return;
-      const u = shareUrl("news=" + found.slug);
-      openModal({
-        title: found.title,
-        meta: found.meta,
-        article: found.article,
-        shareUrl: u,
-        shareText: found.title + " — NetThud AI"
-      });
+    SIGNALS_INDEX.slice(0,80).forEach(s=>{
+      list.appendChild(
+        rowClickable({
+          title:s.title || "Transfer signal",
+          meta:`${s.source||"NetThud"} • ${String(s.publishedAt||"").slice(0,19)}`,
+          tag:(s.stage||"SIG").toUpperCase(),
+          cls:"signal",
+          onClick:()=>openModal({
+            title:s.title,
+            meta:s.source,
+            article:"AI-generated transfer signal"
+          })
+        })
+      );
+    });
+
+  }catch(e){
+    list.innerHTML="";
+    list.appendChild(rowBasic("Transfer signals not loading", e.message, "ERR","warn"));
+  }
+}
+
+/* ---------------------------
+   AI NEWS
+--------------------------- */
+
+async function loadNews(){
+  const list = $("newsList");
+  try{
+    const data = await readJson(PATHS.news);
+    NEWS_INDEX = Array.isArray(data.items) ? data.items : [];
+
+    safeSetText("newsMeta", `${NEWS_INDEX.length} • updated ${data.generatedAt||"—"}`);
+    list.innerHTML = "";
+
+    if(!NEWS_INDEX.length){
+      list.appendChild(rowBasic("No AI news yet", "", "—"));
       return;
     }
 
-    if (!h.startsWith("#d=")) return;
-    const key = decodeURIComponent(h.slice("#d=".length));
-    const [kind, idxStr] = key.split("-");
-    const idx = Number(idxStr);
-    if (!Number.isFinite(idx) || idx < 0) return;
-
-    let payload = null;
-    if (kind === "live" && LIVE_INDEX[idx]) payload = buildMatchDetails({ kind:"live", item: LIVE_INDEX[idx] });
-    if (kind === "final" && FINAL_INDEX[idx]) payload = buildMatchDetails({ kind:"final", item: FINAL_INDEX[idx] });
-    if (kind === "upcoming" && UPCOMING_INDEX[idx]) payload = buildMatchDetails({ kind:"upcoming", item: UPCOMING_INDEX[idx] });
-    if (kind === "signal" && SIGNALS_INDEX[idx]) payload = buildSignalDetails({ item: SIGNALS_INDEX[idx] });
-
-    if (!payload) return;
-
-    const u = shareUrl("d=" + kind + "-" + idx);
-    openModal({
-      title: payload.title,
-      meta: payload.meta,
-      article: payload.article,
-      kv: payload.kv,
-      highlightsUrl: payload.highlightsUrl,
-      shareUrl: u,
-      shareText: payload.title + " — NetThud"
+    NEWS_INDEX.slice(0,60).forEach(n=>{
+      list.appendChild(
+        rowClickable({
+          title:n.title || "AI News",
+          meta:n.summary || "",
+          tag:"OPEN",
+          onClick:()=>openModal({
+            title:n.title,
+            meta:n.source || "NetThud AI",
+            article:n.article || n.summary || ""
+          })
+        })
+      );
     });
+
+  }catch(e){
+    list.innerHTML="";
+    list.appendChild(rowBasic("AI news not loading", e.message, "ERR","warn"));
   }
+}
 
-  /* ---------------------------
-     Tabs
-  --------------------------- */
-  function showTab(tabId, { push=true } = {}){
-    document.querySelectorAll(".tabSection").forEach(s => s.classList.remove("active"));
-    const target = document.getElementById(tabId);
-    if (target) target.classList.add("active");
+/* ---------------------------
+   LEAGUES (STATIC JSON)
+--------------------------- */
 
-    document.querySelectorAll(".tabBtn").forEach(b => b.classList.remove("active"));
-    const btn = document.querySelector(`.tabBtn[data-tab="${CSS.escape(tabId)}"]`);
-    if (btn) btn.classList.add("active");
+async function loadLeagues(){
+  const box = $("leagueChips");
+  try{
+    const data = await readJson(PATHS.leagues);
+    const leagues = Array.isArray(data.items) ? data.items : [];
 
-    const main = document.querySelector("main");
-    if (main) main.scrollTo({ top: 0, behavior: "smooth" });
+    safeSetText("leaguesMeta", `${leagues.length} • updated ${data.updated||"—"}`);
+    box.innerHTML = "";
 
-    if (push){
-      history.replaceState(null, "", "#t=" + encodeURIComponent(tabId));
-    }
-  }
-
-  function wireTabs(){
-    const row = document.getElementById("tabsRow");
-    if (!row) return;
-    row.querySelectorAll(".tabBtn").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const tabId = btn.getAttribute("data-tab");
-        if (tabId) showTab(tabId, { push:true });
-      });
+    leagues.forEach(l=>{
+      const el = document.createElement("div");
+      el.className = "chip";
+      el.innerHTML = `
+        <span class="dot"></span>
+        ${esc(l.emoji||"")} ${esc(l.name)} • ${esc(l.country)}
+      `;
+      box.appendChild(el);
     });
+
+  }catch(e){
+    box.innerHTML="";
+    box.appendChild(rowBasic("Leagues not loading", e.message, "ERR","warn"));
   }
+}
 
-  /* ---------------------------
-     Sound toggle
-  --------------------------- */
-  const SOUND_KEY = "netthud_sound";
-  function setSoundUI(on){
-    const st = $("soundState");
-    if (st) st.textContent = on ? "ON" : "OFF";
-  }
-  function getSound(){ return localStorage.getItem(SOUND_KEY) !== "0"; }
-  function setSound(on){ localStorage.setItem(SOUND_KEY, on ? "1" : "0"); setSoundUI(on); }
-  function beep(){
-    if (!getSound()) return;
-    try{
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const o = ctx.createOscillator(); const g = ctx.createGain();
-      o.type="sine"; o.frequency.value=440; g.gain.value=0.02;
-      o.connect(g); g.connect(ctx.destination);
-      o.start(); setTimeout(()=>{o.stop(); ctx.close();}, 80);
-    }catch{}
-  }
+/* ---------------------------
+   TABS
+--------------------------- */
 
-  /* ---------------------------
-     Boot
-  --------------------------- */
-  document.addEventListener("DOMContentLoaded", async () => {
-    const yearEl = $("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+function showTab(id){
+  document.querySelectorAll(".tabSection").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id)?.classList.add("active");
 
-    try{
-      wireTabs();
+  document.querySelectorAll(".tabBtn").forEach(b=>b.classList.remove("active"));
+  document.querySelector(`.tabBtn[data-tab="${id}"]`)?.classList.add("active");
 
-      setSoundUI(getSound());
-      const sp = $("soundPill");
-      if (sp) {
-        sp.addEventListener("click", ()=>{
-          const on = !getSound();
-          setSound(on);
-          beep();
-        });
-      }
+  history.replaceState(null,"","#t="+id);
+}
 
-      await loadScores();
-      await loadUpcoming();
-      await loadTransferSignals();
-      await loadNews();
-      await loadLeagues();
-
-      if (!window.location.hash || window.location.hash === "#"){
-        showTab("liveScores", { push:false });
-      } else {
-        tryOpenFromHash();
-      }
-
-      window.addEventListener("hashchange", tryOpenFromHash);
-    }catch(e){
-      console.error("NetThud boot failed:", e);
-      safeSetText("liveMeta","error");
-      safeSetText("upcomingMeta","error");
-      safeSetText("scoresMeta","error");
-      safeSetText("transfersMeta","error");
-      safeSetText("newsMeta","error");
-      safeSetText("leaguesMeta","error");
-    }
+function wireTabs(){
+  document.querySelectorAll(".tabBtn").forEach(btn=>{
+    btn.onclick = ()=>showTab(btn.dataset.tab);
   });
+}
+
+/* ---------------------------
+   BOOT
+--------------------------- */
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+  $("year").textContent = new Date().getFullYear();
+
+  wireTabs();
+
+  await loadScores();
+  await loadUpcoming();
+  await loadTransferSignals();
+  await loadNews();
+  await loadLeagues();
+
+  if(location.hash.startsWith("#t=")){
+    showTab(location.hash.replace("#t=",""));
+  }
+});
 </script>
 
 </body>
