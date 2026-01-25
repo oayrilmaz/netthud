@@ -1,6 +1,6 @@
 {
-  "updated": "2026-01-25T17:42:41.399Z",
-  "generatedAt": "2026-01-25T17:42:41.399Z",
+  "updated": "2026-01-25T17:53:54.489Z",
+  "generatedAt": "2026-01-25T17:53:54.489Z",
   "items": [
     {
       "id": "fd:544415",
@@ -11,7 +11,7 @@
       "status": "LIVE",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T17:30:00Z",
-      "minute": 12,
+      "minute": 23,
       "highlightsUrl": "",
       "url": ""
     },
@@ -24,7 +24,7 @@
       "status": "LIVE",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T17:00:00Z",
-      "minute": 42,
+      "minute": 53,
       "highlightsUrl": "",
       "url": ""
     },
@@ -37,7 +37,7 @@
       "status": "LIVE",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T16:30:00Z",
-      "minute": 72,
+      "minute": 83,
       "highlightsUrl": "",
       "url": ""
     },
@@ -46,11 +46,11 @@
       "league": "Premier League",
       "home": "Arsenal",
       "away": "Man United",
-      "score": "1–1",
+      "score": "1–2",
       "status": "LIVE",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T16:30:00Z",
-      "minute": 72,
+      "minute": 83,
       "highlightsUrl": "",
       "url": ""
     },
@@ -59,24 +59,11 @@
       "league": "Ligue 1",
       "home": "FC Metz",
       "away": "Olympique Lyon",
-      "score": "1–4",
+      "score": "2–4",
       "status": "LIVE",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T16:15:00Z",
-      "minute": 87,
-      "highlightsUrl": "",
-      "url": ""
-    },
-    {
-      "id": "fd:542572",
-      "league": "Ligue 1",
-      "home": "Paris FC",
-      "away": "Angers SCO",
-      "score": "0–0",
-      "status": "LIVE",
-      "when": "2026-01-25",
-      "kickoffUTC": "2026-01-25T16:15:00Z",
-      "minute": 87,
+      "minute": 98,
       "highlightsUrl": "",
       "url": ""
     },
@@ -89,7 +76,20 @@
       "status": "LIVE",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T16:15:00Z",
-      "minute": 87,
+      "minute": 98,
+      "highlightsUrl": "",
+      "url": ""
+    },
+    {
+      "id": "fd:542572",
+      "league": "Ligue 1",
+      "home": "Paris FC",
+      "away": "Angers SCO",
+      "score": "0–0",
+      "status": "LIVE",
+      "when": "2026-01-25",
+      "kickoffUTC": "2026-01-25T16:15:00Z",
+      "minute": 98,
       "highlightsUrl": "",
       "url": ""
     },
@@ -102,7 +102,7 @@
       "status": "LIVE",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T15:45:00Z",
-      "minute": 117,
+      "minute": 128,
       "highlightsUrl": "",
       "url": ""
     },
@@ -111,12 +111,12 @@
       "league": "Eredivisie",
       "home": "Feyenoord",
       "away": "Heracles",
-      "score": "4–1",
-      "status": "LIVE",
+      "score": "4–2",
+      "status": "FT",
       "when": "2026-01-25",
       "kickoffUTC": "2026-01-25T15:45:00Z",
-      "minute": 117,
-      "highlightsUrl": "",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Feyenoord+vs+Heracles+highlights",
       "url": ""
     },
     {
@@ -156,32 +156,6 @@
       "kickoffUTC": "2026-01-25T14:30:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=M%27gladbach+vs+Stuttgart+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:537028",
-      "league": "Serie A",
-      "home": "Genoa",
-      "away": "Bologna",
-      "score": "3–2",
-      "status": "FT",
-      "when": "2026-01-25",
-      "kickoffUTC": "2026-01-25T14:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Genoa+vs+Bologna+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:542571",
-      "league": "Ligue 1",
-      "home": "Nantes",
-      "away": "Nice",
-      "score": "1–4",
-      "status": "FT",
-      "when": "2026-01-25",
-      "kickoffUTC": "2026-01-25T14:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Nantes+vs+Nice+highlights",
       "url": ""
     },
     {
@@ -234,6 +208,32 @@
       "kickoffUTC": "2026-01-25T14:00:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Newcastle+vs+Aston+Villa+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:542571",
+      "league": "Ligue 1",
+      "home": "Nantes",
+      "away": "Nice",
+      "score": "1–4",
+      "status": "FT",
+      "when": "2026-01-25",
+      "kickoffUTC": "2026-01-25T14:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Nantes+vs+Nice+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:537028",
+      "league": "Serie A",
+      "home": "Genoa",
+      "away": "Bologna",
+      "score": "3–2",
+      "status": "FT",
+      "when": "2026-01-25",
+      "kickoffUTC": "2026-01-25T14:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Genoa+vs+Bologna+highlights",
       "url": ""
     },
     {
@@ -406,19 +406,6 @@
       "url": ""
     },
     {
-      "id": "fd:538005",
-      "league": "Premier League",
-      "home": "Bournemouth",
-      "away": "Liverpool",
-      "score": "3–2",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T17:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Bournemouth+vs+Liverpool+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:540568",
       "league": "Bundesliga",
       "home": "Union Berlin",
@@ -429,6 +416,19 @@
       "kickoffUTC": "2026-01-24T17:30:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Union+Berlin+vs+Dortmund+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:538005",
+      "league": "Premier League",
+      "home": "Bournemouth",
+      "away": "Liverpool",
+      "score": "3–2",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T17:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Bournemouth+vs+Liverpool+highlights",
       "url": ""
     },
     {
@@ -471,19 +471,6 @@
       "url": ""
     },
     {
-      "id": "fd:537612",
-      "league": "Eredivisie",
-      "home": "Ajax",
-      "away": "Volendam",
-      "score": "2–0",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Ajax+vs+Volendam+highlights",
-      "url": ""
-    },
-    {
       "id": "fd:545865",
       "league": "Primeira Liga",
       "home": "Moreirense",
@@ -497,6 +484,19 @@
       "url": ""
     },
     {
+      "id": "fd:537612",
+      "league": "Eredivisie",
+      "home": "Ajax",
+      "away": "Volendam",
+      "score": "2–0",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T15:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Ajax+vs+Volendam+highlights",
+      "url": ""
+    },
+    {
       "id": "fd:544417",
       "league": "Primera Division",
       "home": "Valencia",
@@ -507,6 +507,19 @@
       "kickoffUTC": "2026-01-24T15:15:00Z",
       "minute": null,
       "highlightsUrl": "https://www.youtube.com/results?search_query=Valencia+vs+Espanyol+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:538011",
+      "league": "Premier League",
+      "home": "Fulham",
+      "away": "Brighton Hove",
+      "score": "2–1",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T15:00:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Fulham+vs+Brighton+Hove+highlights",
       "url": ""
     },
     {
@@ -536,42 +549,16 @@
       "url": ""
     },
     {
-      "id": "fd:538011",
-      "league": "Premier League",
-      "home": "Fulham",
-      "away": "Brighton Hove",
-      "score": "2–1",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T15:00:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Fulham+vs+Brighton+Hove+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:540573",
+      "id": "fd:540570",
       "league": "Bundesliga",
-      "home": "Bayern",
-      "away": "Augsburg",
-      "score": "1–2",
+      "home": "Leverkusen",
+      "away": "Bremen",
+      "score": "1–0",
       "status": "FT",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T14:30:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Augsburg+highlights",
-      "url": ""
-    },
-    {
-      "id": "fd:540569",
-      "league": "Bundesliga",
-      "home": "Heidenheim",
-      "away": "RB Leipzig",
-      "score": "0–3",
-      "status": "FT",
-      "when": "2026-01-24",
-      "kickoffUTC": "2026-01-24T14:30:00Z",
-      "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Heidenheim+vs+RB+Leipzig+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Leverkusen+vs+Bremen+highlights",
       "url": ""
     },
     {
@@ -601,16 +588,29 @@
       "url": ""
     },
     {
-      "id": "fd:540570",
+      "id": "fd:540573",
       "league": "Bundesliga",
-      "home": "Leverkusen",
-      "away": "Bremen",
-      "score": "1–0",
+      "home": "Bayern",
+      "away": "Augsburg",
+      "score": "1–2",
       "status": "FT",
       "when": "2026-01-24",
       "kickoffUTC": "2026-01-24T14:30:00Z",
       "minute": null,
-      "highlightsUrl": "https://www.youtube.com/results?search_query=Leverkusen+vs+Bremen+highlights",
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Bayern+vs+Augsburg+highlights",
+      "url": ""
+    },
+    {
+      "id": "fd:540569",
+      "league": "Bundesliga",
+      "home": "Heidenheim",
+      "away": "RB Leipzig",
+      "score": "0–3",
+      "status": "FT",
+      "when": "2026-01-24",
+      "kickoffUTC": "2026-01-24T14:30:00Z",
+      "minute": null,
+      "highlightsUrl": "https://www.youtube.com/results?search_query=Heidenheim+vs+RB+Leipzig+highlights",
       "url": ""
     },
     {
