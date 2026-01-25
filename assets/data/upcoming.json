@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-25T18:58:16.998Z",
+  "generatedAt": "2026-01-25T19:24:37.566Z",
   "days": 7,
   "limit": 120,
   "competitions": [
@@ -19,26 +19,6 @@
   "model": "NetThud Table Model v1",
   "items": [
     {
-      "matchId": 542574,
-      "id": "upcoming:542574",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Lille",
-      "away": "Strasbourg",
-      "kickoffUTC": "2026-01-25T19:45:00Z",
-      "kickoffLocal": "Jan 25 • 2:45 PM ET",
-      "tv": [
-        "beIN SPORTS"
-      ],
-      "hda": {
-        "home": 0.494,
-        "draw": 0.298,
-        "away": 0.2079
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 537026,
       "id": "upcoming:537026",
       "league": "Serie A",
@@ -54,6 +34,26 @@
         "home": 0.3155,
         "draw": 0.303,
         "away": 0.3816
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 542574,
+      "id": "upcoming:542574",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Lille",
+      "away": "Strasbourg",
+      "kickoffUTC": "2026-01-25T19:45:00Z",
+      "kickoffLocal": "Jan 25 • 2:45 PM ET",
+      "tv": [
+        "beIN SPORTS"
+      ],
+      "hda": {
+        "home": 0.494,
+        "draw": 0.298,
+        "away": 0.2079
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -224,6 +224,86 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 551993,
+      "id": "upcoming:551993",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Club Brugge",
+      "away": "Marseille",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.2603,
+        "draw": 0.2825,
+        "away": 0.4572
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 551926,
+      "id": "upcoming:551926",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "SL Benfica",
+      "away": "Real Madrid",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.0257,
+        "draw": 0.2275,
+        "away": 0.7468
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 552050,
+      "id": "upcoming:552050",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "PSG",
+      "away": "Newcastle",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.3987,
+        "draw": 0.3317,
+        "away": 0.2696
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 551980,
+      "id": "upcoming:551980",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Arsenal",
+      "away": "FK Kairat",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.7794,
+        "draw": 0.2203,
+        "away": 0.0003
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 552006,
       "id": "upcoming:552006",
       "league": "UEFA Champions League",
@@ -239,6 +319,46 @@
         "home": 0.1504,
         "draw": 0.2538,
         "away": 0.5958
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 551950,
+      "id": "upcoming:551950",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Liverpool",
+      "away": "Qarabağ Ağdam",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.673,
+        "draw": 0.2493,
+        "away": 0.0777
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 551913,
+      "id": "upcoming:551913",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "PSV",
+      "away": "Bayern",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.0312,
+        "draw": 0.2287,
+        "away": 0.7402
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -264,41 +384,161 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 551993,
-      "id": "upcoming:551993",
+      "matchId": 551967,
+      "id": "upcoming:551967",
       "league": "UEFA Champions League",
       "competitionCode": "CL",
-      "home": "Club Brugge",
-      "away": "Marseille",
+      "home": "Man City",
+      "away": "Galatasaray",
       "kickoffUTC": "2026-01-28T20:00:00Z",
       "kickoffLocal": "Jan 28 • 3:00 PM ET",
       "tv": [
         "Paramount+"
       ],
       "hda": {
-        "home": 0.2603,
-        "draw": 0.2825,
-        "away": 0.4572
+        "home": 0.5881,
+        "draw": 0.2709,
+        "away": 0.141
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 552050,
-      "id": "upcoming:552050",
+      "matchId": 552030,
+      "id": "upcoming:552030",
       "league": "UEFA Champions League",
       "competitionCode": "CL",
-      "home": "PSG",
-      "away": "Newcastle",
+      "home": "Ajax",
+      "away": "Olympiakos",
       "kickoffUTC": "2026-01-28T20:00:00Z",
       "kickoffLocal": "Jan 28 • 3:00 PM ET",
       "tv": [
         "Paramount+"
       ],
       "hda": {
-        "home": 0.3987,
-        "draw": 0.3317,
-        "away": 0.2696
+        "home": 0.2291,
+        "draw": 0.2732,
+        "away": 0.4976
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 551970,
+      "id": "upcoming:551970",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Leverkusen",
+      "away": "Villarreal",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.7181,
+        "draw": 0.2381,
+        "away": 0.0439
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 551998,
+      "id": "upcoming:551998",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Frankfurt",
+      "away": "Tottenham",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.021,
+        "draw": 0.2264,
+        "away": 0.7527
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 551932,
+      "id": "upcoming:551932",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Dortmund",
+      "away": "Inter",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.3471,
+        "draw": 0.3186,
+        "away": 0.3343
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 552051,
+      "id": "upcoming:552051",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Paphos FC",
+      "away": "Slavia Praha",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.5864,
+        "draw": 0.2714,
+        "away": 0.1422
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 551987,
+      "id": "upcoming:551987",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Union SG",
+      "away": "Atalanta",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.0676,
+        "draw": 0.2364,
+        "away": 0.696
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 552007,
+      "id": "upcoming:552007",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Atleti",
+      "away": "Bodø/Glimt",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "kickoffLocal": "Jan 28 • 3:00 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.6967,
+        "draw": 0.2434,
+        "away": 0.0599
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -339,246 +579,6 @@
         "home": 0.0941,
         "draw": 0.2418,
         "away": 0.6641
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551970,
-      "id": "upcoming:551970",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Leverkusen",
-      "away": "Villarreal",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.7181,
-        "draw": 0.2381,
-        "away": 0.0439
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551932,
-      "id": "upcoming:551932",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Dortmund",
-      "away": "Inter",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.3471,
-        "draw": 0.3186,
-        "away": 0.3343
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551987,
-      "id": "upcoming:551987",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Union SG",
-      "away": "Atalanta",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.0676,
-        "draw": 0.2364,
-        "away": 0.696
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 552051,
-      "id": "upcoming:552051",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Paphos FC",
-      "away": "Slavia Praha",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.5864,
-        "draw": 0.2714,
-        "away": 0.1422
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 552007,
-      "id": "upcoming:552007",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Atleti",
-      "away": "Bodø/Glimt",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.6967,
-        "draw": 0.2434,
-        "away": 0.0599
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 552030,
-      "id": "upcoming:552030",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Ajax",
-      "away": "Olympiakos",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.2291,
-        "draw": 0.2732,
-        "away": 0.4976
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551998,
-      "id": "upcoming:551998",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Frankfurt",
-      "away": "Tottenham",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.021,
-        "draw": 0.2264,
-        "away": 0.7527
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551913,
-      "id": "upcoming:551913",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "PSV",
-      "away": "Bayern",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.0312,
-        "draw": 0.2287,
-        "away": 0.7402
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551967,
-      "id": "upcoming:551967",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Man City",
-      "away": "Galatasaray",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.5881,
-        "draw": 0.2709,
-        "away": 0.141
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551926,
-      "id": "upcoming:551926",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "SL Benfica",
-      "away": "Real Madrid",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.0257,
-        "draw": 0.2275,
-        "away": 0.7468
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551980,
-      "id": "upcoming:551980",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Arsenal",
-      "away": "FK Kairat",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.7794,
-        "draw": 0.2203,
-        "away": 0.0003
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 551950,
-      "id": "upcoming:551950",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Liverpool",
-      "away": "Qarabağ Ağdam",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "kickoffLocal": "Jan 28 • 3:00 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.673,
-        "draw": 0.2493,
-        "away": 0.0777
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -787,26 +787,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540578,
-      "id": "upcoming:540578",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Frankfurt",
-      "away": "Leverkusen",
-      "kickoffUTC": "2026-01-31T14:30:00Z",
-      "kickoffLocal": "Jan 31 • 9:30 AM ET",
-      "tv": [
-        "ESPN+"
-      ],
-      "hda": {
-        "home": 0.2422,
-        "draw": 0.277,
-        "away": 0.4808
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540584,
       "id": "upcoming:540584",
       "league": "Bundesliga",
@@ -842,6 +822,47 @@
         "home": 0.7314,
         "draw": 0.2347,
         "away": 0.034
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540578,
+      "id": "upcoming:540578",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Frankfurt",
+      "away": "Leverkusen",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "kickoffLocal": "Jan 31 • 9:30 AM ET",
+      "tv": [
+        "ESPN+"
+      ],
+      "hda": {
+        "home": 0.2422,
+        "draw": 0.277,
+        "away": 0.4808
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538017,
+      "id": "upcoming:538017",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Brighton Hove",
+      "away": "Everton",
+      "kickoffUTC": "2026-01-31T15:00:00Z",
+      "kickoffLocal": "Jan 31 • 10:00 AM ET",
+      "tv": [
+        "NBC",
+        "Peacock"
+      ],
+      "hda": {
+        "home": 0.3655,
+        "draw": 0.33,
+        "away": 0.3045
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -889,27 +910,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538017,
-      "id": "upcoming:538017",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Brighton Hove",
-      "away": "Everton",
-      "kickoffUTC": "2026-01-31T15:00:00Z",
-      "kickoffLocal": "Jan 31 • 10:00 AM ET",
-      "tv": [
-        "NBC",
-        "Peacock"
-      ],
-      "hda": {
-        "home": 0.3655,
-        "draw": 0.33,
-        "away": 0.3045
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 544424,
       "id": "upcoming:544424",
       "league": "Primera Division",
@@ -931,26 +931,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537621,
-      "id": "upcoming:537621",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "AZ",
-      "away": "NEC",
-      "kickoffUTC": "2026-01-31T15:30:00Z",
-      "kickoffLocal": "Jan 31 • 10:30 AM ET",
-      "tv": [
-        "ESPN+"
-      ],
-      "hda": {
-        "home": 0.34,
-        "draw": 0.32,
-        "away": 0.34
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 545878,
       "id": "upcoming:545878",
       "league": "Primeira Liga",
@@ -967,6 +947,26 @@
         "home": 0.1871,
         "draw": 0.2623,
         "away": 0.5506
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 537621,
+      "id": "upcoming:537621",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "AZ",
+      "away": "NEC",
+      "kickoffUTC": "2026-01-31T15:30:00Z",
+      "kickoffLocal": "Jan 31 • 10:30 AM ET",
+      "tv": [
+        "ESPN+"
+      ],
+      "hda": {
+        "home": 0.34,
+        "draw": 0.32,
+        "away": 0.34
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1004,9 +1004,29 @@
         "Paramount+"
       ],
       "hda": {
-        "home": 0.7237,
-        "draw": 0.2367,
-        "away": 0.0397
+        "home": 0.721,
+        "draw": 0.2373,
+        "away": 0.0417
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540577,
+      "id": "upcoming:540577",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "HSV",
+      "away": "Bayern",
+      "kickoffUTC": "2026-01-31T17:30:00Z",
+      "kickoffLocal": "Jan 31 • 12:30 PM ET",
+      "tv": [
+        "ESPN+"
+      ],
+      "hda": {
+        "home": 0.0058,
+        "draw": 0.2224,
+        "away": 0.7718
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1028,26 +1048,6 @@
         "home": 0.0473,
         "draw": 0.2322,
         "away": 0.7206
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 540577,
-      "id": "upcoming:540577",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "HSV",
-      "away": "Bayern",
-      "kickoffUTC": "2026-01-31T17:30:00Z",
-      "kickoffLocal": "Jan 31 • 12:30 PM ET",
-      "tv": [
-        "ESPN+"
-      ],
-      "hda": {
-        "home": 0.0058,
-        "draw": 0.2224,
-        "away": 0.7718
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1155,21 +1155,22 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537629,
-      "id": "upcoming:537629",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Sparta",
-      "away": "Groningen",
+      "matchId": 538019,
+      "id": "upcoming:538019",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Liverpool",
+      "away": "Newcastle",
       "kickoffUTC": "2026-01-31T20:00:00Z",
       "kickoffLocal": "Jan 31 • 3:00 PM ET",
       "tv": [
-        "ESPN+"
+        "NBC",
+        "Peacock"
       ],
       "hda": {
-        "home": 0.34,
-        "draw": 0.32,
-        "away": 0.34
+        "home": 0.4285,
+        "draw": 0.3203,
+        "away": 0.2512
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1196,22 +1197,21 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538019,
-      "id": "upcoming:538019",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Liverpool",
-      "away": "Newcastle",
+      "matchId": 537629,
+      "id": "upcoming:537629",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Sparta",
+      "away": "Groningen",
       "kickoffUTC": "2026-01-31T20:00:00Z",
       "kickoffLocal": "Jan 31 • 3:00 PM ET",
       "tv": [
-        "NBC",
-        "Peacock"
+        "ESPN+"
       ],
       "hda": {
-        "home": 0.4285,
-        "draw": 0.3203,
-        "away": 0.2512
+        "home": 0.34,
+        "draw": 0.32,
+        "away": 0.34
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1250,9 +1250,9 @@
         "Fanatiz"
       ],
       "hda": {
-        "home": 0.4476,
-        "draw": 0.3134,
-        "away": 0.239
+        "home": 0.4709,
+        "draw": 0.3055,
+        "away": 0.2236
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1319,6 +1319,26 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 537624,
+      "id": "upcoming:537624",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Heracles",
+      "away": "Sittard",
+      "kickoffUTC": "2026-02-01T13:30:00Z",
+      "kickoffLocal": "Feb 1 • 8:30 AM ET",
+      "tv": [
+        "ESPN+"
+      ],
+      "hda": {
+        "home": 0.34,
+        "draw": 0.32,
+        "away": 0.34
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 537627,
       "id": "upcoming:537627",
       "league": "Eredivisie",
@@ -1339,21 +1359,22 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537624,
-      "id": "upcoming:537624",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Heracles",
-      "away": "Sittard",
-      "kickoffUTC": "2026-02-01T13:30:00Z",
-      "kickoffLocal": "Feb 1 • 8:30 AM ET",
+      "matchId": 538021,
+      "id": "upcoming:538021",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Man United",
+      "away": "Fulham",
+      "kickoffUTC": "2026-02-01T14:00:00Z",
+      "kickoffLocal": "Feb 1 • 9:00 AM ET",
       "tv": [
-        "ESPN+"
+        "NBC",
+        "Peacock"
       ],
       "hda": {
-        "home": 0.34,
-        "draw": 0.32,
-        "away": 0.34
+        "home": 0.4863,
+        "draw": 0.3005,
+        "away": 0.2133
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1441,27 +1462,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538021,
-      "id": "upcoming:538021",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Man United",
-      "away": "Fulham",
-      "kickoffUTC": "2026-02-01T14:00:00Z",
-      "kickoffLocal": "Feb 1 • 9:00 AM ET",
-      "tv": [
-        "NBC",
-        "Peacock"
-      ],
-      "hda": {
-        "home": 0.4863,
-        "draw": 0.3005,
-        "away": 0.2133
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540579,
       "id": "upcoming:540579",
       "league": "Bundesliga",
@@ -1516,9 +1516,9 @@
         "Fanatiz"
       ],
       "hda": {
-        "home": 0.5136,
-        "draw": 0.292,
-        "away": 0.1944
+        "home": 0.4737,
+        "draw": 0.3046,
+        "away": 0.2218
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1604,26 +1604,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540585,
-      "id": "upcoming:540585",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Dortmund",
-      "away": "Heidenheim",
-      "kickoffUTC": "2026-02-01T16:30:00Z",
-      "kickoffLocal": "Feb 1 • 11:30 AM ET",
-      "tv": [
-        "ESPN+"
-      ],
-      "hda": {
-        "home": 0.7652,
-        "draw": 0.2254,
-        "away": 0.0094
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538023,
       "id": "upcoming:538023",
       "league": "Premier League",
@@ -1640,6 +1620,26 @@
         "home": 0.1167,
         "draw": 0.2465,
         "away": 0.6369
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540585,
+      "id": "upcoming:540585",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Dortmund",
+      "away": "Heidenheim",
+      "kickoffUTC": "2026-02-01T16:30:00Z",
+      "kickoffLocal": "Feb 1 • 11:30 AM ET",
+      "tv": [
+        "ESPN+"
+      ],
+      "hda": {
+        "home": 0.7652,
+        "draw": 0.2254,
+        "away": 0.0094
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1727,6 +1727,26 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 537040,
+      "id": "upcoming:537040",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Parma",
+      "away": "Juventus",
+      "kickoffUTC": "2026-02-01T19:45:00Z",
+      "kickoffLocal": "Feb 1 • 2:45 PM ET",
+      "tv": [
+        "Paramount+"
+      ],
+      "hda": {
+        "home": 0.0849,
+        "draw": 0.2399,
+        "away": 0.6751
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 542583,
       "id": "upcoming:542583",
       "league": "Ligue 1",
@@ -1742,26 +1762,6 @@
         "home": 0.1042,
         "draw": 0.2439,
         "away": 0.6519
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 537040,
-      "id": "upcoming:537040",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Parma",
-      "away": "Juventus",
-      "kickoffUTC": "2026-02-01T19:45:00Z",
-      "kickoffLocal": "Feb 1 • 2:45 PM ET",
-      "tv": [
-        "Paramount+"
-      ],
-      "hda": {
-        "home": 0.09,
-        "draw": 0.241,
-        "away": 0.669
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1801,9 +1801,9 @@
         "Fanatiz"
       ],
       "hda": {
-        "home": 0.0153,
-        "draw": 0.225,
-        "away": 0.7597
+        "home": 0.0111,
+        "draw": 0.2239,
+        "away": 0.765
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
