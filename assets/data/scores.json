@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-26T20:34:57.324Z",
+  "updated": "2026-01-26T20:58:17.202Z",
   "dateFrom": "2026-01-25",
   "dateTo": "2026-01-28",
   "competitions": [
@@ -29,27 +29,27 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538010,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-01-26",
-      "kickoffUTC": "2026-01-26T20:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Everton",
-      "away": "Leeds United",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 544418,
       "league": "Primera Division",
       "competitionCode": "PD",
       "when": "2026-01-26",
       "kickoffUTC": "2026-01-26T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Girona",
       "away": "Getafe",
       "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538010,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-01-26",
+      "kickoffUTC": "2026-01-26T20:00:00Z",
+      "status": "PAUSED",
+      "home": "Everton",
+      "away": "Leeds United",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -113,18 +113,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545869,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-01-25",
-      "kickoffUTC": "2026-01-25T18:00:00Z",
-      "status": "FINISHED",
-      "home": "Famalicão",
-      "away": "Tondela",
-      "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545870,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -134,6 +122,18 @@
       "home": "SL Benfica",
       "away": "Amadora",
       "score": "4–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 545869,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-01-25",
+      "kickoffUTC": "2026-01-25T18:00:00Z",
+      "status": "FINISHED",
+      "home": "Famalicão",
+      "away": "Tondela",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -197,18 +197,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542575,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-01-25",
-      "kickoffUTC": "2026-01-25T16:15:00Z",
-      "status": "FINISHED",
-      "home": "Brest",
-      "away": "Toulouse",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542572,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -221,15 +209,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537615,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
+      "matchId": 542575,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
       "when": "2026-01-25",
-      "kickoffUTC": "2026-01-25T15:45:00Z",
+      "kickoffUTC": "2026-01-25T16:15:00Z",
       "status": "FINISHED",
-      "home": "Feyenoord",
-      "away": "Heracles",
-      "score": "4–2",
+      "home": "Brest",
+      "away": "Toulouse",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -242,6 +230,18 @@
       "home": "Utrecht",
       "away": "Sparta",
       "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537615,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-01-25",
+      "kickoffUTC": "2026-01-25T15:45:00Z",
+      "status": "FINISHED",
+      "home": "Feyenoord",
+      "away": "Heracles",
+      "score": "4–2",
       "highlightsUrl": ""
     },
     {
@@ -278,18 +278,6 @@
       "home": "M'gladbach",
       "away": "Stuttgart",
       "score": "0–3",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538013,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-01-25",
-      "kickoffUTC": "2026-01-25T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Newcastle",
-      "away": "Aston Villa",
-      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -350,6 +338,18 @@
       "home": "Atalanta",
       "away": "Parma",
       "score": "4–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538013,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-01-25",
+      "kickoffUTC": "2026-01-25T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Newcastle",
+      "away": "Aston Villa",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
