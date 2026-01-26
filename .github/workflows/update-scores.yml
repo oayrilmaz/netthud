@@ -24,18 +24,28 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
+
+      # -------------------------------------------------
+      # JITTER (reduces synchronized 429 bursts)
+      # -------------------------------------------------
+      - name: Random jitter delay (0-45s)
+        run: |
+          DELAY=$((RANDOM % 46))
+          echo "Sleeping ${DELAY}s to reduce rate-limit collisions..."
+          sleep $DELAY
 
       # -----------------------------
       # SCORES (LIVE + FINAL)
       # -----------------------------
       - name: Generate scores.json
         env:
-          NETTHUD_SCORES_API_PROVIDER: "football-data"
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
-          NETTHUD_SCORES_FINAL_DAYS: "3"
-          NETTHUD_SCORES_LIMIT: "200"
           # IMPORTANT: include Turkey + Europa explicitly
           NETTHUD_SCORES_COMP_CODES: "PL,PD,SA,BL1,FL1,DED,PPL,CL,EL,EC,TSL"
+          # Your script uses DAYS_BACK/DAYS_FORWARD (not FINAL_DAYS/LIMIT)
+          NETTHUD_SCORES_DAYS_BACK: "1"
+          NETTHUD_SCORES_DAYS_FORWARD: "1"
         run: |
           node scripts/generate-scores.mjs
 
