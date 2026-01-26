@@ -3,7 +3,7 @@ name: NetThud - Update Scores, Upcoming & Transfer Signals
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/15 * * * *" # every 15 minutes (UTC)
 
 permissions:
   contents: write
@@ -17,39 +17,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # -----------------------------
+      # CHECKOUT
+      # -----------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # -----------------------------
+      # SETUP NODE (NO CACHE)
+      # -----------------------------
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "none"   # ✅ FIX
 
       # -----------------------------
-      # SCORES
+      # SCORES (LIVE + FINAL)
       # -----------------------------
       - name: Generate scores.json
         env:
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
+
+          # Window control
           NETTHUD_SCORES_DAYS_BACK: "1"
           NETTHUD_SCORES_DAYS_FORWARD: "1"
+
+          # IMPORTANT: include Turkey + Europa
           NETTHUD_SCORES_COMP_CODES: "PL,PD,SA,BL1,FL1,DED,PPL,CL,EL,EC,TSL"
-        run: node scripts/generate-scores.mjs
+        run: |
+          node scripts/generate-scores.mjs
 
       # -----------------------------
-      # UPCOMING
+      # UPCOMING MATCHES + TV
       # -----------------------------
       - name: Generate upcoming.json
         env:
           NETTHUD_SCORES_API_TOKEN: ${{ secrets.NETTHUD_SCORES_API_TOKEN }}
           NETTHUD_UPCOMING_DAYS: "7"
           NETTHUD_UPCOMING_LIMIT: "160"
+
+          # IMPORTANT: include Turkey + Europa
           NETTHUD_UPCOMING_COMP_CODES: "PL,PD,SA,BL1,FL1,DED,PPL,CL,EL,EC,TSL"
-        run: node scripts/generate-upcoming.mjs
+        run: |
+          node scripts/generate-upcoming.mjs
 
       # -----------------------------
-      # TRANSFERS
+      # TRANSFER SIGNALS
       # -----------------------------
       - name: Generate transfers.json
         env:
@@ -60,10 +73,11 @@ jobs:
           NETTHUD_TRANSFERS_RSS: ${{ secrets.NETTHUD_TRANSFERS_RSS }}
           NETTHUD_USE_OPENAI: "1"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: node scripts/generate-transfers.mjs
+        run: |
+          node scripts/generate-transfers.mjs
 
       # -----------------------------
-      # COMMIT
+      # COMMIT IF DATA CHANGED
       # -----------------------------
       - name: Commit & push if changed
         run: |
