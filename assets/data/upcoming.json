@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-27T15:44:55.802Z",
+  "generatedAt": "2026-01-27T16:00:32.502Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -612,24 +612,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538020,
-      "id": "upcoming:538020",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Leeds United",
-      "away": "Arsenal",
-      "kickoffUTC": "2026-01-31T15:00:00Z",
-      "kickoffLocal": "Jan 31 • 10:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0691,
-        "draw": 0.2367,
-        "away": 0.6942
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538024,
       "id": "upcoming:538024",
       "league": "Premier League",
@@ -643,6 +625,24 @@
         "home": 0.0886,
         "draw": 0.2407,
         "away": 0.6707
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538020,
+      "id": "upcoming:538020",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Leeds United",
+      "away": "Arsenal",
+      "kickoffUTC": "2026-01-31T15:00:00Z",
+      "kickoffLocal": "Jan 31 • 10:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0691,
+        "draw": 0.2367,
+        "away": 0.6942
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
