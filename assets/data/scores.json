@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-29T12:00:17.875Z",
+  "updated": "2026-01-29T13:33:11.437Z",
   "dateFrom": "2026-01-28",
   "dateTo": "2026-01-31",
   "competitions": [
@@ -16,6 +16,30 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 551920,
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "when": "2026-01-28",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "status": "FINISHED",
+      "home": "Napoli",
+      "away": "Chelsea",
+      "score": "2–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 551998,
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "when": "2026-01-28",
+      "kickoffUTC": "2026-01-28T20:00:00Z",
+      "status": "FINISHED",
+      "home": "Frankfurt",
+      "away": "Tottenham",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 551970,
       "league": "UEFA Champions League",
@@ -101,27 +125,27 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 551920,
+      "matchId": 551967,
       "league": "UEFA Champions League",
       "competitionCode": "CL",
       "when": "2026-01-28",
       "kickoffUTC": "2026-01-28T20:00:00Z",
       "status": "FINISHED",
-      "home": "Napoli",
-      "away": "Chelsea",
-      "score": "2–3",
+      "home": "Man City",
+      "away": "Galatasaray",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
-      "matchId": 551998,
+      "matchId": 552050,
       "league": "UEFA Champions League",
       "competitionCode": "CL",
       "when": "2026-01-28",
       "kickoffUTC": "2026-01-28T20:00:00Z",
       "status": "FINISHED",
-      "home": "Frankfurt",
-      "away": "Tottenham",
-      "score": "0–2",
+      "home": "PSG",
+      "away": "Newcastle",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -206,30 +230,6 @@
       "home": "Club Brugge",
       "away": "Marseille",
       "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 551967,
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "when": "2026-01-28",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "status": "FINISHED",
-      "home": "Man City",
-      "away": "Galatasaray",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 552050,
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "when": "2026-01-28",
-      "kickoffUTC": "2026-01-28T20:00:00Z",
-      "status": "FINISHED",
-      "home": "PSG",
-      "away": "Newcastle",
-      "score": "1–1",
       "highlightsUrl": ""
     }
   ]
