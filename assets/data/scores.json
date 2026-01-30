@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-30T21:41:08.338Z",
+  "updated": "2026-01-30T21:55:57.295Z",
   "dateFrom": "2026-01-29",
   "dateTo": "2026-02-01",
   "competitions": [
@@ -22,7 +22,7 @@
       "competitionCode": "PPL",
       "when": "2026-01-30",
       "kickoffUTC": "2026-01-30T20:45:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Vitória SC",
       "away": "Moreirense",
       "score": "0–0",
@@ -41,27 +41,27 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542584,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-01-30",
-      "kickoffUTC": "2026-01-30T19:45:00Z",
-      "status": "IN_PLAY",
-      "home": "RC Lens",
-      "away": "Le Havre",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537039,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-01-30",
       "kickoffUTC": "2026-01-30T19:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Lazio",
       "away": "Genoa",
-      "score": "2–2",
+      "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542584,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-01-30",
+      "kickoffUTC": "2026-01-30T19:45:00Z",
+      "status": "FINISHED",
+      "home": "RC Lens",
+      "away": "Le Havre",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
