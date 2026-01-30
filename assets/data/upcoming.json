@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-30T12:58:39.498Z",
+  "generatedAt": "2026-01-30T13:59:52.756Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -252,24 +252,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538024,
-      "id": "upcoming:538024",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Wolverhampton",
-      "away": "Bournemouth",
-      "kickoffUTC": "2026-01-31T15:00:00Z",
-      "kickoffLocal": "Jan 31 • 10:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0886,
-        "draw": 0.2407,
-        "away": 0.6707
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538020,
       "id": "upcoming:538020",
       "league": "Premier League",
@@ -283,6 +265,24 @@
         "home": 0.0691,
         "draw": 0.2367,
         "away": 0.6942
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538024,
+      "id": "upcoming:538024",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Wolverhampton",
+      "away": "Bournemouth",
+      "kickoffUTC": "2026-01-31T15:00:00Z",
+      "kickoffLocal": "Jan 31 • 10:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0886,
+        "draw": 0.2407,
+        "away": 0.6707
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
