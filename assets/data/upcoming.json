@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-30T23:57:24.471Z",
+  "generatedAt": "2026-01-31T02:34:38.204Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -54,6 +54,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 540581,
+      "id": "upcoming:540581",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Bremen",
+      "away": "M'gladbach",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "kickoffLocal": "Jan 31 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3274,
+        "draw": 0.3084,
+        "away": 0.3643
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 540583,
       "id": "upcoming:540583",
       "league": "Bundesliga",
@@ -72,19 +90,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540581,
-      "id": "upcoming:540581",
+      "matchId": 540580,
+      "id": "upcoming:540580",
       "league": "Bundesliga",
       "competitionCode": "BL1",
-      "home": "Bremen",
-      "away": "M'gladbach",
+      "home": "RB Leipzig",
+      "away": "Mainz",
       "kickoffUTC": "2026-01-31T14:30:00Z",
       "kickoffLocal": "Jan 31 • 9:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.3274,
-        "draw": 0.3084,
-        "away": 0.3643
+        "home": 0.7263,
+        "draw": 0.236,
+        "away": 0.0377
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -121,24 +139,6 @@
         "home": 0.4826,
         "draw": 0.3017,
         "away": 0.2158
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 540580,
-      "id": "upcoming:540580",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "RB Leipzig",
-      "away": "Mainz",
-      "kickoffUTC": "2026-01-31T14:30:00Z",
-      "kickoffLocal": "Jan 31 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.7263,
-        "draw": 0.236,
-        "away": 0.0377
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -414,24 +414,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 544427,
-      "id": "upcoming:544427",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Elche",
-      "away": "Barça",
-      "kickoffUTC": "2026-01-31T20:00:00Z",
-      "kickoffLocal": "Jan 31 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0337,
-        "draw": 0.2293,
-        "away": 0.7371
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 537629,
       "id": "upcoming:537629",
       "league": "Eredivisie",
@@ -463,6 +445,24 @@
         "home": 0.4285,
         "draw": 0.3203,
         "away": 0.2512
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 544427,
+      "id": "upcoming:544427",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Elche",
+      "away": "Barça",
+      "kickoffUTC": "2026-01-31T20:00:00Z",
+      "kickoffLocal": "Jan 31 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0337,
+        "draw": 0.2293,
+        "away": 0.7371
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1026,24 +1026,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 544423,
-      "id": "upcoming:544423",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Mallorca",
-      "away": "Sevilla FC",
-      "kickoffUTC": "2026-02-02T20:00:00Z",
-      "kickoffLocal": "Feb 2 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3311,
-        "draw": 0.3102,
-        "away": 0.3587
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538015,
       "id": "upcoming:538015",
       "league": "Premier League",
@@ -1057,6 +1039,24 @@
         "home": 0.6587,
         "draw": 0.2528,
         "away": 0.0884
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 544423,
+      "id": "upcoming:544423",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Mallorca",
+      "away": "Sevilla FC",
+      "kickoffUTC": "2026-02-02T20:00:00Z",
+      "kickoffLocal": "Feb 2 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3311,
+        "draw": 0.3102,
+        "away": 0.3587
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
