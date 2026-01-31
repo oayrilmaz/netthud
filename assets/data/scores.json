@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-31T17:40:26.402Z",
+  "updated": "2026-01-31T17:56:43.186Z",
   "dateFrom": "2026-01-30",
   "dateTo": "2026-02-02",
   "competitions": [
@@ -16,6 +16,18 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 537626,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T17:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Zwolle",
+      "away": "Telstar",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 544426,
       "league": "Primera Division",
@@ -37,7 +49,7 @@
       "status": "IN_PLAY",
       "home": "Chelsea",
       "away": "West Ham",
-      "score": "0–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -58,7 +70,7 @@
       "competitionCode": "SA",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Napoli",
       "away": "Fiorentina",
       "score": "1–0",
@@ -73,7 +85,7 @@
       "status": "IN_PLAY",
       "home": "Paris FC",
       "away": "Marseille",
-      "score": "0–2",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -149,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540584,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-01-31",
-      "kickoffUTC": "2026-01-31T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Augsburg",
-      "away": "St. Pauli",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540580,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -182,6 +182,18 @@
       "home": "Frankfurt",
       "away": "Leverkusen",
       "score": "1–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540584,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Augsburg",
+      "away": "St. Pauli",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
