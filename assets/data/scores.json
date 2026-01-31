@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-31T15:34:07.706Z",
+  "updated": "2026-01-31T15:56:54.401Z",
   "dateFrom": "2026-01-30",
   "dateTo": "2026-02-02",
   "competitions": [
@@ -17,6 +17,30 @@
   ],
   "items": [
     {
+      "matchId": 537621,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T15:30:00Z",
+      "status": "IN_PLAY",
+      "home": "AZ",
+      "away": "NEC",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 545878,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T15:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Santa Clara",
+      "away": "Estoril Praia",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544424,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -25,7 +49,7 @@
       "status": "IN_PLAY",
       "home": "Osasuna",
       "away": "Villarreal",
-      "score": "0–0",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -34,7 +58,7 @@
       "competitionCode": "PL",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T15:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Brighton Hove",
       "away": "Everton",
       "score": "0–0",
@@ -46,10 +70,10 @@
       "competitionCode": "PL",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T15:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Wolverhampton",
       "away": "Bournemouth",
-      "score": "0–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -58,33 +82,9 @@
       "competitionCode": "PL",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T15:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Leeds United",
       "away": "Arsenal",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540580,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-01-31",
-      "kickoffUTC": "2026-01-31T14:30:00Z",
-      "status": "PAUSED",
-      "home": "RB Leipzig",
-      "away": "Mainz",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540578,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-01-31",
-      "kickoffUTC": "2026-01-31T14:30:00Z",
-      "status": "PAUSED",
-      "home": "Frankfurt",
-      "away": "Leverkusen",
       "score": "0–2",
       "highlightsUrl": ""
     },
@@ -94,22 +94,34 @@
       "competitionCode": "BL1",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T14:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Augsburg",
       "away": "St. Pauli",
-      "score": "1–1",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
-      "matchId": 540581,
+      "matchId": 540580,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T14:30:00Z",
-      "status": "PAUSED",
-      "home": "Bremen",
-      "away": "M'gladbach",
-      "score": "0–0",
+      "status": "IN_PLAY",
+      "home": "RB Leipzig",
+      "away": "Mainz",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540578,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Frankfurt",
+      "away": "Leverkusen",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -118,10 +130,22 @@
       "competitionCode": "BL1",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T14:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Hoffenheim",
       "away": "Union Berlin",
-      "score": "2–0",
+      "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540581,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Bremen",
+      "away": "M'gladbach",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
