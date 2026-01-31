@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-31T20:50:29.722Z",
+  "updated": "2026-01-31T21:22:49.540Z",
   "dateFrom": "2026-01-30",
   "dateTo": "2026-02-02",
   "competitions": [
@@ -41,18 +41,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538019,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-01-31",
-      "kickoffUTC": "2026-01-31T20:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Liverpool",
-      "away": "Newcastle",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 544427,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -73,7 +61,19 @@
       "status": "IN_PLAY",
       "home": "Sparta",
       "away": "Groningen",
-      "score": "0–1",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538019,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T20:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Liverpool",
+      "away": "Newcastle",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -82,7 +82,7 @@
       "competitionCode": "SA",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T19:45:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Cagliari",
       "away": "Verona",
       "score": "2–0",
@@ -125,18 +125,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540577,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-01-31",
-      "kickoffUTC": "2026-01-31T17:30:00Z",
-      "status": "FINISHED",
-      "home": "HSV",
-      "away": "Bayern",
-      "score": "2–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538018,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -146,6 +134,18 @@
       "home": "Chelsea",
       "away": "West Ham",
       "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540577,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T17:30:00Z",
+      "status": "FINISHED",
+      "home": "HSV",
+      "away": "Bayern",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -221,15 +221,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538017,
+      "matchId": 538020,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T15:00:00Z",
       "status": "FINISHED",
-      "home": "Brighton Hove",
-      "away": "Everton",
-      "score": "1–1",
+      "home": "Leeds United",
+      "away": "Arsenal",
+      "score": "0–4",
       "highlightsUrl": ""
     },
     {
@@ -245,15 +245,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538020,
+      "matchId": 538017,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T15:00:00Z",
       "status": "FINISHED",
-      "home": "Leeds United",
-      "away": "Arsenal",
-      "score": "0–4",
+      "home": "Brighton Hove",
+      "away": "Everton",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
