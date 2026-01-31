@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-31T14:01:37.207Z",
+  "updated": "2026-01-31T14:43:04.033Z",
   "dateFrom": "2026-01-30",
   "dateTo": "2026-02-02",
   "competitions": [
@@ -17,15 +17,87 @@
   ],
   "items": [
     {
+      "matchId": 540578,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Frankfurt",
+      "away": "Leverkusen",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540584,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Augsburg",
+      "away": "St. Pauli",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540580,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "RB Leipzig",
+      "away": "Mainz",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540583,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Hoffenheim",
+      "away": "Union Berlin",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540581,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Bremen",
+      "away": "M'gladbach",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537041,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:00:00Z",
+      "status": "IN_PLAY",
+      "home": "AC Pisa",
+      "away": "Sassuolo",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544429,
       "league": "Primera Division",
       "competitionCode": "PD",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T13:00:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Real Oviedo",
       "away": "Girona",
-      "score": "0–0",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -53,18 +125,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542584,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-01-30",
-      "kickoffUTC": "2026-01-30T19:45:00Z",
-      "status": "FINISHED",
-      "home": "RC Lens",
-      "away": "Le Havre",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537039,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -74,6 +134,18 @@
       "home": "Lazio",
       "away": "Genoa",
       "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542584,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-01-30",
+      "kickoffUTC": "2026-01-30T19:45:00Z",
+      "status": "FINISHED",
+      "home": "RC Lens",
+      "away": "Le Havre",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
