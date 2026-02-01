@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-01T17:42:16.567Z",
+  "updated": "2026-02-01T17:58:27.191Z",
   "dateFrom": "2026-01-31",
   "dateTo": "2026-02-03",
   "competitions": [
@@ -34,7 +34,7 @@
       "competitionCode": "SA",
       "when": "2026-02-01",
       "kickoffUTC": "2026-02-01T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Cremonese",
       "away": "Inter",
       "score": "0–2",
@@ -49,7 +49,7 @@
       "status": "IN_PLAY",
       "home": "Tottenham",
       "away": "Man City",
-      "score": "0–2",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -61,19 +61,7 @@
       "status": "IN_PLAY",
       "home": "Dortmund",
       "away": "Heidenheim",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 542580,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-02-01",
-      "kickoffUTC": "2026-02-01T16:15:00Z",
-      "status": "IN_PLAY",
-      "home": "Toulouse",
-      "away": "Auxerre",
-      "score": "0–0",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -89,6 +77,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 542580,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-01",
+      "kickoffUTC": "2026-02-01T16:15:00Z",
+      "status": "IN_PLAY",
+      "home": "Toulouse",
+      "away": "Auxerre",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 542581,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -97,7 +97,7 @@
       "status": "IN_PLAY",
       "home": "Nice",
       "away": "Brest",
-      "score": "0–2",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -106,7 +106,7 @@
       "competitionCode": "DED",
       "when": "2026-02-01",
       "kickoffUTC": "2026-02-01T15:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Heerenveen",
       "away": "Utrecht",
       "score": "1–1",
@@ -149,18 +149,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542582,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-02-01",
-      "kickoffUTC": "2026-02-01T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Olympique Lyon",
-      "away": "Lille",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538021,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -173,15 +161,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537036,
-      "league": "Serie A",
-      "competitionCode": "SA",
+      "matchId": 542582,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
       "when": "2026-02-01",
       "kickoffUTC": "2026-02-01T14:00:00Z",
       "status": "FINISHED",
-      "home": "Como 1907",
-      "away": "Atalanta",
-      "score": "0–0",
+      "home": "Olympique Lyon",
+      "away": "Lille",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -209,15 +197,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537624,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
+      "matchId": 537036,
+      "league": "Serie A",
+      "competitionCode": "SA",
       "when": "2026-02-01",
-      "kickoffUTC": "2026-02-01T13:30:00Z",
+      "kickoffUTC": "2026-02-01T14:00:00Z",
       "status": "FINISHED",
-      "home": "Heracles",
-      "away": "Sittard",
-      "score": "2–1",
+      "home": "Como 1907",
+      "away": "Atalanta",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -230,6 +218,18 @@
       "home": "PSV",
       "away": "Feyenoord",
       "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537624,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-01",
+      "kickoffUTC": "2026-02-01T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Heracles",
+      "away": "Sittard",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -485,18 +485,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538020,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-01-31",
-      "kickoffUTC": "2026-01-31T15:00:00Z",
-      "status": "FINISHED",
-      "home": "Leeds United",
-      "away": "Arsenal",
-      "score": "0–4",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538024,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -509,15 +497,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540584,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
+      "matchId": 538020,
+      "league": "Premier League",
+      "competitionCode": "PL",
       "when": "2026-01-31",
-      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "kickoffUTC": "2026-01-31T15:00:00Z",
       "status": "FINISHED",
-      "home": "Augsburg",
-      "away": "St. Pauli",
-      "score": "2–1",
+      "home": "Leeds United",
+      "away": "Arsenal",
+      "score": "0–4",
       "highlightsUrl": ""
     },
     {
@@ -533,15 +521,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540578,
+      "matchId": 540584,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-01-31",
       "kickoffUTC": "2026-01-31T14:30:00Z",
       "status": "FINISHED",
-      "home": "Frankfurt",
-      "away": "Leverkusen",
-      "score": "1–3",
+      "home": "Augsburg",
+      "away": "St. Pauli",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -566,6 +554,18 @@
       "home": "Hoffenheim",
       "away": "Union Berlin",
       "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540578,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-01-31",
+      "kickoffUTC": "2026-01-31T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Frankfurt",
+      "away": "Leverkusen",
+      "score": "1–3",
       "highlightsUrl": ""
     },
     {
