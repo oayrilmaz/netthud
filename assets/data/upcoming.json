@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-01T09:45:24.225Z",
+  "generatedAt": "2026-02-01T10:27:40.040Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -108,6 +108,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 538016,
+      "id": "upcoming:538016",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Aston Villa",
+      "away": "Brentford",
+      "kickoffUTC": "2026-02-01T14:00:00Z",
+      "kickoffLocal": "Feb 1 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5848,
+        "draw": 0.2718,
+        "away": 0.1434
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 538022,
       "id": "upcoming:538022",
       "league": "Premier League",
@@ -175,24 +193,6 @@
         "home": 0.5211,
         "draw": 0.2897,
         "away": 0.1892
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 538016,
-      "id": "upcoming:538016",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Aston Villa",
-      "away": "Brentford",
-      "kickoffUTC": "2026-02-01T14:00:00Z",
-      "kickoffLocal": "Feb 1 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5848,
-        "draw": 0.2718,
-        "away": 0.1434
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -756,42 +756,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540590,
-      "id": "upcoming:540590",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Freiburg",
-      "away": "Bremen",
-      "kickoffUTC": "2026-02-07T14:30:00Z",
-      "kickoffLocal": "Feb 7 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6109,
-        "draw": 0.2649,
-        "away": 0.1241
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 540592,
-      "id": "upcoming:540592",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Mainz",
-      "away": "Augsburg",
-      "kickoffUTC": "2026-02-07T14:30:00Z",
-      "kickoffLocal": "Feb 7 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3481,
-        "draw": 0.3192,
-        "away": 0.3327
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540594,
       "id": "upcoming:540594",
       "league": "Bundesliga",
@@ -846,6 +810,42 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 540590,
+      "id": "upcoming:540590",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Freiburg",
+      "away": "Bremen",
+      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "kickoffLocal": "Feb 7 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6109,
+        "draw": 0.2649,
+        "away": 0.1241
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540592,
+      "id": "upcoming:540592",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Mainz",
+      "away": "Augsburg",
+      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "kickoffLocal": "Feb 7 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3481,
+        "draw": 0.3192,
+        "away": 0.3327
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 538027,
       "id": "upcoming:538027",
       "league": "Premier League",
@@ -864,24 +864,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538029,
-      "id": "upcoming:538029",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Fulham",
-      "away": "Everton",
-      "kickoffUTC": "2026-02-07T15:00:00Z",
-      "kickoffLocal": "Feb 7 • 10:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.416,
-        "draw": 0.325,
-        "away": 0.2591
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538034,
       "id": "upcoming:538034",
       "league": "Premier League",
@@ -895,6 +877,24 @@
         "home": 0.031,
         "draw": 0.2287,
         "away": 0.7403
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538029,
+      "id": "upcoming:538029",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Fulham",
+      "away": "Everton",
+      "kickoffUTC": "2026-02-07T15:00:00Z",
+      "kickoffLocal": "Feb 7 • 10:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.416,
+        "draw": 0.325,
+        "away": 0.2591
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1062,24 +1062,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538033,
-      "id": "upcoming:538033",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Newcastle",
-      "away": "Brentford",
-      "kickoffUTC": "2026-02-07T17:30:00Z",
-      "kickoffLocal": "Feb 7 • 12:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3551,
-        "draw": 0.3233,
-        "away": 0.3217
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540586,
       "id": "upcoming:540586",
       "league": "Bundesliga",
@@ -1093,6 +1075,24 @@
         "home": 0.1102,
         "draw": 0.2451,
         "away": 0.6447
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538033,
+      "id": "upcoming:538033",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Newcastle",
+      "away": "Brentford",
+      "kickoffUTC": "2026-02-07T17:30:00Z",
+      "kickoffLocal": "Feb 7 • 12:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3551,
+        "draw": 0.3233,
+        "away": 0.3217
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
