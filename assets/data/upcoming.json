@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-06T02:46:02.562Z",
+  "generatedAt": "2026-02-06T04:47:35.612Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -1188,24 +1188,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538043,
-      "id": "upcoming:538043",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Tottenham",
-      "away": "Newcastle",
-      "kickoffUTC": "2026-02-10T19:30:00Z",
-      "kickoffLocal": "Feb 10 • 2:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3532,
-        "draw": 0.3221,
-        "away": 0.3247
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538039,
       "id": "upcoming:538039",
       "league": "Premier League",
@@ -1219,6 +1201,24 @@
         "home": 0.6539,
         "draw": 0.254,
         "away": 0.092
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538043,
+      "id": "upcoming:538043",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Tottenham",
+      "away": "Newcastle",
+      "kickoffUTC": "2026-02-10T19:30:00Z",
+      "kickoffLocal": "Feb 10 • 2:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3532,
+        "draw": 0.3221,
+        "away": 0.3247
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
