@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-07T22:37:40.176Z",
+  "updated": "2026-02-07T23:02:14.691Z",
   "dateFrom": "2026-02-06",
   "dateTo": "2026-02-09",
   "competitions": [
@@ -22,7 +22,7 @@
       "competitionCode": "PPL",
       "when": "2026-02-07",
       "kickoffUTC": "2026-02-07T20:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Arouca",
       "away": "Vitória SC",
       "score": "3–2",
@@ -41,18 +41,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544436,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T20:00:00Z",
-      "status": "FINISHED",
-      "home": "Real Sociedad",
-      "away": "Elche",
-      "score": "3–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537633,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -62,6 +50,18 @@
       "home": "Sittard",
       "away": "Sparta",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544436,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T20:00:00Z",
+      "status": "FINISHED",
+      "home": "Real Sociedad",
+      "away": "Elche",
+      "score": "3–1",
       "highlightsUrl": ""
     },
     {
@@ -89,18 +89,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542594,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T18:00:00Z",
-      "status": "FINISHED",
-      "home": "Brest",
-      "away": "Lorient",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545885,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -110,6 +98,18 @@
       "home": "Estoril Praia",
       "away": "Tondela",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542594,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T18:00:00Z",
+      "status": "FINISHED",
+      "home": "Brest",
+      "away": "Lorient",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -125,18 +125,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538033,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T17:30:00Z",
-      "status": "FINISHED",
-      "home": "Newcastle",
-      "away": "Brentford",
-      "score": "2–3",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540586,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -146,6 +134,18 @@
       "home": "M'gladbach",
       "away": "Leverkusen",
       "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538033,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T17:30:00Z",
+      "status": "FINISHED",
+      "home": "Newcastle",
+      "away": "Brentford",
+      "score": "2–3",
       "highlightsUrl": ""
     },
     {
@@ -257,18 +257,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538028,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T15:00:00Z",
-      "status": "FINISHED",
-      "home": "Burnley",
-      "away": "West Ham",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538034,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -281,27 +269,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540591,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
+      "matchId": 538028,
+      "league": "Premier League",
+      "competitionCode": "PL",
       "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "kickoffUTC": "2026-02-07T15:00:00Z",
       "status": "FINISHED",
-      "home": "St. Pauli",
-      "away": "Stuttgart",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540592,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Mainz",
-      "away": "Augsburg",
-      "score": "2–0",
+      "home": "Burnley",
+      "away": "West Ham",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -341,6 +317,30 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 540592,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Mainz",
+      "away": "Augsburg",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540591,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "status": "FINISHED",
+      "home": "St. Pauli",
+      "away": "Stuttgart",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 538032,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -377,18 +377,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542588,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-02-06",
-      "kickoffUTC": "2026-02-06T19:45:00Z",
-      "status": "FINISHED",
-      "home": "FC Metz",
-      "away": "Lille",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537051,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -397,6 +385,18 @@
       "status": "FINISHED",
       "home": "Verona",
       "away": "AC Pisa",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542588,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-06",
+      "kickoffUTC": "2026-02-06T19:45:00Z",
+      "status": "FINISHED",
+      "home": "FC Metz",
+      "away": "Lille",
       "score": "0–0",
       "highlightsUrl": ""
     },
