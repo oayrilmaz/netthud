@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-07T19:24:43.830Z",
+  "updated": "2026-02-07T19:44:59.374Z",
   "dateFrom": "2026-02-06",
   "dateTo": "2026-02-09",
   "competitions": [
@@ -25,7 +25,7 @@
       "status": "IN_PLAY",
       "home": "Twente",
       "away": "Heerenveen",
-      "score": "0–0",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -37,7 +37,7 @@
       "status": "IN_PLAY",
       "home": "Brest",
       "away": "Lorient",
-      "score": "1–0",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -61,7 +61,7 @@
       "status": "IN_PLAY",
       "home": "Zwolle",
       "away": "Volendam",
-      "score": "1–1",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -70,7 +70,7 @@
       "competitionCode": "BL1",
       "when": "2026-02-07",
       "kickoffUTC": "2026-02-07T17:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "M'gladbach",
       "away": "Leverkusen",
       "score": "1–1",
@@ -82,7 +82,7 @@
       "competitionCode": "PL",
       "when": "2026-02-07",
       "kickoffUTC": "2026-02-07T17:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Newcastle",
       "away": "Brentford",
       "score": "2–3",
@@ -185,18 +185,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538027,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T15:00:00Z",
-      "status": "FINISHED",
-      "home": "Arsenal",
-      "away": "Sunderland",
-      "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538029,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -221,6 +209,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 538027,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T15:00:00Z",
+      "status": "FINISHED",
+      "home": "Arsenal",
+      "away": "Sunderland",
+      "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540591,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -230,18 +230,6 @@
       "home": "St. Pauli",
       "away": "Stuttgart",
       "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540590,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Freiburg",
-      "away": "Bremen",
-      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -278,6 +266,18 @@
       "home": "Heidenheim",
       "away": "HSV",
       "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540590,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Freiburg",
+      "away": "Bremen",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
