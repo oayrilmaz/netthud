@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-07T15:26:42.449Z",
+  "generatedAt": "2026-02-07T15:49:29.892Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -18,55 +18,37 @@
   "model": "NetThud Table Model v1",
   "items": [
     {
-      "matchId": 545884,
-      "id": "upcoming:545884",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Amadora",
-      "away": "Santa Clara",
-      "kickoffUTC": "2026-02-07T15:30:00Z",
-      "kickoffLocal": "Feb 7 • 10:30 AM ET",
+      "matchId": 544438,
+      "id": "upcoming:544438",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Sevilla FC",
+      "away": "Girona",
+      "kickoffUTC": "2026-02-07T00:00:00Z",
+      "kickoffLocal": "Feb 6 • 7:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.4204,
-        "draw": 0.3233,
-        "away": 0.2563
+        "home": 0.4143,
+        "draw": 0.3256,
+        "away": 0.2601
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537636,
-      "id": "upcoming:537636",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "NEC",
-      "away": "Heracles",
-      "kickoffUTC": "2026-02-07T15:30:00Z",
-      "kickoffLocal": "Feb 7 • 10:30 AM ET",
+      "matchId": 544440,
+      "id": "upcoming:544440",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Rayo Vallecano",
+      "away": "Real Oviedo",
+      "kickoffUTC": "2026-02-07T00:00:00Z",
+      "kickoffLocal": "Feb 6 • 7:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.7451,
-        "draw": 0.2311,
-        "away": 0.0238
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 545883,
-      "id": "upcoming:545883",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Moreirense",
-      "away": "Gil Vicente",
-      "kickoffUTC": "2026-02-07T15:30:00Z",
-      "kickoffLocal": "Feb 7 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2754,
-        "draw": 0.2875,
-        "away": 0.4371
+        "home": 0.5226,
+        "draw": 0.2893,
+        "away": 0.1881
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -139,24 +121,6 @@
         "home": 0.3385,
         "draw": 0.3139,
         "away": 0.3475
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 544438,
-      "id": "upcoming:544438",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Sevilla FC",
-      "away": "Girona",
-      "kickoffUTC": "2026-02-07T17:30:00Z",
-      "kickoffLocal": "Feb 7 • 12:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4143,
-        "draw": 0.3256,
-        "away": 0.2601
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -414,6 +378,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 537054,
+      "id": "upcoming:537054",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Lecce",
+      "away": "Udinese",
+      "kickoffUTC": "2026-02-08T14:00:00Z",
+      "kickoffLocal": "Feb 8 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.1941,
+        "draw": 0.264,
+        "away": 0.5419
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 538026,
       "id": "upcoming:538026",
       "league": "Premier League",
@@ -445,24 +427,6 @@
         "home": 0.2778,
         "draw": 0.2884,
         "away": 0.4338
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 537054,
-      "id": "upcoming:537054",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Lecce",
-      "away": "Udinese",
-      "kickoffUTC": "2026-02-08T14:00:00Z",
-      "kickoffLocal": "Feb 8 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.1941,
-        "draw": 0.264,
-        "away": 0.5419
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -594,24 +558,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540593,
-      "id": "upcoming:540593",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Bayern",
-      "away": "Hoffenheim",
-      "kickoffUTC": "2026-02-08T16:30:00Z",
-      "kickoffLocal": "Feb 8 • 11:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6878,
-        "draw": 0.2456,
-        "away": 0.0666
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538030,
       "id": "upcoming:538030",
       "league": "Premier League",
@@ -625,6 +571,24 @@
         "home": 0.2252,
         "draw": 0.2722,
         "away": 0.5027
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540593,
+      "id": "upcoming:540593",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Bayern",
+      "away": "Hoffenheim",
+      "kickoffUTC": "2026-02-08T16:30:00Z",
+      "kickoffLocal": "Feb 8 • 11:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6878,
+        "draw": 0.2456,
+        "away": 0.0666
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -874,9 +838,9 @@
       "kickoffLocal": "Feb 10 • 2:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.624,
-        "draw": 0.2616,
-        "away": 0.1144
+        "home": 0.6429,
+        "draw": 0.2568,
+        "away": 0.1003
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -910,9 +874,9 @@
       "kickoffLocal": "Feb 10 • 3:15 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.0902,
-        "draw": 0.241,
-        "away": 0.6688
+        "home": 0.1061,
+        "draw": 0.2443,
+        "away": 0.6496
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -946,9 +910,9 @@
       "kickoffLocal": "Feb 11 • 2:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.6559,
-        "draw": 0.2535,
-        "away": 0.0906
+        "home": 0.6384,
+        "draw": 0.2579,
+        "away": 0.1037
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -964,9 +928,9 @@
       "kickoffLocal": "Feb 11 • 2:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.6187,
-        "draw": 0.2629,
-        "away": 0.1184
+        "home": 0.6324,
+        "draw": 0.2594,
+        "away": 0.1082
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -982,9 +946,9 @@
       "kickoffLocal": "Feb 11 • 2:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.5876,
-        "draw": 0.2711,
-        "away": 0.1414
+        "home": 0.61,
+        "draw": 0.2652,
+        "away": 0.1248
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1000,9 +964,9 @@
       "kickoffLocal": "Feb 11 • 2:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.6451,
-        "draw": 0.2562,
-        "away": 0.0987
+        "home": 0.6546,
+        "draw": 0.2539,
+        "away": 0.0916
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1018,9 +982,9 @@
       "kickoffLocal": "Feb 11 • 3:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.6645,
-        "draw": 0.2514,
-        "away": 0.0841
+        "home": 0.6529,
+        "draw": 0.2543,
+        "away": 0.0928
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1090,9 +1054,9 @@
       "kickoffLocal": "Feb 13 • 1:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.0234,
-        "draw": 0.2269,
-        "away": 0.7496
+        "home": 0.0238,
+        "draw": 0.227,
+        "away": 0.7491
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1126,9 +1090,9 @@
       "kickoffLocal": "Feb 13 • 2:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.7385,
-        "draw": 0.2328,
-        "away": 0.0287
+        "home": 0.745,
+        "draw": 0.2311,
+        "away": 0.0239
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1252,9 +1216,9 @@
       "kickoffLocal": "Feb 14 • 9:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.3236,
-        "draw": 0.3066,
-        "away": 0.3698
+        "home": 0.3512,
+        "draw": 0.3209,
+        "away": 0.3279
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1273,6 +1237,24 @@
         "home": 0.0055,
         "draw": 0.2223,
         "away": 0.7722
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540601,
+      "id": "upcoming:540601",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Leverkusen",
+      "away": "St. Pauli",
+      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "kickoffLocal": "Feb 14 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7263,
+        "draw": 0.236,
+        "away": 0.0377
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1314,24 +1296,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540601,
-      "id": "upcoming:540601",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Leverkusen",
-      "away": "St. Pauli",
-      "kickoffUTC": "2026-02-14T14:30:00Z",
-      "kickoffLocal": "Feb 14 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.7347,
-        "draw": 0.2338,
-        "away": 0.0314
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 544442,
       "id": "upcoming:544442",
       "league": "Primera Division",
@@ -1360,9 +1324,9 @@
       "kickoffLocal": "Feb 14 • 10:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.3681,
-        "draw": 0.3319,
-        "away": 0.3
+        "home": 0.3719,
+        "draw": 0.3347,
+        "away": 0.2934
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1432,9 +1396,9 @@
       "kickoffLocal": "Feb 14 • 12:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.6562,
-        "draw": 0.2535,
-        "away": 0.0903
+        "home": 0.645,
+        "draw": 0.2563,
+        "away": 0.0987
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1504,9 +1468,9 @@
       "kickoffLocal": "Feb 14 • 1:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.542,
-        "draw": 0.2836,
-        "away": 0.1743
+        "home": 0.5406,
+        "draw": 0.284,
+        "away": 0.1753
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1612,9 +1576,9 @@
       "kickoffLocal": "Feb 14 • 3:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3059,
-        "draw": 0.2989,
-        "away": 0.3951
+        "home": 0.2935,
+        "draw": 0.2941,
+        "away": 0.4124
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
