@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-08T17:44:21.162Z",
+  "updated": "2026-02-08T18:00:55.554Z",
   "dateFrom": "2026-02-07",
   "dateTo": "2026-02-10",
   "competitions": [
@@ -34,7 +34,7 @@
       "competitionCode": "SA",
       "when": "2026-02-08",
       "kickoffUTC": "2026-02-08T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Sassuolo",
       "away": "Inter",
       "score": "0–2",
@@ -49,7 +49,7 @@
       "status": "IN_PLAY",
       "home": "Bayern",
       "away": "Hoffenheim",
-      "score": "3–1",
+      "score": "4–1",
       "highlightsUrl": ""
     },
     {
@@ -77,18 +77,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542593,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-02-08",
-      "kickoffUTC": "2026-02-08T16:15:00Z",
-      "status": "IN_PLAY",
-      "home": "Angers SCO",
-      "away": "Toulouse",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542586,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -101,12 +89,24 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 542593,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T16:15:00Z",
+      "status": "IN_PLAY",
+      "home": "Angers SCO",
+      "away": "Toulouse",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537631,
       "league": "Eredivisie",
       "competitionCode": "DED",
       "when": "2026-02-08",
       "kickoffUTC": "2026-02-08T15:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Groningen",
       "away": "PSV",
       "score": "1–2",
@@ -161,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537054,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-02-08",
-      "kickoffUTC": "2026-02-08T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Lecce",
-      "away": "Udinese",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538026,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -194,6 +182,18 @@
       "home": "Nice",
       "away": "Monaco",
       "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537054,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Lecce",
+      "away": "Udinese",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -365,18 +365,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540586,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T17:30:00Z",
-      "status": "FINISHED",
-      "home": "M'gladbach",
-      "away": "Leverkusen",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538033,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -386,6 +374,18 @@
       "home": "Newcastle",
       "away": "Brentford",
       "score": "2–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540586,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T17:30:00Z",
+      "status": "FINISHED",
+      "home": "M'gladbach",
+      "away": "Leverkusen",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -473,30 +473,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538029,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T15:00:00Z",
-      "status": "FINISHED",
-      "home": "Fulham",
-      "away": "Everton",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538025,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T15:00:00Z",
-      "status": "FINISHED",
-      "home": "Bournemouth",
-      "away": "Aston Villa",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538027,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -521,6 +497,30 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 538029,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T15:00:00Z",
+      "status": "FINISHED",
+      "home": "Fulham",
+      "away": "Everton",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538025,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T15:00:00Z",
+      "status": "FINISHED",
+      "home": "Bournemouth",
+      "away": "Aston Villa",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540591,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -530,30 +530,6 @@
       "home": "St. Pauli",
       "away": "Stuttgart",
       "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540592,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Mainz",
-      "away": "Augsburg",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540588,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Wolfsburg",
-      "away": "Dortmund",
-      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -578,6 +554,30 @@
       "home": "Freiburg",
       "away": "Bremen",
       "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540592,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Mainz",
+      "away": "Augsburg",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540588,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Wolfsburg",
+      "away": "Dortmund",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
