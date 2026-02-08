@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-08T19:48:16.775Z",
+  "updated": "2026-02-08T20:29:34.388Z",
   "dateFrom": "2026-02-07",
   "dateTo": "2026-02-10",
   "competitions": [
@@ -17,15 +17,51 @@
   ],
   "items": [
     {
+      "matchId": 544439,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T20:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Valencia",
+      "away": "Real Madrid",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542591,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T19:45:00Z",
+      "status": "IN_PLAY",
+      "home": "PSG",
+      "away": "Marseille",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537052,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T19:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Juventus",
+      "away": "Lazio",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 545888,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-02-08",
       "kickoffUTC": "2026-02-08T18:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Braga",
       "away": "Rio Ave",
-      "score": "2–0",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -77,18 +113,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542587,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-02-08",
-      "kickoffUTC": "2026-02-08T16:15:00Z",
-      "status": "FINISHED",
-      "home": "Auxerre",
-      "away": "Paris FC",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542593,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -110,6 +134,18 @@
       "home": "Le Havre",
       "away": "Strasbourg",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542587,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T16:15:00Z",
+      "status": "FINISHED",
+      "home": "Auxerre",
+      "away": "Paris FC",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -137,18 +173,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544438,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-02-08",
-      "kickoffUTC": "2026-02-08T15:15:00Z",
-      "status": "FINISHED",
-      "home": "Sevilla FC",
-      "away": "Girona",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 544432,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -158,6 +182,18 @@
       "home": "Athletic",
       "away": "Levante",
       "score": "4–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544438,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T15:15:00Z",
+      "status": "FINISHED",
+      "home": "Sevilla FC",
+      "away": "Girona",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -209,18 +245,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537634,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-02-08",
-      "kickoffUTC": "2026-02-08T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Go Ahead",
-      "away": "Telstar",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537630,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -229,6 +253,18 @@
       "status": "FINISHED",
       "home": "AZ",
       "away": "Ajax",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537634,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Go Ahead",
+      "away": "Telstar",
       "score": "1–1",
       "highlightsUrl": ""
     },
@@ -293,18 +329,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544436,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T20:00:00Z",
-      "status": "FINISHED",
-      "home": "Real Sociedad",
-      "away": "Elche",
-      "score": "3–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537633,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -314,6 +338,18 @@
       "home": "Sittard",
       "away": "Sparta",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544436,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T20:00:00Z",
+      "status": "FINISHED",
+      "home": "Real Sociedad",
+      "away": "Elche",
+      "score": "3–1",
       "highlightsUrl": ""
     },
     {
@@ -341,18 +377,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542594,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T18:00:00Z",
-      "status": "FINISHED",
-      "home": "Brest",
-      "away": "Lorient",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545885,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -362,6 +386,18 @@
       "home": "Estoril Praia",
       "away": "Tondela",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542594,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T18:00:00Z",
+      "status": "FINISHED",
+      "home": "Brest",
+      "away": "Lorient",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -425,15 +461,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545884,
+      "matchId": 545883,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-02-07",
       "kickoffUTC": "2026-02-07T15:30:00Z",
       "status": "FINISHED",
-      "home": "Amadora",
-      "away": "Santa Clara",
-      "score": "1–0",
+      "home": "Moreirense",
+      "away": "Gil Vicente",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -449,15 +485,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545883,
+      "matchId": 545884,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-02-07",
       "kickoffUTC": "2026-02-07T15:30:00Z",
       "status": "FINISHED",
-      "home": "Moreirense",
-      "away": "Gil Vicente",
-      "score": "1–2",
+      "home": "Amadora",
+      "away": "Santa Clara",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -485,6 +521,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 538034,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T15:00:00Z",
+      "status": "FINISHED",
+      "home": "Wolverhampton",
+      "away": "Chelsea",
+      "score": "1–3",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 538029,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -509,18 +557,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538034,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T15:00:00Z",
-      "status": "FINISHED",
-      "home": "Wolverhampton",
-      "away": "Chelsea",
-      "score": "1–3",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538028,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -530,6 +566,18 @@
       "home": "Burnley",
       "away": "West Ham",
       "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540590,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-07",
+      "kickoffUTC": "2026-02-07T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Freiburg",
+      "away": "Bremen",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -566,18 +614,6 @@
       "home": "Heidenheim",
       "away": "HSV",
       "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540590,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-07",
-      "kickoffUTC": "2026-02-07T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Freiburg",
-      "away": "Bremen",
-      "score": "1–0",
       "highlightsUrl": ""
     },
     {
