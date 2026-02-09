@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-09T21:56:30.228Z",
+  "updated": "2026-02-09T22:41:43.869Z",
   "dateFrom": "2026-02-08",
   "dateTo": "2026-02-11",
   "competitions": [
@@ -22,10 +22,10 @@
       "competitionCode": "PPL",
       "when": "2026-02-09",
       "kickoffUTC": "2026-02-09T20:45:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Porto",
       "away": "Sporting CP",
-      "score": "0–0",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -34,7 +34,7 @@
       "competitionCode": "PD",
       "when": "2026-02-09",
       "kickoffUTC": "2026-02-09T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Villarreal",
       "away": "Espanyol",
       "score": "4–1",
@@ -161,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538030,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-02-08",
-      "kickoffUTC": "2026-02-08T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Liverpool",
-      "away": "Man City",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540593,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -182,6 +170,18 @@
       "home": "Bayern",
       "away": "Hoffenheim",
       "score": "5–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538030,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-02-08",
+      "kickoffUTC": "2026-02-08T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Liverpool",
+      "away": "Man City",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
