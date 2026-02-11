@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-11T10:10:22.324Z",
+  "generatedAt": "2026-02-11T11:10:17.354Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -342,24 +342,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540595,
-      "id": "upcoming:540595",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Bremen",
-      "away": "Bayern",
-      "kickoffUTC": "2026-02-14T14:30:00Z",
-      "kickoffLocal": "Feb 14 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0051,
-        "draw": 0.2221,
-        "away": 0.7727
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540601,
       "id": "upcoming:540601",
       "league": "Bundesliga",
@@ -373,6 +355,24 @@
         "home": 0.7212,
         "draw": 0.2373,
         "away": 0.0415
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540595,
+      "id": "upcoming:540595",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Bremen",
+      "away": "Bayern",
+      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "kickoffLocal": "Feb 14 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0051,
+        "draw": 0.2221,
+        "away": 0.7727
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -648,24 +648,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 544444,
-      "id": "upcoming:544444",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Real Madrid",
-      "away": "Real Sociedad",
-      "kickoffUTC": "2026-02-14T20:00:00Z",
-      "kickoffLocal": "Feb 14 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.7285,
-        "draw": 0.2354,
-        "away": 0.0361
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 537641,
       "id": "upcoming:537641",
       "league": "Eredivisie",
@@ -679,6 +661,24 @@
         "home": 0.46,
         "draw": 0.3091,
         "away": 0.2309
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 544444,
+      "id": "upcoming:544444",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Real Madrid",
+      "away": "Real Sociedad",
+      "kickoffUTC": "2026-02-14T20:00:00Z",
+      "kickoffLocal": "Feb 14 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7285,
+        "draw": 0.2354,
+        "away": 0.0361
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
