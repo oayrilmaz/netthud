@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-14T19:45:16.747Z",
+  "updated": "2026-02-14T20:28:10.076Z",
   "dateFrom": "2026-02-13",
   "dateTo": "2026-02-16",
   "competitions": [
@@ -17,6 +17,54 @@
   ],
   "items": [
     {
+      "matchId": 542599,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T20:05:00Z",
+      "status": "IN_PLAY",
+      "home": "Paris FC",
+      "away": "RC Lens",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537641,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T20:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Groningen",
+      "away": "Utrecht",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544444,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T20:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Real Madrid",
+      "away": "Real Sociedad",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537058,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T19:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Inter",
+      "away": "Juventus",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537639,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -25,7 +73,7 @@
       "status": "IN_PLAY",
       "home": "Ajax",
       "away": "Sittard",
-      "score": "3–0",
+      "score": "3–1",
       "highlightsUrl": ""
     },
     {
@@ -34,7 +82,7 @@
       "competitionCode": "FL1",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T18:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Lille",
       "away": "Brest",
       "score": "1–1",
@@ -46,7 +94,7 @@
       "competitionCode": "PPL",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T18:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Vitória SC",
       "away": "Amadora",
       "score": "2–1",
@@ -58,7 +106,7 @@
       "competitionCode": "DED",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T17:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Excelsior",
       "away": "AZ",
       "score": "1–2",
@@ -113,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537644,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T15:30:00Z",
-      "status": "FINISHED",
-      "home": "Heracles",
-      "away": "NAC",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545891,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -137,6 +173,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 537644,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T15:30:00Z",
+      "status": "FINISHED",
+      "home": "Heracles",
+      "away": "NAC",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544442,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -146,18 +194,6 @@
       "home": "Getafe",
       "away": "Villarreal",
       "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540598,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Frankfurt",
-      "away": "M'gladbach",
-      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -181,6 +217,18 @@
       "status": "FINISHED",
       "home": "Hoffenheim",
       "away": "Freiburg",
+      "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540598,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Frankfurt",
+      "away": "M'gladbach",
       "score": "3–0",
       "highlightsUrl": ""
     },
