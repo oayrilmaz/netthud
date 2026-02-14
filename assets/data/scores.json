@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-14T17:42:28.233Z",
+  "updated": "2026-02-14T17:58:43.991Z",
   "dateFrom": "2026-02-13",
   "dateTo": "2026-02-16",
   "competitions": [
@@ -17,6 +17,18 @@
   ],
   "items": [
     {
+      "matchId": 537640,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T17:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Excelsior",
+      "away": "AZ",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540603,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -25,7 +37,7 @@
       "status": "IN_PLAY",
       "home": "Stuttgart",
       "away": "1. FC Köln",
-      "score": "0–0",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -46,10 +58,10 @@
       "competitionCode": "SA",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Lazio",
       "away": "Atalanta",
-      "score": "0–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
