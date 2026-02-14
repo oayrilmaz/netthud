@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-14T14:55:01.333Z",
+  "updated": "2026-02-14T15:26:57.559Z",
   "dateFrom": "2026-02-13",
   "dateTo": "2026-02-16",
   "competitions": [
@@ -17,14 +17,14 @@
   ],
   "items": [
     {
-      "matchId": 540598,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
+      "matchId": 544442,
+      "league": "Primera Division",
+      "competitionCode": "PD",
       "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "kickoffUTC": "2026-02-14T15:15:00Z",
       "status": "IN_PLAY",
-      "home": "Frankfurt",
-      "away": "M'gladbach",
+      "home": "Getafe",
+      "away": "Villarreal",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -34,10 +34,10 @@
       "competitionCode": "BL1",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "HSV",
       "away": "Union Berlin",
-      "score": "0–0",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -46,10 +46,22 @@
       "competitionCode": "BL1",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Hoffenheim",
       "away": "Freiburg",
-      "score": "1–0",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540598,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "status": "PAUSED",
+      "home": "Frankfurt",
+      "away": "M'gladbach",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -58,10 +70,10 @@
       "competitionCode": "BL1",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Bremen",
       "away": "Bayern",
-      "score": "0–0",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -70,7 +82,7 @@
       "competitionCode": "BL1",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Leverkusen",
       "away": "St. Pauli",
       "score": "2–0",
@@ -82,10 +94,10 @@
       "competitionCode": "SA",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T14:00:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Como 1907",
       "away": "Fiorentina",
-      "score": "0–1",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -94,10 +106,10 @@
       "competitionCode": "PD",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T13:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Espanyol",
       "away": "Celta",
-      "score": "2–1",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
