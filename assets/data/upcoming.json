@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-14T09:46:18.402Z",
+  "generatedAt": "2026-02-14T10:28:32.884Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -360,24 +360,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 544444,
-      "id": "upcoming:544444",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Real Madrid",
-      "away": "Real Sociedad",
-      "kickoffUTC": "2026-02-14T20:00:00Z",
-      "kickoffLocal": "Feb 14 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.7285,
-        "draw": 0.2354,
-        "away": 0.0361
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 537641,
       "id": "upcoming:537641",
       "league": "Eredivisie",
@@ -391,6 +373,24 @@
         "home": 0.419,
         "draw": 0.3238,
         "away": 0.2572
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 544444,
+      "id": "upcoming:544444",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Real Madrid",
+      "away": "Real Sociedad",
+      "kickoffUTC": "2026-02-14T20:00:00Z",
+      "kickoffLocal": "Feb 14 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7285,
+        "draw": 0.2354,
+        "away": 0.0361
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1008,24 +1008,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 552056,
-      "id": "upcoming:552056",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Club Brugge",
-      "away": "Atleti",
-      "kickoffUTC": "2026-02-18T20:00:00Z",
-      "kickoffLocal": "Feb 18 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2472,
-        "draw": 0.2785,
-        "away": 0.4743
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538094,
       "id": "upcoming:538094",
       "league": "Premier League",
@@ -1057,6 +1039,24 @@
         "home": 0.3158,
         "draw": 0.3031,
         "away": 0.381
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 552056,
+      "id": "upcoming:552056",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Club Brugge",
+      "away": "Atleti",
+      "kickoffUTC": "2026-02-18T20:00:00Z",
+      "kickoffLocal": "Feb 18 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2472,
+        "draw": 0.2785,
+        "away": 0.4743
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
