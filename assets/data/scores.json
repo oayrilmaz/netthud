@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-15T04:33:45.551Z",
+  "updated": "2026-02-15T05:44:19.963Z",
   "dateFrom": "2026-02-14",
   "dateTo": "2026-02-17",
   "competitions": [
@@ -41,18 +41,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537641,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T20:00:00Z",
-      "status": "FINISHED",
-      "home": "Groningen",
-      "away": "Utrecht",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 544444,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -62,6 +50,18 @@
       "home": "Real Madrid",
       "away": "Real Sociedad",
       "score": "4–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537641,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T20:00:00Z",
+      "status": "FINISHED",
+      "home": "Groningen",
+      "away": "Utrecht",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -209,14 +209,26 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540598,
+      "matchId": 540601,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T14:30:00Z",
       "status": "FINISHED",
-      "home": "Frankfurt",
-      "away": "M'gladbach",
+      "home": "Leverkusen",
+      "away": "St. Pauli",
+      "score": "4–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540596,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Hoffenheim",
+      "away": "Freiburg",
       "score": "3–0",
       "highlightsUrl": ""
     },
@@ -245,27 +257,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540596,
+      "matchId": 540598,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-02-14",
       "kickoffUTC": "2026-02-14T14:30:00Z",
       "status": "FINISHED",
-      "home": "Hoffenheim",
-      "away": "Freiburg",
+      "home": "Frankfurt",
+      "away": "M'gladbach",
       "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540601,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Leverkusen",
-      "away": "St. Pauli",
-      "score": "4–0",
       "highlightsUrl": ""
     },
     {
