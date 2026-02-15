@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-15T14:28:51.277Z",
+  "updated": "2026-02-15T14:56:15.511Z",
   "dateFrom": "2026-02-14",
   "dateTo": "2026-02-17",
   "competitions": [
@@ -17,14 +17,14 @@
   ],
   "items": [
     {
-      "matchId": 537064,
-      "league": "Serie A",
-      "competitionCode": "SA",
+      "matchId": 540602,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
       "when": "2026-02-15",
-      "kickoffUTC": "2026-02-15T14:00:00Z",
+      "kickoffUTC": "2026-02-15T14:30:00Z",
       "status": "IN_PLAY",
-      "home": "Cremonese",
-      "away": "Genoa",
+      "home": "Augsburg",
+      "away": "Heidenheim",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -37,6 +37,18 @@
       "status": "IN_PLAY",
       "home": "Le Havre",
       "away": "Toulouse",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537064,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-02-15",
+      "kickoffUTC": "2026-02-15T14:00:00Z",
+      "status": "PAUSED",
+      "home": "Cremonese",
+      "away": "Genoa",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -46,22 +58,10 @@
       "competitionCode": "SA",
       "when": "2026-02-15",
       "kickoffUTC": "2026-02-15T14:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Parma",
       "away": "Verona",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537647,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-02-15",
-      "kickoffUTC": "2026-02-15T13:30:00Z",
-      "status": "PAUSED",
-      "home": "Telstar",
-      "away": "Twente",
-      "score": "1–0",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -70,10 +70,22 @@
       "competitionCode": "DED",
       "when": "2026-02-15",
       "kickoffUTC": "2026-02-15T13:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Heerenveen",
       "away": "Zwolle",
-      "score": "1–2",
+      "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537647,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-15",
+      "kickoffUTC": "2026-02-15T13:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Telstar",
+      "away": "Twente",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -85,7 +97,7 @@
       "status": "IN_PLAY",
       "home": "Real Oviedo",
       "away": "Athletic",
-      "score": "1–1",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -269,18 +281,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545891,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T15:30:00Z",
-      "status": "FINISHED",
-      "home": "Casa Pia",
-      "away": "Arouca",
-      "score": "3–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537644,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -293,6 +293,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 545891,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T15:30:00Z",
+      "status": "FINISHED",
+      "home": "Casa Pia",
+      "away": "Arouca",
+      "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544442,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -302,18 +314,6 @@
       "home": "Getafe",
       "away": "Villarreal",
       "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540595,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Bremen",
-      "away": "Bayern",
-      "score": "0–3",
       "highlightsUrl": ""
     },
     {
@@ -338,6 +338,18 @@
       "home": "HSV",
       "away": "Union Berlin",
       "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540595,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Bremen",
+      "away": "Bayern",
+      "score": "0–3",
       "highlightsUrl": ""
     },
     {
