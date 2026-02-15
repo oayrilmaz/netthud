@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-15T17:43:05.279Z",
+  "updated": "2026-02-15T18:00:43.354Z",
   "dateFrom": "2026-02-14",
   "dateTo": "2026-02-17",
   "competitions": [
@@ -34,7 +34,7 @@
       "competitionCode": "SA",
       "when": "2026-02-15",
       "kickoffUTC": "2026-02-15T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Torino",
       "away": "Bologna",
       "score": "0–0",
@@ -49,7 +49,19 @@
       "status": "IN_PLAY",
       "home": "RB Leipzig",
       "away": "Wolfsburg",
-      "score": "0–0",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542598,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-02-15",
+      "kickoffUTC": "2026-02-15T16:15:00Z",
+      "status": "IN_PLAY",
+      "home": "FC Metz",
+      "away": "Auxerre",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -62,18 +74,6 @@
       "home": "Lorient",
       "away": "Angers SCO",
       "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 542598,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-02-15",
-      "kickoffUTC": "2026-02-15T16:15:00Z",
-      "status": "IN_PLAY",
-      "home": "FC Metz",
-      "away": "Auxerre",
-      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -113,15 +113,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537060,
-      "league": "Serie A",
-      "competitionCode": "SA",
+      "matchId": 542595,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
       "when": "2026-02-15",
       "kickoffUTC": "2026-02-15T14:00:00Z",
       "status": "FINISHED",
-      "home": "Parma",
-      "away": "Verona",
-      "score": "2–1",
+      "home": "Le Havre",
+      "away": "Toulouse",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -137,15 +137,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542595,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
+      "matchId": 537060,
+      "league": "Serie A",
+      "competitionCode": "SA",
       "when": "2026-02-15",
       "kickoffUTC": "2026-02-15T14:00:00Z",
       "status": "FINISHED",
-      "home": "Le Havre",
-      "away": "Toulouse",
-      "score": "2–2",
+      "home": "Parma",
+      "away": "Verona",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -281,18 +281,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545889,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T18:00:00Z",
-      "status": "FINISHED",
-      "home": "Vitória SC",
-      "away": "Amadora",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542602,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -302,6 +290,18 @@
       "home": "Lille",
       "away": "Brest",
       "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 545889,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T18:00:00Z",
+      "status": "FINISHED",
+      "home": "Vitória SC",
+      "away": "Amadora",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -317,18 +317,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544445,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T17:30:00Z",
-      "status": "FINISHED",
-      "home": "Sevilla FC",
-      "away": "Alavés",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540603,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -338,6 +326,18 @@
       "home": "Stuttgart",
       "away": "1. FC Köln",
       "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544445,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T17:30:00Z",
+      "status": "FINISHED",
+      "home": "Sevilla FC",
+      "away": "Alavés",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -365,18 +365,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537644,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T15:30:00Z",
-      "status": "FINISHED",
-      "home": "Heracles",
-      "away": "NAC",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545891,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -389,6 +377,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 537644,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T15:30:00Z",
+      "status": "FINISHED",
+      "home": "Heracles",
+      "away": "NAC",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544442,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -398,6 +398,30 @@
       "home": "Getafe",
       "away": "Villarreal",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540601,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Leverkusen",
+      "away": "St. Pauli",
+      "score": "4–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540596,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-14",
+      "kickoffUTC": "2026-02-14T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Hoffenheim",
+      "away": "Freiburg",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -433,30 +457,6 @@
       "status": "FINISHED",
       "home": "Frankfurt",
       "away": "M'gladbach",
-      "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540601,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Leverkusen",
-      "away": "St. Pauli",
-      "score": "4–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540596,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-14",
-      "kickoffUTC": "2026-02-14T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Hoffenheim",
-      "away": "Freiburg",
       "score": "3–0",
       "highlightsUrl": ""
     },
