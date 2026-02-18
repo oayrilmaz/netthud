@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-18T20:51:37.467Z",
+  "updated": "2026-02-18T21:35:50.209Z",
   "dateFrom": "2026-02-17",
   "dateTo": "2026-02-20",
   "competitions": [
@@ -17,18 +17,6 @@
   ],
   "items": [
     {
-      "matchId": 552058,
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "when": "2026-02-18",
-      "kickoffUTC": "2026-02-18T20:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Olympiakos",
-      "away": "Leverkusen",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 552056,
       "league": "UEFA Champions League",
       "competitionCode": "CL",
@@ -37,7 +25,7 @@
       "status": "IN_PLAY",
       "home": "Club Brugge",
       "away": "Atleti",
-      "score": "0–1",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -49,7 +37,19 @@
       "status": "IN_PLAY",
       "home": "Wolverhampton",
       "away": "Arsenal",
-      "score": "0–1",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 552058,
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "when": "2026-02-18",
+      "kickoffUTC": "2026-02-18T20:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Olympiakos",
+      "away": "Leverkusen",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -61,7 +61,7 @@
       "status": "IN_PLAY",
       "home": "Bodø/Glimt",
       "away": "Inter",
-      "score": "1–1",
+      "score": "3–1",
       "highlightsUrl": ""
     },
     {
@@ -70,10 +70,10 @@
       "competitionCode": "SA",
       "when": "2026-02-18",
       "kickoffUTC": "2026-02-18T19:45:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Milan",
       "away": "Como 1907",
-      "score": "0–1",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -82,7 +82,7 @@
       "competitionCode": "PD",
       "when": "2026-02-18",
       "kickoffUTC": "2026-02-18T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Levante",
       "away": "Villarreal",
       "score": "0–1",
