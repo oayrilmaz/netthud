@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-20T20:33:34.965Z",
+  "updated": "2026-02-20T20:59:51.338Z",
   "dateFrom": "2026-02-19",
   "dateTo": "2026-02-22",
   "competitions": [
@@ -17,12 +17,24 @@
   ],
   "items": [
     {
+      "matchId": 545901,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-02-20",
+      "kickoffUTC": "2026-02-20T20:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Amadora",
+      "away": "Tondela",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544452,
       "league": "Primera Division",
       "competitionCode": "PD",
       "when": "2026-02-20",
       "kickoffUTC": "2026-02-20T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Athletic",
       "away": "Elche",
       "score": "0–0",
@@ -49,7 +61,7 @@
       "status": "IN_PLAY",
       "home": "Sassuolo",
       "away": "Verona",
-      "score": "1–0",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -58,7 +70,7 @@
       "competitionCode": "BL1",
       "when": "2026-02-20",
       "kickoffUTC": "2026-02-20T19:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Mainz",
       "away": "HSV",
       "score": "1–0",
@@ -73,7 +85,7 @@
       "status": "IN_PLAY",
       "home": "Sittard",
       "away": "Excelsior",
-      "score": "2–0",
+      "score": "2–1",
       "highlightsUrl": ""
     }
   ]
