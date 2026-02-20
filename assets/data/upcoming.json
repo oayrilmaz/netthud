@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-20T07:37:11.690Z",
+  "generatedAt": "2026-02-20T08:24:39.683Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -252,24 +252,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538046,
-      "id": "upcoming:538046",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Aston Villa",
-      "away": "Leeds United",
-      "kickoffUTC": "2026-02-21T15:00:00Z",
-      "kickoffLocal": "Feb 21 • 10:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6574,
-        "draw": 0.2532,
-        "away": 0.0894
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538048,
       "id": "upcoming:538048",
       "league": "Premier League",
@@ -283,6 +265,24 @@
         "home": 0.5218,
         "draw": 0.2895,
         "away": 0.1887
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538046,
+      "id": "upcoming:538046",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Aston Villa",
+      "away": "Leeds United",
+      "kickoffUTC": "2026-02-21T15:00:00Z",
+      "kickoffLocal": "Feb 21 • 10:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6574,
+        "draw": 0.2532,
+        "away": 0.0894
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -720,42 +720,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538045,
-      "id": "upcoming:538045",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Sunderland",
-      "away": "Fulham",
-      "kickoffUTC": "2026-02-22T14:00:00Z",
-      "kickoffLocal": "Feb 22 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4042,
-        "draw": 0.3295,
-        "away": 0.2662
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 538047,
-      "id": "upcoming:538047",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Crystal Palace",
-      "away": "Wolverhampton",
-      "kickoffUTC": "2026-02-22T14:00:00Z",
-      "kickoffLocal": "Feb 22 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6913,
-        "draw": 0.2448,
-        "away": 0.064
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538052,
       "id": "upcoming:538052",
       "league": "Premier League",
@@ -787,6 +751,42 @@
         "home": 0.1454,
         "draw": 0.2527,
         "away": 0.6019
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538045,
+      "id": "upcoming:538045",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Sunderland",
+      "away": "Fulham",
+      "kickoffUTC": "2026-02-22T14:00:00Z",
+      "kickoffLocal": "Feb 22 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.4042,
+        "draw": 0.3295,
+        "away": 0.2662
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538047,
+      "id": "upcoming:538047",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Crystal Palace",
+      "away": "Wolverhampton",
+      "kickoffUTC": "2026-02-22T14:00:00Z",
+      "kickoffLocal": "Feb 22 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6913,
+        "draw": 0.2448,
+        "away": 0.064
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1152,24 +1152,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538050,
-      "id": "upcoming:538050",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Everton",
-      "away": "Man United",
-      "kickoffUTC": "2026-02-23T20:00:00Z",
-      "kickoffLocal": "Feb 23 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2594,
-        "draw": 0.2823,
-        "away": 0.4583
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 544451,
       "id": "upcoming:544451",
       "league": "Primera Division",
@@ -1183,6 +1165,24 @@
         "home": 0.3664,
         "draw": 0.3307,
         "away": 0.3029
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538050,
+      "id": "upcoming:538050",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Everton",
+      "away": "Man United",
+      "kickoffUTC": "2026-02-23T20:00:00Z",
+      "kickoffLocal": "Feb 23 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2594,
+        "draw": 0.2823,
+        "away": 0.4583
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1224,24 +1224,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 552066,
-      "id": "upcoming:552066",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Leverkusen",
-      "away": "Olympiakos",
-      "kickoffUTC": "2026-02-24T20:00:00Z",
-      "kickoffLocal": "Feb 24 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4781,
-        "draw": 0.3031,
-        "away": 0.2188
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 552062,
       "id": "upcoming:552062",
       "league": "UEFA Champions League",
@@ -1255,6 +1237,24 @@
         "home": 0.7002,
         "draw": 0.2425,
         "away": 0.0573
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 552066,
+      "id": "upcoming:552066",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Leverkusen",
+      "away": "Olympiakos",
+      "kickoffUTC": "2026-02-24T20:00:00Z",
+      "kickoffLocal": "Feb 24 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.4781,
+        "draw": 0.3031,
+        "away": 0.2188
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
