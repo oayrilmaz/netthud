@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-21T15:40:13.636Z",
+  "updated": "2026-02-21T15:58:07.690Z",
   "dateFrom": "2026-02-20",
   "dateTo": "2026-02-23",
   "competitions": [
@@ -25,7 +25,7 @@
       "status": "IN_PLAY",
       "home": "Alverca",
       "away": "Santa Clara",
-      "score": "0–0",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -58,7 +58,7 @@
       "competitionCode": "PL",
       "when": "2026-02-21",
       "kickoffUTC": "2026-02-21T15:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Aston Villa",
       "away": "Leeds United",
       "score": "0–1",
@@ -73,7 +73,7 @@
       "status": "IN_PLAY",
       "home": "Brentford",
       "away": "Brighton Hove",
-      "score": "0–1",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -82,22 +82,10 @@
       "competitionCode": "PL",
       "when": "2026-02-21",
       "kickoffUTC": "2026-02-21T15:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Chelsea",
       "away": "Burnley",
       "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540605,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-02-21",
-      "kickoffUTC": "2026-02-21T14:30:00Z",
-      "status": "PAUSED",
-      "home": "Bayern",
-      "away": "Frankfurt",
-      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -106,10 +94,22 @@
       "competitionCode": "BL1",
       "when": "2026-02-21",
       "kickoffUTC": "2026-02-21T14:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "1. FC Köln",
       "away": "Hoffenheim",
-      "score": "1–1",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540605,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-02-21",
+      "kickoffUTC": "2026-02-21T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Bayern",
+      "away": "Frankfurt",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -118,7 +118,7 @@
       "competitionCode": "BL1",
       "when": "2026-02-21",
       "kickoffUTC": "2026-02-21T14:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Union Berlin",
       "away": "Leverkusen",
       "score": "1–0",
@@ -130,10 +130,10 @@
       "competitionCode": "BL1",
       "when": "2026-02-21",
       "kickoffUTC": "2026-02-21T14:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Wolfsburg",
       "away": "Augsburg",
-      "score": "1–0",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
