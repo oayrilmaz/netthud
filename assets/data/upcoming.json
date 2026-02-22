@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-21T23:47:27.283Z",
+  "generatedAt": "2026-02-22T02:21:15.553Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -72,24 +72,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537650,
-      "id": "upcoming:537650",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Utrecht",
-      "away": "Zwolle",
-      "kickoffUTC": "2026-02-22T13:30:00Z",
-      "kickoffLocal": "Feb 22 • 8:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5406,
-        "draw": 0.2841,
-        "away": 0.1754
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 537653,
       "id": "upcoming:537653",
       "league": "Eredivisie",
@@ -103,6 +85,24 @@
         "home": 0.564,
         "draw": 0.2775,
         "away": 0.1585
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 537650,
+      "id": "upcoming:537650",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Utrecht",
+      "away": "Zwolle",
+      "kickoffUTC": "2026-02-22T13:30:00Z",
+      "kickoffLocal": "Feb 22 • 8:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5406,
+        "draw": 0.2841,
+        "away": 0.1754
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -936,37 +936,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540619,
-      "id": "upcoming:540619",
+      "matchId": 540620,
+      "id": "upcoming:540620",
       "league": "Bundesliga",
       "competitionCode": "BL1",
-      "home": "Hoffenheim",
-      "away": "St. Pauli",
+      "home": "Bremen",
+      "away": "Heidenheim",
       "kickoffUTC": "2026-02-28T14:30:00Z",
       "kickoffLocal": "Feb 28 • 9:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.7468,
-        "draw": 0.2306,
-        "away": 0.0226
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 540615,
-      "id": "upcoming:540615",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Leverkusen",
-      "away": "Mainz",
-      "kickoffUTC": "2026-02-28T14:30:00Z",
-      "kickoffLocal": "Feb 28 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6982,
-        "draw": 0.243,
-        "away": 0.0588
+        "home": 0.5197,
+        "draw": 0.2901,
+        "away": 0.1901
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -990,19 +972,37 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540620,
-      "id": "upcoming:540620",
+      "matchId": 540615,
+      "id": "upcoming:540615",
       "league": "Bundesliga",
       "competitionCode": "BL1",
-      "home": "Bremen",
-      "away": "Heidenheim",
+      "home": "Leverkusen",
+      "away": "Mainz",
       "kickoffUTC": "2026-02-28T14:30:00Z",
       "kickoffLocal": "Feb 28 • 9:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.5197,
-        "draw": 0.2901,
-        "away": 0.1901
+        "home": 0.6982,
+        "draw": 0.243,
+        "away": 0.0588
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540619,
+      "id": "upcoming:540619",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Hoffenheim",
+      "away": "St. Pauli",
+      "kickoffUTC": "2026-02-28T14:30:00Z",
+      "kickoffLocal": "Feb 28 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7468,
+        "draw": 0.2306,
+        "away": 0.0226
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1152,24 +1152,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538061,
-      "id": "upcoming:538061",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Leeds United",
-      "away": "Man City",
-      "kickoffUTC": "2026-02-28T17:30:00Z",
-      "kickoffLocal": "Feb 28 • 12:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0758,
-        "draw": 0.2381,
-        "away": 0.6861
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540613,
       "id": "upcoming:540613",
       "league": "Bundesliga",
@@ -1183,6 +1165,24 @@
         "home": 0.1406,
         "draw": 0.2516,
         "away": 0.6078
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538061,
+      "id": "upcoming:538061",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Leeds United",
+      "away": "Man City",
+      "kickoffUTC": "2026-02-28T17:30:00Z",
+      "kickoffLocal": "Feb 28 • 12:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0758,
+        "draw": 0.2381,
+        "away": 0.6861
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1278,24 +1278,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537661,
-      "id": "upcoming:537661",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "NEC",
-      "away": "Sittard",
-      "kickoffUTC": "2026-02-28T20:00:00Z",
-      "kickoffLocal": "Feb 28 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6622,
-        "draw": 0.252,
-        "away": 0.0858
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 544467,
       "id": "upcoming:544467",
       "league": "Primera Division",
@@ -1309,6 +1291,24 @@
         "home": 0.0416,
         "draw": 0.231,
         "away": 0.7275
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 537661,
+      "id": "upcoming:537661",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "NEC",
+      "away": "Sittard",
+      "kickoffUTC": "2026-02-28T20:00:00Z",
+      "kickoffLocal": "Feb 28 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6622,
+        "draw": 0.252,
+        "away": 0.0858
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
