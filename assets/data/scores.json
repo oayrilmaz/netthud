@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-22T14:27:12.348Z",
+  "updated": "2026-02-22T14:53:38.358Z",
   "dateFrom": "2026-02-21",
   "dateTo": "2026-02-24",
   "competitions": [
@@ -17,14 +17,14 @@
   ],
   "items": [
     {
-      "matchId": 538045,
-      "league": "Premier League",
-      "competitionCode": "PL",
+      "matchId": 540609,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
       "when": "2026-02-22",
-      "kickoffUTC": "2026-02-22T14:00:00Z",
+      "kickoffUTC": "2026-02-22T14:30:00Z",
       "status": "IN_PLAY",
-      "home": "Sunderland",
-      "away": "Fulham",
+      "home": "Freiburg",
+      "away": "M'gladbach",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -37,31 +37,7 @@
       "status": "IN_PLAY",
       "home": "Auxerre",
       "away": "Stade Rennais",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537068,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-02-22",
-      "kickoffUTC": "2026-02-22T14:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Atalanta",
-      "away": "Napoli",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538047,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-02-22",
-      "kickoffUTC": "2026-02-22T14:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Crystal Palace",
-      "away": "Wolverhampton",
-      "score": "0–0",
+      "score": "0–3",
       "highlightsUrl": ""
     },
     {
@@ -77,15 +53,39 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537653,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
+      "matchId": 537068,
+      "league": "Serie A",
+      "competitionCode": "SA",
       "when": "2026-02-22",
-      "kickoffUTC": "2026-02-22T13:30:00Z",
-      "status": "PAUSED",
-      "home": "Go Ahead",
-      "away": "Heracles",
-      "score": "1–0",
+      "kickoffUTC": "2026-02-22T14:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Atalanta",
+      "away": "Napoli",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538045,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-02-22",
+      "kickoffUTC": "2026-02-22T14:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Sunderland",
+      "away": "Fulham",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538047,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-02-22",
+      "kickoffUTC": "2026-02-22T14:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Crystal Palace",
+      "away": "Wolverhampton",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -94,10 +94,22 @@
       "competitionCode": "DED",
       "when": "2026-02-22",
       "kickoffUTC": "2026-02-22T13:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Utrecht",
       "away": "Zwolle",
       "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537653,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-02-22",
+      "kickoffUTC": "2026-02-22T13:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Go Ahead",
+      "away": "Heracles",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -109,7 +121,7 @@
       "status": "IN_PLAY",
       "home": "Getafe",
       "away": "Sevilla FC",
-      "score": "0–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -281,18 +293,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544458,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-02-21",
-      "kickoffUTC": "2026-02-21T17:30:00Z",
-      "status": "FINISHED",
-      "home": "Osasuna",
-      "away": "Real Madrid",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538054,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -302,6 +302,18 @@
       "home": "West Ham",
       "away": "Bournemouth",
       "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544458,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-02-21",
+      "kickoffUTC": "2026-02-21T17:30:00Z",
+      "status": "FINISHED",
+      "home": "Osasuna",
+      "away": "Real Madrid",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -365,14 +377,14 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538049,
+      "matchId": 538046,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-02-21",
       "kickoffUTC": "2026-02-21T15:00:00Z",
       "status": "FINISHED",
-      "home": "Chelsea",
-      "away": "Burnley",
+      "home": "Aston Villa",
+      "away": "Leeds United",
       "score": "1–1",
       "highlightsUrl": ""
     },
@@ -389,14 +401,14 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538046,
+      "matchId": 538049,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-02-21",
       "kickoffUTC": "2026-02-21T15:00:00Z",
       "status": "FINISHED",
-      "home": "Aston Villa",
-      "away": "Leeds United",
+      "home": "Chelsea",
+      "away": "Burnley",
       "score": "1–1",
       "highlightsUrl": ""
     },
