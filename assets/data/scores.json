@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-02T16:51:07.938Z",
+  "updated": "2026-03-02T17:45:45.067Z",
   "dateFrom": "2026-03-01",
   "dateTo": "2026-03-04",
   "competitions": [
@@ -16,6 +16,18 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 537081,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-02",
+      "kickoffUTC": "2026-03-02T17:30:00Z",
+      "status": "IN_PLAY",
+      "home": "AC Pisa",
+      "away": "Bologna",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 545910,
       "league": "Primeira Liga",
@@ -41,18 +53,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537075,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-03-01",
-      "kickoffUTC": "2026-03-01T19:45:00Z",
-      "status": "FINISHED",
-      "home": "Roma",
-      "away": "Juventus",
-      "score": "3–3",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542618,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -62,6 +62,18 @@
       "home": "Marseille",
       "away": "Olympique Lyon",
       "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537075,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-01",
+      "kickoffUTC": "2026-03-01T19:45:00Z",
+      "status": "FINISHED",
+      "home": "Roma",
+      "away": "Juventus",
+      "score": "3–3",
       "highlightsUrl": ""
     },
     {
@@ -125,18 +137,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538057,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-03-01",
-      "kickoffUTC": "2026-03-01T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Arsenal",
-      "away": "Chelsea",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540614,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -149,15 +149,27 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542619,
+      "matchId": 538057,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-03-01",
+      "kickoffUTC": "2026-03-01T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Arsenal",
+      "away": "Chelsea",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542616,
       "league": "Ligue 1",
       "competitionCode": "FL1",
       "when": "2026-03-01",
       "kickoffUTC": "2026-03-01T16:15:00Z",
       "status": "FINISHED",
-      "home": "Lille",
-      "away": "Nantes",
-      "score": "1–0",
+      "home": "FC Metz",
+      "away": "Brest",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -173,15 +185,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542616,
+      "matchId": 542619,
       "league": "Ligue 1",
       "competitionCode": "FL1",
       "when": "2026-03-01",
       "kickoffUTC": "2026-03-01T16:15:00Z",
       "status": "FINISHED",
-      "home": "FC Metz",
-      "away": "Brest",
-      "score": "0–1",
+      "home": "Lille",
+      "away": "Nantes",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -233,38 +245,14 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542617,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-03-01",
-      "kickoffUTC": "2026-03-01T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Paris FC",
-      "away": "Nice",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538062,
+      "matchId": 538056,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-01",
       "kickoffUTC": "2026-03-01T14:00:00Z",
       "status": "FINISHED",
-      "home": "Man United",
-      "away": "Crystal Palace",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537082,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-03-01",
-      "kickoffUTC": "2026-03-01T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Sassuolo",
-      "away": "Atalanta",
+      "home": "Brighton Hove",
+      "away": "Nottingham",
       "score": "2–1",
       "highlightsUrl": ""
     },
@@ -281,27 +269,39 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538056,
+      "matchId": 542617,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-01",
+      "kickoffUTC": "2026-03-01T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Paris FC",
+      "away": "Nice",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537082,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-01",
+      "kickoffUTC": "2026-03-01T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Sassuolo",
+      "away": "Atalanta",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538062,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-01",
       "kickoffUTC": "2026-03-01T14:00:00Z",
       "status": "FINISHED",
-      "home": "Brighton Hove",
-      "away": "Nottingham",
+      "home": "Man United",
+      "away": "Crystal Palace",
       "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537665,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-03-01",
-      "kickoffUTC": "2026-03-01T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Twente",
-      "away": "Feyenoord",
-      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -314,6 +314,18 @@
       "home": "Volendam",
       "away": "Groningen",
       "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537665,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-03-01",
+      "kickoffUTC": "2026-03-01T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Twente",
+      "away": "Feyenoord",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
