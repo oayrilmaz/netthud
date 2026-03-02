@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-02T19:37:29.894Z",
+  "updated": "2026-03-02T20:03:06.802Z",
   "dateFrom": "2026-03-01",
   "dateTo": "2026-03-04",
   "competitions": [
@@ -16,6 +16,18 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 537083,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-02",
+      "kickoffUTC": "2026-03-02T19:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Udinese",
+      "away": "Fiorentina",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 537081,
       "league": "Serie A",
@@ -53,18 +65,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537075,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-03-01",
-      "kickoffUTC": "2026-03-01T19:45:00Z",
-      "status": "FINISHED",
-      "home": "Roma",
-      "away": "Juventus",
-      "score": "3–3",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542618,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -74,6 +74,18 @@
       "home": "Marseille",
       "away": "Olympique Lyon",
       "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537075,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-01",
+      "kickoffUTC": "2026-03-01T19:45:00Z",
+      "status": "FINISHED",
+      "home": "Roma",
+      "away": "Juventus",
+      "score": "3–3",
       "highlightsUrl": ""
     },
     {
@@ -245,18 +257,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538059,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-03-01",
-      "kickoffUTC": "2026-03-01T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Fulham",
-      "away": "Tottenham",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538056,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -269,15 +269,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542617,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
+      "matchId": 538059,
+      "league": "Premier League",
+      "competitionCode": "PL",
       "when": "2026-03-01",
       "kickoffUTC": "2026-03-01T14:00:00Z",
       "status": "FINISHED",
-      "home": "Paris FC",
-      "away": "Nice",
-      "score": "1–0",
+      "home": "Fulham",
+      "away": "Tottenham",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -302,6 +302,18 @@
       "home": "Sassuolo",
       "away": "Atalanta",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542617,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-01",
+      "kickoffUTC": "2026-03-01T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Paris FC",
+      "away": "Nice",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
