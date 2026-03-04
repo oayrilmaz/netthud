@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-04T20:33:34.177Z",
+  "updated": "2026-03-04T21:03:42.559Z",
   "dateFrom": "2026-03-03",
   "dateTo": "2026-03-06",
   "competitions": [
@@ -29,6 +29,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 538066,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-03-04",
+      "kickoffUTC": "2026-03-04T19:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Aston Villa",
+      "away": "Chelsea",
+      "score": "1–3",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540558,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -41,27 +53,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538067,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-03-04",
-      "kickoffUTC": "2026-03-04T19:30:00Z",
-      "status": "PAUSED",
-      "home": "Brighton Hove",
-      "away": "Arsenal",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538069,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-04",
       "kickoffUTC": "2026-03-04T19:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Fulham",
       "away": "West Ham",
-      "score": "0–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -73,19 +73,19 @@
       "status": "IN_PLAY",
       "home": "Man City",
       "away": "Nottingham",
-      "score": "1–0",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
-      "matchId": 538066,
+      "matchId": 538067,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-04",
       "kickoffUTC": "2026-03-04T19:30:00Z",
       "status": "IN_PLAY",
-      "home": "Aston Villa",
-      "away": "Chelsea",
-      "score": "2–1",
+      "home": "Brighton Hove",
+      "away": "Arsenal",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -113,15 +113,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538065,
+      "matchId": 538070,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-03",
       "kickoffUTC": "2026-03-03T19:30:00Z",
       "status": "FINISHED",
-      "home": "Bournemouth",
-      "away": "Brentford",
-      "score": "0–0",
+      "home": "Leeds United",
+      "away": "Sunderland",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -137,15 +137,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538070,
+      "matchId": 538065,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-03",
       "kickoffUTC": "2026-03-03T19:30:00Z",
       "status": "FINISHED",
-      "home": "Leeds United",
-      "away": "Sunderland",
-      "score": "0–1",
+      "home": "Bournemouth",
+      "away": "Brentford",
+      "score": "0–0",
       "highlightsUrl": ""
     }
   ]
