@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-05T19:42:43.696Z",
+  "updated": "2026-03-05T20:23:22.272Z",
   "dateFrom": "2026-03-04",
   "dateTo": "2026-03-07",
   "competitions": [
@@ -17,6 +17,18 @@
   ],
   "items": [
     {
+      "matchId": 538073,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-03-05",
+      "kickoffUTC": "2026-03-05T20:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Tottenham",
+      "away": "Crystal Palace",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 538072,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -26,6 +38,18 @@
       "home": "Newcastle",
       "away": "Man United",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538071,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-03-04",
+      "kickoffUTC": "2026-03-04T19:30:00Z",
+      "status": "FINISHED",
+      "home": "Man City",
+      "away": "Nottingham",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -41,14 +65,14 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538069,
+      "matchId": 538067,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-04",
       "kickoffUTC": "2026-03-04T19:30:00Z",
       "status": "FINISHED",
-      "home": "Fulham",
-      "away": "West Ham",
+      "home": "Brighton Hove",
+      "away": "Arsenal",
       "score": "0–1",
       "highlightsUrl": ""
     },
@@ -65,26 +89,14 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538071,
+      "matchId": 538069,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-04",
       "kickoffUTC": "2026-03-04T19:30:00Z",
       "status": "FINISHED",
-      "home": "Man City",
-      "away": "Nottingham",
-      "score": "2–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538067,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-03-04",
-      "kickoffUTC": "2026-03-04T19:30:00Z",
-      "status": "FINISHED",
-      "home": "Brighton Hove",
-      "away": "Arsenal",
+      "home": "Fulham",
+      "away": "West Ham",
       "score": "0–1",
       "highlightsUrl": ""
     },
