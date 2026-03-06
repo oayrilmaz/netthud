@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-06T05:59:37.457Z",
+  "generatedAt": "2026-03-06T07:03:10.899Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -288,24 +288,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537667,
-      "id": "upcoming:537667",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Groningen",
-      "away": "Ajax",
-      "kickoffUTC": "2026-03-07T15:30:00Z",
-      "kickoffLocal": "Mar 7 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.1884,
-        "draw": 0.2626,
-        "away": 0.5489
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 545916,
       "id": "upcoming:545916",
       "league": "Primeira Liga",
@@ -319,6 +301,24 @@
         "home": 0.6725,
         "draw": 0.2494,
         "away": 0.0781
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 537667,
+      "id": "upcoming:537667",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Groningen",
+      "away": "Ajax",
+      "kickoffUTC": "2026-03-07T15:30:00Z",
+      "kickoffLocal": "Mar 7 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.1884,
+        "draw": 0.2626,
+        "away": 0.5489
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
