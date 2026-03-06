@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-06T10:56:01.346Z",
+  "generatedAt": "2026-03-06T11:32:23.408Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -162,19 +162,37 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540629,
-      "id": "upcoming:540629",
+      "matchId": 540628,
+      "id": "upcoming:540628",
       "league": "Bundesliga",
       "competitionCode": "BL1",
-      "home": "Heidenheim",
-      "away": "Hoffenheim",
+      "home": "RB Leipzig",
+      "away": "Augsburg",
       "kickoffUTC": "2026-03-07T14:30:00Z",
       "kickoffLocal": "Mar 7 • 9:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.0283,
-        "draw": 0.2281,
-        "away": 0.7436
+        "home": 0.6452,
+        "draw": 0.2562,
+        "away": 0.0986
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540630,
+      "id": "upcoming:540630",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Wolfsburg",
+      "away": "HSV",
+      "kickoffUTC": "2026-03-07T14:30:00Z",
+      "kickoffLocal": "Mar 7 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2947,
+        "draw": 0.2945,
+        "away": 0.4108
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -216,37 +234,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 540628,
-      "id": "upcoming:540628",
+      "matchId": 540629,
+      "id": "upcoming:540629",
       "league": "Bundesliga",
       "competitionCode": "BL1",
-      "home": "RB Leipzig",
-      "away": "Augsburg",
+      "home": "Heidenheim",
+      "away": "Hoffenheim",
       "kickoffUTC": "2026-03-07T14:30:00Z",
       "kickoffLocal": "Mar 7 • 9:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.6452,
-        "draw": 0.2562,
-        "away": 0.0986
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 540630,
-      "id": "upcoming:540630",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Wolfsburg",
-      "away": "HSV",
-      "kickoffUTC": "2026-03-07T14:30:00Z",
-      "kickoffLocal": "Mar 7 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2947,
-        "draw": 0.2945,
-        "away": 0.4108
+        "home": 0.0283,
+        "draw": 0.2281,
+        "away": 0.7436
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -270,19 +270,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 545921,
-      "id": "upcoming:545921",
+      "matchId": 545916,
+      "id": "upcoming:545916",
       "league": "Primeira Liga",
       "competitionCode": "PPL",
-      "home": "Moreirense",
-      "away": "CD Nacional",
+      "home": "Alverca",
+      "away": "AVS",
       "kickoffUTC": "2026-03-07T15:30:00Z",
       "kickoffLocal": "Mar 7 • 10:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.569,
-        "draw": 0.2761,
-        "away": 0.1549
+        "home": 0.6725,
+        "draw": 0.2494,
+        "away": 0.0781
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -306,19 +306,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 545916,
-      "id": "upcoming:545916",
+      "matchId": 545921,
+      "id": "upcoming:545921",
       "league": "Primeira Liga",
       "competitionCode": "PPL",
-      "home": "Alverca",
-      "away": "AVS",
+      "home": "Moreirense",
+      "away": "CD Nacional",
       "kickoffUTC": "2026-03-07T15:30:00Z",
       "kickoffLocal": "Mar 7 • 10:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.6725,
-        "draw": 0.2494,
-        "away": 0.0781
+        "home": 0.569,
+        "draw": 0.2761,
+        "away": 0.1549
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -360,24 +360,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 544472,
-      "id": "upcoming:544472",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Atleti",
-      "away": "Real Sociedad",
-      "kickoffUTC": "2026-03-07T17:30:00Z",
-      "kickoffLocal": "Mar 7 • 12:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.635,
-        "draw": 0.2588,
-        "away": 0.1062
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540624,
       "id": "upcoming:540624",
       "league": "Bundesliga",
@@ -391,6 +373,24 @@
         "home": 0.0545,
         "draw": 0.2337,
         "away": 0.7118
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 544472,
+      "id": "upcoming:544472",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Atleti",
+      "away": "Real Sociedad",
+      "kickoffUTC": "2026-03-07T17:30:00Z",
+      "kickoffLocal": "Mar 7 • 12:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.635,
+        "draw": 0.2588,
+        "away": 0.1062
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -594,24 +594,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537668,
-      "id": "upcoming:537668",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Sittard",
-      "away": "Telstar",
-      "kickoffUTC": "2026-03-08T13:30:00Z",
-      "kickoffLocal": "Mar 8 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5477,
-        "draw": 0.282,
-        "away": 0.1703
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 537669,
       "id": "upcoming:537669",
       "league": "Eredivisie",
@@ -630,19 +612,37 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537085,
-      "id": "upcoming:537085",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Fiorentina",
-      "away": "Parma",
+      "matchId": 537668,
+      "id": "upcoming:537668",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Sittard",
+      "away": "Telstar",
+      "kickoffUTC": "2026-03-08T13:30:00Z",
+      "kickoffLocal": "Mar 8 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5477,
+        "draw": 0.282,
+        "away": 0.1703
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 542629,
+      "id": "upcoming:542629",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "RC Lens",
+      "away": "FC Metz",
       "kickoffUTC": "2026-03-08T14:00:00Z",
       "kickoffLocal": "Mar 8 • 10:00 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.3152,
-        "draw": 0.3029,
-        "away": 0.3819
+        "home": 0.7669,
+        "draw": 0.2249,
+        "away": 0.0083
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -666,19 +666,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 542629,
-      "id": "upcoming:542629",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "RC Lens",
-      "away": "FC Metz",
+      "matchId": 537085,
+      "id": "upcoming:537085",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Fiorentina",
+      "away": "Parma",
       "kickoffUTC": "2026-03-08T14:00:00Z",
       "kickoffLocal": "Mar 8 • 10:00 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.7669,
-        "draw": 0.2249,
-        "away": 0.0083
+        "home": 0.3152,
+        "draw": 0.3029,
+        "away": 0.3819
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -756,19 +756,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 542630,
-      "id": "upcoming:542630",
+      "matchId": 542625,
+      "id": "upcoming:542625",
       "league": "Ligue 1",
       "competitionCode": "FL1",
-      "home": "Brest",
-      "away": "Le Havre",
+      "home": "Nice",
+      "away": "Stade Rennais",
       "kickoffUTC": "2026-03-08T16:15:00Z",
       "kickoffLocal": "Mar 8 • 12:15 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.5281,
-        "draw": 0.2877,
-        "away": 0.1842
+        "home": 0.1633,
+        "draw": 0.2567,
+        "away": 0.58
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -792,19 +792,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 542625,
-      "id": "upcoming:542625",
+      "matchId": 542630,
+      "id": "upcoming:542630",
       "league": "Ligue 1",
       "competitionCode": "FL1",
-      "home": "Nice",
-      "away": "Stade Rennais",
+      "home": "Brest",
+      "away": "Le Havre",
       "kickoffUTC": "2026-03-08T16:15:00Z",
       "kickoffLocal": "Mar 8 • 12:15 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.1633,
-        "draw": 0.2567,
-        "away": 0.58
+        "home": 0.5281,
+        "draw": 0.2877,
+        "away": 0.1842
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -900,24 +900,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 542626,
-      "id": "upcoming:542626",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Olympique Lyon",
-      "away": "Paris FC",
-      "kickoffUTC": "2026-03-08T19:45:00Z",
-      "kickoffLocal": "Mar 8 • 3:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6834,
-        "draw": 0.2467,
-        "away": 0.0699
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 537086,
       "id": "upcoming:537086",
       "league": "Serie A",
@@ -931,6 +913,24 @@
         "home": 0.2156,
         "draw": 0.2696,
         "away": 0.5148
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 542626,
+      "id": "upcoming:542626",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Olympique Lyon",
+      "away": "Paris FC",
+      "kickoffUTC": "2026-03-08T19:45:00Z",
+      "kickoffLocal": "Mar 8 • 3:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6834,
+        "draw": 0.2467,
+        "away": 0.0699
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1044,19 +1044,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 552071,
-      "id": "upcoming:552071",
+      "matchId": 552072,
+      "id": "upcoming:552072",
       "league": "UEFA Champions League",
       "competitionCode": "CL",
-      "home": "Atalanta",
-      "away": "Bayern",
+      "home": "Newcastle",
+      "away": "Barça",
       "kickoffUTC": "2026-03-10T20:00:00Z",
       "kickoffLocal": "Mar 10 • 4:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.0525,
-        "draw": 0.2333,
-        "away": 0.7143
+        "home": 0.3319,
+        "draw": 0.3106,
+        "away": 0.3575
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1080,19 +1080,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 552072,
-      "id": "upcoming:552072",
+      "matchId": 552071,
+      "id": "upcoming:552071",
       "league": "UEFA Champions League",
       "competitionCode": "CL",
-      "home": "Newcastle",
-      "away": "Barça",
+      "home": "Atalanta",
+      "away": "Bayern",
       "kickoffUTC": "2026-03-10T20:00:00Z",
       "kickoffLocal": "Mar 10 • 4:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3319,
-        "draw": 0.3106,
-        "away": 0.3575
+        "home": 0.0525,
+        "draw": 0.2333,
+        "away": 0.7143
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1111,24 +1111,6 @@
         "home": 0.0165,
         "draw": 0.2253,
         "away": 0.7582
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 552070,
-      "id": "upcoming:552070",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Real Madrid",
-      "away": "Man City",
-      "kickoffUTC": "2026-03-11T20:00:00Z",
-      "kickoffLocal": "Mar 11 • 4:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4071,
-        "draw": 0.3284,
-        "away": 0.2645
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1165,6 +1147,24 @@
         "home": 0.1151,
         "draw": 0.2462,
         "away": 0.6388
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 552070,
+      "id": "upcoming:552070",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Real Madrid",
+      "away": "Man City",
+      "kickoffUTC": "2026-03-11T20:00:00Z",
+      "kickoffLocal": "Mar 11 • 4:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.4071,
+        "draw": 0.3284,
+        "away": 0.2645
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
