@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-08T16:34:35.612Z",
+  "updated": "2026-03-08T16:59:58.132Z",
   "dateFrom": "2026-03-07",
   "dateTo": "2026-03-10",
   "competitions": [
@@ -17,15 +17,15 @@
   ],
   "items": [
     {
-      "matchId": 542627,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
+      "matchId": 540625,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
       "when": "2026-03-08",
-      "kickoffUTC": "2026-03-08T16:15:00Z",
+      "kickoffUTC": "2026-03-08T16:30:00Z",
       "status": "IN_PLAY",
-      "home": "Lille",
-      "away": "Lorient",
-      "score": "0–0",
+      "home": "Union Berlin",
+      "away": "Bremen",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -49,7 +49,19 @@
       "status": "IN_PLAY",
       "home": "Nice",
       "away": "Stade Rennais",
-      "score": "0–1",
+      "score": "0–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542627,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-08",
+      "kickoffUTC": "2026-03-08T16:15:00Z",
+      "status": "IN_PLAY",
+      "home": "Lille",
+      "away": "Lorient",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -61,7 +73,7 @@
       "status": "IN_PLAY",
       "home": "NAC",
       "away": "Feyenoord",
-      "score": "2–2",
+      "score": "3–2",
       "highlightsUrl": ""
     },
     {
@@ -70,10 +82,10 @@
       "competitionCode": "PPL",
       "when": "2026-03-08",
       "kickoffUTC": "2026-03-08T15:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Amadora",
       "away": "Gil Vicente",
-      "score": "0–1",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -94,7 +106,7 @@
       "competitionCode": "BL1",
       "when": "2026-03-08",
       "kickoffUTC": "2026-03-08T14:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "St. Pauli",
       "away": "Frankfurt",
       "score": "0–0",
@@ -413,6 +425,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 540629,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-03-07",
+      "kickoffUTC": "2026-03-07T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Heidenheim",
+      "away": "Hoffenheim",
+      "score": "2–4",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540626,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -434,18 +458,6 @@
       "home": "Freiburg",
       "away": "Leverkusen",
       "score": "3–3",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540629,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-03-07",
-      "kickoffUTC": "2026-03-07T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Heidenheim",
-      "away": "Hoffenheim",
-      "score": "2–4",
       "highlightsUrl": ""
     },
     {
