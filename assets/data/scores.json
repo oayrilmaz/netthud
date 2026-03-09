@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-09T13:05:56.219Z",
+  "updated": "2026-03-09T14:12:35.124Z",
   "dateFrom": "2026-03-08",
   "dateTo": "2026-03-11",
   "competitions": [
@@ -41,18 +41,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542626,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-03-08",
-      "kickoffUTC": "2026-03-08T19:45:00Z",
-      "status": "FINISHED",
-      "home": "Olympique Lyon",
-      "away": "Paris FC",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537086,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -62,6 +50,18 @@
       "home": "Milan",
       "away": "Inter",
       "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542626,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-08",
+      "kickoffUTC": "2026-03-08T19:45:00Z",
+      "status": "FINISHED",
+      "home": "Olympique Lyon",
+      "away": "Paris FC",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -209,15 +209,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537085,
+      "matchId": 537090,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-03-08",
       "kickoffUTC": "2026-03-08T14:00:00Z",
       "status": "FINISHED",
-      "home": "Fiorentina",
-      "away": "Parma",
-      "score": "0–0",
+      "home": "Bologna",
+      "away": "Verona",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -233,27 +233,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537090,
+      "matchId": 537085,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-03-08",
       "kickoffUTC": "2026-03-08T14:00:00Z",
       "status": "FINISHED",
-      "home": "Bologna",
-      "away": "Verona",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537669,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-03-08",
-      "kickoffUTC": "2026-03-08T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Go Ahead",
-      "away": "Twente",
-      "score": "1–4",
+      "home": "Fiorentina",
+      "away": "Parma",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -265,6 +253,18 @@
       "status": "FINISHED",
       "home": "Sittard",
       "away": "Telstar",
+      "score": "1–4",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537669,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-03-08",
+      "kickoffUTC": "2026-03-08T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Go Ahead",
+      "away": "Twente",
       "score": "1–4",
       "highlightsUrl": ""
     },
