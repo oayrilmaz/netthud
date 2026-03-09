@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-09T04:26:54.657Z",
+  "updated": "2026-03-09T05:40:59.542Z",
   "dateFrom": "2026-03-08",
   "dateTo": "2026-03-11",
   "competitions": [
@@ -125,6 +125,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 542625,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-08",
+      "kickoffUTC": "2026-03-08T16:15:00Z",
+      "status": "FINISHED",
+      "home": "Nice",
+      "away": "Stade Rennais",
+      "score": "0–4",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 542627,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -146,18 +158,6 @@
       "home": "Brest",
       "away": "Le Havre",
       "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 542625,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-03-08",
-      "kickoffUTC": "2026-03-08T16:15:00Z",
-      "status": "FINISHED",
-      "home": "Nice",
-      "away": "Stade Rennais",
-      "score": "0–4",
       "highlightsUrl": ""
     },
     {
@@ -245,18 +245,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537669,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-03-08",
-      "kickoffUTC": "2026-03-08T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Go Ahead",
-      "away": "Twente",
-      "score": "1–4",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537668,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -265,6 +253,18 @@
       "status": "FINISHED",
       "home": "Sittard",
       "away": "Telstar",
+      "score": "1–4",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537669,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-03-08",
+      "kickoffUTC": "2026-03-08T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Go Ahead",
+      "away": "Twente",
       "score": "1–4",
       "highlightsUrl": ""
     },
