@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-09T21:47:14.794Z",
+  "generatedAt": "2026-03-09T22:30:30.316Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -522,24 +522,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538077,
-      "id": "upcoming:538077",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Arsenal",
-      "away": "Everton",
-      "kickoffUTC": "2026-03-14T17:30:00Z",
-      "kickoffLocal": "Mar 14 • 1:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6896,
-        "draw": 0.2452,
-        "away": 0.0652
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 544485,
       "id": "upcoming:544485",
       "league": "Primera Division",
@@ -553,6 +535,24 @@
         "home": 0.2004,
         "draw": 0.2656,
         "away": 0.534
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538077,
+      "id": "upcoming:538077",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Arsenal",
+      "away": "Everton",
+      "kickoffUTC": "2026-03-14T17:30:00Z",
+      "kickoffLocal": "Mar 14 • 1:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6896,
+        "draw": 0.2452,
+        "away": 0.0652
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -766,9 +766,9 @@
       "kickoffLocal": "Mar 14 • 8:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.7711,
-        "draw": 0.2235,
-        "away": 0.0054
+        "home": 0.7718,
+        "draw": 0.2233,
+        "away": 0.005
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -864,6 +864,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 537101,
+      "id": "upcoming:537101",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Sassuolo",
+      "away": "Bologna",
+      "kickoffUTC": "2026-03-15T14:00:00Z",
+      "kickoffLocal": "Mar 15 • 10:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3555,
+        "draw": 0.3236,
+        "away": 0.3209
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 538076,
       "id": "upcoming:538076",
       "league": "Premier League",
@@ -895,24 +913,6 @@
         "home": 0.4183,
         "draw": 0.3241,
         "away": 0.2576
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 537101,
-      "id": "upcoming:537101",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Sassuolo",
-      "away": "Bologna",
-      "kickoffUTC": "2026-03-15T14:00:00Z",
-      "kickoffLocal": "Mar 15 • 10:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3654,
-        "draw": 0.33,
-        "away": 0.3046
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1180,9 +1180,9 @@
       "kickoffLocal": "Mar 15 • 2:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3321,
-        "draw": 0.3107,
-        "away": 0.3572
+        "home": 0.3538,
+        "draw": 0.3225,
+        "away": 0.3237
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1216,9 +1216,9 @@
       "kickoffLocal": "Mar 15 • 3:45 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.1079,
-        "draw": 0.2447,
-        "away": 0.6475
+        "home": 0.1215,
+        "draw": 0.2475,
+        "away": 0.631
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
