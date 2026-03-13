@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-13T21:16:30.427Z",
+  "updated": "2026-03-13T21:55:35.314Z",
   "dateFrom": "2026-03-12",
   "dateTo": "2026-03-15",
   "competitions": [
@@ -29,27 +29,27 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542635,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-03-13",
-      "kickoffUTC": "2026-03-13T19:45:00Z",
-      "status": "IN_PLAY",
-      "home": "Marseille",
-      "away": "Auxerre",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537096,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-03-13",
       "kickoffUTC": "2026-03-13T19:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Torino",
       "away": "Parma",
-      "score": "3–1",
+      "score": "4–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542635,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-13",
+      "kickoffUTC": "2026-03-13T19:45:00Z",
+      "status": "FINISHED",
+      "home": "Marseille",
+      "away": "Auxerre",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -58,7 +58,7 @@
       "competitionCode": "BL1",
       "when": "2026-03-13",
       "kickoffUTC": "2026-03-13T19:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "M'gladbach",
       "away": "St. Pauli",
       "score": "2–0",
