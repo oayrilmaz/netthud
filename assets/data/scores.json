@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-13T19:46:50.003Z",
+  "updated": "2026-03-13T20:36:27.089Z",
   "dateFrom": "2026-03-12",
   "dateTo": "2026-03-15",
   "competitions": [
@@ -17,15 +17,51 @@
   ],
   "items": [
     {
+      "matchId": 544481,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-03-13",
+      "kickoffUTC": "2026-03-13T20:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Alavés",
+      "away": "Villarreal",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542635,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-13",
+      "kickoffUTC": "2026-03-13T19:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Marseille",
+      "away": "Auxerre",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537096,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-13",
+      "kickoffUTC": "2026-03-13T19:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Torino",
+      "away": "Parma",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540637,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-03-13",
       "kickoffUTC": "2026-03-13T19:30:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "M'gladbach",
       "away": "St. Pauli",
-      "score": "0–0",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
