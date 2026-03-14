@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-14T17:43:40.831Z",
+  "updated": "2026-03-14T18:01:28.546Z",
   "dateFrom": "2026-03-13",
   "dateTo": "2026-03-16",
   "competitions": [
@@ -17,14 +17,38 @@
   ],
   "items": [
     {
-      "matchId": 540639,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
+      "matchId": 537681,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-03-14",
+      "kickoffUTC": "2026-03-14T17:45:00Z",
+      "status": "IN_PLAY",
+      "home": "PSV",
+      "away": "NEC",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538080,
+      "league": "Premier League",
+      "competitionCode": "PL",
       "when": "2026-03-14",
       "kickoffUTC": "2026-03-14T17:30:00Z",
       "status": "IN_PLAY",
-      "home": "HSV",
-      "away": "1. FC Köln",
+      "home": "Chelsea",
+      "away": "Newcastle",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544485,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-03-14",
+      "kickoffUTC": "2026-03-14T17:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Real Oviedo",
+      "away": "Valencia",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -41,26 +65,14 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544485,
-      "league": "Primera Division",
-      "competitionCode": "PD",
+      "matchId": 540639,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
       "when": "2026-03-14",
       "kickoffUTC": "2026-03-14T17:30:00Z",
       "status": "IN_PLAY",
-      "home": "Real Oviedo",
-      "away": "Valencia",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538080,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-03-14",
-      "kickoffUTC": "2026-03-14T17:30:00Z",
-      "status": "IN_PLAY",
-      "home": "Chelsea",
-      "away": "Newcastle",
+      "home": "HSV",
+      "away": "1. FC Köln",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -70,7 +82,7 @@
       "competitionCode": "SA",
       "when": "2026-03-14",
       "kickoffUTC": "2026-03-14T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Napoli",
       "away": "Lecce",
       "score": "0–1",
@@ -89,18 +101,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537677,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-03-14",
-      "kickoffUTC": "2026-03-14T15:30:00Z",
-      "status": "FINISHED",
-      "home": "Volendam",
-      "away": "Sittard",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545928,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -109,6 +109,18 @@
       "status": "FINISHED",
       "home": "Vitória SC",
       "away": "Famalicão",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537677,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-03-14",
+      "kickoffUTC": "2026-03-14T15:30:00Z",
+      "status": "FINISHED",
+      "home": "Volendam",
+      "away": "Sittard",
       "score": "1–2",
       "highlightsUrl": ""
     },
@@ -125,18 +137,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538079,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-03-14",
-      "kickoffUTC": "2026-03-14T15:00:00Z",
-      "status": "FINISHED",
-      "home": "Burnley",
-      "away": "Bournemouth",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538075,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -149,15 +149,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540634,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
+      "matchId": 538079,
+      "league": "Premier League",
+      "competitionCode": "PL",
       "when": "2026-03-14",
-      "kickoffUTC": "2026-03-14T14:30:00Z",
+      "kickoffUTC": "2026-03-14T15:00:00Z",
       "status": "FINISHED",
-      "home": "Hoffenheim",
-      "away": "Wolfsburg",
-      "score": "1–1",
+      "home": "Burnley",
+      "away": "Bournemouth",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -173,15 +173,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540635,
+      "matchId": 540634,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-03-14",
       "kickoffUTC": "2026-03-14T14:30:00Z",
       "status": "FINISHED",
-      "home": "Dortmund",
-      "away": "Augsburg",
-      "score": "2–0",
+      "home": "Hoffenheim",
+      "away": "Wolfsburg",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -194,6 +194,18 @@
       "home": "Leverkusen",
       "away": "Bayern",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540635,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-03-14",
+      "kickoffUTC": "2026-03-14T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Dortmund",
+      "away": "Augsburg",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -233,18 +245,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542635,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-03-13",
-      "kickoffUTC": "2026-03-13T19:45:00Z",
-      "status": "FINISHED",
-      "home": "Marseille",
-      "away": "Auxerre",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537096,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -254,6 +254,18 @@
       "home": "Torino",
       "away": "Parma",
       "score": "4–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542635,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-13",
+      "kickoffUTC": "2026-03-13T19:45:00Z",
+      "status": "FINISHED",
+      "home": "Marseille",
+      "away": "Auxerre",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
