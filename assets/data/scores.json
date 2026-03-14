@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-14T13:47:25.870Z",
+  "updated": "2026-03-14T14:29:50.030Z",
   "dateFrom": "2026-03-13",
   "dateTo": "2026-03-16",
   "competitions": [
@@ -16,6 +16,18 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 537098,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-14",
+      "kickoffUTC": "2026-03-14T14:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Inter",
+      "away": "Atalanta",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 544486,
       "league": "Primera Division",
@@ -41,18 +53,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537096,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-03-13",
-      "kickoffUTC": "2026-03-13T19:45:00Z",
-      "status": "FINISHED",
-      "home": "Torino",
-      "away": "Parma",
-      "score": "4–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542635,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -62,6 +62,18 @@
       "home": "Marseille",
       "away": "Auxerre",
       "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537096,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-13",
+      "kickoffUTC": "2026-03-13T19:45:00Z",
+      "status": "FINISHED",
+      "home": "Torino",
+      "away": "Parma",
+      "score": "4–1",
       "highlightsUrl": ""
     },
     {
