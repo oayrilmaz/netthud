@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-14T22:36:25.763Z",
+  "generatedAt": "2026-03-14T23:01:01.152Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -702,24 +702,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 552077,
-      "id": "upcoming:552077",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Liverpool",
-      "away": "Galatasaray",
-      "kickoffUTC": "2026-03-18T20:00:00Z",
-      "kickoffLocal": "Mar 18 • 4:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.7361,
-        "draw": 0.2335,
-        "away": 0.0305
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 552079,
       "id": "upcoming:552079",
       "league": "UEFA Champions League",
@@ -751,6 +733,24 @@
         "home": 0.6244,
         "draw": 0.2615,
         "away": 0.1141
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 552077,
+      "id": "upcoming:552077",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Liverpool",
+      "away": "Galatasaray",
+      "kickoffUTC": "2026-03-18T20:00:00Z",
+      "kickoffLocal": "Mar 18 • 4:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7361,
+        "draw": 0.2335,
+        "away": 0.0305
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1170,24 +1170,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 544495,
-      "id": "upcoming:544495",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Levante",
-      "away": "Real Oviedo",
-      "kickoffUTC": "2026-03-21T17:30:00Z",
-      "kickoffLocal": "Mar 21 • 1:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.456,
-        "draw": 0.3105,
-        "away": 0.2335
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540648,
       "id": "upcoming:540648",
       "league": "Bundesliga",
@@ -1219,6 +1201,24 @@
         "home": 0.4484,
         "draw": 0.3131,
         "away": 0.2384
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 544495,
+      "id": "upcoming:544495",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Levante",
+      "away": "Real Oviedo",
+      "kickoffUTC": "2026-03-21T17:30:00Z",
+      "kickoffLocal": "Mar 21 • 1:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.456,
+        "draw": 0.3105,
+        "away": 0.2335
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
