@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-15T14:31:18.359Z",
+  "updated": "2026-03-15T15:01:48.441Z",
   "dateFrom": "2026-03-14",
   "dateTo": "2026-03-17",
   "competitions": [
@@ -17,12 +17,48 @@
   ],
   "items": [
     {
+      "matchId": 540632,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-03-15",
+      "kickoffUTC": "2026-03-15T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Bremen",
+      "away": "Mainz",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538083,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-03-15",
+      "kickoffUTC": "2026-03-15T14:00:00Z",
+      "status": "PAUSED",
+      "home": "Nottingham",
+      "away": "Fulham",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537101,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-15",
+      "kickoffUTC": "2026-03-15T14:00:00Z",
+      "status": "PAUSED",
+      "home": "Sassuolo",
+      "away": "Bologna",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537100,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-03-15",
       "kickoffUTC": "2026-03-15T14:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "AC Pisa",
       "away": "Cagliari",
       "score": "1–0",
@@ -34,21 +70,9 @@
       "competitionCode": "PL",
       "when": "2026-03-15",
       "kickoffUTC": "2026-03-15T14:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Crystal Palace",
       "away": "Leeds United",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538082,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-03-15",
-      "kickoffUTC": "2026-03-15T14:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Man United",
-      "away": "Aston Villa",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -58,33 +82,21 @@
       "competitionCode": "FL1",
       "when": "2026-03-15",
       "kickoffUTC": "2026-03-15T14:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Strasbourg",
       "away": "Paris FC",
       "score": "0–0",
       "highlightsUrl": ""
     },
     {
-      "matchId": 537101,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-03-15",
-      "kickoffUTC": "2026-03-15T14:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Sassuolo",
-      "away": "Bologna",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538083,
+      "matchId": 538082,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-03-15",
       "kickoffUTC": "2026-03-15T14:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Nottingham",
-      "away": "Fulham",
+      "status": "PAUSED",
+      "home": "Man United",
+      "away": "Aston Villa",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -94,10 +106,10 @@
       "competitionCode": "DED",
       "when": "2026-03-15",
       "kickoffUTC": "2026-03-15T13:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Feyenoord",
       "away": "Excelsior",
-      "score": "0–1",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -106,7 +118,7 @@
       "competitionCode": "DED",
       "when": "2026-03-15",
       "kickoffUTC": "2026-03-15T13:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "AZ",
       "away": "Heracles",
       "score": "2–0",
@@ -121,7 +133,7 @@
       "status": "IN_PLAY",
       "home": "Mallorca",
       "away": "Espanyol",
-      "score": "1–1",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -173,15 +185,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537675,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
+      "matchId": 544487,
+      "league": "Primera Division",
+      "competitionCode": "PD",
       "when": "2026-03-14",
       "kickoffUTC": "2026-03-14T20:00:00Z",
       "status": "FINISHED",
-      "home": "Ajax",
-      "away": "Sparta",
-      "score": "4–0",
+      "home": "Real Madrid",
+      "away": "Elche",
+      "score": "4–1",
       "highlightsUrl": ""
     },
     {
@@ -197,15 +209,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544487,
-      "league": "Primera Division",
-      "competitionCode": "PD",
+      "matchId": 537675,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
       "when": "2026-03-14",
       "kickoffUTC": "2026-03-14T20:00:00Z",
       "status": "FINISHED",
-      "home": "Real Madrid",
-      "away": "Elche",
-      "score": "4–1",
+      "home": "Ajax",
+      "away": "Sparta",
+      "score": "4–0",
       "highlightsUrl": ""
     },
     {
@@ -269,15 +281,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538080,
-      "league": "Premier League",
-      "competitionCode": "PL",
+      "matchId": 540639,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
       "when": "2026-03-14",
       "kickoffUTC": "2026-03-14T17:30:00Z",
       "status": "FINISHED",
-      "home": "Chelsea",
-      "away": "Newcastle",
-      "score": "0–1",
+      "home": "HSV",
+      "away": "1. FC Köln",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -293,18 +305,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540639,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-03-14",
-      "kickoffUTC": "2026-03-14T17:30:00Z",
-      "status": "FINISHED",
-      "home": "HSV",
-      "away": "1. FC Köln",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538077,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -314,6 +314,18 @@
       "home": "Arsenal",
       "away": "Everton",
       "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538080,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-03-14",
+      "kickoffUTC": "2026-03-14T17:30:00Z",
+      "status": "FINISHED",
+      "home": "Chelsea",
+      "away": "Newcastle",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -341,18 +353,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537677,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-03-14",
-      "kickoffUTC": "2026-03-14T15:30:00Z",
-      "status": "FINISHED",
-      "home": "Volendam",
-      "away": "Sittard",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545928,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -361,6 +361,18 @@
       "status": "FINISHED",
       "home": "Vitória SC",
       "away": "Famalicão",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537677,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-03-14",
+      "kickoffUTC": "2026-03-14T15:30:00Z",
+      "status": "FINISHED",
+      "home": "Volendam",
+      "away": "Sittard",
       "score": "1–2",
       "highlightsUrl": ""
     },
@@ -401,6 +413,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 540634,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-03-14",
+      "kickoffUTC": "2026-03-14T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Hoffenheim",
+      "away": "Wolfsburg",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540635,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -434,18 +458,6 @@
       "home": "Frankfurt",
       "away": "Heidenheim",
       "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540634,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-03-14",
-      "kickoffUTC": "2026-03-14T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Hoffenheim",
-      "away": "Wolfsburg",
-      "score": "1–1",
       "highlightsUrl": ""
     },
     {
