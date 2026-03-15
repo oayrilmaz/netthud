@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-15T15:44:21.929Z",
+  "updated": "2026-03-15T16:01:54.527Z",
   "dateFrom": "2026-03-14",
   "dateTo": "2026-03-17",
   "competitions": [
@@ -17,6 +17,18 @@
   ],
   "items": [
     {
+      "matchId": 537679,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-03-15",
+      "kickoffUTC": "2026-03-15T15:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Go Ahead",
+      "away": "NAC",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 545925,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -25,7 +37,7 @@
       "status": "IN_PLAY",
       "home": "CD Nacional",
       "away": "Estoril Praia",
-      "score": "0–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -49,7 +61,7 @@
       "status": "IN_PLAY",
       "home": "Barça",
       "away": "Sevilla FC",
-      "score": "2–0",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -61,7 +73,7 @@
       "status": "IN_PLAY",
       "home": "Bremen",
       "away": "Mainz",
-      "score": "0–1",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -82,7 +94,7 @@
       "competitionCode": "FL1",
       "when": "2026-03-15",
       "kickoffUTC": "2026-03-15T14:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Strasbourg",
       "away": "Paris FC",
       "score": "0–0",
@@ -137,18 +149,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537676,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-03-15",
-      "kickoffUTC": "2026-03-15T13:30:00Z",
-      "status": "FINISHED",
-      "home": "AZ",
-      "away": "Heracles",
-      "score": "4–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537678,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -158,6 +158,18 @@
       "home": "Feyenoord",
       "away": "Excelsior",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537676,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-03-15",
+      "kickoffUTC": "2026-03-15T13:30:00Z",
+      "status": "FINISHED",
+      "home": "AZ",
+      "away": "Heracles",
+      "score": "4–0",
       "highlightsUrl": ""
     },
     {
