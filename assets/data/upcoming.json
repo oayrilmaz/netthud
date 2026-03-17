@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-17T19:29:46.909Z",
+  "generatedAt": "2026-03-17T20:04:19.214Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -36,24 +36,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 552076,
-      "id": "upcoming:552076",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Chelsea",
-      "away": "PSG",
-      "kickoffUTC": "2026-03-17T20:00:00Z",
-      "kickoffLocal": "Mar 17 • 4:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4027,
-        "draw": 0.3301,
-        "away": 0.2672
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 552078,
       "id": "upcoming:552078",
       "league": "UEFA Champions League",
@@ -67,6 +49,24 @@
         "home": 0.3631,
         "draw": 0.3284,
         "away": 0.3085
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 552076,
+      "id": "upcoming:552076",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Chelsea",
+      "away": "PSG",
+      "kickoffUTC": "2026-03-17T20:00:00Z",
+      "kickoffLocal": "Mar 17 • 4:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.4027,
+        "draw": 0.3301,
+        "away": 0.2672
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1098,6 +1098,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 542648,
+      "id": "upcoming:542648",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Stade Rennais",
+      "away": "FC Metz",
+      "kickoffUTC": "2026-03-22T16:15:00Z",
+      "kickoffLocal": "Mar 22 • 12:15 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7376,
+        "draw": 0.233,
+        "away": 0.0293
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 542646,
       "id": "upcoming:542646",
       "league": "Ligue 1",
@@ -1129,24 +1147,6 @@
         "home": 0.4042,
         "draw": 0.3295,
         "away": 0.2662
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 542648,
-      "id": "upcoming:542648",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Stade Rennais",
-      "away": "FC Metz",
-      "kickoffUTC": "2026-03-22T16:15:00Z",
-      "kickoffLocal": "Mar 22 • 12:15 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.7376,
-        "draw": 0.233,
-        "away": 0.0293
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
