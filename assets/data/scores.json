@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-20T20:34:25.547Z",
+  "updated": "2026-03-20T21:03:46.527Z",
   "dateFrom": "2026-03-19",
   "dateTo": "2026-03-22",
   "competitions": [
@@ -25,19 +25,7 @@
       "status": "IN_PLAY",
       "home": "Amadora",
       "away": "Casa Pia",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538085,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-03-20",
-      "kickoffUTC": "2026-03-20T20:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Bournemouth",
-      "away": "Man United",
-      "score": "0–0",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -46,10 +34,34 @@
       "competitionCode": "PD",
       "when": "2026-03-20",
       "kickoffUTC": "2026-03-20T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Villarreal",
       "away": "Real Sociedad",
       "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538085,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-03-20",
+      "kickoffUTC": "2026-03-20T20:00:00Z",
+      "status": "PAUSED",
+      "home": "Bournemouth",
+      "away": "Man United",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542647,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-20",
+      "kickoffUTC": "2026-03-20T19:45:00Z",
+      "status": "IN_PLAY",
+      "home": "RC Lens",
+      "away": "Angers SCO",
+      "score": "4–0",
       "highlightsUrl": ""
     },
     {
@@ -65,24 +77,12 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542647,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-03-20",
-      "kickoffUTC": "2026-03-20T19:45:00Z",
-      "status": "IN_PLAY",
-      "home": "RC Lens",
-      "away": "Angers SCO",
-      "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540647,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-03-20",
       "kickoffUTC": "2026-03-20T19:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "RB Leipzig",
       "away": "Hoffenheim",
       "score": "5–0",
@@ -94,7 +94,7 @@
       "competitionCode": "DED",
       "when": "2026-03-20",
       "kickoffUTC": "2026-03-20T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Heracles",
       "away": "Excelsior",
       "score": "1–1",
