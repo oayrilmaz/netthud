@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-20T21:45:26.651Z",
+  "updated": "2026-03-20T22:30:23.796Z",
   "dateFrom": "2026-03-19",
   "dateTo": "2026-03-22",
   "competitions": [
@@ -22,22 +22,10 @@
       "competitionCode": "PPL",
       "when": "2026-03-20",
       "kickoffUTC": "2026-03-20T20:15:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Amadora",
       "away": "Casa Pia",
-      "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 544500,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-03-20",
-      "kickoffUTC": "2026-03-20T20:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Villarreal",
-      "away": "Real Sociedad",
-      "score": "3–1",
+      "score": "4–0",
       "highlightsUrl": ""
     },
     {
@@ -46,22 +34,22 @@
       "competitionCode": "PL",
       "when": "2026-03-20",
       "kickoffUTC": "2026-03-20T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Bournemouth",
       "away": "Man United",
       "score": "2–2",
       "highlightsUrl": ""
     },
     {
-      "matchId": 542647,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
+      "matchId": 544500,
+      "league": "Primera Division",
+      "competitionCode": "PD",
       "when": "2026-03-20",
-      "kickoffUTC": "2026-03-20T19:45:00Z",
-      "status": "IN_PLAY",
-      "home": "RC Lens",
-      "away": "Angers SCO",
-      "score": "5–1",
+      "kickoffUTC": "2026-03-20T20:00:00Z",
+      "status": "FINISHED",
+      "home": "Villarreal",
+      "away": "Real Sociedad",
+      "score": "3–1",
       "highlightsUrl": ""
     },
     {
@@ -70,10 +58,22 @@
       "competitionCode": "SA",
       "when": "2026-03-20",
       "kickoffUTC": "2026-03-20T19:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Genoa",
       "away": "Udinese",
-      "score": "0–1",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542647,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-03-20",
+      "kickoffUTC": "2026-03-20T19:45:00Z",
+      "status": "FINISHED",
+      "home": "RC Lens",
+      "away": "Angers SCO",
+      "score": "5–1",
       "highlightsUrl": ""
     },
     {
