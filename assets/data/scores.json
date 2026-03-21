@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-21T19:25:18.800Z",
+  "updated": "2026-03-21T19:46:00.724Z",
   "dateFrom": "2026-03-20",
   "dateTo": "2026-03-23",
   "competitions": [
@@ -17,18 +17,6 @@
   ],
   "items": [
     {
-      "matchId": 545942,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-03-21",
-      "kickoffUTC": "2026-03-21T18:00:00Z",
-      "status": "IN_PLAY",
-      "home": "SL Benfica",
-      "away": "Vitória SC",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545940,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -41,6 +29,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 545942,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-03-21",
+      "kickoffUTC": "2026-03-21T18:00:00Z",
+      "status": "IN_PLAY",
+      "home": "SL Benfica",
+      "away": "Vitória SC",
+      "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 542640,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -49,7 +49,7 @@
       "status": "IN_PLAY",
       "home": "Auxerre",
       "away": "Brest",
-      "score": "2–0",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -58,7 +58,7 @@
       "competitionCode": "DED",
       "when": "2026-03-21",
       "kickoffUTC": "2026-03-21T17:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Sparta",
       "away": "Volendam",
       "score": "2–0",
@@ -70,7 +70,7 @@
       "competitionCode": "PL",
       "when": "2026-03-21",
       "kickoffUTC": "2026-03-21T17:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Everton",
       "away": "Chelsea",
       "score": "3–0",
@@ -82,7 +82,7 @@
       "competitionCode": "PD",
       "when": "2026-03-21",
       "kickoffUTC": "2026-03-21T17:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Osasuna",
       "away": "Girona",
       "score": "1–0",
@@ -94,7 +94,7 @@
       "competitionCode": "BL1",
       "when": "2026-03-21",
       "kickoffUTC": "2026-03-21T17:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Dortmund",
       "away": "HSV",
       "score": "3–2",
@@ -106,10 +106,10 @@
       "competitionCode": "PD",
       "when": "2026-03-21",
       "kickoffUTC": "2026-03-21T17:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Levante",
       "away": "Real Oviedo",
-      "score": "3–2",
+      "score": "4–2",
       "highlightsUrl": ""
     },
     {
@@ -197,18 +197,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540643,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-03-21",
-      "kickoffUTC": "2026-03-21T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Wolfsburg",
-      "away": "Bremen",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540645,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -218,6 +206,18 @@
       "home": "1. FC Köln",
       "away": "M'gladbach",
       "score": "3–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540643,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-03-21",
+      "kickoffUTC": "2026-03-21T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Wolfsburg",
+      "away": "Bremen",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
