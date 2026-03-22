@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-22T16:32:25.636Z",
+  "updated": "2026-03-22T17:01:26.715Z",
   "dateFrom": "2026-03-21",
   "dateTo": "2026-03-24",
   "competitions": [
@@ -16,6 +16,18 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 540642,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-03-22",
+      "kickoffUTC": "2026-03-22T16:30:00Z",
+      "status": "IN_PLAY",
+      "home": "St. Pauli",
+      "away": "Freiburg",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 542646,
       "league": "Ligue 1",
@@ -37,7 +49,7 @@
       "status": "IN_PLAY",
       "home": "Paris FC",
       "away": "Le Havre",
-      "score": "0–0",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -61,7 +73,7 @@
       "status": "IN_PLAY",
       "home": "Telstar",
       "away": "PSV",
-      "score": "0–0",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -82,10 +94,10 @@
       "competitionCode": "PPL",
       "when": "2026-03-22",
       "kickoffUTC": "2026-03-22T15:30:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Estoril Praia",
       "away": "Rio Ave",
-      "score": "1–0",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -97,7 +109,7 @@
       "status": "IN_PLAY",
       "home": "Celta",
       "away": "Alavés",
-      "score": "3–2",
+      "score": "3–4",
       "highlightsUrl": ""
     },
     {
@@ -106,7 +118,7 @@
       "competitionCode": "BL1",
       "when": "2026-03-22",
       "kickoffUTC": "2026-03-22T14:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Mainz",
       "away": "Frankfurt",
       "score": "2–1",
@@ -137,18 +149,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537112,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-03-22",
-      "kickoffUTC": "2026-03-22T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Bologna",
-      "away": "Lazio",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537108,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -158,6 +158,18 @@
       "home": "Atalanta",
       "away": "Verona",
       "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537112,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-03-22",
+      "kickoffUTC": "2026-03-22T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Bologna",
+      "away": "Lazio",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
