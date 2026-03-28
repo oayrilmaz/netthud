@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-28T14:51:10.297Z",
+  "generatedAt": "2026-03-28T15:32:24.945Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -144,6 +144,42 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 540652,
+      "id": "upcoming:540652",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Bremen",
+      "away": "RB Leipzig",
+      "kickoffUTC": "2026-04-04T13:30:00Z",
+      "kickoffLocal": "Apr 4 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0955,
+        "draw": 0.2421,
+        "away": 0.6624
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540654,
+      "id": "upcoming:540654",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "HSV",
+      "away": "Augsburg",
+      "kickoffUTC": "2026-04-04T13:30:00Z",
+      "kickoffLocal": "Apr 4 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3994,
+        "draw": 0.3314,
+        "away": 0.2691
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 540653,
       "id": "upcoming:540653",
       "league": "Bundesliga",
@@ -211,42 +247,6 @@
         "home": 0.6732,
         "draw": 0.2492,
         "away": 0.0776
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 540652,
-      "id": "upcoming:540652",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Bremen",
-      "away": "RB Leipzig",
-      "kickoffUTC": "2026-04-04T13:30:00Z",
-      "kickoffLocal": "Apr 4 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0955,
-        "draw": 0.2421,
-        "away": 0.6624
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 540654,
-      "id": "upcoming:540654",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "HSV",
-      "away": "Augsburg",
-      "kickoffUTC": "2026-04-04T13:30:00Z",
-      "kickoffLocal": "Apr 4 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3994,
-        "draw": 0.3314,
-        "away": 0.2691
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -342,24 +342,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 544503,
-      "id": "upcoming:544503",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Real Betis",
-      "away": "Espanyol",
-      "kickoffUTC": "2026-04-04T16:30:00Z",
-      "kickoffLocal": "Apr 4 • 12:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5257,
-        "draw": 0.2884,
-        "away": 0.1859
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 540650,
       "id": "upcoming:540650",
       "league": "Bundesliga",
@@ -378,19 +360,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537694,
-      "id": "upcoming:537694",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "AZ",
-      "away": "Sittard",
-      "kickoffUTC": "2026-04-04T16:45:00Z",
-      "kickoffLocal": "Apr 4 • 12:45 PM ET",
+      "matchId": 544503,
+      "id": "upcoming:544503",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Real Betis",
+      "away": "Espanyol",
+      "kickoffUTC": "2026-04-04T16:30:00Z",
+      "kickoffLocal": "Apr 4 • 12:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.5115,
-        "draw": 0.2926,
-        "away": 0.1959
+        "home": 0.5257,
+        "draw": 0.2884,
+        "away": 0.1859
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -414,19 +396,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 545948,
-      "id": "upcoming:545948",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Moreirense",
-      "away": "Braga",
-      "kickoffUTC": "2026-04-04T17:00:00Z",
-      "kickoffLocal": "Apr 4 • 1:00 PM ET",
+      "matchId": 537694,
+      "id": "upcoming:537694",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "AZ",
+      "away": "Sittard",
+      "kickoffUTC": "2026-04-04T16:45:00Z",
+      "kickoffLocal": "Apr 4 • 12:45 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.1501,
-        "draw": 0.2537,
-        "away": 0.5961
+        "home": 0.5115,
+        "draw": 0.2926,
+        "away": 0.1959
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -468,6 +450,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 545948,
+      "id": "upcoming:545948",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Moreirense",
+      "away": "Braga",
+      "kickoffUTC": "2026-04-04T17:00:00Z",
+      "kickoffLocal": "Apr 4 • 1:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.1501,
+        "draw": 0.2537,
+        "away": 0.5961
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 537118,
       "id": "upcoming:537118",
       "league": "Serie A",
@@ -481,24 +481,6 @@
         "home": 0.5581,
         "draw": 0.2791,
         "away": 0.1628
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 537693,
-      "id": "upcoming:537693",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Ajax",
-      "away": "Twente",
-      "kickoffUTC": "2026-04-04T19:00:00Z",
-      "kickoffLocal": "Apr 4 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.403,
-        "draw": 0.33,
-        "away": 0.267
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -535,6 +517,24 @@
         "home": 0.1528,
         "draw": 0.2543,
         "away": 0.5929
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 537693,
+      "id": "upcoming:537693",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Ajax",
+      "away": "Twente",
+      "kickoffUTC": "2026-04-04T19:00:00Z",
+      "kickoffLocal": "Apr 4 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.403,
+        "draw": 0.33,
+        "away": 0.267
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
