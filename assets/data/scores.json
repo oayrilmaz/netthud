@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-03T18:01:00.542Z",
+  "updated": "2026-04-03T19:05:31.787Z",
   "dateFrom": "2026-04-02",
   "dateTo": "2026-04-05",
   "competitions": [
@@ -17,15 +17,27 @@
   ],
   "items": [
     {
+      "matchId": 542654,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-04-03",
+      "kickoffUTC": "2026-04-03T18:45:00Z",
+      "status": "IN_PLAY",
+      "home": "PSG",
+      "away": "Toulouse",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 545951,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-04-03",
       "kickoffUTC": "2026-04-03T17:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home": "Vitória SC",
       "away": "Tondela",
-      "score": "2–0",
+      "score": "5–0",
       "highlightsUrl": ""
     },
     {
