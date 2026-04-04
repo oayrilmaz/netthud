@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-04T19:01:19.393Z",
+  "updated": "2026-04-04T19:45:38.840Z",
   "dateFrom": "2026-04-03",
   "dateTo": "2026-04-06",
   "competitions": [
@@ -17,15 +17,75 @@
   ],
   "items": [
     {
+      "matchId": 545946,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T19:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Porto",
+      "away": "Famalicão",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542653,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T19:05:00Z",
+      "status": "IN_PLAY",
+      "home": "Lille",
+      "away": "RC Lens",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544502,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T19:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Atleti",
+      "away": "Barça",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537693,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T19:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Ajax",
+      "away": "Twente",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537695,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T19:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Excelsior",
+      "away": "NEC",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537118,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-04-04",
       "kickoffUTC": "2026-04-04T18:45:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Lazio",
       "away": "Parma",
-      "score": "0–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -41,15 +101,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545948,
+      "matchId": 545945,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-04-04",
       "kickoffUTC": "2026-04-04T17:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Moreirense",
-      "away": "Braga",
-      "score": "0–1",
+      "status": "FINISHED",
+      "home": "Rio Ave",
+      "away": "Alverca",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -58,22 +118,22 @@
       "competitionCode": "FL1",
       "when": "2026-04-04",
       "kickoffUTC": "2026-04-04T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Brest",
       "away": "Stade Rennais",
       "score": "3–4",
       "highlightsUrl": ""
     },
     {
-      "matchId": 545945,
+      "matchId": 545948,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-04-04",
       "kickoffUTC": "2026-04-04T17:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Rio Ave",
-      "away": "Alverca",
-      "score": "1–2",
+      "status": "FINISHED",
+      "home": "Moreirense",
+      "away": "Braga",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -89,18 +149,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544503,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Real Betis",
-      "away": "Espanyol",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540650,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -110,6 +158,18 @@
       "home": "Stuttgart",
       "away": "Dortmund",
       "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544503,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Real Betis",
+      "away": "Espanyol",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -137,18 +197,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545944,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T14:30:00Z",
-      "status": "FINISHED",
-      "home": "CD Nacional",
-      "away": "Amadora",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537699,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -161,6 +209,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 545944,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T14:30:00Z",
+      "status": "FINISHED",
+      "home": "CD Nacional",
+      "away": "Amadora",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544505,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -170,6 +230,18 @@
       "home": "Mallorca",
       "away": "Real Madrid",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540653,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Leverkusen",
+      "away": "Wolfsburg",
+      "score": "6–3",
       "highlightsUrl": ""
     },
     {
@@ -194,18 +266,6 @@
       "home": "Hoffenheim",
       "away": "Mainz",
       "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540653,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Leverkusen",
-      "away": "Wolfsburg",
-      "score": "6–3",
       "highlightsUrl": ""
     },
     {
