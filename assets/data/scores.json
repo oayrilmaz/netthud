@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-05T19:34:18.544Z",
+  "updated": "2026-04-05T20:00:38.577Z",
   "dateFrom": "2026-04-04",
   "dateTo": "2026-04-07",
   "competitions": [
@@ -22,10 +22,10 @@
       "competitionCode": "PD",
       "when": "2026-04-05",
       "kickoffUTC": "2026-04-05T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Alavés",
       "away": "Osasuna",
-      "score": "0–1",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -37,7 +37,7 @@
       "status": "IN_PLAY",
       "home": "Inter",
       "away": "Roma",
-      "score": "1–1",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -329,18 +329,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537694,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T17:00:00Z",
-      "status": "FINISHED",
-      "home": "AZ",
-      "away": "Sittard",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542657,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -350,6 +338,18 @@
       "home": "Brest",
       "away": "Stade Rennais",
       "score": "3–4",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537694,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T17:00:00Z",
+      "status": "FINISHED",
+      "home": "AZ",
+      "away": "Sittard",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -449,18 +449,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540654,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T13:30:00Z",
-      "status": "FINISHED",
-      "home": "HSV",
-      "away": "Augsburg",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540656,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -485,15 +473,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540649,
+      "matchId": 540654,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-04-04",
       "kickoffUTC": "2026-04-04T13:30:00Z",
       "status": "FINISHED",
-      "home": "Freiburg",
-      "away": "Bayern",
-      "score": "2–3",
+      "home": "HSV",
+      "away": "Augsburg",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -518,6 +506,18 @@
       "home": "Leverkusen",
       "away": "Wolfsburg",
       "score": "6–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540649,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Freiburg",
+      "away": "Bayern",
+      "score": "2–3",
       "highlightsUrl": ""
     },
     {
