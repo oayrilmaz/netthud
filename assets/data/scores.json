@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-05T20:00:38.577Z",
+  "updated": "2026-04-05T20:49:59.837Z",
   "dateFrom": "2026-04-04",
   "dateTo": "2026-04-07",
   "competitions": [
@@ -22,22 +22,10 @@
       "competitionCode": "PD",
       "when": "2026-04-05",
       "kickoffUTC": "2026-04-05T19:00:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Alavés",
       "away": "Osasuna",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537116,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-04-05",
-      "kickoffUTC": "2026-04-05T18:45:00Z",
-      "status": "IN_PLAY",
-      "home": "Inter",
-      "away": "Roma",
-      "score": "2–1",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -46,10 +34,22 @@
       "competitionCode": "FL1",
       "when": "2026-04-05",
       "kickoffUTC": "2026-04-05T18:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Monaco",
       "away": "Marseille",
-      "score": "0–0",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537116,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-04-05",
+      "kickoffUTC": "2026-04-05T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Inter",
+      "away": "Roma",
+      "score": "5–2",
       "highlightsUrl": ""
     },
     {
@@ -89,18 +89,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542651,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-04-05",
-      "kickoffUTC": "2026-04-05T15:15:00Z",
-      "status": "FINISHED",
-      "home": "Lorient",
-      "away": "Paris FC",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542649,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -109,6 +97,18 @@
       "status": "FINISHED",
       "home": "Le Havre",
       "away": "Auxerre",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542651,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-04-05",
+      "kickoffUTC": "2026-04-05T15:15:00Z",
+      "status": "FINISHED",
+      "home": "Lorient",
+      "away": "Paris FC",
       "score": "1–1",
       "highlightsUrl": ""
     },
@@ -161,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542656,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-04-05",
-      "kickoffUTC": "2026-04-05T13:00:00Z",
-      "status": "FINISHED",
-      "home": "Angers SCO",
-      "away": "Olympique Lyon",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537123,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -182,6 +170,18 @@
       "home": "Cremonese",
       "away": "Bologna",
       "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542656,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-04-05",
+      "kickoffUTC": "2026-04-05T13:00:00Z",
+      "status": "FINISHED",
+      "home": "Angers SCO",
+      "away": "Olympique Lyon",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -257,14 +257,14 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544502,
-      "league": "Primera Division",
-      "competitionCode": "PD",
+      "matchId": 537693,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
       "when": "2026-04-04",
       "kickoffUTC": "2026-04-04T19:00:00Z",
       "status": "FINISHED",
-      "home": "Atleti",
-      "away": "Barça",
+      "home": "Ajax",
+      "away": "Twente",
       "score": "1–2",
       "highlightsUrl": ""
     },
@@ -281,14 +281,14 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537693,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
+      "matchId": 544502,
+      "league": "Primera Division",
+      "competitionCode": "PD",
       "when": "2026-04-04",
       "kickoffUTC": "2026-04-04T19:00:00Z",
       "status": "FINISHED",
-      "home": "Ajax",
-      "away": "Twente",
+      "home": "Atleti",
+      "away": "Barça",
       "score": "1–2",
       "highlightsUrl": ""
     },
@@ -305,15 +305,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545948,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
+      "matchId": 537694,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
       "when": "2026-04-04",
       "kickoffUTC": "2026-04-04T17:00:00Z",
       "status": "FINISHED",
-      "home": "Moreirense",
-      "away": "Braga",
-      "score": "0–1",
+      "home": "AZ",
+      "away": "Sittard",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -329,6 +329,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 545948,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T17:00:00Z",
+      "status": "FINISHED",
+      "home": "Moreirense",
+      "away": "Braga",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 542657,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -338,18 +350,6 @@
       "home": "Brest",
       "away": "Stade Rennais",
       "score": "3–4",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537694,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T17:00:00Z",
-      "status": "FINISHED",
-      "home": "AZ",
-      "away": "Sittard",
-      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -365,18 +365,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540650,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Stuttgart",
-      "away": "Dortmund",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 544503,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -386,6 +374,18 @@
       "home": "Real Betis",
       "away": "Espanyol",
       "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540650,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Stuttgart",
+      "away": "Dortmund",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -413,18 +413,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537699,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T14:30:00Z",
-      "status": "FINISHED",
-      "home": "PSV",
-      "away": "Utrecht",
-      "score": "4–3",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545944,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -437,6 +425,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 537699,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T14:30:00Z",
+      "status": "FINISHED",
+      "home": "PSV",
+      "away": "Utrecht",
+      "score": "4–3",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544505,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -446,54 +446,6 @@
       "home": "Mallorca",
       "away": "Real Madrid",
       "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540656,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T13:30:00Z",
-      "status": "FINISHED",
-      "home": "M'gladbach",
-      "away": "Heidenheim",
-      "score": "2–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540652,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Bremen",
-      "away": "RB Leipzig",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540654,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T13:30:00Z",
-      "status": "FINISHED",
-      "home": "HSV",
-      "away": "Augsburg",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540651,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-04",
-      "kickoffUTC": "2026-04-04T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Hoffenheim",
-      "away": "Mainz",
-      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -518,6 +470,54 @@
       "home": "Freiburg",
       "away": "Bayern",
       "score": "2–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540651,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Hoffenheim",
+      "away": "Mainz",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540654,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T13:30:00Z",
+      "status": "FINISHED",
+      "home": "HSV",
+      "away": "Augsburg",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540656,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T13:30:00Z",
+      "status": "FINISHED",
+      "home": "M'gladbach",
+      "away": "Heidenheim",
+      "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540652,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-04",
+      "kickoffUTC": "2026-04-04T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Bremen",
+      "away": "RB Leipzig",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
