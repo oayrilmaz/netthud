@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-06T17:45:41.880Z",
+  "updated": "2026-04-06T19:01:45.879Z",
   "dateFrom": "2026-04-05",
   "dateTo": "2026-04-08",
   "competitions": [
@@ -17,12 +17,36 @@
   ],
   "items": [
     {
+      "matchId": 537121,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-04-06",
+      "kickoffUTC": "2026-04-06T18:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Napoli",
+      "away": "Milan",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 545950,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-04-06",
+      "kickoffUTC": "2026-04-06T17:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Arouca",
+      "away": "Estoril Praia",
+      "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537117,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-04-06",
       "kickoffUTC": "2026-04-06T16:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Juventus",
       "away": "Genoa",
       "score": "2–0",
@@ -65,18 +89,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537116,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-04-05",
-      "kickoffUTC": "2026-04-05T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Inter",
-      "away": "Roma",
-      "score": "5–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542650,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -86,6 +98,18 @@
       "home": "Monaco",
       "away": "Marseille",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537116,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-04-05",
+      "kickoffUTC": "2026-04-05T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Inter",
+      "away": "Roma",
+      "score": "5–2",
       "highlightsUrl": ""
     },
     {
@@ -125,18 +149,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542651,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-04-05",
-      "kickoffUTC": "2026-04-05T15:15:00Z",
-      "status": "FINISHED",
-      "home": "Lorient",
-      "away": "Paris FC",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542649,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -145,6 +157,18 @@
       "status": "FINISHED",
       "home": "Le Havre",
       "away": "Auxerre",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542651,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-04-05",
+      "kickoffUTC": "2026-04-05T15:15:00Z",
+      "status": "FINISHED",
+      "home": "Lorient",
+      "away": "Paris FC",
       "score": "1–1",
       "highlightsUrl": ""
     },
@@ -221,18 +245,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537700,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-04-05",
-      "kickoffUTC": "2026-04-05T12:30:00Z",
-      "status": "FINISHED",
-      "home": "Heerenveen",
-      "away": "Heracles",
-      "score": "4–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537696,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -242,6 +254,18 @@
       "home": "Volendam",
       "away": "Feyenoord",
       "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537700,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-04-05",
+      "kickoffUTC": "2026-04-05T12:30:00Z",
+      "status": "FINISHED",
+      "home": "Heerenveen",
+      "away": "Heracles",
+      "score": "4–1",
       "highlightsUrl": ""
     },
     {
