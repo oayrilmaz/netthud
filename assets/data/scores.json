@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-11T23:05:13.886Z",
+  "updated": "2026-04-11T23:50:40.384Z",
   "dateFrom": "2026-04-10",
   "dateTo": "2026-04-13",
   "competitions": [
@@ -89,18 +89,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545959,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-04-11",
-      "kickoffUTC": "2026-04-11T17:00:00Z",
-      "status": "FINISHED",
-      "home": "Santa Clara",
-      "away": "Rio Ave",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542658,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -113,39 +101,27 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 545959,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-04-11",
+      "kickoffUTC": "2026-04-11T17:00:00Z",
+      "status": "FINISHED",
+      "home": "Santa Clara",
+      "away": "Rio Ave",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537709,
       "league": "Eredivisie",
       "competitionCode": "DED",
       "when": "2026-04-11",
       "kickoffUTC": "2026-04-11T16:45:00Z",
-      "status": "FINISHED",
+      "status": "IN_PLAY",
       "home": "Sparta",
       "away": "PSV",
       "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540658,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-11",
-      "kickoffUTC": "2026-04-11T16:30:00Z",
-      "status": "FINISHED",
-      "home": "St. Pauli",
-      "away": "Bayern",
-      "score": "0–6",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 544512,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-04-11",
-      "kickoffUTC": "2026-04-11T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Barça",
-      "away": "Espanyol",
-      "score": "4–1",
       "highlightsUrl": ""
     },
     {
@@ -161,6 +137,30 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 544512,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-04-11",
+      "kickoffUTC": "2026-04-11T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Barça",
+      "away": "Espanyol",
+      "score": "4–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540658,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-11",
+      "kickoffUTC": "2026-04-11T16:30:00Z",
+      "status": "FINISHED",
+      "home": "St. Pauli",
+      "away": "Bayern",
+      "score": "0–5",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537126,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -170,18 +170,6 @@
       "home": "Milan",
       "away": "Udinese",
       "score": "0–3",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537704,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-04-11",
-      "kickoffUTC": "2026-04-11T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Utrecht",
-      "away": "Telstar",
-      "score": "4–1",
       "highlightsUrl": ""
     },
     {
@@ -197,6 +185,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 537704,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-04-11",
+      "kickoffUTC": "2026-04-11T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Utrecht",
+      "away": "Telstar",
+      "score": "4–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544514,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -206,18 +206,6 @@
       "home": "Elche",
       "away": "Valencia",
       "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538098,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-04-11",
-      "kickoffUTC": "2026-04-11T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Brentford",
-      "away": "Everton",
-      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -233,6 +221,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 538098,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-04-11",
+      "kickoffUTC": "2026-04-11T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Brentford",
+      "away": "Everton",
+      "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540664,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -241,7 +241,7 @@
       "status": "FINISHED",
       "home": "Heidenheim",
       "away": "Union Berlin",
-      "score": "4–1",
+      "score": "3–1",
       "highlightsUrl": ""
     },
     {
@@ -301,7 +301,7 @@
       "status": "FINISHED",
       "home": "Torino",
       "away": "Verona",
-      "score": "3–1",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
