@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-11T16:55:31.507Z",
+  "generatedAt": "2026-04-11T17:32:33.869Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -17,42 +17,6 @@
   ],
   "model": "NetThud Table Model v1",
   "items": [
-    {
-      "matchId": 545959,
-      "id": "upcoming:545959",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Santa Clara",
-      "away": "Rio Ave",
-      "kickoffUTC": "2026-04-11T17:00:00Z",
-      "kickoffLocal": "Apr 11 • 1:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3937,
-        "draw": 0.3337,
-        "away": 0.2726
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 542658,
-      "id": "upcoming:542658",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Auxerre",
-      "away": "Nantes",
-      "kickoffUTC": "2026-04-11T17:00:00Z",
-      "kickoffLocal": "Apr 11 • 1:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4624,
-        "draw": 0.3083,
-        "away": 0.2293
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
     {
       "matchId": 537703,
       "id": "upcoming:537703",
@@ -252,24 +216,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537134,
-      "id": "upcoming:537134",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Parma",
-      "away": "Napoli",
-      "kickoffUTC": "2026-04-12T13:00:00Z",
-      "kickoffLocal": "Apr 12 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0854,
-        "draw": 0.24,
-        "away": 0.6745
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538096,
       "id": "upcoming:538096",
       "league": "Premier League",
@@ -283,6 +229,24 @@
         "home": 0.3595,
         "draw": 0.3261,
         "away": 0.3144
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 537134,
+      "id": "upcoming:537134",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Parma",
+      "away": "Napoli",
+      "kickoffUTC": "2026-04-12T13:00:00Z",
+      "kickoffLocal": "Apr 12 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0854,
+        "draw": 0.24,
+        "away": 0.6745
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -702,24 +666,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 556722,
-      "id": "upcoming:556722",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Liverpool",
-      "away": "PSG",
-      "kickoffUTC": "2026-04-14T19:00:00Z",
-      "kickoffLocal": "Apr 14 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5603,
-        "draw": 0.2785,
-        "away": 0.1612
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 556724,
       "id": "upcoming:556724",
       "league": "UEFA Champions League",
@@ -738,19 +684,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 556723,
-      "id": "upcoming:556723",
+      "matchId": 556722,
+      "id": "upcoming:556722",
       "league": "UEFA Champions League",
       "competitionCode": "CL",
-      "home": "Bayern",
-      "away": "Real Madrid",
-      "kickoffUTC": "2026-04-15T19:00:00Z",
-      "kickoffLocal": "Apr 15 • 3:00 PM ET",
+      "home": "Liverpool",
+      "away": "PSG",
+      "kickoffUTC": "2026-04-14T19:00:00Z",
+      "kickoffLocal": "Apr 14 • 3:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.6492,
-        "draw": 0.2552,
-        "away": 0.0956
+        "home": 0.5603,
+        "draw": 0.2785,
+        "away": 0.1612
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -769,6 +715,24 @@
         "home": 0.7287,
         "draw": 0.2354,
         "away": 0.0359
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 556723,
+      "id": "upcoming:556723",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Bayern",
+      "away": "Real Madrid",
+      "kickoffUTC": "2026-04-15T19:00:00Z",
+      "kickoffLocal": "Apr 15 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6492,
+        "draw": 0.2552,
+        "away": 0.0956
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -802,9 +766,9 @@
       "kickoffLocal": "Apr 17 • 2:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3254,
-        "draw": 0.3074,
-        "away": 0.3672
+        "home": 0.3144,
+        "draw": 0.3025,
+        "away": 0.3831
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -856,9 +820,9 @@
       "kickoffLocal": "Apr 17 • 3:45 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.6485,
-        "draw": 0.2554,
-        "away": 0.0961
+        "home": 0.6489,
+        "draw": 0.2553,
+        "away": 0.0958
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -874,9 +838,9 @@
       "kickoffLocal": "Apr 18 • 7:30 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.4248,
-        "draw": 0.3216,
-        "away": 0.2535
+        "home": 0.4428,
+        "draw": 0.3151,
+        "away": 0.2421
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -892,9 +856,9 @@
       "kickoffLocal": "Apr 18 • 9:00 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.5057,
-        "draw": 0.2944,
-        "away": 0.1999
+        "home": 0.51,
+        "draw": 0.2931,
+        "away": 0.1969
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1108,9 +1072,9 @@
       "kickoffLocal": "Apr 18 • 1:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3285,
+        "home": 0.3284,
         "draw": 0.3089,
-        "away": 0.3625
+        "away": 0.3627
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
