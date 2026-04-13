@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-13T17:42:17.052Z",
+  "updated": "2026-04-13T18:52:14.758Z",
   "dateFrom": "2026-04-12",
   "dateTo": "2026-04-15",
   "competitions": [
@@ -16,6 +16,18 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 537125,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-04-13",
+      "kickoffUTC": "2026-04-13T18:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Fiorentina",
+      "away": "Lazio",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 545955,
       "league": "Primeira Liga",
@@ -37,19 +49,7 @@
       "status": "FINISHED",
       "home": "Athletic",
       "away": "Villarreal",
-      "score": "1–3",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 542662,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-04-12",
-      "kickoffUTC": "2026-04-12T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Olympique Lyon",
-      "away": "Lorient",
-      "score": "2–0",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -65,6 +65,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 542662,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-04-12",
+      "kickoffUTC": "2026-04-12T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Olympique Lyon",
+      "away": "Lorient",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540661,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -77,18 +89,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 545960,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-04-12",
-      "kickoffUTC": "2026-04-12T17:00:00Z",
-      "status": "FINISHED",
-      "home": "SL Benfica",
-      "away": "CD Nacional",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545952,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -98,6 +98,18 @@
       "home": "Braga",
       "away": "Arouca",
       "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 545960,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-04-12",
+      "kickoffUTC": "2026-04-12T17:00:00Z",
+      "status": "FINISHED",
+      "home": "SL Benfica",
+      "away": "CD Nacional",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -149,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542660,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-04-12",
-      "kickoffUTC": "2026-04-12T15:15:00Z",
-      "status": "FINISHED",
-      "home": "Toulouse",
-      "away": "Lille",
-      "score": "0–5",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542661,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -170,6 +170,18 @@
       "home": "Nice",
       "away": "Le Havre",
       "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542660,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-04-12",
+      "kickoffUTC": "2026-04-12T15:15:00Z",
+      "status": "FINISHED",
+      "home": "Toulouse",
+      "away": "Lille",
+      "score": "0–4",
       "highlightsUrl": ""
     },
     {
@@ -221,18 +233,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538096,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-04-12",
-      "kickoffUTC": "2026-04-12T13:00:00Z",
-      "status": "FINISHED",
-      "home": "Crystal Palace",
-      "away": "Newcastle",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537134,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -269,15 +269,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537707,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
+      "matchId": 538096,
+      "league": "Premier League",
+      "competitionCode": "PL",
       "when": "2026-04-12",
-      "kickoffUTC": "2026-04-12T12:30:00Z",
+      "kickoffUTC": "2026-04-12T13:00:00Z",
       "status": "FINISHED",
-      "home": "NEC",
-      "away": "Feyenoord",
-      "score": "1–1",
+      "home": "Crystal Palace",
+      "away": "Newcastle",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -290,6 +290,18 @@
       "home": "Zwolle",
       "away": "Excelsior",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537707,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-04-12",
+      "kickoffUTC": "2026-04-12T12:30:00Z",
+      "status": "FINISHED",
+      "home": "NEC",
+      "away": "Feyenoord",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
