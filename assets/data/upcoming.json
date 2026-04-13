@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T01:08:48.666Z",
+  "generatedAt": "2026-04-13T04:29:11.800Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -90,24 +90,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 556724,
-      "id": "upcoming:556724",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Atleti",
-      "away": "Barça",
-      "kickoffUTC": "2026-04-14T19:00:00Z",
-      "kickoffLocal": "Apr 14 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2174,
-        "draw": 0.27,
-        "away": 0.5126
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 556722,
       "id": "upcoming:556722",
       "league": "UEFA Champions League",
@@ -121,6 +103,24 @@
         "home": 0.5603,
         "draw": 0.2785,
         "away": 0.1612
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 556724,
+      "id": "upcoming:556724",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Atleti",
+      "away": "Barça",
+      "kickoffUTC": "2026-04-14T19:00:00Z",
+      "kickoffLocal": "Apr 14 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2174,
+        "draw": 0.27,
+        "away": 0.5126
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
