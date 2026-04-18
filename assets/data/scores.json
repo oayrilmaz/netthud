@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18T19:53:00.231Z",
+  "updated": "2026-04-18T20:38:00.501Z",
   "dateFrom": "2026-04-17",
   "dateTo": "2026-04-20",
   "competitions": [
@@ -22,7 +22,7 @@
       "competitionCode": "PPL",
       "when": "2026-04-18",
       "kickoffUTC": "2026-04-18T19:30:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Gil Vicente",
       "away": "Vitória SC",
       "score": "0–0",
@@ -37,7 +37,7 @@
       "status": "IN_PLAY",
       "home": "Lille",
       "away": "Nice",
-      "score": "0–1",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -58,7 +58,7 @@
       "competitionCode": "SA",
       "when": "2026-04-18",
       "kickoffUTC": "2026-04-18T18:45:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Roma",
       "away": "Atalanta",
       "score": "1–1",
@@ -185,6 +185,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 540667,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-18",
+      "kickoffUTC": "2026-04-18T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Hoffenheim",
+      "away": "Dortmund",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 540675,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -206,18 +218,6 @@
       "home": "Union Berlin",
       "away": "Wolfsburg",
       "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540667,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-18",
-      "kickoffUTC": "2026-04-18T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Hoffenheim",
-      "away": "Dortmund",
-      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -257,18 +257,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537137,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-04-17",
-      "kickoffUTC": "2026-04-17T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Inter",
-      "away": "Cagliari",
-      "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542674,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -278,6 +266,18 @@
       "home": "RC Lens",
       "away": "Toulouse",
       "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537137,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-04-17",
+      "kickoffUTC": "2026-04-17T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Inter",
+      "away": "Cagliari",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
