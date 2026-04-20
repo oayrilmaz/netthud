@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-20T10:57:39.946Z",
+  "updated": "2026-04-20T12:09:25.963Z",
   "dateFrom": "2026-04-19",
   "dateTo": "2026-04-22",
   "competitions": [
@@ -17,18 +17,6 @@
   ],
   "items": [
     {
-      "matchId": 545969,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-04-19",
-      "kickoffUTC": "2026-04-19T19:30:00Z",
-      "status": "FINISHED",
-      "home": "Braga",
-      "away": "Famalicão",
-      "score": "2–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545968,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -41,15 +29,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537138,
-      "league": "Serie A",
-      "competitionCode": "SA",
+      "matchId": 545969,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
       "when": "2026-04-19",
-      "kickoffUTC": "2026-04-19T18:45:00Z",
+      "kickoffUTC": "2026-04-19T19:30:00Z",
       "status": "FINISHED",
-      "home": "Juventus",
-      "away": "Bologna",
-      "score": "2–0",
+      "home": "Braga",
+      "away": "Famalicão",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -62,6 +50,18 @@
       "home": "PSG",
       "away": "Olympique Lyon",
       "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537138,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-04-19",
+      "kickoffUTC": "2026-04-19T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Juventus",
+      "away": "Bologna",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -101,6 +101,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 540670,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-19",
+      "kickoffUTC": "2026-04-19T15:30:00Z",
+      "status": "FINISHED",
+      "home": "Bayern",
+      "away": "Stuttgart",
+      "score": "4–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 538111,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -113,15 +125,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540670,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
+      "matchId": 542669,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
       "when": "2026-04-19",
-      "kickoffUTC": "2026-04-19T15:30:00Z",
+      "kickoffUTC": "2026-04-19T15:15:00Z",
       "status": "FINISHED",
-      "home": "Bayern",
-      "away": "Stuttgart",
-      "score": "4–2",
+      "home": "FC Metz",
+      "away": "Paris FC",
+      "score": "1–3",
       "highlightsUrl": ""
     },
     {
@@ -149,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542669,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-04-19",
-      "kickoffUTC": "2026-04-19T15:15:00Z",
-      "status": "FINISHED",
-      "home": "FC Metz",
-      "away": "Paris FC",
-      "score": "1–3",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 545967,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -182,6 +182,30 @@
       "home": "Freiburg",
       "away": "Heidenheim",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537136,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-04-19",
+      "kickoffUTC": "2026-04-19T13:00:00Z",
+      "status": "FINISHED",
+      "home": "Verona",
+      "away": "Milan",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538109,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-04-19",
+      "kickoffUTC": "2026-04-19T13:00:00Z",
+      "status": "FINISHED",
+      "home": "Everton",
+      "away": "Liverpool",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -209,18 +233,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538109,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-04-19",
-      "kickoffUTC": "2026-04-19T13:00:00Z",
-      "status": "FINISHED",
-      "home": "Everton",
-      "away": "Liverpool",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542667,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -230,18 +242,6 @@
       "home": "Monaco",
       "away": "Auxerre",
       "score": "2–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 537136,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-04-19",
-      "kickoffUTC": "2026-04-19T13:00:00Z",
-      "status": "FINISHED",
-      "home": "Verona",
-      "away": "Milan",
-      "score": "0–1",
       "highlightsUrl": ""
     },
     {
