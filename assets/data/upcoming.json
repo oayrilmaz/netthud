@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T12:09:25.964Z",
+  "generatedAt": "2026-04-22T14:09:38.751Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -792,24 +792,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537719,
-      "id": "upcoming:537719",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Twente",
-      "away": "NEC",
-      "kickoffUTC": "2026-04-25T19:00:00Z",
-      "kickoffLocal": "Apr 25 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3461,
-        "draw": 0.318,
-        "away": 0.3358
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 544526,
       "id": "upcoming:544526",
       "league": "Primera Division",
@@ -823,6 +805,24 @@
         "home": 0.6438,
         "draw": 0.2566,
         "away": 0.0997
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 537719,
+      "id": "upcoming:537719",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Twente",
+      "away": "NEC",
+      "kickoffUTC": "2026-04-25T19:00:00Z",
+      "kickoffLocal": "Apr 25 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3461,
+        "draw": 0.318,
+        "away": 0.3358
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1278,24 +1278,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 544523,
-      "id": "upcoming:544523",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Espanyol",
-      "away": "Levante",
-      "kickoffUTC": "2026-04-27T19:00:00Z",
-      "kickoffLocal": "Apr 27 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4933,
-        "draw": 0.2983,
-        "away": 0.2085
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 538122,
       "id": "upcoming:538122",
       "league": "Premier League",
@@ -1309,6 +1291,24 @@
         "home": 0.5195,
         "draw": 0.2902,
         "away": 0.1903
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 544523,
+      "id": "upcoming:544523",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Espanyol",
+      "away": "Levante",
+      "kickoffUTC": "2026-04-27T19:00:00Z",
+      "kickoffLocal": "Apr 27 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.4933,
+        "draw": 0.2983,
+        "away": 0.2085
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
