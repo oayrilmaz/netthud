@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-26T05:40:45.245Z",
+  "updated": "2026-04-26T07:11:47.867Z",
   "dateFrom": "2026-04-25",
   "dateTo": "2026-04-28",
   "competitions": [
@@ -41,18 +41,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544526,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-04-25",
-      "kickoffUTC": "2026-04-25T19:00:00Z",
-      "status": "FINISHED",
-      "home": "Atleti",
-      "away": "Athletic",
-      "score": "3–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537719,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -65,6 +53,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 544526,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-04-25",
+      "kickoffUTC": "2026-04-25T19:00:00Z",
+      "status": "FINISHED",
+      "home": "Atleti",
+      "away": "Athletic",
+      "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537151,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -73,7 +73,7 @@
       "status": "FINISHED",
       "home": "Verona",
       "away": "Lecce",
-      "score": "1–0",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -125,6 +125,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 540684,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-25",
+      "kickoffUTC": "2026-04-25T16:30:00Z",
+      "status": "FINISHED",
+      "home": "HSV",
+      "away": "Hoffenheim",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 538118,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -149,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540684,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-25",
-      "kickoffUTC": "2026-04-25T16:30:00Z",
-      "status": "FINISHED",
-      "home": "HSV",
-      "away": "Hoffenheim",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537149,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -169,18 +169,6 @@
       "status": "FINISHED",
       "home": "Bologna",
       "away": "Roma",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 545971,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-04-25",
-      "kickoffUTC": "2026-04-25T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Tondela",
-      "away": "CD Nacional",
       "score": "0–2",
       "highlightsUrl": ""
     },
@@ -197,6 +185,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 545971,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-04-25",
+      "kickoffUTC": "2026-04-25T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Tondela",
+      "away": "CD Nacional",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544527,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -206,30 +206,6 @@
       "home": "Getafe",
       "away": "Barça",
       "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538123,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-04-25",
-      "kickoffUTC": "2026-04-25T14:00:00Z",
-      "status": "FINISHED",
-      "home": "West Ham",
-      "away": "Everton",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538121,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-04-25",
-      "kickoffUTC": "2026-04-25T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Liverpool",
-      "away": "Crystal Palace",
-      "score": "3–1",
       "highlightsUrl": ""
     },
     {
@@ -245,15 +221,51 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540683,
+      "matchId": 538121,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-04-25",
+      "kickoffUTC": "2026-04-25T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Liverpool",
+      "away": "Crystal Palace",
+      "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538123,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-04-25",
+      "kickoffUTC": "2026-04-25T14:00:00Z",
+      "status": "FINISHED",
+      "home": "West Ham",
+      "away": "Everton",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540681,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-04-25",
       "kickoffUTC": "2026-04-25T13:30:00Z",
       "status": "FINISHED",
-      "home": "Heidenheim",
-      "away": "St. Pauli",
-      "score": "2–0",
+      "home": "Wolfsburg",
+      "away": "M'gladbach",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540677,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-04-25",
+      "kickoffUTC": "2026-04-25T13:30:00Z",
+      "status": "FINISHED",
+      "home": "1. FC Köln",
+      "away": "Leverkusen",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -281,27 +293,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 540677,
+      "matchId": 540683,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-04-25",
       "kickoffUTC": "2026-04-25T13:30:00Z",
       "status": "FINISHED",
-      "home": "1. FC Köln",
-      "away": "Leverkusen",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540681,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-04-25",
-      "kickoffUTC": "2026-04-25T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Wolfsburg",
-      "away": "M'gladbach",
-      "score": "0–0",
+      "home": "Heidenheim",
+      "away": "St. Pauli",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
