@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-27T20:12:14.991Z",
+  "updated": "2026-04-27T21:17:10.202Z",
   "dateFrom": "2026-04-26",
   "dateTo": "2026-04-29",
   "competitions": [
@@ -25,19 +25,7 @@
       "status": "IN_PLAY",
       "home": "Gil Vicente",
       "away": "Casa Pia",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 544523,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-04-27",
-      "kickoffUTC": "2026-04-27T19:00:00Z",
-      "status": "PAUSED",
-      "home": "Espanyol",
-      "away": "Levante",
-      "score": "0–0",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -46,10 +34,22 @@
       "competitionCode": "PL",
       "when": "2026-04-27",
       "kickoffUTC": "2026-04-27T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Man United",
       "away": "Brentford",
-      "score": "2–0",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544523,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-04-27",
+      "kickoffUTC": "2026-04-27T19:00:00Z",
+      "status": "FINISHED",
+      "home": "Espanyol",
+      "away": "Levante",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -58,10 +58,10 @@
       "competitionCode": "SA",
       "when": "2026-04-27",
       "kickoffUTC": "2026-04-27T18:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Lazio",
       "away": "Udinese",
-      "score": "1–1",
+      "score": "3–3",
       "highlightsUrl": ""
     },
     {
@@ -185,15 +185,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542676,
+      "matchId": 542678,
       "league": "Ligue 1",
       "competitionCode": "FL1",
       "when": "2026-04-26",
       "kickoffUTC": "2026-04-26T15:15:00Z",
       "status": "FINISHED",
-      "home": "Le Havre",
-      "away": "FC Metz",
-      "score": "4–4",
+      "home": "Paris FC",
+      "away": "Lille",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -209,15 +209,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542678,
+      "matchId": 542676,
       "league": "Ligue 1",
       "competitionCode": "FL1",
       "when": "2026-04-26",
       "kickoffUTC": "2026-04-26T15:15:00Z",
       "status": "FINISHED",
-      "home": "Paris FC",
-      "away": "Lille",
-      "score": "0–1",
+      "home": "Le Havre",
+      "away": "FC Metz",
+      "score": "4–4",
       "highlightsUrl": ""
     },
     {
