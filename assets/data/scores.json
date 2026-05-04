@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-04T15:21:03.174Z",
+  "updated": "2026-05-04T17:10:16.301Z",
   "dateFrom": "2026-05-03",
   "dateTo": "2026-05-06",
   "competitions": [
@@ -17,15 +17,27 @@
   ],
   "items": [
     {
+      "matchId": 537164,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-05-04",
+      "kickoffUTC": "2026-05-04T16:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Cremonese",
+      "away": "Lazio",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 538129,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-05-04",
       "kickoffUTC": "2026-05-04T14:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home": "Chelsea",
       "away": "Nottingham",
-      "score": "0–2",
+      "score": "1–3",
       "highlightsUrl": ""
     },
     {
@@ -257,18 +269,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537162,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-05-03",
-      "kickoffUTC": "2026-05-03T13:00:00Z",
-      "status": "FINISHED",
-      "home": "Sassuolo",
-      "away": "Milan",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 538125,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -290,6 +290,18 @@
       "home": "Lille",
       "away": "Le Havre",
       "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537162,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-05-03",
+      "kickoffUTC": "2026-05-03T13:00:00Z",
+      "status": "FINISHED",
+      "home": "Sassuolo",
+      "away": "Milan",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
