@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-04T17:10:16.301Z",
+  "updated": "2026-05-04T18:55:07.853Z",
   "dateFrom": "2026-05-03",
   "dateTo": "2026-05-06",
   "competitions": [
@@ -17,15 +17,27 @@
   ],
   "items": [
     {
+      "matchId": 537155,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-05-04",
+      "kickoffUTC": "2026-05-04T18:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Roma",
+      "away": "Fiorentina",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 537164,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-05-04",
       "kickoffUTC": "2026-05-04T16:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Cremonese",
       "away": "Lazio",
-      "score": "1–0",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -65,18 +77,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537159,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-05-03",
-      "kickoffUTC": "2026-05-03T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Inter",
-      "away": "Parma",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542690,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -86,6 +86,18 @@
       "home": "Olympique Lyon",
       "away": "Stade Rennais",
       "score": "4–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537159,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-05-03",
+      "kickoffUTC": "2026-05-03T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Inter",
+      "away": "Parma",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -161,18 +173,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 542688,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-05-03",
-      "kickoffUTC": "2026-05-03T15:15:00Z",
-      "status": "FINISHED",
-      "home": "Paris FC",
-      "away": "Brest",
-      "score": "4–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 542693,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -194,6 +194,18 @@
       "home": "Auxerre",
       "away": "Angers SCO",
       "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 542688,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-05-03",
+      "kickoffUTC": "2026-05-03T15:15:00Z",
+      "status": "FINISHED",
+      "home": "Paris FC",
+      "away": "Brest",
+      "score": "4–0",
       "highlightsUrl": ""
     },
     {
@@ -305,18 +317,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 537725,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-05-03",
-      "kickoffUTC": "2026-05-03T12:30:00Z",
-      "status": "FINISHED",
-      "home": "Sittard",
-      "away": "Feyenoord",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537727,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -326,6 +326,18 @@
       "home": "Zwolle",
       "away": "Heracles",
       "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537725,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-05-03",
+      "kickoffUTC": "2026-05-03T12:30:00Z",
+      "status": "FINISHED",
+      "home": "Sittard",
+      "away": "Feyenoord",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
