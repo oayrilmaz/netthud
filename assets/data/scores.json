@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-09T15:53:15.302Z",
+  "updated": "2026-05-09T16:56:06.634Z",
   "dateFrom": "2026-05-08",
   "dateTo": "2026-05-11",
   "competitions": [
@@ -17,14 +17,74 @@
   ],
   "items": [
     {
+      "matchId": 544552,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T16:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Atleti",
+      "away": "Celta",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538141,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T16:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Man City",
+      "away": "Brentford",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540694,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T16:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Wolfsburg",
+      "away": "Bayern",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 537170,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T16:00:00Z",
+      "status": "PAUSED",
+      "home": "Lazio",
+      "away": "Inter",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 544558,
       "league": "Primera Division",
       "competitionCode": "PD",
       "when": "2026-05-09",
       "kickoffUTC": "2026-05-09T14:15:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Sevilla FC",
       "away": "Espanyol",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538139,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Fulham",
+      "away": "Bournemouth",
       "score": "0–1",
       "highlightsUrl": ""
     },
@@ -34,22 +94,10 @@
       "competitionCode": "PL",
       "when": "2026-05-09",
       "kickoffUTC": "2026-05-09T14:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Sunderland",
       "away": "Man United",
       "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 538139,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-05-09",
-      "kickoffUTC": "2026-05-09T14:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Fulham",
-      "away": "Bournemouth",
-      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -58,34 +106,10 @@
       "competitionCode": "PL",
       "when": "2026-05-09",
       "kickoffUTC": "2026-05-09T14:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Brighton Hove",
       "away": "Wolverhampton",
       "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540698,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-05-09",
-      "kickoffUTC": "2026-05-09T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Hoffenheim",
-      "away": "Bremen",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540701,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-05-09",
-      "kickoffUTC": "2026-05-09T13:30:00Z",
-      "status": "FINISHED",
-      "home": "RB Leipzig",
-      "away": "St. Pauli",
-      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -110,6 +134,30 @@
       "home": "Stuttgart",
       "away": "Leverkusen",
       "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540701,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T13:30:00Z",
+      "status": "FINISHED",
+      "home": "RB Leipzig",
+      "away": "St. Pauli",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540698,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Hoffenheim",
+      "away": "Bremen",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -145,7 +193,7 @@
       "status": "FINISHED",
       "home": "Liverpool",
       "away": "Chelsea",
-      "score": "1–2",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
