@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-10T04:15:11.026Z",
+  "updated": "2026-05-10T06:47:05.253Z",
   "dateFrom": "2026-05-09",
   "dateTo": "2026-05-12",
   "competitions": [
@@ -22,10 +22,10 @@
       "competitionCode": "PD",
       "when": "2026-05-09",
       "kickoffUTC": "2026-05-09T19:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home": "Real Sociedad",
       "away": "Real Betis",
-      "score": "0–1",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -34,9 +34,21 @@
       "competitionCode": "SA",
       "when": "2026-05-09",
       "kickoffUTC": "2026-05-09T18:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Lecce",
       "away": "Juventus",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544552,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Atleti",
+      "away": "Celta",
       "score": "0–1",
       "highlightsUrl": ""
     },
@@ -65,18 +77,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 544552,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-05-09",
-      "kickoffUTC": "2026-05-09T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Atleti",
-      "away": "Celta",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 537170,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -98,6 +98,18 @@
       "home": "Sevilla FC",
       "away": "Espanyol",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 538136,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Brighton Hove",
+      "away": "Wolverhampton",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -125,42 +137,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 538136,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-05-09",
-      "kickoffUTC": "2026-05-09T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Brighton Hove",
-      "away": "Wolverhampton",
-      "score": "3–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540699,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-05-09",
-      "kickoffUTC": "2026-05-09T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Augsburg",
-      "away": "M'gladbach",
-      "score": "3–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 540701,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-05-09",
-      "kickoffUTC": "2026-05-09T13:30:00Z",
-      "status": "FINISHED",
-      "home": "RB Leipzig",
-      "away": "St. Pauli",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 540698,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -181,6 +157,30 @@
       "status": "FINISHED",
       "home": "Stuttgart",
       "away": "Leverkusen",
+      "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540701,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T13:30:00Z",
+      "status": "FINISHED",
+      "home": "RB Leipzig",
+      "away": "St. Pauli",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 540699,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-05-09",
+      "kickoffUTC": "2026-05-09T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Augsburg",
+      "away": "M'gladbach",
       "score": "3–1",
       "highlightsUrl": ""
     },
