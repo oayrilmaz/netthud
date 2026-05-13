@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13T19:24:54.905Z",
+  "updated": "2026-05-13T21:07:18.910Z",
   "dateFrom": "2026-05-12",
   "dateTo": "2026-05-15",
   "competitions": [
@@ -17,15 +17,39 @@
   ],
   "items": [
     {
+      "matchId": 544561,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-05-13",
+      "kickoffUTC": "2026-05-13T19:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Alavés",
+      "away": "Barça",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544564,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-05-13",
+      "kickoffUTC": "2026-05-13T19:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Getafe",
+      "away": "Mallorca",
+      "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 542664,
       "league": "Ligue 1",
       "competitionCode": "FL1",
       "when": "2026-05-13",
       "kickoffUTC": "2026-05-13T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "RC Lens",
       "away": "PSG",
-      "score": "0–0",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -34,22 +58,10 @@
       "competitionCode": "PL",
       "when": "2026-05-13",
       "kickoffUTC": "2026-05-13T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Man City",
       "away": "Crystal Palace",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 544566,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-05-13",
-      "kickoffUTC": "2026-05-13T17:00:00Z",
-      "status": "FINISHED",
-      "home": "Espanyol",
-      "away": "Athletic",
-      "score": "2–0",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -62,6 +74,18 @@
       "home": "Villarreal",
       "away": "Sevilla FC",
       "score": "2–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 544566,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-05-13",
+      "kickoffUTC": "2026-05-13T17:00:00Z",
+      "status": "FINISHED",
+      "home": "Espanyol",
+      "away": "Athletic",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
