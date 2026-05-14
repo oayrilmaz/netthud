@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-14T20:45:45.802Z",
+  "generatedAt": "2026-05-14T22:11:43.792Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -31,6 +31,24 @@
         "home": 0.3581,
         "draw": 0.3252,
         "away": 0.3167
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 540707,
+      "id": "upcoming:540707",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "St. Pauli",
+      "away": "Wolfsburg",
+      "kickoffUTC": "2026-05-16T13:30:00Z",
+      "kickoffLocal": "May 16 • 9:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3645,
+        "draw": 0.3294,
+        "away": 0.3061
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -103,24 +121,6 @@
         "home": 0.6676,
         "draw": 0.2506,
         "away": 0.0818
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 540707,
-      "id": "upcoming:540707",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "St. Pauli",
-      "away": "Wolfsburg",
-      "kickoffUTC": "2026-05-16T13:30:00Z",
-      "kickoffLocal": "May 16 • 9:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3645,
-        "draw": 0.3294,
-        "away": 0.3061
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -360,6 +360,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 537175,
+      "id": "upcoming:537175",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Roma",
+      "away": "Lazio",
+      "kickoffUTC": "2026-05-17T10:30:00Z",
+      "kickoffLocal": "May 17 • 6:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5922,
+        "draw": 0.2699,
+        "away": 0.138
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 537181,
       "id": "upcoming:537181",
       "league": "Serie A",
@@ -391,24 +409,6 @@
         "home": 0.6854,
         "draw": 0.2462,
         "away": 0.0684
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 537175,
-      "id": "upcoming:537175",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Roma",
-      "away": "Lazio",
-      "kickoffUTC": "2026-05-17T10:30:00Z",
-      "kickoffLocal": "May 17 • 6:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5922,
-        "draw": 0.2699,
-        "away": 0.138
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -856,9 +856,9 @@
       "kickoffLocal": "May 17 • 1:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.0686,
-        "draw": 0.2366,
-        "away": 0.6948
+        "home": 0.0673,
+        "draw": 0.2363,
+        "away": 0.6963
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -910,9 +910,9 @@
       "kickoffLocal": "May 17 • 1:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.2618,
-        "draw": 0.283,
-        "away": 0.4552
+        "home": 0.2594,
+        "draw": 0.2823,
+        "away": 0.4583
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
