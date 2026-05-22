@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-22T04:38:29.825Z",
+  "generatedAt": "2026-05-22T08:02:56.628Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -162,6 +162,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 544583,
+      "id": "upcoming:544583",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Celta",
+      "away": "Sevilla FC",
+      "kickoffUTC": "2026-05-23T19:00:00Z",
+      "kickoffLocal": "May 23 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5089,
+        "draw": 0.2934,
+        "away": 0.1976
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 544589,
       "id": "upcoming:544589",
       "league": "Primera Division",
@@ -211,24 +229,6 @@
         "home": 0.7265,
         "draw": 0.2359,
         "away": 0.0376
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 544583,
-      "id": "upcoming:544583",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Celta",
-      "away": "Sevilla FC",
-      "kickoffUTC": "2026-05-23T19:00:00Z",
-      "kickoffLocal": "May 23 • 3:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5089,
-        "draw": 0.2934,
-        "away": 0.1976
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -486,6 +486,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 537186,
+      "id": "upcoming:537186",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Milan",
+      "away": "Cagliari",
+      "kickoffUTC": "2026-05-24T18:45:00Z",
+      "kickoffLocal": "May 24 • 2:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6777,
+        "draw": 0.2481,
+        "away": 0.0742
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 537188,
       "id": "upcoming:537188",
       "league": "Serie A",
@@ -517,24 +535,6 @@
         "home": 0.3066,
         "draw": 0.2992,
         "away": 0.3942
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 537186,
-      "id": "upcoming:537186",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Milan",
-      "away": "Cagliari",
-      "kickoffUTC": "2026-05-24T18:45:00Z",
-      "kickoffLocal": "May 24 • 2:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6777,
-        "draw": 0.2481,
-        "away": 0.0742
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
