@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T11:02:10.796Z",
+  "generatedAt": "2026-05-24T12:11:23.632Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -36,91 +36,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538162,
-      "id": "upcoming:538162",
+      "matchId": 538161,
+      "id": "upcoming:538161",
       "league": "Premier League",
       "competitionCode": "PL",
-      "home": "Nottingham",
-      "away": "Bournemouth",
+      "home": "Man City",
+      "away": "Aston Villa",
       "kickoffUTC": "2026-05-24T15:00:00Z",
       "kickoffLocal": "May 24 • 11:00 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.2792,
-        "draw": 0.2888,
-        "away": 0.432
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 538158,
-      "id": "upcoming:538158",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Burnley",
-      "away": "Wolverhampton",
-      "kickoffUTC": "2026-05-24T15:00:00Z",
-      "kickoffLocal": "May 24 • 11:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.421,
-        "draw": 0.3231,
-        "away": 0.2559
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 538164,
-      "id": "upcoming:538164",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "West Ham",
-      "away": "Leeds United",
-      "kickoffUTC": "2026-05-24T15:00:00Z",
-      "kickoffLocal": "May 24 • 11:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2695,
-        "draw": 0.2855,
-        "away": 0.4449
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 538160,
-      "id": "upcoming:538160",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Liverpool",
-      "away": "Brentford",
-      "kickoffUTC": "2026-05-24T15:00:00Z",
-      "kickoffLocal": "May 24 • 11:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4727,
-        "draw": 0.3049,
-        "away": 0.2224
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 538156,
-      "id": "upcoming:538156",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Brighton Hove",
-      "away": "Man United",
-      "kickoffUTC": "2026-05-24T15:00:00Z",
-      "kickoffLocal": "May 24 • 11:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2632,
-        "draw": 0.2835,
-        "away": 0.4533
+        "home": 0.6228,
+        "draw": 0.2619,
+        "away": 0.1154
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -198,19 +126,91 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 538161,
-      "id": "upcoming:538161",
+      "matchId": 538160,
+      "id": "upcoming:538160",
       "league": "Premier League",
       "competitionCode": "PL",
-      "home": "Man City",
-      "away": "Aston Villa",
+      "home": "Liverpool",
+      "away": "Brentford",
       "kickoffUTC": "2026-05-24T15:00:00Z",
       "kickoffLocal": "May 24 • 11:00 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.6228,
-        "draw": 0.2619,
-        "away": 0.1154
+        "home": 0.4727,
+        "draw": 0.3049,
+        "away": 0.2224
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538156,
+      "id": "upcoming:538156",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Brighton Hove",
+      "away": "Man United",
+      "kickoffUTC": "2026-05-24T15:00:00Z",
+      "kickoffLocal": "May 24 • 11:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2632,
+        "draw": 0.2835,
+        "away": 0.4533
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538162,
+      "id": "upcoming:538162",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Nottingham",
+      "away": "Bournemouth",
+      "kickoffUTC": "2026-05-24T15:00:00Z",
+      "kickoffLocal": "May 24 • 11:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2792,
+        "draw": 0.2888,
+        "away": 0.432
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538158,
+      "id": "upcoming:538158",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Burnley",
+      "away": "Wolverhampton",
+      "kickoffUTC": "2026-05-24T15:00:00Z",
+      "kickoffLocal": "May 24 • 11:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.421,
+        "draw": 0.3231,
+        "away": 0.2559
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 538164,
+      "id": "upcoming:538164",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "West Ham",
+      "away": "Leeds United",
+      "kickoffUTC": "2026-05-24T15:00:00Z",
+      "kickoffLocal": "May 24 • 11:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2695,
+        "draw": 0.2855,
+        "away": 0.4449
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -234,6 +234,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 537193,
+      "id": "upcoming:537193",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Cremonese",
+      "away": "Como 1907",
+      "kickoffUTC": "2026-05-24T18:45:00Z",
+      "kickoffLocal": "May 24 • 2:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0752,
+        "draw": 0.2379,
+        "away": 0.6868
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 537188,
       "id": "upcoming:537188",
       "league": "Serie A",
@@ -247,24 +265,6 @@
         "home": 0.1296,
         "draw": 0.2492,
         "away": 0.6212
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 537194,
-      "id": "upcoming:537194",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Lecce",
-      "away": "Genoa",
-      "kickoffUTC": "2026-05-24T18:45:00Z",
-      "kickoffLocal": "May 24 • 2:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3066,
-        "draw": 0.2992,
-        "away": 0.3942
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -288,19 +288,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 537193,
-      "id": "upcoming:537193",
+      "matchId": 537194,
+      "id": "upcoming:537194",
       "league": "Serie A",
       "competitionCode": "SA",
-      "home": "Cremonese",
-      "away": "Como 1907",
+      "home": "Lecce",
+      "away": "Genoa",
       "kickoffUTC": "2026-05-24T18:45:00Z",
       "kickoffLocal": "May 24 • 2:45 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.0752,
-        "draw": 0.2379,
-        "away": 0.6868
+        "home": 0.3066,
+        "draw": 0.2992,
+        "away": 0.3942
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
