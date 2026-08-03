@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T21:10:42.307Z",
+  "generatedAt": "2026-08-03T22:17:32.807Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -54,24 +54,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558215,
-      "id": "upcoming:558215",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "NEC",
-      "away": "Telstar",
-      "kickoffUTC": "2026-08-08T14:30:00Z",
-      "kickoffLocal": "Aug 8 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 567263,
       "id": "upcoming:567263",
       "league": "Primeira Liga",
@@ -85,6 +67,24 @@
         "home": 0.34,
         "draw": 0.32,
         "away": 0.34
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558215,
+      "id": "upcoming:558215",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "NEC",
+      "away": "Telstar",
+      "kickoffUTC": "2026-08-08T14:30:00Z",
+      "kickoffLocal": "Aug 8 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3786,
+        "draw": 0.34,
+        "away": 0.2814
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -270,19 +270,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567262,
-      "id": "upcoming:567262",
+      "matchId": 567261,
+      "id": "upcoming:567261",
       "league": "Primeira Liga",
       "competitionCode": "PPL",
-      "home": "SL Benfica",
-      "away": "Acad. Viseu",
+      "home": "Gil Vicente",
+      "away": "Rio Ave",
       "kickoffUTC": "2026-08-09T19:30:00Z",
       "kickoffLocal": "Aug 9 • 3:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.34,
-        "draw": 0.32,
-        "away": 0.34
+        "home": 0.582,
+        "draw": 0.2725,
+        "away": 0.1454
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -306,19 +306,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567261,
-      "id": "upcoming:567261",
+      "matchId": 567262,
+      "id": "upcoming:567262",
       "league": "Primeira Liga",
       "competitionCode": "PPL",
-      "home": "Gil Vicente",
-      "away": "Rio Ave",
+      "home": "SL Benfica",
+      "away": "Acad. Viseu",
       "kickoffUTC": "2026-08-09T19:30:00Z",
       "kickoffLocal": "Aug 9 • 3:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.582,
-        "draw": 0.2725,
-        "away": 0.1454
+        "home": 0.34,
+        "draw": 0.32,
+        "away": 0.34
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
