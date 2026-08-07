@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T10:25:34.677Z",
+  "generatedAt": "2026-08-07T11:21:49.422Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -198,12 +198,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558221,
-      "id": "upcoming:558221",
+      "matchId": 558220,
+      "id": "upcoming:558220",
       "league": "Eredivisie",
       "competitionCode": "DED",
-      "home": "Zwolle",
-      "away": "Ajax",
+      "home": "Groningen",
+      "away": "Utrecht",
       "kickoffUTC": "2026-08-09T12:30:00Z",
       "kickoffLocal": "Aug 9 • 8:30 AM ET",
       "tv": [],
@@ -216,12 +216,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558220,
-      "id": "upcoming:558220",
+      "matchId": 558221,
+      "id": "upcoming:558221",
       "league": "Eredivisie",
       "competitionCode": "DED",
-      "home": "Groningen",
-      "away": "Utrecht",
+      "home": "Zwolle",
+      "away": "Ajax",
       "kickoffUTC": "2026-08-09T12:30:00Z",
       "kickoffLocal": "Aug 9 • 8:30 AM ET",
       "tv": [],
@@ -270,6 +270,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 567262,
+      "id": "upcoming:567262",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "SL Benfica",
+      "away": "Acad. Viseu",
+      "kickoffUTC": "2026-08-09T19:30:00Z",
+      "kickoffLocal": "Aug 9 • 3:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.34,
+        "draw": 0.32,
+        "away": 0.34
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 567261,
       "id": "upcoming:567261",
       "league": "Primeira Liga",
@@ -301,24 +319,6 @@
         "home": 0.1663,
         "draw": 0.2574,
         "away": 0.5763
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 567262,
-      "id": "upcoming:567262",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "SL Benfica",
-      "away": "Acad. Viseu",
-      "kickoffUTC": "2026-08-09T19:30:00Z",
-      "kickoffLocal": "Aug 9 • 3:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.34,
-        "draw": 0.32,
-        "away": 0.34
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
