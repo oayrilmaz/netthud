@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T16:33:11.872Z",
+  "generatedAt": "2026-08-08T17:12:22.977Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -144,12 +144,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558220,
-      "id": "upcoming:558220",
+      "matchId": 558221,
+      "id": "upcoming:558221",
       "league": "Eredivisie",
       "competitionCode": "DED",
-      "home": "Groningen",
-      "away": "Utrecht",
+      "home": "Zwolle",
+      "away": "Ajax",
       "kickoffUTC": "2026-08-09T12:30:00Z",
       "kickoffLocal": "Aug 9 • 8:30 AM ET",
       "tv": [],
@@ -162,12 +162,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558221,
-      "id": "upcoming:558221",
+      "matchId": 558220,
+      "id": "upcoming:558220",
       "league": "Eredivisie",
       "competitionCode": "DED",
-      "home": "Zwolle",
-      "away": "Ajax",
+      "home": "Groningen",
+      "away": "Utrecht",
       "kickoffUTC": "2026-08-09T12:30:00Z",
       "kickoffLocal": "Aug 9 • 8:30 AM ET",
       "tv": [],
@@ -216,24 +216,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567262,
-      "id": "upcoming:567262",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "SL Benfica",
-      "away": "Acad. Viseu",
-      "kickoffUTC": "2026-08-09T19:30:00Z",
-      "kickoffLocal": "Aug 9 • 3:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 567261,
       "id": "upcoming:567261",
       "league": "Primeira Liga",
@@ -258,6 +240,24 @@
       "competitionCode": "PPL",
       "home": "Moreirense",
       "away": "Braga",
+      "kickoffUTC": "2026-08-09T19:30:00Z",
+      "kickoffLocal": "Aug 9 • 3:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3786,
+        "draw": 0.34,
+        "away": 0.2814
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 567262,
+      "id": "upcoming:567262",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "SL Benfica",
+      "away": "Acad. Viseu",
       "kickoffUTC": "2026-08-09T19:30:00Z",
       "kickoffLocal": "Aug 9 • 3:30 PM ET",
       "tv": [],
@@ -316,27 +316,9 @@
       "kickoffLocal": "Aug 14 • 3:15 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 558224,
-      "id": "upcoming:558224",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Willem II",
-      "away": "NEC",
-      "kickoffUTC": "2026-08-15T14:30:00Z",
-      "kickoffLocal": "Aug 15 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.464,
-        "draw": 0.3078,
-        "away": 0.2282
+        "home": 0.1531,
+        "draw": 0.2544,
+        "away": 0.5925
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -355,6 +337,24 @@
         "home": 0.3786,
         "draw": 0.34,
         "away": 0.2814
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558224,
+      "id": "upcoming:558224",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Willem II",
+      "away": "NEC",
+      "kickoffUTC": "2026-08-15T14:30:00Z",
+      "kickoffLocal": "Aug 15 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6897,
+        "draw": 0.2452,
+        "away": 0.0652
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
