@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T13:57:43.200Z",
+  "generatedAt": "2026-08-08T14:38:21.674Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -144,12 +144,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558221,
-      "id": "upcoming:558221",
+      "matchId": 558220,
+      "id": "upcoming:558220",
       "league": "Eredivisie",
       "competitionCode": "DED",
-      "home": "Zwolle",
-      "away": "Ajax",
+      "home": "Groningen",
+      "away": "Utrecht",
       "kickoffUTC": "2026-08-09T12:30:00Z",
       "kickoffLocal": "Aug 9 • 8:30 AM ET",
       "tv": [],
@@ -162,12 +162,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558220,
-      "id": "upcoming:558220",
+      "matchId": 558221,
+      "id": "upcoming:558221",
       "league": "Eredivisie",
       "competitionCode": "DED",
-      "home": "Groningen",
-      "away": "Utrecht",
+      "home": "Zwolle",
+      "away": "Ajax",
       "kickoffUTC": "2026-08-09T12:30:00Z",
       "kickoffLocal": "Aug 9 • 8:30 AM ET",
       "tv": [],
@@ -298,9 +298,9 @@
       "kickoffLocal": "Aug 14 • 2:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
+        "home": 0.6525,
+        "draw": 0.2544,
+        "away": 0.0931
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -324,30 +324,30 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567266,
-      "id": "upcoming:567266",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Alverca",
-      "away": "Amadora",
-      "kickoffUTC": "2026-08-15T14:30:00Z",
-      "kickoffLocal": "Aug 15 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558224,
       "id": "upcoming:558224",
       "league": "Eredivisie",
       "competitionCode": "DED",
       "home": "Willem II",
       "away": "NEC",
+      "kickoffUTC": "2026-08-15T14:30:00Z",
+      "kickoffLocal": "Aug 15 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.1531,
+        "draw": 0.2544,
+        "away": 0.5925
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 567266,
+      "id": "upcoming:567266",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Alverca",
+      "away": "Amadora",
       "kickoffUTC": "2026-08-15T14:30:00Z",
       "kickoffLocal": "Aug 15 • 10:30 AM ET",
       "tv": [],
@@ -450,24 +450,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 564633,
-      "id": "upcoming:564633",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Sevilla FC",
-      "away": "Rayo Vallecano",
-      "kickoffUTC": "2026-08-15T19:30:00Z",
-      "kickoffLocal": "Aug 15 • 3:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3209,
-        "draw": 0.3054,
-        "away": 0.3737
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 567274,
       "id": "upcoming:567274",
       "league": "Primeira Liga",
@@ -481,6 +463,24 @@
         "home": 0.3786,
         "draw": 0.34,
         "away": 0.2814
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 564633,
+      "id": "upcoming:564633",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Sevilla FC",
+      "away": "Rayo Vallecano",
+      "kickoffUTC": "2026-08-15T19:30:00Z",
+      "kickoffLocal": "Aug 15 • 3:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3209,
+        "draw": 0.3054,
+        "away": 0.3737
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
