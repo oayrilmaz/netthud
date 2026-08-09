@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T19:57:20.649Z",
+  "updated": "2026-08-09T20:39:58.399Z",
   "dateFrom": "2026-08-08",
   "dateTo": "2026-08-11",
   "competitions": [
@@ -17,24 +17,12 @@
   ],
   "items": [
     {
-      "matchId": 567262,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-08-09",
-      "kickoffUTC": "2026-08-09T19:30:00Z",
-      "status": "LIVE",
-      "home": "SL Benfica",
-      "away": "Acad. Viseu",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 567259,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-08-09",
       "kickoffUTC": "2026-08-09T19:30:00Z",
-      "status": "LIVE",
+      "status": "PAUSED",
       "home": "Moreirense",
       "away": "Braga",
       "score": "1–1",
@@ -46,10 +34,22 @@
       "competitionCode": "PPL",
       "when": "2026-08-09",
       "kickoffUTC": "2026-08-09T19:30:00Z",
-      "status": "LIVE",
+      "status": "PAUSED",
       "home": "Gil Vicente",
       "away": "Rio Ave",
       "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567262,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-08-09",
+      "kickoffUTC": "2026-08-09T19:30:00Z",
+      "status": "PAUSED",
+      "home": "SL Benfica",
+      "away": "Acad. Viseu",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -77,18 +77,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 558220,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-08-09",
-      "kickoffUTC": "2026-08-09T12:30:00Z",
-      "status": "FINISHED",
-      "home": "Groningen",
-      "away": "Utrecht",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 558221,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -98,6 +86,18 @@
       "home": "Zwolle",
       "away": "Ajax",
       "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558220,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-09",
+      "kickoffUTC": "2026-08-09T12:30:00Z",
+      "status": "FINISHED",
+      "home": "Groningen",
+      "away": "Utrecht",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
