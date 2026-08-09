@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T13:49:25.933Z",
+  "updated": "2026-08-09T14:34:08.416Z",
   "dateFrom": "2026-08-08",
   "dateTo": "2026-08-11",
   "competitions": [
@@ -17,6 +17,18 @@
   ],
   "items": [
     {
+      "matchId": 558220,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-09",
+      "kickoffUTC": "2026-08-09T12:30:00Z",
+      "status": "FINISHED",
+      "home": "Groningen",
+      "away": "Utrecht",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 558221,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -25,19 +37,7 @@
       "status": "IN_PLAY",
       "home": "Zwolle",
       "away": "Ajax",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 558220,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-08-09",
-      "kickoffUTC": "2026-08-09T12:30:00Z",
-      "status": "IN_PLAY",
-      "home": "Groningen",
-      "away": "Utrecht",
-      "score": "2–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -113,18 +113,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 567263,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-08-08",
-      "kickoffUTC": "2026-08-08T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Marítimo",
-      "away": "Casa Pia",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 558215,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -134,6 +122,18 @@
       "home": "NEC",
       "away": "Telstar",
       "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567263,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-08-08",
+      "kickoffUTC": "2026-08-08T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Marítimo",
+      "away": "Casa Pia",
+      "score": "1–0",
       "highlightsUrl": ""
     }
   ]
