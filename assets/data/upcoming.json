@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-09T19:19:55.308Z",
+  "generatedAt": "2026-08-09T19:57:24.535Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -17,60 +17,6 @@
   ],
   "model": "NetThud Table Model v1",
   "items": [
-    {
-      "matchId": 567262,
-      "id": "upcoming:567262",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "SL Benfica",
-      "away": "Acad. Viseu",
-      "kickoffUTC": "2026-08-09T19:30:00Z",
-      "kickoffLocal": "Aug 9 • 3:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 567259,
-      "id": "upcoming:567259",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Moreirense",
-      "away": "Braga",
-      "kickoffUTC": "2026-08-09T19:30:00Z",
-      "kickoffLocal": "Aug 9 • 3:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 567261,
-      "id": "upcoming:567261",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Gil Vicente",
-      "away": "Rio Ave",
-      "kickoffUTC": "2026-08-09T19:30:00Z",
-      "kickoffLocal": "Aug 9 • 3:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
     {
       "matchId": 567257,
       "id": "upcoming:567257",
@@ -126,24 +72,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567266,
-      "id": "upcoming:567266",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Alverca",
-      "away": "Amadora",
-      "kickoffUTC": "2026-08-15T14:30:00Z",
-      "kickoffLocal": "Aug 15 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0425,
-        "draw": 0.2312,
-        "away": 0.7263
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558224,
       "id": "upcoming:558224",
       "league": "Eredivisie",
@@ -157,6 +85,24 @@
         "home": 0.2174,
         "draw": 0.27,
         "away": 0.5126
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 567266,
+      "id": "upcoming:567266",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Alverca",
+      "away": "Amadora",
+      "kickoffUTC": "2026-08-15T14:30:00Z",
+      "kickoffLocal": "Aug 15 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0425,
+        "draw": 0.2312,
+        "away": 0.7263
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -190,9 +136,9 @@
       "kickoffLocal": "Aug 15 • 1:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
+        "home": 0.6525,
+        "draw": 0.2544,
+        "away": 0.0931
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -262,9 +208,9 @@
       "kickoffLocal": "Aug 15 • 3:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.0017,
-        "draw": 0.2209,
-        "away": 0.7774
+        "home": 0.0086,
+        "draw": 0.2232,
+        "away": 0.7682
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -306,24 +252,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558229,
-      "id": "upcoming:558229",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Feyenoord",
-      "away": "Go Ahead",
-      "kickoffUTC": "2026-08-16T12:30:00Z",
-      "kickoffLocal": "Aug 16 • 8:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.1531,
-        "draw": 0.2544,
-        "away": 0.5925
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558230,
       "id": "upcoming:558230",
       "league": "Eredivisie",
@@ -337,6 +265,24 @@
         "home": 0.4958,
         "draw": 0.2975,
         "away": 0.2068
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558229,
+      "id": "upcoming:558229",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Feyenoord",
+      "away": "Go Ahead",
+      "kickoffUTC": "2026-08-16T12:30:00Z",
+      "kickoffLocal": "Aug 16 • 8:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.1531,
+        "draw": 0.2544,
+        "away": 0.5925
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -424,27 +370,27 @@
       "kickoffLocal": "Aug 16 • 1:00 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.7764,
-        "draw": 0.2216,
-        "away": 0.0019
+        "home": 0.7644,
+        "draw": 0.2256,
+        "away": 0.01
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567271,
-      "id": "upcoming:567271",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Braga",
-      "away": "Gil Vicente",
+      "matchId": 564636,
+      "id": "upcoming:564636",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Celta",
+      "away": "Osasuna",
       "kickoffUTC": "2026-08-16T19:30:00Z",
       "kickoffLocal": "Aug 16 • 3:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
+        "home": 0.523,
+        "draw": 0.2892,
+        "away": 0.1878
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -468,19 +414,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 564636,
-      "id": "upcoming:564636",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Celta",
-      "away": "Osasuna",
+      "matchId": 567271,
+      "id": "upcoming:567271",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Braga",
+      "away": "Gil Vicente",
       "kickoffUTC": "2026-08-16T19:30:00Z",
       "kickoffLocal": "Aug 16 • 3:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.523,
-        "draw": 0.2892,
-        "away": 0.1878
+        "home": 0.3786,
+        "draw": 0.34,
+        "away": 0.2814
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
