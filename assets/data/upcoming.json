@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T21:12:21.782Z",
+  "generatedAt": "2026-08-10T21:59:31.141Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -378,24 +378,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567271,
-      "id": "upcoming:567271",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Braga",
-      "away": "Gil Vicente",
-      "kickoffUTC": "2026-08-16T19:30:00Z",
-      "kickoffLocal": "Aug 16 • 3:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0246,
-        "draw": 0.2272,
-        "away": 0.7482
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 567269,
       "id": "upcoming:567269",
       "league": "Primeira Liga",
@@ -409,6 +391,24 @@
         "home": 0.021,
         "draw": 0.2264,
         "away": 0.7527
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 567271,
+      "id": "upcoming:567271",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Braga",
+      "away": "Gil Vicente",
+      "kickoffUTC": "2026-08-16T19:30:00Z",
+      "kickoffLocal": "Aug 16 • 3:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0246,
+        "draw": 0.2272,
+        "away": 0.7482
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
