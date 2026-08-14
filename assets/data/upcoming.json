@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T23:58:19.669Z",
+  "generatedAt": "2026-08-14T02:33:55.022Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -54,24 +54,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558224,
-      "id": "upcoming:558224",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Willem II",
-      "away": "NEC",
-      "kickoffUTC": "2026-08-15T14:30:00Z",
-      "kickoffLocal": "Aug 15 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2174,
-        "draw": 0.27,
-        "away": 0.5126
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 567266,
       "id": "upcoming:567266",
       "league": "Primeira Liga",
@@ -85,6 +67,24 @@
         "home": 0.0425,
         "draw": 0.2312,
         "away": 0.7263
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558224,
+      "id": "upcoming:558224",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Willem II",
+      "away": "NEC",
+      "kickoffUTC": "2026-08-15T14:30:00Z",
+      "kickoffLocal": "Aug 15 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2174,
+        "draw": 0.27,
+        "away": 0.5126
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -324,6 +324,24 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 567272,
+      "id": "upcoming:567272",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Arouca",
+      "away": "Moreirense",
+      "kickoffUTC": "2026-08-16T17:00:00Z",
+      "kickoffLocal": "Aug 16 • 1:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.759,
+        "draw": 0.2272,
+        "away": 0.0138
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 564632,
       "id": "upcoming:564632",
       "league": "Primera Division",
@@ -342,19 +360,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567272,
-      "id": "upcoming:567272",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Arouca",
-      "away": "Moreirense",
-      "kickoffUTC": "2026-08-16T17:00:00Z",
-      "kickoffLocal": "Aug 16 • 1:00 PM ET",
+      "matchId": 564636,
+      "id": "upcoming:564636",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Celta",
+      "away": "Osasuna",
+      "kickoffUTC": "2026-08-16T19:30:00Z",
+      "kickoffLocal": "Aug 16 • 3:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.759,
-        "draw": 0.2272,
-        "away": 0.0138
+        "home": 0.523,
+        "draw": 0.2892,
+        "away": 0.1878
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -391,24 +409,6 @@
         "home": 0.021,
         "draw": 0.2264,
         "away": 0.7527
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 564636,
-      "id": "upcoming:564636",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Celta",
-      "away": "Osasuna",
-      "kickoffUTC": "2026-08-16T19:30:00Z",
-      "kickoffLocal": "Aug 16 • 3:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.523,
-        "draw": 0.2892,
-        "away": 0.1878
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
