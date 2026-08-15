@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-15T17:45:34.012Z",
+  "updated": "2026-08-15T18:29:25.702Z",
   "dateFrom": "2026-08-14",
   "dateTo": "2026-08-17",
   "competitions": [
@@ -17,12 +17,24 @@
   ],
   "items": [
     {
+      "matchId": 558226,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-15",
+      "kickoffUTC": "2026-08-15T18:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Excelsior",
+      "away": "PSV",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 564634,
       "league": "Primera Division",
       "competitionCode": "PD",
       "when": "2026-08-15",
       "kickoffUTC": "2026-08-15T17:30:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "home": "Alavés",
       "away": "Getafe",
       "score": "0–0",
@@ -46,10 +58,10 @@
       "competitionCode": "DED",
       "when": "2026-08-15",
       "kickoffUTC": "2026-08-15T16:45:00Z",
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "home": "Utrecht",
       "away": "AZ",
-      "score": "0–1",
+      "score": "1–3",
       "highlightsUrl": ""
     },
     {
