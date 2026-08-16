@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16T14:31:29.477Z",
+  "updated": "2026-08-16T14:58:48.294Z",
   "dateFrom": "2026-08-15",
   "dateTo": "2026-08-18",
   "competitions": [
@@ -17,15 +17,27 @@
   ],
   "items": [
     {
-      "matchId": 558230,
+      "matchId": 558231,
       "league": "Eredivisie",
       "competitionCode": "DED",
       "when": "2026-08-16",
-      "kickoffUTC": "2026-08-16T12:30:00Z",
-      "status": "FINISHED",
-      "home": "Twente",
-      "away": "Zwolle",
-      "score": "3–1",
+      "kickoffUTC": "2026-08-16T14:45:00Z",
+      "status": "LIVE",
+      "home": "Ajax",
+      "away": "Heerenveen",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567270,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-08-16",
+      "kickoffUTC": "2026-08-16T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "CD Nacional",
+      "away": "Estoril Praia",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -38,6 +50,18 @@
       "home": "Feyenoord",
       "away": "Go Ahead",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558230,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-16",
+      "kickoffUTC": "2026-08-16T12:30:00Z",
+      "status": "FINISHED",
+      "home": "Twente",
+      "away": "Zwolle",
+      "score": "3–1",
       "highlightsUrl": ""
     },
     {
