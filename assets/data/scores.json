@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16T11:59:54.184Z",
+  "updated": "2026-08-16T12:54:49.484Z",
   "dateFrom": "2026-08-15",
   "dateTo": "2026-08-18",
   "competitions": [
@@ -17,15 +17,39 @@
   ],
   "items": [
     {
+      "matchId": 558230,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-16",
+      "kickoffUTC": "2026-08-16T12:30:00Z",
+      "status": "LIVE",
+      "home": "Twente",
+      "away": "Zwolle",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558229,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-16",
+      "kickoffUTC": "2026-08-16T12:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Feyenoord",
+      "away": "Go Ahead",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 558228,
       "league": "Eredivisie",
       "competitionCode": "DED",
       "when": "2026-08-16",
       "kickoffUTC": "2026-08-16T10:15:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Den Haag",
       "away": "Groningen",
-      "score": "1–3",
+      "score": "1–4",
       "highlightsUrl": ""
     },
     {
