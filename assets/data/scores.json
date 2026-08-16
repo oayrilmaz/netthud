@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16T09:51:51.375Z",
+  "updated": "2026-08-16T10:22:20.253Z",
   "dateFrom": "2026-08-15",
   "dateTo": "2026-08-18",
   "competitions": [
@@ -16,6 +16,18 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 558228,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-16",
+      "kickoffUTC": "2026-08-16T10:15:00Z",
+      "status": "LIVE",
+      "home": "Den Haag",
+      "away": "Groningen",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 567274,
       "league": "Primeira Liga",
@@ -101,18 +113,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 558224,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-08-15",
-      "kickoffUTC": "2026-08-15T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Willem II",
-      "away": "NEC",
-      "score": "1–4",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 567266,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -122,6 +122,18 @@
       "home": "Alverca",
       "away": "Amadora",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558224,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-15",
+      "kickoffUTC": "2026-08-15T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Willem II",
+      "away": "NEC",
+      "score": "1–4",
       "highlightsUrl": ""
     }
   ]
