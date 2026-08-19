@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T06:02:13.703Z",
+  "generatedAt": "2026-08-19T07:04:53.942Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -162,24 +162,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560546,
-      "id": "upcoming:560546",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Everton",
-      "away": "Crystal Palace",
-      "kickoffUTC": "2026-08-22T14:00:00Z",
-      "kickoffLocal": "Aug 22 • 10:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 560544,
       "id": "upcoming:560544",
       "league": "Premier League",
@@ -198,19 +180,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567283,
-      "id": "upcoming:567283",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Marítimo",
-      "away": "Acad. Viseu",
-      "kickoffUTC": "2026-08-22T14:30:00Z",
-      "kickoffLocal": "Aug 22 • 10:30 AM ET",
+      "matchId": 560546,
+      "id": "upcoming:560546",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Everton",
+      "away": "Crystal Palace",
+      "kickoffUTC": "2026-08-22T14:00:00Z",
+      "kickoffLocal": "Aug 22 • 10:00 AM ET",
       "tv": [],
       "hda": {
-        "home": 0.7738,
-        "draw": 0.2226,
-        "away": 0.0036
+        "home": 0.3786,
+        "draw": 0.34,
+        "away": 0.2814
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -229,6 +211,24 @@
         "home": 0.0694,
         "draw": 0.2368,
         "away": 0.6938
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 567283,
+      "id": "upcoming:567283",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Marítimo",
+      "away": "Acad. Viseu",
+      "kickoffUTC": "2026-08-22T14:30:00Z",
+      "kickoffLocal": "Aug 22 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7738,
+        "draw": 0.2226,
+        "away": 0.0036
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -594,12 +594,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 559717,
-      "id": "upcoming:559717",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Angers SCO",
-      "away": "Lille",
+      "matchId": 560548,
+      "id": "upcoming:560548",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Man City",
+      "away": "Bournemouth",
       "kickoffUTC": "2026-08-23T13:00:00Z",
       "kickoffLocal": "Aug 23 • 9:00 AM ET",
       "tv": [],
@@ -612,12 +612,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560548,
-      "id": "upcoming:560548",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Man City",
-      "away": "Bournemouth",
+      "matchId": 559717,
+      "id": "upcoming:559717",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Angers SCO",
+      "away": "Lille",
       "kickoffUTC": "2026-08-23T13:00:00Z",
       "kickoffLocal": "Aug 23 • 9:00 AM ET",
       "tv": [],
