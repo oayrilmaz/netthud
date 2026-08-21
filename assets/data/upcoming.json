@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T17:47:13.034Z",
+  "generatedAt": "2026-08-21T18:36:10.886Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -342,24 +342,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 559714,
-      "id": "upcoming:559714",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Troyes",
-      "away": "Paris FC",
-      "kickoffUTC": "2026-08-22T18:45:00Z",
-      "kickoffLocal": "Aug 22 • 2:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558631,
       "id": "upcoming:558631",
       "league": "Serie A",
@@ -402,6 +384,24 @@
       "competitionCode": "FL1",
       "home": "Toulouse",
       "away": "Olympique Lyon",
+      "kickoffUTC": "2026-08-22T18:45:00Z",
+      "kickoffLocal": "Aug 22 • 2:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3786,
+        "draw": 0.34,
+        "away": 0.2814
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 559714,
+      "id": "upcoming:559714",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Troyes",
+      "away": "Paris FC",
       "kickoffUTC": "2026-08-22T18:45:00Z",
       "kickoffLocal": "Aug 22 • 2:45 PM ET",
       "tv": [],
@@ -540,24 +540,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560548,
-      "id": "upcoming:560548",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Man City",
-      "away": "Bournemouth",
-      "kickoffUTC": "2026-08-23T13:00:00Z",
-      "kickoffLocal": "Aug 23 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 560549,
       "id": "upcoming:560549",
       "league": "Premier League",
@@ -582,6 +564,24 @@
       "competitionCode": "FL1",
       "home": "Angers SCO",
       "away": "Lille",
+      "kickoffUTC": "2026-08-23T13:00:00Z",
+      "kickoffLocal": "Aug 23 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3786,
+        "draw": 0.34,
+        "away": 0.2814
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 560548,
+      "id": "upcoming:560548",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Man City",
+      "away": "Bournemouth",
       "kickoffUTC": "2026-08-23T13:00:00Z",
       "kickoffLocal": "Aug 23 • 9:00 AM ET",
       "tv": [],
@@ -684,12 +684,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558635,
-      "id": "upcoming:558635",
+      "matchId": 558637,
+      "id": "upcoming:558637",
       "league": "Serie A",
       "competitionCode": "SA",
-      "home": "Frosinone",
-      "away": "Juventus",
+      "home": "Venezia FC",
+      "away": "Lecce",
       "kickoffUTC": "2026-08-23T16:30:00Z",
       "kickoffLocal": "Aug 23 • 12:30 PM ET",
       "tv": [],
@@ -702,12 +702,12 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558637,
-      "id": "upcoming:558637",
+      "matchId": 558635,
+      "id": "upcoming:558635",
       "league": "Serie A",
       "competitionCode": "SA",
-      "home": "Venezia FC",
-      "away": "Lecce",
+      "home": "Frosinone",
+      "away": "Juventus",
       "kickoffUTC": "2026-08-23T16:30:00Z",
       "kickoffLocal": "Aug 23 • 12:30 PM ET",
       "tv": [],
