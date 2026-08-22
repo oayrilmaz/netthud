@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-22T22:21:15.639Z",
+  "updated": "2026-08-22T22:48:00.644Z",
   "dateFrom": "2026-08-21",
   "dateTo": "2026-08-24",
   "competitions": [
@@ -17,18 +17,6 @@
   ],
   "items": [
     {
-      "matchId": 567275,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T19:30:00Z",
-      "status": "FINISHED",
-      "home": "Sporting CP",
-      "away": "Alverca",
-      "score": "3–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 564645,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -41,6 +29,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 567275,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T19:30:00Z",
+      "status": "FINISHED",
+      "home": "Sporting CP",
+      "away": "Alverca",
+      "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 558235,
       "league": "Eredivisie",
       "competitionCode": "DED",
@@ -49,54 +49,6 @@
       "status": "FINISHED",
       "home": "Heerenveen",
       "away": "Zwolle",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559714,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Troyes",
-      "away": "Paris FC",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 558636,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Parma",
-      "away": "Cagliari",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559716,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Nice",
-      "away": "Lorient",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559718,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Toulouse",
-      "away": "Olympique Lyon",
       "score": "0–2",
       "highlightsUrl": ""
     },
@@ -122,6 +74,54 @@
       "home": "Le Mans",
       "away": "Brest",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558636,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Parma",
+      "away": "Cagliari",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559714,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Troyes",
+      "away": "Paris FC",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559716,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Nice",
+      "away": "Lorient",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559718,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Toulouse",
+      "away": "Olympique Lyon",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -161,15 +161,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 558629,
-      "league": "Serie A",
-      "competitionCode": "SA",
+      "matchId": 560547,
+      "league": "Premier League",
+      "competitionCode": "PL",
       "when": "2026-08-22",
       "kickoffUTC": "2026-08-22T16:30:00Z",
       "status": "FINISHED",
-      "home": "Udinese",
-      "away": "Como 1907",
-      "score": "1–1",
+      "home": "Brentford",
+      "away": "Tottenham",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -185,15 +185,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560547,
-      "league": "Premier League",
-      "competitionCode": "PL",
+      "matchId": 558629,
+      "league": "Serie A",
+      "competitionCode": "SA",
       "when": "2026-08-22",
       "kickoffUTC": "2026-08-22T16:30:00Z",
       "status": "FINISHED",
-      "home": "Brentford",
-      "away": "Tottenham",
-      "score": "3–0",
+      "home": "Udinese",
+      "away": "Como 1907",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -245,15 +245,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560546,
+      "matchId": 560545,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-08-22",
       "kickoffUTC": "2026-08-22T14:00:00Z",
       "status": "FINISHED",
-      "home": "Everton",
-      "away": "Crystal Palace",
-      "score": "2–0",
+      "home": "Nottingham",
+      "away": "Leeds United",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -269,15 +269,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560545,
+      "matchId": 560546,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-08-22",
       "kickoffUTC": "2026-08-22T14:00:00Z",
       "status": "FINISHED",
-      "home": "Nottingham",
-      "away": "Leeds United",
-      "score": "0–1",
+      "home": "Everton",
+      "away": "Crystal Palace",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
@@ -293,18 +293,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 564647,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-08-21",
-      "kickoffUTC": "2026-08-21T19:00:00Z",
-      "status": "FINISHED",
-      "home": "Real Betis",
-      "away": "Real Sociedad",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 560542,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -314,6 +302,18 @@
       "home": "Arsenal",
       "away": "Coventry City",
       "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564647,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-08-21",
+      "kickoffUTC": "2026-08-21T19:00:00Z",
+      "status": "FINISHED",
+      "home": "Real Betis",
+      "away": "Real Sociedad",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
