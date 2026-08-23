@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23T16:51:41.850Z",
+  "updated": "2026-08-23T17:19:51.582Z",
   "dateFrom": "2026-08-22",
   "dateTo": "2026-08-25",
   "competitions": [
@@ -17,14 +17,14 @@
   ],
   "items": [
     {
-      "matchId": 558637,
-      "league": "Serie A",
-      "competitionCode": "SA",
+      "matchId": 567281,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
       "when": "2026-08-23",
-      "kickoffUTC": "2026-08-23T16:30:00Z",
+      "kickoffUTC": "2026-08-23T17:00:00Z",
       "status": "IN_PLAY",
-      "home": "Venezia FC",
-      "away": "Lecce",
+      "home": "Santa Clara",
+      "away": "Famalicão",
       "score": "0–0",
       "highlightsUrl": ""
     },
@@ -37,7 +37,19 @@
       "status": "IN_PLAY",
       "home": "Frosinone",
       "away": "Juventus",
-      "score": "0–0",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558637,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-23",
+      "kickoffUTC": "2026-08-23T16:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Venezia FC",
+      "away": "Lecce",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -49,7 +61,7 @@
       "status": "IN_PLAY",
       "home": "Newcastle",
       "away": "Liverpool",
-      "score": "1–1",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -58,7 +70,7 @@
       "competitionCode": "FL1",
       "when": "2026-08-23",
       "kickoffUTC": "2026-08-23T15:15:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Le Havre",
       "away": "Monaco",
       "score": "0–1",
@@ -70,10 +82,10 @@
       "competitionCode": "PD",
       "when": "2026-08-23",
       "kickoffUTC": "2026-08-23T15:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Atleti",
       "away": "Villarreal",
-      "score": "1–2",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -82,10 +94,10 @@
       "competitionCode": "DED",
       "when": "2026-08-23",
       "kickoffUTC": "2026-08-23T14:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Cambuur",
       "away": "Feyenoord",
-      "score": "1–4",
+      "score": "2–5",
       "highlightsUrl": ""
     },
     {
@@ -161,18 +173,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 567275,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T19:30:00Z",
-      "status": "FINISHED",
-      "home": "Sporting CP",
-      "away": "Alverca",
-      "score": "3–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 564645,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -182,6 +182,18 @@
       "home": "Espanyol",
       "away": "Real Madrid",
       "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567275,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T19:30:00Z",
+      "status": "FINISHED",
+      "home": "Sporting CP",
+      "away": "Alverca",
+      "score": "3–1",
       "highlightsUrl": ""
     },
     {
@@ -245,18 +257,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 558631,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Genoa",
-      "away": "Napoli",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 559714,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -266,6 +266,18 @@
       "home": "Troyes",
       "away": "Paris FC",
       "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558631,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Genoa",
+      "away": "Napoli",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
