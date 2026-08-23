@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23T07:05:33.022Z",
+  "updated": "2026-08-23T07:46:59.415Z",
   "dateFrom": "2026-08-22",
   "dateTo": "2026-08-25",
   "competitions": [
@@ -17,18 +17,6 @@
   ],
   "items": [
     {
-      "matchId": 564645,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T19:30:00Z",
-      "status": "FINISHED",
-      "home": "Espanyol",
-      "away": "Real Madrid",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 567275,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -38,6 +26,18 @@
       "home": "Sporting CP",
       "away": "Alverca",
       "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564645,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T19:30:00Z",
+      "status": "FINISHED",
+      "home": "Espanyol",
+      "away": "Real Madrid",
+      "score": "1–2",
       "highlightsUrl": ""
     },
     {
@@ -53,6 +53,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 559714,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Troyes",
+      "away": "Paris FC",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 558631,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -61,6 +73,18 @@
       "status": "FINISHED",
       "home": "Genoa",
       "away": "Napoli",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559718,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-22",
+      "kickoffUTC": "2026-08-22T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Toulouse",
+      "away": "Olympique Lyon",
       "score": "0–2",
       "highlightsUrl": ""
     },
@@ -77,30 +101,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 559711,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Le Mans",
-      "away": "Brest",
-      "score": "2–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559718,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-08-22",
-      "kickoffUTC": "2026-08-22T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Toulouse",
-      "away": "Olympique Lyon",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 558636,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -113,15 +113,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 559714,
+      "matchId": 559711,
       "league": "Ligue 1",
       "competitionCode": "FL1",
       "when": "2026-08-22",
       "kickoffUTC": "2026-08-22T18:45:00Z",
       "status": "FINISHED",
-      "home": "Troyes",
-      "away": "Paris FC",
-      "score": "0–0",
+      "home": "Le Mans",
+      "away": "Brest",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
