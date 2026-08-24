@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T16:04:08.876Z",
+  "updated": "2026-08-24T16:55:06.773Z",
   "dateFrom": "2026-08-23",
   "dateTo": "2026-08-26",
   "competitions": [
@@ -17,6 +17,18 @@
   ],
   "items": [
     {
+      "matchId": 558630,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-24",
+      "kickoffUTC": "2026-08-24T16:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Bologna",
+      "away": "Lazio",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 564642,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -26,6 +38,18 @@
       "home": "Elche",
       "away": "Barça",
       "score": "0–5",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559713,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-23",
+      "kickoffUTC": "2026-08-23T18:45:00Z",
+      "status": "FINISHED",
+      "home": "PSG",
+      "away": "Stade Rennais",
+      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -50,18 +74,6 @@
       "home": "Atalanta",
       "away": "Sassuolo",
       "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559713,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-08-23",
-      "kickoffUTC": "2026-08-23T18:45:00Z",
-      "status": "FINISHED",
-      "home": "PSG",
-      "away": "Stade Rennais",
-      "score": "2–2",
       "highlightsUrl": ""
     },
     {
@@ -149,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 559717,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-08-23",
-      "kickoffUTC": "2026-08-23T13:00:00Z",
-      "status": "FINISHED",
-      "home": "Angers SCO",
-      "away": "Lille",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 560548,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -170,6 +170,18 @@
       "home": "Man City",
       "away": "Bournemouth",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559717,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-23",
+      "kickoffUTC": "2026-08-23T13:00:00Z",
+      "status": "FINISHED",
+      "home": "Angers SCO",
+      "away": "Lille",
+      "score": "0–2",
       "highlightsUrl": ""
     }
   ]
