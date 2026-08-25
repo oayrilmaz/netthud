@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T23:26:37.710Z",
+  "generatedAt": "2026-08-25T23:49:32.286Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -810,24 +810,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560554,
-      "id": "upcoming:560554",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Sunderland",
-      "away": "Fulham",
-      "kickoffUTC": "2026-08-30T13:00:00Z",
-      "kickoffLocal": "Aug 30 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3593,
-        "draw": 0.3259,
-        "away": 0.3148
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 560556,
       "id": "upcoming:560556",
       "league": "Premier League",
@@ -841,6 +823,24 @@
         "home": 0.1262,
         "draw": 0.2485,
         "away": 0.6253
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 560554,
+      "id": "upcoming:560554",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Sunderland",
+      "away": "Fulham",
+      "kickoffUTC": "2026-08-30T13:00:00Z",
+      "kickoffLocal": "Aug 30 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3593,
+        "draw": 0.3259,
+        "away": 0.3148
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1044,24 +1044,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 559703,
-      "id": "upcoming:559703",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Monaco",
-      "away": "Marseille",
-      "kickoffUTC": "2026-08-30T18:45:00Z",
-      "kickoffLocal": "Aug 30 • 2:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.096,
-        "draw": 0.2422,
-        "away": 0.6618
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558622,
       "id": "upcoming:558622",
       "league": "Serie A",
@@ -1075,6 +1057,24 @@
         "home": 0.7787,
         "draw": 0.2207,
         "away": 0.0006
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 559703,
+      "id": "upcoming:559703",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Monaco",
+      "away": "Marseille",
+      "kickoffUTC": "2026-08-30T18:45:00Z",
+      "kickoffLocal": "Aug 30 • 2:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.096,
+        "draw": 0.2422,
+        "away": 0.6618
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
