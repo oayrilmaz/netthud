@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T18:30:15.952Z",
+  "updated": "2026-08-29T21:14:47.749Z",
   "dateFrom": "2026-08-28",
   "dateTo": "2026-08-31",
   "competitions": [
@@ -17,12 +17,96 @@
   ],
   "items": [
     {
+      "matchId": 564649,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T19:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Sevilla FC",
+      "away": "Atleti",
+      "score": "1–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558244,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T19:00:00Z",
+      "status": "FINISHED",
+      "home": "Zwolle",
+      "away": "NEC",
+      "score": "1–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559705,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Lorient",
+      "away": "Troyes",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559710,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Brest",
+      "away": "Toulouse",
+      "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559706,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Olympique Lyon",
+      "away": "Le Havre",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559708,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Auxerre",
+      "away": "Angers SCO",
+      "score": "1–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558619,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Juventus",
+      "away": "Parma",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 567289,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-08-29",
       "kickoffUTC": "2026-08-29T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Acad. Viseu",
       "away": "Porto",
       "score": "0–3",
@@ -34,7 +118,7 @@
       "competitionCode": "PD",
       "when": "2026-08-29",
       "kickoffUTC": "2026-08-29T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Real Sociedad",
       "away": "Espanyol",
       "score": "2–1",
@@ -46,10 +130,10 @@
       "competitionCode": "DED",
       "when": "2026-08-29",
       "kickoffUTC": "2026-08-29T16:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "AZ",
       "away": "Go Ahead",
-      "score": "4–1",
+      "score": "5–2",
       "highlightsUrl": ""
     },
     {
@@ -58,10 +142,22 @@
       "competitionCode": "SA",
       "when": "2026-08-29",
       "kickoffUTC": "2026-08-29T16:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Sassuolo",
       "away": "Torino",
       "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558627,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Fiorentina",
+      "away": "Frosinone",
+      "score": "0–3",
       "highlightsUrl": ""
     },
     {
@@ -77,24 +173,12 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 558627,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-08-29",
-      "kickoffUTC": "2026-08-29T16:30:00Z",
-      "status": "IN_PLAY",
-      "home": "Fiorentina",
-      "away": "Frosinone",
-      "score": "0–3",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 558624,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-08-29",
       "kickoffUTC": "2026-08-29T16:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Monza",
       "away": "Udinese",
       "score": "2–3",
@@ -149,18 +233,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 567287,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-08-29",
-      "kickoffUTC": "2026-08-29T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Arouca",
-      "away": "Marítimo",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 567285,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -170,6 +242,18 @@
       "home": "Alverca",
       "away": "Santa Clara",
       "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567287,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Arouca",
+      "away": "Marítimo",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
@@ -197,18 +281,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 565780,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-08-29",
-      "kickoffUTC": "2026-08-29T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Elversberg",
-      "away": "Leverkusen",
-      "score": "3–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 565778,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -221,15 +293,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 565777,
+      "matchId": 565780,
       "league": "Bundesliga",
       "competitionCode": "BL1",
       "when": "2026-08-29",
       "kickoffUTC": "2026-08-29T13:30:00Z",
       "status": "FINISHED",
-      "home": "RB Leipzig",
-      "away": "M'gladbach",
-      "score": "3–0",
+      "home": "Elversberg",
+      "away": "Leverkusen",
+      "score": "3–2",
       "highlightsUrl": ""
     },
     {
@@ -254,6 +326,18 @@
       "home": "Union Berlin",
       "away": "Frankfurt",
       "score": "3–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 565777,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-08-29",
+      "kickoffUTC": "2026-08-29T13:30:00Z",
+      "status": "FINISHED",
+      "home": "RB Leipzig",
+      "away": "M'gladbach",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -305,18 +389,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 558625,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-08-28",
-      "kickoffUTC": "2026-08-28T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Milan",
-      "away": "Venezia FC",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 559702,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -326,6 +398,18 @@
       "home": "Lille",
       "away": "PSG",
       "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558625,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-28",
+      "kickoffUTC": "2026-08-28T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Milan",
+      "away": "Venezia FC",
+      "score": "2–0",
       "highlightsUrl": ""
     },
     {
