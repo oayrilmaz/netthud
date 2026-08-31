@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31T14:27:40.320Z",
+  "updated": "2026-08-31T20:18:12.401Z",
   "dateFrom": "2026-08-30",
   "dateTo": "2026-09-02",
   "competitions": [
@@ -17,15 +17,99 @@
   ],
   "items": [
     {
-      "matchId": 559703,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
+      "matchId": 564650,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-08-31",
+      "kickoffUTC": "2026-08-31T19:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Barça",
+      "away": "Rayo Vallecano",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567288,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-08-31",
+      "kickoffUTC": "2026-08-31T19:15:00Z",
+      "status": "PAUSED",
+      "home": "SL Benfica",
+      "away": "Estoril Praia",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567292,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-08-31",
+      "kickoffUTC": "2026-08-31T19:15:00Z",
+      "status": "PAUSED",
+      "home": "Braga",
+      "away": "Vitória SC",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 560557,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-08-31",
+      "kickoffUTC": "2026-08-31T19:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Aston Villa",
+      "away": "Arsenal",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558628,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-31",
+      "kickoffUTC": "2026-08-31T18:45:00Z",
+      "status": "IN_PLAY",
+      "home": "Atalanta",
+      "away": "Bologna",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564657,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-08-31",
+      "kickoffUTC": "2026-08-31T17:30:00Z",
+      "status": "FINISHED",
+      "home": "Osasuna",
+      "away": "Getafe",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558621,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-08-31",
+      "kickoffUTC": "2026-08-31T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Lecce",
+      "away": "Roma",
+      "score": "0–4",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558622,
+      "league": "Serie A",
+      "competitionCode": "SA",
       "when": "2026-08-30",
       "kickoffUTC": "2026-08-30T18:45:00Z",
       "status": "IN_PLAY",
-      "home": "Monaco",
-      "away": "Marseille",
-      "score": "1–0",
+      "home": "Lazio",
+      "away": "Genoa",
+      "score": "0–0",
       "highlightsUrl": ""
     },
     {
@@ -41,15 +125,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 558622,
-      "league": "Serie A",
-      "competitionCode": "SA",
+      "matchId": 559703,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
       "when": "2026-08-30",
       "kickoffUTC": "2026-08-30T18:45:00Z",
       "status": "IN_PLAY",
-      "home": "Lazio",
-      "away": "Genoa",
-      "score": "0–0",
+      "home": "Monaco",
+      "away": "Marseille",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -101,18 +185,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560553,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-08-30",
-      "kickoffUTC": "2026-08-30T15:30:00Z",
-      "status": "FINISHED",
-      "home": "Man United",
-      "away": "Ipswich Town",
-      "score": "5–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 565782,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -122,6 +194,18 @@
       "home": "Augsburg",
       "away": "Schalke",
       "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 560553,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-08-30",
+      "kickoffUTC": "2026-08-30T15:30:00Z",
+      "status": "FINISHED",
+      "home": "Man United",
+      "away": "Ipswich Town",
+      "score": "5–2",
       "highlightsUrl": ""
     },
     {
@@ -185,27 +269,15 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560559,
+      "matchId": 560554,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-08-30",
       "kickoffUTC": "2026-08-30T13:00:00Z",
       "status": "FINISHED",
-      "home": "Leeds United",
-      "away": "Brentford",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 560556,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-08-30",
-      "kickoffUTC": "2026-08-30T13:00:00Z",
-      "status": "FINISHED",
-      "home": "Chelsea",
-      "away": "Brighton Hove",
-      "score": "4–3",
+      "home": "Sunderland",
+      "away": "Fulham",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -221,27 +293,27 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560554,
+      "matchId": 560556,
       "league": "Premier League",
       "competitionCode": "PL",
       "when": "2026-08-30",
       "kickoffUTC": "2026-08-30T13:00:00Z",
       "status": "FINISHED",
-      "home": "Sunderland",
-      "away": "Fulham",
-      "score": "1–0",
+      "home": "Chelsea",
+      "away": "Brighton Hove",
+      "score": "4–3",
       "highlightsUrl": ""
     },
     {
-      "matchId": 558247,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
+      "matchId": 560559,
+      "league": "Premier League",
+      "competitionCode": "PL",
       "when": "2026-08-30",
-      "kickoffUTC": "2026-08-30T12:30:00Z",
+      "kickoffUTC": "2026-08-30T13:00:00Z",
       "status": "FINISHED",
-      "home": "Feyenoord",
-      "away": "Den Haag",
-      "score": "2–2",
+      "home": "Leeds United",
+      "away": "Brentford",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -253,6 +325,18 @@
       "status": "FINISHED",
       "home": "Willem II",
       "away": "Heerenveen",
+      "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558247,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-08-30",
+      "kickoffUTC": "2026-08-30T12:30:00Z",
+      "status": "FINISHED",
+      "home": "Feyenoord",
+      "away": "Den Haag",
       "score": "2–2",
       "highlightsUrl": ""
     },
