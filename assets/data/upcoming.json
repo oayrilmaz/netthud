@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T20:45:43.651Z",
+  "generatedAt": "2026-09-04T22:48:06.088Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -1188,24 +1188,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 575330,
-      "id": "upcoming:575330",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Stuttgart",
-      "away": "Viking",
-      "kickoffUTC": "2026-09-09T16:45:00Z",
-      "kickoffLocal": "Sep 9 • 12:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.34,
-        "draw": 0.32,
-        "away": 0.34
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558239,
       "id": "upcoming:558239",
       "league": "Eredivisie",
@@ -1219,6 +1201,24 @@
         "home": 0.7568,
         "draw": 0.2278,
         "away": 0.0153
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 575330,
+      "id": "upcoming:575330",
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "home": "Stuttgart",
+      "away": "Viking",
+      "kickoffUTC": "2026-09-09T16:45:00Z",
+      "kickoffLocal": "Sep 9 • 12:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.34,
+        "draw": 0.32,
+        "away": 0.34
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
