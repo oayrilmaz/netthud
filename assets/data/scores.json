@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04T14:50:00.360Z",
+  "updated": "2026-09-04T18:09:16.718Z",
   "dateFrom": "2026-09-03",
   "dateTo": "2026-09-06",
   "competitions": [
@@ -15,5 +15,54 @@
     "EC",
     "TSL"
   ],
-  "items": []
+  "items": [
+    {
+      "matchId": 558250,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-09-04",
+      "kickoffUTC": "2026-09-04T18:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Sparta",
+      "away": "Zwolle",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559699,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-09-04",
+      "kickoffUTC": "2026-09-04T17:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Olympique Lyon",
+      "away": "Auxerre",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564682,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-09-03",
+      "kickoffUTC": "2026-09-03T19:00:00Z",
+      "status": "FINISHED",
+      "home": "Real Sociedad",
+      "away": "Celta",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559696,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-09-03",
+      "kickoffUTC": "2026-09-03T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Toulouse",
+      "away": "Lille",
+      "score": "0–1",
+      "highlightsUrl": ""
+    }
+  ]
 }
