@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11T15:14:03.834Z",
+  "updated": "2026-09-11T18:37:42.140Z",
   "dateFrom": "2026-09-10",
   "dateTo": "2026-09-13",
   "competitions": [
@@ -17,6 +17,30 @@
   ],
   "items": [
     {
+      "matchId": 565797,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-09-11",
+      "kickoffUTC": "2026-09-11T18:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Union Berlin",
+      "away": "Schalke",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558899,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-09-11",
+      "kickoffUTC": "2026-09-11T18:00:00Z",
+      "status": "IN_PLAY",
+      "home": "AZ",
+      "away": "Willem II",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 567276,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -26,42 +50,6 @@
       "home": "Amadora",
       "away": "Braga",
       "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 575337,
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "when": "2026-09-10",
-      "kickoffUTC": "2026-09-10T19:00:00Z",
-      "status": "FINISHED",
-      "home": "Bayern",
-      "away": "Bodø/Glimt",
-      "score": "5–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 575339,
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "when": "2026-09-10",
-      "kickoffUTC": "2026-09-10T19:00:00Z",
-      "status": "FINISHED",
-      "home": "Como 1907",
-      "away": "RB Leipzig",
-      "score": "4–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 575338,
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "when": "2026-09-10",
-      "kickoffUTC": "2026-09-10T19:00:00Z",
-      "status": "FINISHED",
-      "home": "Man United",
-      "away": "Sabah FK",
-      "score": "4–0",
       "highlightsUrl": ""
     },
     {
@@ -77,15 +65,39 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 575335,
+      "matchId": 575338,
       "league": "UEFA Champions League",
       "competitionCode": "CL",
       "when": "2026-09-10",
-      "kickoffUTC": "2026-09-10T16:45:00Z",
+      "kickoffUTC": "2026-09-10T19:00:00Z",
       "status": "FINISHED",
-      "home": "Fenerbahçe",
-      "away": "Roma",
-      "score": "1–1",
+      "home": "Man United",
+      "away": "Sabah FK",
+      "score": "4–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 575339,
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "when": "2026-09-10",
+      "kickoffUTC": "2026-09-10T19:00:00Z",
+      "status": "FINISHED",
+      "home": "Como 1907",
+      "away": "RB Leipzig",
+      "score": "4–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 575337,
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "when": "2026-09-10",
+      "kickoffUTC": "2026-09-10T19:00:00Z",
+      "status": "FINISHED",
+      "home": "Bayern",
+      "away": "Bodø/Glimt",
+      "score": "5–0",
       "highlightsUrl": ""
     },
     {
@@ -97,6 +109,18 @@
       "status": "FINISHED",
       "home": "PSV",
       "away": "Shaktar",
+      "score": "1–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 575335,
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "when": "2026-09-10",
+      "kickoffUTC": "2026-09-10T16:45:00Z",
+      "status": "FINISHED",
+      "home": "Fenerbahçe",
+      "away": "Roma",
       "score": "1–1",
       "highlightsUrl": ""
     }
