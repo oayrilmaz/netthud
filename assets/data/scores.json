@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-16T18:48:51.296Z",
+  "updated": "2026-09-16T21:55:28.396Z",
   "dateFrom": "2026-09-15",
   "dateTo": "2026-09-18",
   "competitions": [
@@ -17,15 +17,39 @@
   ],
   "items": [
     {
+      "matchId": 564687,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-09-16",
+      "kickoffUTC": "2026-09-16T19:30:00Z",
+      "status": "FINISHED",
+      "home": "Barça",
+      "away": "Santander",
+      "score": "7–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564685,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-09-16",
+      "kickoffUTC": "2026-09-16T19:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Levante",
+      "away": "Athletic",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 564684,
       "league": "Primera Division",
       "competitionCode": "PD",
       "when": "2026-09-16",
       "kickoffUTC": "2026-09-16T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Atleti",
       "away": "Osasuna",
-      "score": "3–0",
+      "score": "4–0",
       "highlightsUrl": ""
     },
     {
@@ -34,7 +58,7 @@
       "competitionCode": "PD",
       "when": "2026-09-16",
       "kickoffUTC": "2026-09-16T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Deportivo",
       "away": "Sevilla FC",
       "score": "0–1",
