@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17T14:43:20.927Z",
+  "updated": "2026-09-17T18:36:11.153Z",
   "dateFrom": "2026-09-16",
   "dateTo": "2026-09-19",
   "competitions": [
@@ -17,6 +17,18 @@
   ],
   "items": [
     {
+      "matchId": 564686,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-09-17",
+      "kickoffUTC": "2026-09-17T17:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Real Betis",
+      "away": "Getafe",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 564687,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -29,18 +41,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 564684,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-09-16",
-      "kickoffUTC": "2026-09-16T17:00:00Z",
-      "status": "FINISHED",
-      "home": "Atleti",
-      "away": "Osasuna",
-      "score": "4–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 564679,
       "league": "Primera Division",
       "competitionCode": "PD",
@@ -50,6 +50,18 @@
       "home": "Deportivo",
       "away": "Sevilla FC",
       "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564684,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-09-16",
+      "kickoffUTC": "2026-09-16T17:00:00Z",
+      "status": "FINISHED",
+      "home": "Atleti",
+      "away": "Osasuna",
+      "score": "4–0",
       "highlightsUrl": ""
     }
   ]
