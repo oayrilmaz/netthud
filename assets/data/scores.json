@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-20T11:42:47.119Z",
+  "updated": "2026-09-20T14:53:20.277Z",
   "dateFrom": "2026-09-19",
   "dateTo": "2026-09-22",
   "competitions": [
@@ -17,15 +17,183 @@
   ],
   "items": [
     {
+      "matchId": 558883,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T14:45:00Z",
+      "status": "IN_PLAY",
+      "home": "NEC",
+      "away": "Go Ahead",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567315,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Vitória SC",
+      "away": "Moreirense",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 567317,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T14:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Amadora",
+      "away": "Acad. Viseu",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564688,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T14:15:00Z",
+      "status": "IN_PLAY",
+      "home": "Atleti",
+      "away": "Real Madrid",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 565807,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T13:30:00Z",
+      "status": "IN_PLAY",
+      "home": "Leverkusen",
+      "away": "RB Leipzig",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559676,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T13:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Auxerre",
+      "away": "Brest",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558592,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T13:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Frosinone",
+      "away": "Como 1907",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 560582,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T13:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Bournemouth",
+      "away": "Liverpool",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558590,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T13:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Parma",
+      "away": "Genoa",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 560590,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T13:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Man City",
+      "away": "Sunderland",
+      "score": "5–3",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 560585,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T13:00:00Z",
+      "status": "IN_PLAY",
+      "home": "Leeds United",
+      "away": "Crystal Palace",
+      "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558884,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T12:30:00Z",
+      "status": "FINISHED",
+      "home": "AZ",
+      "away": "Telstar",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558882,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T12:30:00Z",
+      "status": "FINISHED",
+      "home": "Twente",
+      "away": "PSV",
+      "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564697,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-09-20",
+      "kickoffUTC": "2026-09-20T12:00:00Z",
+      "status": "FINISHED",
+      "home": "Getafe",
+      "away": "Málaga",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 558591,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-09-20",
       "kickoffUTC": "2026-09-20T10:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Fiorentina",
       "away": "Napoli",
-      "score": "0–1",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -34,10 +202,10 @@
       "competitionCode": "DED",
       "when": "2026-09-20",
       "kickoffUTC": "2026-09-20T10:15:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Feyenoord",
       "away": "Utrecht",
-      "score": "4–0",
+      "score": "5–0",
       "highlightsUrl": ""
     },
     {
@@ -77,18 +245,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 559680,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-09-19",
-      "kickoffUTC": "2026-09-19T18:45:00Z",
-      "status": "FINISHED",
-      "home": "Toulouse",
-      "away": "Le Havre",
-      "score": "3–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 559683,
       "league": "Ligue 1",
       "competitionCode": "FL1",
@@ -110,6 +266,18 @@
       "home": "Venezia FC",
       "away": "Lazio",
       "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559680,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-09-19",
+      "kickoffUTC": "2026-09-19T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Toulouse",
+      "away": "Le Havre",
+      "score": "3–2",
       "highlightsUrl": ""
     },
     {
@@ -185,18 +353,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 564694,
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "when": "2026-09-19",
-      "kickoffUTC": "2026-09-19T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Celta",
-      "away": "Santander",
-      "score": "5–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 560589,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -206,6 +362,18 @@
       "home": "Nottingham",
       "away": "Coventry City",
       "score": "0–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 564694,
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "when": "2026-09-19",
+      "kickoffUTC": "2026-09-19T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Celta",
+      "away": "Santander",
+      "score": "5–0",
       "highlightsUrl": ""
     },
     {
@@ -233,18 +401,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 558889,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "when": "2026-09-19",
-      "kickoffUTC": "2026-09-19T14:30:00Z",
-      "status": "FINISHED",
-      "home": "Den Haag",
-      "away": "Cambuur",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 567311,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
@@ -254,6 +410,18 @@
       "home": "CD Nacional",
       "away": "Famalicão",
       "score": "0–4",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558889,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-09-19",
+      "kickoffUTC": "2026-09-19T14:30:00Z",
+      "status": "FINISHED",
+      "home": "Den Haag",
+      "away": "Cambuur",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -317,18 +485,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 565808,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-09-19",
-      "kickoffUTC": "2026-09-19T13:30:00Z",
-      "status": "FINISHED",
-      "home": "HSV",
-      "away": "1. FC Köln",
-      "score": "2–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 565810,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -338,6 +494,18 @@
       "home": "Bremen",
       "away": "Augsburg",
       "score": "3–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 565808,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-09-19",
+      "kickoffUTC": "2026-09-19T13:30:00Z",
+      "status": "FINISHED",
+      "home": "HSV",
+      "away": "1. FC Köln",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
