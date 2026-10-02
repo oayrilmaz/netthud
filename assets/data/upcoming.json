@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T07:00:50.569Z",
+  "generatedAt": "2026-10-02T13:51:52.135Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -16,5 +16,114 @@
     "TSL"
   ],
   "model": "NetThud Table Model v1",
-  "items": []
+  "items": [
+    {
+      "matchId": 567327,
+      "id": "upcoming:567327",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Moreirense",
+      "away": "Gil Vicente",
+      "kickoffUTC": "2026-10-09T17:45:00Z",
+      "kickoffLocal": "Oct 9 • 1:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2755,
+        "draw": 0.2876,
+        "away": 0.4369
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558881,
+      "id": "upcoming:558881",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "PSV",
+      "away": "Heerenveen",
+      "kickoffUTC": "2026-10-09T18:00:00Z",
+      "kickoffLocal": "Oct 9 • 2:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7383,
+        "draw": 0.2329,
+        "away": 0.0288
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 565820,
+      "id": "upcoming:565820",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Dortmund",
+      "away": "Bremen",
+      "kickoffUTC": "2026-10-09T18:30:00Z",
+      "kickoffLocal": "Oct 9 • 2:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7441,
+        "draw": 0.2313,
+        "away": 0.0246
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 559669,
+      "id": "upcoming:559669",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "RC Lens",
+      "away": "Olympique Lyon",
+      "kickoffUTC": "2026-10-09T18:45:00Z",
+      "kickoffLocal": "Oct 9 • 2:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0376,
+        "draw": 0.2301,
+        "away": 0.7323
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 564706,
+      "id": "upcoming:564706",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Málaga",
+      "away": "Espanyol",
+      "kickoffUTC": "2026-10-09T19:00:00Z",
+      "kickoffLocal": "Oct 9 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.131,
+        "draw": 0.2495,
+        "away": 0.6194
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 567326,
+      "id": "upcoming:567326",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Braga",
+      "away": "Sporting CP",
+      "kickoffUTC": "2026-10-09T19:15:00Z",
+      "kickoffLocal": "Oct 9 • 3:15 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2015,
+        "draw": 0.2659,
+        "away": 0.5326
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    }
+  ]
 }
