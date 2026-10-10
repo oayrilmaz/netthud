@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T20:04:13.651Z",
+  "updated": "2026-10-10T23:33:38.448Z",
   "dateFrom": "2026-10-09",
   "dateTo": "2026-10-12",
   "competitions": [
@@ -17,39 +17,27 @@
   ],
   "items": [
     {
-      "matchId": 567321,
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T19:30:00Z",
-      "status": "IN_PLAY",
-      "home": "Casa Pia",
-      "away": "Santa Clara",
-      "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 567322,
       "league": "Primeira Liga",
       "competitionCode": "PPL",
       "when": "2026-10-10",
       "kickoffUTC": "2026-10-10T19:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Acad. Viseu",
       "away": "Estoril Praia",
-      "score": "0–0",
+      "score": "2–1",
       "highlightsUrl": ""
     },
     {
-      "matchId": 558878,
-      "league": "Eredivisie",
-      "competitionCode": "DED",
+      "matchId": 567321,
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
       "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T19:00:00Z",
-      "status": "IN_PLAY",
-      "home": "Ajax",
-      "away": "NEC",
-      "score": "1–1",
+      "kickoffUTC": "2026-10-10T19:30:00Z",
+      "status": "FINISHED",
+      "home": "Casa Pia",
+      "away": "Santa Clara",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -58,10 +46,22 @@
       "competitionCode": "PD",
       "when": "2026-10-10",
       "kickoffUTC": "2026-10-10T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Real Madrid",
       "away": "Villarreal",
-      "score": "0–0",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 558878,
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "when": "2026-10-10",
+      "kickoffUTC": "2026-10-10T19:00:00Z",
+      "status": "FINISHED",
+      "home": "Ajax",
+      "away": "NEC",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -70,46 +70,10 @@
       "competitionCode": "SA",
       "when": "2026-10-10",
       "kickoffUTC": "2026-10-10T18:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Napoli",
       "away": "Frosinone",
-      "score": "2–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559666,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T18:45:00Z",
-      "status": "IN_PLAY",
-      "home": "Brest",
-      "away": "Angers SCO",
-      "score": "4–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559672,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T18:45:00Z",
-      "status": "IN_PLAY",
-      "home": "PSG",
-      "away": "Le Mans",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559668,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T18:45:00Z",
-      "status": "IN_PLAY",
-      "home": "Lorient",
-      "away": "Paris FC",
-      "score": "0–0",
+      "score": "3–0",
       "highlightsUrl": ""
     },
     {
@@ -118,10 +82,46 @@
       "competitionCode": "FL1",
       "when": "2026-10-10",
       "kickoffUTC": "2026-10-10T18:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Monaco",
       "away": "Toulouse",
-      "score": "2–1",
+      "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559672,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-10-10",
+      "kickoffUTC": "2026-10-10T18:45:00Z",
+      "status": "FINISHED",
+      "home": "PSG",
+      "away": "Le Mans",
+      "score": "3–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559668,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-10-10",
+      "kickoffUTC": "2026-10-10T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Lorient",
+      "away": "Paris FC",
+      "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559666,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-10-10",
+      "kickoffUTC": "2026-10-10T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Brest",
+      "away": "Angers SCO",
+      "score": "5–1",
       "highlightsUrl": ""
     },
     {
@@ -161,18 +161,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560600,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Man United",
-      "away": "Tottenham",
-      "score": "1–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 565815,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -194,6 +182,18 @@
       "home": "Barça",
       "away": "Getafe",
       "score": "3–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 560600,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-10-10",
+      "kickoffUTC": "2026-10-10T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Man United",
+      "away": "Tottenham",
+      "score": "1–1",
       "highlightsUrl": ""
     },
     {
@@ -293,42 +293,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 565818,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Hoffenheim",
-      "away": "HSV",
-      "score": "2–3",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 565812,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Mainz",
-      "away": "Leverkusen",
-      "score": "3–4",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 565813,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-10-10",
-      "kickoffUTC": "2026-10-10T13:30:00Z",
-      "status": "FINISHED",
-      "home": "SC Paderborn",
-      "away": "Stuttgart",
-      "score": "0–2",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 565819,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -350,6 +314,42 @@
       "home": "Union Berlin",
       "away": "Elversberg",
       "score": "1–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 565813,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-10-10",
+      "kickoffUTC": "2026-10-10T13:30:00Z",
+      "status": "FINISHED",
+      "home": "SC Paderborn",
+      "away": "Stuttgart",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 565812,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-10-10",
+      "kickoffUTC": "2026-10-10T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Mainz",
+      "away": "Leverkusen",
+      "score": "3–4",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 565818,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-10-10",
+      "kickoffUTC": "2026-10-10T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Hoffenheim",
+      "away": "HSV",
+      "score": "2–3",
       "highlightsUrl": ""
     },
     {
