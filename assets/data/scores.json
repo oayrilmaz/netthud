@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17T20:17:54.700Z",
+  "updated": "2026-10-17T22:30:59.732Z",
   "dateFrom": "2026-10-16",
   "dateTo": "2026-10-19",
   "competitions": [
@@ -22,10 +22,10 @@
       "competitionCode": "DED",
       "when": "2026-10-17",
       "kickoffUTC": "2026-10-17T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Sparta",
       "away": "Willem II",
-      "score": "2–1",
+      "score": "3–2",
       "highlightsUrl": ""
     },
     {
@@ -34,22 +34,10 @@
       "competitionCode": "PD",
       "when": "2026-10-17",
       "kickoffUTC": "2026-10-17T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Valencia",
       "away": "Athletic",
       "score": "0–0",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 559659,
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "when": "2026-10-17",
-      "kickoffUTC": "2026-10-17T18:45:00Z",
-      "status": "IN_PLAY",
-      "home": "Troyes",
-      "away": "RC Lens",
-      "score": "1–3",
       "highlightsUrl": ""
     },
     {
@@ -58,10 +46,22 @@
       "competitionCode": "SA",
       "when": "2026-10-17",
       "kickoffUTC": "2026-10-17T18:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Roma",
       "away": "Genoa",
-      "score": "1–0",
+      "score": "2–0",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 559659,
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "when": "2026-10-17",
+      "kickoffUTC": "2026-10-17T18:45:00Z",
+      "status": "FINISHED",
+      "home": "Troyes",
+      "away": "RC Lens",
+      "score": "1–3",
       "highlightsUrl": ""
     },
     {
@@ -70,7 +70,7 @@
       "competitionCode": "FL1",
       "when": "2026-10-17",
       "kickoffUTC": "2026-10-17T18:45:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Lille",
       "away": "Brest",
       "score": "1–1",
@@ -101,18 +101,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560607,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-10-17",
-      "kickoffUTC": "2026-10-17T16:30:00Z",
-      "status": "FINISHED",
-      "home": "Newcastle",
-      "away": "Aston Villa",
-      "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 565825,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -122,6 +110,18 @@
       "home": "Bayern",
       "away": "RB Leipzig",
       "score": "6–1",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 560607,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-10-17",
+      "kickoffUTC": "2026-10-17T16:30:00Z",
+      "status": "FINISHED",
+      "home": "Newcastle",
+      "away": "Aston Villa",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -185,18 +185,6 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 560602,
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "when": "2026-10-17",
-      "kickoffUTC": "2026-10-17T14:00:00Z",
-      "status": "FINISHED",
-      "home": "Fulham",
-      "away": "Hull City",
-      "score": "1–0",
-      "highlightsUrl": ""
-    },
-    {
       "matchId": 560611,
       "league": "Premier League",
       "competitionCode": "PL",
@@ -206,6 +194,18 @@
       "home": "Brentford",
       "away": "Liverpool",
       "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 560602,
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "when": "2026-10-17",
+      "kickoffUTC": "2026-10-17T14:00:00Z",
+      "status": "FINISHED",
+      "home": "Fulham",
+      "away": "Hull City",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -233,6 +233,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 565821,
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "when": "2026-10-17",
+      "kickoffUTC": "2026-10-17T13:30:00Z",
+      "status": "FINISHED",
+      "home": "Union Berlin",
+      "away": "Dortmund",
+      "score": "0–0",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 565823,
       "league": "Bundesliga",
       "competitionCode": "BL1",
@@ -254,18 +266,6 @@
       "home": "Schalke",
       "away": "Mainz",
       "score": "0–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 565821,
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "when": "2026-10-17",
-      "kickoffUTC": "2026-10-17T13:30:00Z",
-      "status": "FINISHED",
-      "home": "Union Berlin",
-      "away": "Dortmund",
-      "score": "0–0",
       "highlightsUrl": ""
     },
     {
