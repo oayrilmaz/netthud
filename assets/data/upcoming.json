@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T22:45:31.621Z",
+  "generatedAt": "2026-10-26T00:59:58.450Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -180,24 +180,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558554,
-      "id": "upcoming:558554",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Monza",
-      "away": "Napoli",
-      "kickoffUTC": "2026-10-28T19:45:00Z",
-      "kickoffLocal": "Oct 28 • 3:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2087,
-        "draw": 0.2677,
-        "away": 0.5236
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558552,
       "id": "upcoming:558552",
       "league": "Serie A",
@@ -211,6 +193,24 @@
         "home": 0.0927,
         "draw": 0.2415,
         "away": 0.6658
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558554,
+      "id": "upcoming:558554",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Monza",
+      "away": "Napoli",
+      "kickoffUTC": "2026-10-28T19:45:00Z",
+      "kickoffLocal": "Oct 28 • 3:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2087,
+        "draw": 0.2677,
+        "away": 0.5236
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -396,6 +396,42 @@
       "model": "NetThud Table Model v1"
     },
     {
+      "matchId": 565842,
+      "id": "upcoming:565842",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Augsburg",
+      "away": "Freiburg",
+      "kickoffUTC": "2026-10-31T14:30:00Z",
+      "kickoffLocal": "Oct 31 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2157,
+        "draw": 0.2696,
+        "away": 0.5147
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 565840,
+      "id": "upcoming:565840",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Schalke",
+      "away": "RB Leipzig",
+      "kickoffUTC": "2026-10-31T14:30:00Z",
+      "kickoffLocal": "Oct 31 • 10:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0589,
+        "draw": 0.2346,
+        "away": 0.7065
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
       "matchId": 565843,
       "id": "upcoming:565843",
       "league": "Bundesliga",
@@ -445,42 +481,6 @@
         "home": 0.7106,
         "draw": 0.2399,
         "away": 0.0494
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 565840,
-      "id": "upcoming:565840",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Schalke",
-      "away": "RB Leipzig",
-      "kickoffUTC": "2026-10-31T14:30:00Z",
-      "kickoffLocal": "Oct 31 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0589,
-        "draw": 0.2346,
-        "away": 0.7065
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 565842,
-      "id": "upcoming:565842",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Augsburg",
-      "away": "Freiburg",
-      "kickoffUTC": "2026-10-31T14:30:00Z",
-      "kickoffLocal": "Oct 31 • 10:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2157,
-        "draw": 0.2696,
-        "away": 0.5147
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -594,24 +594,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 567343,
-      "id": "upcoming:567343",
-      "league": "Primeira Liga",
-      "competitionCode": "PPL",
-      "home": "Moreirense",
-      "away": "Amadora",
-      "kickoffUTC": "2026-10-31T15:30:00Z",
-      "kickoffLocal": "Oct 31 • 11:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3786,
-        "draw": 0.34,
-        "away": 0.2814
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558854,
       "id": "upcoming:558854",
       "league": "Eredivisie",
@@ -625,6 +607,24 @@
         "home": 0.7154,
         "draw": 0.2388,
         "away": 0.0459
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 567343,
+      "id": "upcoming:567343",
+      "league": "Primeira Liga",
+      "competitionCode": "PPL",
+      "home": "Moreirense",
+      "away": "Amadora",
+      "kickoffUTC": "2026-10-31T15:30:00Z",
+      "kickoffLocal": "Oct 31 • 11:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.3786,
+        "draw": 0.34,
+        "away": 0.2814
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -666,24 +666,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 565845,
-      "id": "upcoming:565845",
-      "league": "Bundesliga",
-      "competitionCode": "BL1",
-      "home": "Bayern",
-      "away": "Dortmund",
-      "kickoffUTC": "2026-10-31T17:30:00Z",
-      "kickoffLocal": "Oct 31 • 1:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5998,
-        "draw": 0.2678,
-        "away": 0.1324
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 560627,
       "id": "upcoming:560627",
       "league": "Premier League",
@@ -697,6 +679,24 @@
         "home": 0.5636,
         "draw": 0.2776,
         "away": 0.1588
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 565845,
+      "id": "upcoming:565845",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Bayern",
+      "away": "Dortmund",
+      "kickoffUTC": "2026-10-31T17:30:00Z",
+      "kickoffLocal": "Oct 31 • 1:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5998,
+        "draw": 0.2678,
+        "away": 0.1324
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -720,24 +720,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558853,
-      "id": "upcoming:558853",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "PSV",
-      "away": "Willem II",
-      "kickoffUTC": "2026-10-31T17:45:00Z",
-      "kickoffLocal": "Oct 31 • 1:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.7754,
-        "draw": 0.222,
-        "away": 0.0026
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558852,
       "id": "upcoming:558852",
       "league": "Eredivisie",
@@ -751,6 +733,24 @@
         "home": 0.5719,
         "draw": 0.2753,
         "away": 0.1528
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558853,
+      "id": "upcoming:558853",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "PSV",
+      "away": "Willem II",
+      "kickoffUTC": "2026-10-31T17:45:00Z",
+      "kickoffLocal": "Oct 31 • 1:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7754,
+        "draw": 0.222,
+        "away": 0.0026
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -774,19 +774,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 559643,
-      "id": "upcoming:559643",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Troyes",
-      "away": "Le Mans",
+      "matchId": 558548,
+      "id": "upcoming:558548",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Milan",
+      "away": "Inter",
       "kickoffUTC": "2026-10-31T19:45:00Z",
       "kickoffLocal": "Oct 31 • 3:45 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.2442,
-        "draw": 0.2776,
-        "away": 0.4783
+        "home": 0.203,
+        "draw": 0.2663,
+        "away": 0.5307
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -810,37 +810,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558548,
-      "id": "upcoming:558548",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Milan",
-      "away": "Inter",
+      "matchId": 559643,
+      "id": "upcoming:559643",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Troyes",
+      "away": "Le Mans",
       "kickoffUTC": "2026-10-31T19:45:00Z",
       "kickoffLocal": "Oct 31 • 3:45 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.203,
-        "draw": 0.2663,
-        "away": 0.5307
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 558851,
-      "id": "upcoming:558851",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Ajax",
-      "away": "AZ",
-      "kickoffUTC": "2026-10-31T20:00:00Z",
-      "kickoffLocal": "Oct 31 • 4:00 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.5315,
-        "draw": 0.2867,
-        "away": 0.1818
+        "home": 0.2442,
+        "draw": 0.2776,
+        "away": 0.4783
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -877,6 +859,24 @@
         "home": 0.7688,
         "draw": 0.2243,
         "away": 0.007
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558851,
+      "id": "upcoming:558851",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Ajax",
+      "away": "AZ",
+      "kickoffUTC": "2026-10-31T20:00:00Z",
+      "kickoffLocal": "Oct 31 • 4:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5315,
+        "draw": 0.2867,
+        "away": 0.1818
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -972,24 +972,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558847,
-      "id": "upcoming:558847",
-      "league": "Eredivisie",
-      "competitionCode": "DED",
-      "home": "Excelsior",
-      "away": "Twente",
-      "kickoffUTC": "2026-11-01T13:30:00Z",
-      "kickoffLocal": "Nov 1 • 8:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.096,
-        "draw": 0.2422,
-        "away": 0.6618
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558848,
       "id": "upcoming:558848",
       "league": "Eredivisie",
@@ -1003,6 +985,24 @@
         "home": 0.2375,
         "draw": 0.2756,
         "away": 0.4869
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558847,
+      "id": "upcoming:558847",
+      "league": "Eredivisie",
+      "competitionCode": "DED",
+      "home": "Excelsior",
+      "away": "Twente",
+      "kickoffUTC": "2026-11-01T13:30:00Z",
+      "kickoffLocal": "Nov 1 • 8:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.096,
+        "draw": 0.2422,
+        "away": 0.6618
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1026,24 +1026,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 559647,
-      "id": "upcoming:559647",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Strasbourg",
-      "away": "Auxerre",
-      "kickoffUTC": "2026-11-01T14:00:00Z",
-      "kickoffLocal": "Nov 1 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2962,
-        "draw": 0.2951,
-        "away": 0.4087
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 558546,
       "id": "upcoming:558546",
       "league": "Serie A",
@@ -1057,6 +1039,24 @@
         "home": 0.7428,
         "draw": 0.2317,
         "away": 0.0255
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 559647,
+      "id": "upcoming:559647",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Strasbourg",
+      "away": "Auxerre",
+      "kickoffUTC": "2026-11-01T14:00:00Z",
+      "kickoffLocal": "Nov 1 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2962,
+        "draw": 0.2951,
+        "away": 0.4087
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1152,24 +1152,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560631,
-      "id": "upcoming:560631",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Liverpool",
-      "away": "Arsenal",
-      "kickoffUTC": "2026-11-01T16:30:00Z",
-      "kickoffLocal": "Nov 1 • 11:30 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.1543,
-        "draw": 0.2547,
-        "away": 0.591
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 565844,
       "id": "upcoming:565844",
       "league": "Bundesliga",
@@ -1183,6 +1165,24 @@
         "home": 0.4012,
         "draw": 0.3307,
         "away": 0.2681
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 560631,
+      "id": "upcoming:560631",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Liverpool",
+      "away": "Arsenal",
+      "kickoffUTC": "2026-11-01T16:30:00Z",
+      "kickoffLocal": "Nov 1 • 11:30 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.1543,
+        "draw": 0.2547,
+        "away": 0.591
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
