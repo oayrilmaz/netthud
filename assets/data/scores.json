@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29T18:58:09.295Z",
+  "updated": "2026-10-29T23:12:21.379Z",
   "dateFrom": "2026-10-28",
   "dateTo": "2026-10-31",
   "competitions": [
@@ -17,15 +17,27 @@
   ],
   "items": [
     {
+      "matchId": 558551,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-10-29",
+      "kickoffUTC": "2026-10-29T19:45:00Z",
+      "status": "FINISHED",
+      "home": "Fiorentina",
+      "away": "Atalanta",
+      "score": "2–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 558558,
       "league": "Serie A",
       "competitionCode": "SA",
       "when": "2026-10-29",
       "kickoffUTC": "2026-10-29T17:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Frosinone",
       "away": "Lecce",
-      "score": "2–0",
+      "score": "5–1",
       "highlightsUrl": ""
     },
     {
@@ -53,6 +65,18 @@
       "highlightsUrl": ""
     },
     {
+      "matchId": 558550,
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "when": "2026-10-28",
+      "kickoffUTC": "2026-10-28T17:30:00Z",
+      "status": "FINISHED",
+      "home": "Venezia FC",
+      "away": "Inter",
+      "score": "0–2",
+      "highlightsUrl": ""
+    },
+    {
       "matchId": 558553,
       "league": "Serie A",
       "competitionCode": "SA",
@@ -74,18 +98,6 @@
       "home": "Milan",
       "away": "Bologna",
       "score": "2–4",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 558550,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-10-28",
-      "kickoffUTC": "2026-10-28T17:30:00Z",
-      "status": "FINISHED",
-      "home": "Venezia FC",
-      "away": "Inter",
-      "score": "0–2",
       "highlightsUrl": ""
     }
   ]
