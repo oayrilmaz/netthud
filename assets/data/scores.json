@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-30T20:31:20.676Z",
-  "dateFrom": "2026-10-29",
-  "dateTo": "2026-11-01",
+  "updated": "2026-10-31T00:05:29.116Z",
+  "dateFrom": "2026-10-30",
+  "dateTo": "2026-11-02",
   "competitions": [
     "PL",
     "PD",
@@ -22,10 +22,10 @@
       "competitionCode": "PPL",
       "when": "2026-10-30",
       "kickoffUTC": "2026-10-30T20:15:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Casa Pia",
       "away": "Sporting CP",
-      "score": "0–0",
+      "score": "0–2",
       "highlightsUrl": ""
     },
     {
@@ -34,10 +34,10 @@
       "competitionCode": "FL1",
       "when": "2026-10-30",
       "kickoffUTC": "2026-10-30T20:05:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Lille",
       "away": "RC Lens",
-      "score": "0–0",
+      "score": "1–0",
       "highlightsUrl": ""
     },
     {
@@ -46,10 +46,10 @@
       "competitionCode": "PD",
       "when": "2026-10-30",
       "kickoffUTC": "2026-10-30T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Villarreal",
       "away": "Espanyol",
-      "score": "0–0",
+      "score": "0–1",
       "highlightsUrl": ""
     },
     {
@@ -58,10 +58,10 @@
       "competitionCode": "BL1",
       "when": "2026-10-30",
       "kickoffUTC": "2026-10-30T19:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "Elversberg",
       "away": "Mainz",
-      "score": "3–0",
+      "score": "4–1",
       "highlightsUrl": ""
     },
     {
@@ -86,30 +86,6 @@
       "home": "Nice",
       "away": "Stade Rennais",
       "score": "5–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 558551,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-10-29",
-      "kickoffUTC": "2026-10-29T19:45:00Z",
-      "status": "FINISHED",
-      "home": "Fiorentina",
-      "away": "Atalanta",
-      "score": "2–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 558558,
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "when": "2026-10-29",
-      "kickoffUTC": "2026-10-29T17:30:00Z",
-      "status": "FINISHED",
-      "home": "Frosinone",
-      "away": "Lecce",
-      "score": "5–1",
       "highlightsUrl": ""
     }
   ]
