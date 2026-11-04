@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T11:23:49.890Z",
+  "generatedAt": "2026-11-04T18:45:29.914Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -17,42 +17,6 @@
   ],
   "model": "NetThud Table Model v1",
   "items": [
-    {
-      "matchId": 575386,
-      "id": "upcoming:575386",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "PAE AEK",
-      "away": "Real Madrid",
-      "kickoffUTC": "2026-11-04T17:45:00Z",
-      "kickoffLocal": "Nov 4 • 12:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0038,
-        "draw": 0.2217,
-        "away": 0.7745
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 575387,
-      "id": "upcoming:575387",
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "home": "Fenerbahçe",
-      "away": "Liverpool",
-      "kickoffUTC": "2026-11-04T17:45:00Z",
-      "kickoffLocal": "Nov 4 • 12:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0016,
-        "draw": 0.2209,
-        "away": 0.7775
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
     {
       "matchId": 575390,
       "id": "upcoming:575390",
@@ -216,24 +180,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 558537,
-      "id": "upcoming:558537",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Venezia FC",
-      "away": "Udinese",
-      "kickoffUTC": "2026-11-06T19:45:00Z",
-      "kickoffLocal": "Nov 6 • 2:45 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.3096,
-        "draw": 0.3004,
-        "away": 0.39
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 559638,
       "id": "upcoming:559638",
       "league": "Ligue 1",
@@ -252,19 +198,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560634,
-      "id": "upcoming:560634",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Everton",
-      "away": "Coventry City",
-      "kickoffUTC": "2026-11-06T20:00:00Z",
-      "kickoffLocal": "Nov 6 • 3:00 PM ET",
+      "matchId": 558537,
+      "id": "upcoming:558537",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Venezia FC",
+      "away": "Udinese",
+      "kickoffUTC": "2026-11-06T19:45:00Z",
+      "kickoffLocal": "Nov 6 • 2:45 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.5954,
-        "draw": 0.269,
-        "away": 0.1356
+        "home": 0.3096,
+        "draw": 0.3004,
+        "away": 0.39
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -283,6 +229,24 @@
         "home": 0.5322,
         "draw": 0.2865,
         "away": 0.1813
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 560634,
+      "id": "upcoming:560634",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Everton",
+      "away": "Coventry City",
+      "kickoffUTC": "2026-11-06T20:00:00Z",
+      "kickoffLocal": "Nov 6 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5954,
+        "draw": 0.269,
+        "away": 0.1356
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -450,24 +414,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560640,
-      "id": "upcoming:560640",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Arsenal",
-      "away": "Hull City",
-      "kickoffUTC": "2026-11-07T15:00:00Z",
-      "kickoffLocal": "Nov 7 • 10:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.7385,
-        "draw": 0.2328,
-        "away": 0.0287
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 560633,
       "id": "upcoming:560633",
       "league": "Premier League",
@@ -481,6 +427,24 @@
         "home": 0.3338,
         "draw": 0.3115,
         "away": 0.3546
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 560640,
+      "id": "upcoming:560640",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Arsenal",
+      "away": "Hull City",
+      "kickoffUTC": "2026-11-07T15:00:00Z",
+      "kickoffLocal": "Nov 7 • 10:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.7385,
+        "draw": 0.2328,
+        "away": 0.0287
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -576,19 +540,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 564739,
-      "id": "upcoming:564739",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Osasuna",
-      "away": "Athletic",
+      "matchId": 560641,
+      "id": "upcoming:560641",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Nottingham",
+      "away": "Man City",
       "kickoffUTC": "2026-11-07T17:30:00Z",
       "kickoffLocal": "Nov 7 • 12:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.1474,
-        "draw": 0.2531,
-        "away": 0.5994
+        "home": 0.018,
+        "draw": 0.2257,
+        "away": 0.7563
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -612,19 +576,19 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560641,
-      "id": "upcoming:560641",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Nottingham",
-      "away": "Man City",
+      "matchId": 564739,
+      "id": "upcoming:564739",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Osasuna",
+      "away": "Athletic",
       "kickoffUTC": "2026-11-07T17:30:00Z",
       "kickoffLocal": "Nov 7 • 12:30 PM ET",
       "tv": [],
       "hda": {
-        "home": 0.018,
-        "draw": 0.2257,
-        "away": 0.7563
+        "home": 0.1474,
+        "draw": 0.2531,
+        "away": 0.5994
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -846,78 +810,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 560636,
-      "id": "upcoming:560636",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Sunderland",
-      "away": "Chelsea",
-      "kickoffUTC": "2026-11-08T14:00:00Z",
-      "kickoffLocal": "Nov 8 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0425,
-        "draw": 0.2312,
-        "away": 0.7263
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 558538,
-      "id": "upcoming:558538",
-      "league": "Serie A",
-      "competitionCode": "SA",
-      "home": "Monza",
-      "away": "Atalanta",
-      "kickoffUTC": "2026-11-08T14:00:00Z",
-      "kickoffLocal": "Nov 8 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.2668,
-        "draw": 0.2846,
-        "away": 0.4486
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 560638,
-      "id": "upcoming:560638",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Brighton Hove",
-      "away": "Brentford",
-      "kickoffUTC": "2026-11-08T14:00:00Z",
-      "kickoffLocal": "Nov 8 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.6581,
-        "draw": 0.253,
-        "away": 0.0889
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 560635,
-      "id": "upcoming:560635",
-      "league": "Premier League",
-      "competitionCode": "PL",
-      "home": "Crystal Palace",
-      "away": "Liverpool",
-      "kickoffUTC": "2026-11-08T14:00:00Z",
-      "kickoffLocal": "Nov 8 • 9:00 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.0826,
-        "draw": 0.2395,
-        "away": 0.6779
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 559636,
       "id": "upcoming:559636",
       "league": "Ligue 1",
@@ -949,6 +841,78 @@
         "home": 0.313,
         "draw": 0.3019,
         "away": 0.3851
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 558538,
+      "id": "upcoming:558538",
+      "league": "Serie A",
+      "competitionCode": "SA",
+      "home": "Monza",
+      "away": "Atalanta",
+      "kickoffUTC": "2026-11-08T14:00:00Z",
+      "kickoffLocal": "Nov 8 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.2668,
+        "draw": 0.2846,
+        "away": 0.4486
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 560635,
+      "id": "upcoming:560635",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Crystal Palace",
+      "away": "Liverpool",
+      "kickoffUTC": "2026-11-08T14:00:00Z",
+      "kickoffLocal": "Nov 8 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0826,
+        "draw": 0.2395,
+        "away": 0.6779
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 560636,
+      "id": "upcoming:560636",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Sunderland",
+      "away": "Chelsea",
+      "kickoffUTC": "2026-11-08T14:00:00Z",
+      "kickoffLocal": "Nov 8 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.0425,
+        "draw": 0.2312,
+        "away": 0.7263
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 560638,
+      "id": "upcoming:560638",
+      "league": "Premier League",
+      "competitionCode": "PL",
+      "home": "Brighton Hove",
+      "away": "Brentford",
+      "kickoffUTC": "2026-11-08T14:00:00Z",
+      "kickoffLocal": "Nov 8 • 9:00 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.6581,
+        "draw": 0.253,
+        "away": 0.0889
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1062,42 +1026,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 559631,
-      "id": "upcoming:559631",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Le Mans",
-      "away": "Monaco",
-      "kickoffUTC": "2026-11-08T16:15:00Z",
-      "kickoffLocal": "Nov 8 • 11:15 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.1103,
-        "draw": 0.2452,
-        "away": 0.6446
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
-      "matchId": 559633,
-      "id": "upcoming:559633",
-      "league": "Ligue 1",
-      "competitionCode": "FL1",
-      "home": "Le Havre",
-      "away": "Lorient",
-      "kickoffUTC": "2026-11-08T16:15:00Z",
-      "kickoffLocal": "Nov 8 • 11:15 AM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.08,
-        "draw": 0.2389,
-        "away": 0.6811
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 559632,
       "id": "upcoming:559632",
       "league": "Ligue 1",
@@ -1129,6 +1057,42 @@
         "home": 0.1417,
         "draw": 0.2519,
         "away": 0.6064
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 559631,
+      "id": "upcoming:559631",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Le Mans",
+      "away": "Monaco",
+      "kickoffUTC": "2026-11-08T16:15:00Z",
+      "kickoffLocal": "Nov 8 • 11:15 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.1103,
+        "draw": 0.2452,
+        "away": 0.6446
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 559633,
+      "id": "upcoming:559633",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Le Havre",
+      "away": "Lorient",
+      "kickoffUTC": "2026-11-08T16:15:00Z",
+      "kickoffLocal": "Nov 8 • 11:15 AM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.08,
+        "draw": 0.2389,
+        "away": 0.6811
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
@@ -1188,24 +1152,6 @@
       "model": "NetThud Table Model v1"
     },
     {
-      "matchId": 564747,
-      "id": "upcoming:564747",
-      "league": "Primera Division",
-      "competitionCode": "PD",
-      "home": "Villarreal",
-      "away": "Getafe",
-      "kickoffUTC": "2026-11-08T17:30:00Z",
-      "kickoffLocal": "Nov 8 • 12:30 PM ET",
-      "tv": [],
-      "hda": {
-        "home": 0.4858,
-        "draw": 0.3006,
-        "away": 0.2135
-      },
-      "highlightsUrl": "",
-      "model": "NetThud Table Model v1"
-    },
-    {
       "matchId": 564742,
       "id": "upcoming:564742",
       "league": "Primera Division",
@@ -1219,6 +1165,24 @@
         "home": 0.4757,
         "draw": 0.3039,
         "away": 0.2204
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 564747,
+      "id": "upcoming:564747",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Villarreal",
+      "away": "Getafe",
+      "kickoffUTC": "2026-11-08T17:30:00Z",
+      "kickoffLocal": "Nov 8 • 12:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.4858,
+        "draw": 0.3006,
+        "away": 0.2135
       },
       "highlightsUrl": "",
       "model": "NetThud Table Model v1"
