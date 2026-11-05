@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05T06:47:30.404Z",
+  "updated": "2026-11-05T15:12:01.444Z",
   "dateFrom": "2026-11-04",
   "dateTo": "2026-11-07",
   "competitions": [
@@ -16,6 +16,18 @@
     "TSL"
   ],
   "items": [
+    {
+      "matchId": 575391,
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "when": "2026-11-04",
+      "kickoffUTC": "2026-11-04T20:00:00Z",
+      "status": "FINISHED",
+      "home": "Dortmund",
+      "away": "Real Betis",
+      "score": "2–1",
+      "highlightsUrl": ""
+    },
     {
       "matchId": 575393,
       "league": "UEFA Champions League",
@@ -41,15 +53,27 @@
       "highlightsUrl": ""
     },
     {
-      "matchId": 575391,
+      "matchId": 575390,
       "league": "UEFA Champions League",
       "competitionCode": "CL",
       "when": "2026-11-04",
       "kickoffUTC": "2026-11-04T20:00:00Z",
       "status": "FINISHED",
-      "home": "Dortmund",
-      "away": "Real Betis",
-      "score": "2–1",
+      "home": "PSV",
+      "away": "Club Brugge",
+      "score": "1–2",
+      "highlightsUrl": ""
+    },
+    {
+      "matchId": 575392,
+      "league": "UEFA Champions League",
+      "competitionCode": "CL",
+      "when": "2026-11-04",
+      "kickoffUTC": "2026-11-04T20:00:00Z",
+      "status": "FINISHED",
+      "home": "Porto",
+      "away": "Napoli",
+      "score": "4–1",
       "highlightsUrl": ""
     },
     {
@@ -73,30 +97,6 @@
       "status": "FINISHED",
       "home": "Viking",
       "away": "Sabah FK",
-      "score": "4–1",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 575390,
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "when": "2026-11-04",
-      "kickoffUTC": "2026-11-04T20:00:00Z",
-      "status": "FINISHED",
-      "home": "PSV",
-      "away": "Club Brugge",
-      "score": "1–2",
-      "highlightsUrl": ""
-    },
-    {
-      "matchId": 575392,
-      "league": "UEFA Champions League",
-      "competitionCode": "CL",
-      "when": "2026-11-04",
-      "kickoffUTC": "2026-11-04T20:00:00Z",
-      "status": "FINISHED",
-      "home": "Porto",
-      "away": "Napoli",
       "score": "4–1",
       "highlightsUrl": ""
     },
