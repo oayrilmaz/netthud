@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T07:02:56.017Z",
+  "generatedAt": "2026-11-13T15:23:35.247Z",
   "days": 7,
   "limit": 160,
   "competitions": [
@@ -16,5 +16,60 @@
     "TSL"
   ],
   "model": "NetThud Table Model v1",
-  "items": []
+  "items": [
+    {
+      "matchId": 565859,
+      "id": "upcoming:565859",
+      "league": "Bundesliga",
+      "competitionCode": "BL1",
+      "home": "Bayern",
+      "away": "1. FC Köln",
+      "kickoffUTC": "2026-11-20T19:30:00Z",
+      "kickoffLocal": "Nov 20 • 2:30 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.765,
+        "draw": 0.2254,
+        "away": 0.0095
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 559622,
+      "id": "upcoming:559622",
+      "league": "Ligue 1",
+      "competitionCode": "FL1",
+      "home": "Troyes",
+      "away": "Le Havre",
+      "kickoffUTC": "2026-11-20T19:45:00Z",
+      "kickoffLocal": "Nov 20 • 2:45 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5879,
+        "draw": 0.271,
+        "away": 0.1411
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    },
+    {
+      "matchId": 564748,
+      "id": "upcoming:564748",
+      "league": "Primera Division",
+      "competitionCode": "PD",
+      "home": "Athletic",
+      "away": "Espanyol",
+      "kickoffUTC": "2026-11-20T20:00:00Z",
+      "kickoffLocal": "Nov 20 • 3:00 PM ET",
+      "tv": [],
+      "hda": {
+        "home": 0.5767,
+        "draw": 0.274,
+        "away": 0.1493
+      },
+      "highlightsUrl": "",
+      "model": "NetThud Table Model v1"
+    }
+  ]
 }
